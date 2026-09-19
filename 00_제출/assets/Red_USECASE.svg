@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1540" height="2020" viewBox="0 0 1540 2020" role="img" aria-labelledby="title description">
 <title id="title">Red 유스케이스 다이어그램</title>
-<desc id="description">StarUML 원본 Red_USECASE.mdj의 모델과 좌표로 생성한 미리보기. 액터 2개, 유스케이스 10개, 사용자 연결 14개, include 관계 3개. StarUML 앱에서 내보낸 이미지 아님.</desc>
+<desc id="description">StarUML 원본 Red_USECASE.mdj의 모델과 좌표로 생성한 미리보기. 액터 3개, 유스케이스 10개, 사용자 연결 16개, include 관계 3개. StarUML 앱에서 내보낸 이미지 아님.</desc>
 <defs>
 <marker id="include-arrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto"><path d="M 1 1 L 11 6 L 1 11" fill="none" stroke="#475569" stroke-width="1.6"/></marker>
 <style>text{font-family:"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;fill:#172b40}.association{fill:none;stroke:#8796a5;stroke-width:2;stroke-linejoin:round}.include{fill:none;stroke:#475569;stroke-width:2;stroke-dasharray:8 6;marker-end:url(#include-arrow)}.actor{fill:none;stroke:#334155;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.identifier{font-size:16px;font-weight:600;fill:#536779}.uc-title{font-size:23px;font-weight:650}.detail{font-size:17px;fill:#526575}</style>
@@ -23,6 +23,9 @@
 <polyline class="association" data-actor="서비스 운영자" data-usecase="UC06" points="1354,845 975,1300"/>
 <polyline class="association" data-actor="서비스 운영자" data-usecase="UC07" points="1416,845 1480,845 1480,1450 535,1450 535,1498"/>
 <polyline class="association" data-actor="서비스 운영자" data-usecase="UC09" points="1416,845 1500,845 1500,1750 975,1750"/>
+<polyline class="association" data-actor="사용자" data-usecase="UC01" points="154,400 525,450"/>
+<polyline class="association" data-actor="사용자" data-usecase="UC02" points="154,400 525,620"/>
+<g data-role="actor"><circle class="actor" cx="125" cy="350" r="21" fill="white"/><path class="actor" d="M 125 371 L 125 456 M 96 400 L 154 400 M 125 456 L 91 496 M 125 456 L 159 496"/><text x="125" y="531" text-anchor="middle" font-size="22" font-weight="650">사용자</text><text class="detail" x="125" y="560" text-anchor="middle">일반 조회</text></g>
 <g data-role="actor"><circle class="actor" cx="125" cy="795" r="21" fill="white"/><path class="actor" d="M 125 816 L 125 901 M 96 845 L 154 845 M 125 901 L 91 941 M 125 901 L 159 941"/><text x="125" y="976" text-anchor="middle" font-size="22" font-weight="650">사업체 운영자</text><text class="detail" x="125" y="1005" text-anchor="middle">홍보 담당자</text></g>
 <g data-role="actor"><circle class="actor" cx="1385" cy="795" r="21" fill="white"/><path class="actor" d="M 1385 816 L 1385 901 M 1356 845 L 1414 845 M 1385 901 L 1351 941 M 1385 901 L 1419 941"/><text x="1385" y="976" text-anchor="middle" font-size="22" font-weight="650">서비스 운영자</text><text class="detail" x="1385" y="1005" text-anchor="middle">프로젝트 팀</text></g>
 <g id="UC01" data-role="usecase"><ellipse cx="750" cy="450" rx="225" ry="63" fill="#F0F7FF" stroke="#475569" stroke-width="2"/><text class="identifier" x="750" y="423" text-anchor="middle">UC01 · F01 · 필수</text><text class="uc-title" x="750" y="456" text-anchor="middle">지역별 방문 분석 조회</text><text class="detail" x="750" y="484" text-anchor="middle">지역·기간 선택 · 지도·월별 그래프</text></g>

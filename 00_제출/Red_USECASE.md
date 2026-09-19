@@ -39,14 +39,14 @@ flowchart LR
     OWNER --- UC04
     OWNER --- UC05
     OWNER --- UC06
-    OPERATOR --- UC01
-    OPERATOR --- UC02
-    OPERATOR --- UC03
-    OPERATOR --- UC04
-    OPERATOR --- UC05
-    OPERATOR --- UC06
-    OPERATOR --- UC07
-    OPERATOR --- UC09
+    UC01 --- OPERATOR
+    UC02 --- OPERATOR
+    UC03 --- OPERATOR
+    UC04 --- OPERATOR
+    UC05 --- OPERATOR
+    UC06 --- OPERATOR
+    UC07 --- OPERATOR
+    UC09 --- OPERATOR
 
     %% 화살표는 반드시 포함되는 공통 기능을 향함
     UC01 -. "«include»" .-> UC10

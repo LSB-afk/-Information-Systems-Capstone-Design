@@ -11,64 +11,19 @@ status: 설계 초안
 
 [프로젝트 기준 문서](Red_PROJECT.md) v1.1의 사용자·기능·범위를 그림으로 정리한 설계 초안임 구현 완료를 뜻하지 않으며, 기존 프로젝트 문서는 수정하지 않음
 
-## 전체 다이어그램
+## StarUML 원본과 미리보기
 
-```mermaid
-%%{init: {"theme":"base","themeVariables":{"fontFamily":"Apple SD Gothic Neo, Noto Sans KR, sans-serif","fontSize":"18px"},"flowchart":{"htmlLabels":false,"curve":"linear","nodeSpacing":30,"rankSpacing":70}}}%%
-flowchart LR
-    OWNER["«actor»<br/>사업체 운영자<br/>홍보 담당자"]
-    OPERATOR["«actor»<br/>서비스 운영자<br/>프로젝트 팀"]
+[StarUML 편집 원본 열기·다운로드](Red_USECASE.mdj) · [SVG 미리보기](assets/Red_USECASE.svg) · [PNG 미리보기](assets/Red_USECASE.png)
 
-    subgraph SYSTEM["제주 비수기 상권 마케팅 캘린더"]
-        UC01(["UC01 · F01 필수<br/>지역별 방문 분석 조회"])
-        UC02(["UC02 · F02 필수<br/>방문·소비 비교와 홍보 제안 조회"])
-        UC03(["UC03 · F03 필수<br/>3개월 홍보 일정표 관리<br/>작성·수정·저장·다시 보기"])
-        UC04(["UC04 · F03 필수<br/>실행·사용 기록 입력"])
-        UC05(["UC05 · F03 필수<br/>계획과 실행 결과 비교"])
-        UC06(["UC06 · F04 선택·검토 중<br/>근거 설명·보고서 초안 작성"])
-        UC07(["UC07 · 운영 지원<br/>CSV 자료 등록"])
-        UC08(["UC08 · 공통 검증<br/>자료 기준·누락값 검증"])
-        UC09(["UC09 · 운영 지원<br/>추천 기준·근거 관리"])
-        UC10(["UC10 · 공통 확인<br/>자료 출처·기준 확인<br/>기준기간·집계 기준"])
-    end
+![Red 유스케이스 다이어그램](assets/Red_USECASE.png)
 
-    %% 실선은 사용 관계이며 처리 순서를 뜻하지 않음
-    OWNER --- UC01
-    OWNER --- UC02
-    OWNER --- UC03
-    OWNER --- UC04
-    OWNER --- UC05
-    OWNER --- UC06
-    UC01 --- OPERATOR
-    UC02 --- OPERATOR
-    UC03 --- OPERATOR
-    UC04 --- OPERATOR
-    UC05 --- OPERATOR
-    UC06 --- OPERATOR
-    UC07 --- OPERATOR
-    UC09 --- OPERATOR
+수정 기준은 `Red_USECASE.mdj`임 StarUML의 액터·유스케이스·시스템 경계·연관·include 모델과 각 요소의 배치 정보를 담은 파일이며, 단순 이미지를 원본 파일 안에 넣은 것이 아님 이전 Mermaid 표현을 이 원본으로 대체함
 
-    %% 화살표는 반드시 포함되는 공통 기능을 향함
-    UC01 -. "«include»" .-> UC10
-    UC02 -. "«include»" .-> UC10
-    UC07 -. "«include»" .-> UC08
+StarUML이 설치된 환경에서 **File → Open**으로 원본을 연 뒤, 모델 탐색기의 **유스케이스 모델 → 전체 유스케이스**를 선택해 편집하는 용도임 원본 수정 후에는 그림도 다시 내보내 같은 내용으로 맞춤
 
-    classDef actor fill:#ffffff,stroke:#334155,stroke-width:2px,color:#172b40;
-    classDef core fill:#f0f7ff,stroke:#32648e,stroke-width:2px,color:#172b40;
-    classDef optional fill:#fff7e8,stroke:#9b6818,stroke-width:2px,color:#172b40;
-    classDef support fill:#f5f7f9,stroke:#64748b,stroke-width:2px,color:#172b40;
-    class OWNER,OPERATOR actor;
-    class UC01,UC02,UC03,UC04,UC05 core;
-    class UC06 optional;
-    class UC07,UC08,UC09,UC10 support;
-    style SYSTEM fill:#ffffff,stroke:#334155,stroke-width:2px
-```
+현재 작업 환경에는 StarUML 앱이 없어 공식 예제의 파일 구조를 바탕으로 원본을 생성하고 JSON 참조·소유 관계와 UML 관계를 검증함 위 이미지는 원본의 모델·좌표로 별도 생성한 미리보기이며 StarUML 앱의 내보내기 결과는 아님 앱에서 실제 열기·저장과 글꼴·자동 배치는 아직 확인하지 못함
 
-위 Mermaid 코드가 수정 기준인 원본임 [SVG 내보내기](assets/Red_USECASE.svg)와 [PNG 내보내기](assets/Red_USECASE.png)는 이 코드를 실제로 렌더링한 결과이며, 코드를 수정하면 이미지도 함께 다시 만듦
-
-Mermaid 12부터 전용 유스케이스 문법인 `usecase-beta`가 제공됨 현재 사용 중인 Obsidian의 Mermaid 11.13.0과 호환되도록 이 문서는 `flowchart` 문법으로 유스케이스 관계를 표현함 액터는 «actor»가 적힌 사각형, 유스케이스는 타원 대신 둥근 노드로 표시하므로 전용 UML 도형을 그대로 재현한 그림은 아님
-
-실선은 사용자와 기능의 연결, 점선 화살표는 필수 포함 관계, 노란 노드는 선택 기능을 뜻함 시스템 경계 밖의 액터 두 역할과 경계 안의 기능 열 개를 구분함
+실선은 사용자와 기능의 연결, 점선 화살표는 필수 포함 관계, 노란 타원은 선택 기능을 뜻함 시스템 경계 밖의 액터 두 역할과 경계 안의 유스케이스 열 개를 구분함
 
 ## 사용자와 범위
 
@@ -128,8 +83,7 @@ F04는 현재 프로젝트 문서에 있는 선택 기능으로 표시함 선택
 - 필수 기능, 선택 기능, 운영 지원과 제외 범위를 구분함
 - 실선 관계와 include 화살표의 방향, 한글 표시와 그림 잘림을 확인함
 
-## 문법과 호환성 근거
+## 파일 형식과 관계의 근거
 
-- [Mermaid 전용 유스케이스 문법](https://mermaid.js.org/syntax/usecase.html): 12.0.0 이상에서 사용하는 `usecase-beta` 문법
-- [Mermaid 흐름도 문법](https://mermaid.js.org/syntax/flowchart.html): 이 문서의 시스템 경계·둥근 노드·무방향 연결·점선 화살표에 사용한 문법
-- [GitHub의 Mermaid 사용·버전 확인 안내](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams#checking-your-version-of-mermaid): GitHub의 지원 버전이 최신 Mermaid와 같다고 가정하지 않음
+- [StarUML 공식 유스케이스 안내](https://docs.staruml.io/working-with-uml-diagrams/use-case-diagram): 액터·유스케이스·시스템 경계와 포함 대상 쪽으로 향하는 include 관계
+- [StarUML 공식 프로젝트 예제](https://github.com/staruml/staruml-samples/blob/a13d6f10a9fdad3a4e28cf970796814992d9b026/UMLExample.mdj): 원본의 모델·View·참조·좌표 저장 구조를 확인한 고정 버전

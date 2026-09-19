@@ -6,6 +6,7 @@
 
 - [프로젝트 정의서](00_제출/Red_PROJECT.md)
 - [유스케이스 다이어그램](00_제출/Red_USECASE.md)
+- [유스케이스 StarUML 편집 원본](00_제출/Red_USECASE.mdj)
 
 ## 폴더 구조
 

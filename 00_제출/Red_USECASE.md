@@ -13,18 +13,69 @@ status: 설계 초안
 
 ## 전체 다이어그램
 
-![제주 비수기 상권 마케팅 캘린더 유스케이스 다이어그램](assets/Red_USECASE.png)
+```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Apple SD Gothic Neo, Noto Sans KR, sans-serif","fontSize":"18px"},"flowchart":{"htmlLabels":false,"curve":"linear","nodeSpacing":30,"rankSpacing":70}}}%%
+flowchart LR
+    OWNER["«actor»<br/>사업체 운영자<br/>홍보 담당자"]
+    OPERATOR["«actor»<br/>서비스 운영자<br/>프로젝트 팀"]
 
-[확대해 볼 수 있는 SVG 원본](assets/Red_USECASE.svg) · [PNG 이미지](assets/Red_USECASE.png)
+    subgraph SYSTEM["제주 비수기 상권 마케팅 캘린더"]
+        UC01(["UC01 · F01 필수<br/>지역별 방문 분석 조회"])
+        UC02(["UC02 · F02 필수<br/>방문·소비 비교와 홍보 제안 조회"])
+        UC03(["UC03 · F03 필수<br/>3개월 홍보 일정표 관리<br/>작성·수정·저장·다시 보기"])
+        UC04(["UC04 · F03 필수<br/>실행·사용 기록 입력"])
+        UC05(["UC05 · F03 필수<br/>계획과 실행 결과 비교"])
+        UC06(["UC06 · F04 선택·검토 중<br/>근거 설명·보고서 초안 작성"])
+        UC07(["UC07 · 운영 지원<br/>CSV 자료 등록"])
+        UC08(["UC08 · 공통 검증<br/>자료 기준·누락값 검증"])
+        UC09(["UC09 · 운영 지원<br/>추천 기준·근거 관리"])
+        UC10(["UC10 · 공통 확인<br/>자료 출처·기준 확인<br/>기준기간·집계 기준"])
+    end
 
-Obsidian과 GitHub에서 같은 그림을 볼 수 있도록 기본 Markdown 이미지 문법을 사용함 SVG는 도형과 글자를 수정할 수 있는 원본이며, PNG는 같은 SVG에서 만든 표시용 이미지임
+    %% 실선은 사용 관계이며 처리 순서를 뜻하지 않음
+    OWNER --- UC01
+    OWNER --- UC02
+    OWNER --- UC03
+    OWNER --- UC04
+    OWNER --- UC05
+    OWNER --- UC06
+    OPERATOR --- UC01
+    OPERATOR --- UC02
+    OPERATOR --- UC03
+    OPERATOR --- UC04
+    OPERATOR --- UC05
+    OPERATOR --- UC06
+    OPERATOR --- UC07
+    OPERATOR --- UC09
+
+    %% 화살표는 반드시 포함되는 공통 기능을 향함
+    UC01 -. "«include»" .-> UC10
+    UC02 -. "«include»" .-> UC10
+    UC07 -. "«include»" .-> UC08
+
+    classDef actor fill:#ffffff,stroke:#334155,stroke-width:2px,color:#172b40;
+    classDef core fill:#f0f7ff,stroke:#32648e,stroke-width:2px,color:#172b40;
+    classDef optional fill:#fff7e8,stroke:#9b6818,stroke-width:2px,color:#172b40;
+    classDef support fill:#f5f7f9,stroke:#64748b,stroke-width:2px,color:#172b40;
+    class OWNER,OPERATOR actor;
+    class UC01,UC02,UC03,UC04,UC05 core;
+    class UC06 optional;
+    class UC07,UC08,UC09,UC10 support;
+    style SYSTEM fill:#ffffff,stroke:#334155,stroke-width:2px
+```
+
+위 Mermaid 코드가 수정 기준인 원본임 [SVG 내보내기](assets/Red_USECASE.svg)와 [PNG 내보내기](assets/Red_USECASE.png)는 이 코드를 실제로 렌더링한 결과이며, 코드를 수정하면 이미지도 함께 다시 만듦
+
+Mermaid 12부터 전용 유스케이스 문법인 `usecase-beta`가 제공됨 현재 사용 중인 Obsidian의 Mermaid 11.13.0과 호환되도록 이 문서는 `flowchart` 문법으로 유스케이스 관계를 표현함 액터는 «actor»가 적힌 사각형, 유스케이스는 타원 대신 둥근 노드로 표시하므로 전용 UML 도형을 그대로 재현한 그림은 아님
+
+실선은 사용자와 기능의 연결, 점선 화살표는 필수 포함 관계, 노란 노드는 선택 기능을 뜻함 시스템 경계 밖의 액터 두 역할과 경계 안의 기능 열 개를 구분함
 
 ## 사용자와 범위
 
 | 액터 | 역할 | 이용 범위 |
 | --- | --- | --- |
-| 사업체 운영자 | 카페 또는 체험 활동 업체 운영자·홍보 담당자 | UC01부터 UC06까지 이용하며, UC06은 도입할 경우에만 제공함 |
-| 서비스 운영자 | 프로젝트 팀의 개발·자료 분석·검증 담당자 | UC01부터 UC06까지와 자료 등록·추천 근거 관리를 이용함 비공개 사업체 계획·기록은 권한 또는 동의가 있는 범위에서만 사용함 |
+| 사업체 운영자 | 카페 또는 체험 활동 업체 운영자·홍보 담당자 | UC01부터 UC06까지 이용하며, UC01·UC02에는 UC10이 포함됨 UC06은 도입할 경우에만 제공함 |
+| 서비스 운영자 | 프로젝트 팀의 개발·자료 분석·검증 담당자 | UC01부터 UC06까지와 자료 등록·추천 근거 관리를 이용함 UC01·UC02에는 UC10, UC07에는 UC08이 포함됨 비공개 사업체 계획·기록은 권한 또는 동의가 있는 범위에서만 사용함 |
 
 그림의 실선은 기능 이용 관계이며, 화면 이동이나 처리 순서를 뜻하지 않음 사업체 운영자는 실제 사업 활동을 수행하고 시스템에는 그 기록을 입력함 시스템이 광고 게시·결제·예약을 대신 실행한다는 뜻이 아님
 
@@ -41,14 +92,19 @@ Obsidian과 GitHub에서 같은 그림을 볼 수 있도록 기본 Markdown 이�
 | UC07 | 운영자가 확보한 CSV 자료를 시스템에 등록함 자동 수집이나 외부 API 연동을 뜻하지 않음 | F01·F02 운영 지원 | 필수 기능을 위한 자료 준비 |
 | UC08 | 등록할 자료의 기간·집계 기준·지역 코드·누락값·제공 기준의 일관성을 검증함 비교할 수 없는 자료는 그 사실을 표시함 | F01·F02 운영 지원 | UC07에 반드시 포함 |
 | UC09 | 확인한 분석 결과를 바탕으로 추천 기준과 이유를 관리함 | F02 운영 지원 | 필수 기능을 위한 근거 관리 |
+| UC10 | 조회·추천에 쓰인 자료의 출처·기준기간·집계 기준을 확인함 | F01·F02 공통 | UC01·UC02에 반드시 포함 |
 
 각 조회·추천에는 자료의 출처·기준기간·집계 기준을 함께 제공함 지역 방문객 집계를 개별 가게의 손님 수로 표현하지 않으며, 구하지 못한 실행 기록을 0건으로 바꾸지 않음
 
 ## include 관계
 
-`UC07 CSV 자료 등록 → <<include>> → UC08 자료 기준·누락값 검증`
+- `UC01 지역별 방문 분석 조회 → «include» → UC10 자료 출처·기준 확인`
+- `UC02 방문·소비 비교와 홍보 제안 조회 → «include» → UC10 자료 출처·기준 확인`
+- `UC07 CSV 자료 등록 → «include» → UC08 자료 기준·누락값 검증`
 
-자료를 등록할 때 검증을 반드시 포함한다는 뜻이며, 화살표는 포함되는 기능인 UC08을 향함 검증을 통과하지 못한 자료를 정상적인 비교 자료로 취급하지 않음
+UC01·UC02를 이용하면 출처·기준기간·집계 기준도 함께 확인할 수 있게 제공함 별도 화면을 반드시 열어야 한다는 뜻은 아님 UC10은 기존 문서의 필수 출처 표시 요구를 따로 드러낸 것이며 새로운 사업 기능을 추가한 것이 아님
+
+자료를 등록할 때 검증을 반드시 포함한다는 뜻이며, 화살표는 포함되는 기능인 UC08·UC10을 향함 검증을 통과하지 못한 자료를 정상적인 비교 자료로 취급하지 않음
 
 F01·F02·F03을 순서대로 include로 연결하지 않음 저장한 일정표를 다시 보거나 수정할 때 모든 분석을 매번 새로 실행해야 한다는 요구사항은 없기 때문임
 
@@ -71,3 +127,9 @@ F04는 현재 프로젝트 문서에 있는 선택 기능으로 표시함 선택
 - 일정표의 작성·수정·저장·다시 보기와 실행 기록·결과 비교가 빠지지 않았는지 확인함
 - 필수 기능, 선택 기능, 운영 지원과 제외 범위를 구분함
 - 실선 관계와 include 화살표의 방향, 한글 표시와 그림 잘림을 확인함
+
+## 문법과 호환성 근거
+
+- [Mermaid 전용 유스케이스 문법](https://mermaid.js.org/syntax/usecase.html): 12.0.0 이상에서 사용하는 `usecase-beta` 문법
+- [Mermaid 흐름도 문법](https://mermaid.js.org/syntax/flowchart.html): 이 문서의 시스템 경계·둥근 노드·무방향 연결·점선 화살표에 사용한 문법
+- [GitHub의 Mermaid 사용·버전 확인 안내](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams#checking-your-version-of-mermaid): GitHub의 지원 버전이 최신 Mermaid와 같다고 가정하지 않음

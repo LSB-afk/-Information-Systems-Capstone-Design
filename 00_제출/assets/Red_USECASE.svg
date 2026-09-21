@@ -1,45 +1,104 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1540" height="2020" viewBox="0 0 1540 2020" role="img" aria-labelledby="title description">
-<title id="title">Red 유스케이스 다이어그램</title>
-<desc id="description">StarUML 원본 Red_USECASE.mdj의 모델과 좌표로 생성한 미리보기. 액터 3개, 유스케이스 10개, 사용자 연결 16개, include 관계 3개. StarUML 앱에서 내보낸 이미지 아님.</desc>
-<defs>
-<marker id="include-arrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto"><path d="M 1 1 L 11 6 L 1 11" fill="none" stroke="#475569" stroke-width="1.6"/></marker>
-<style>text{font-family:"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;fill:#172b40}.association{fill:none;stroke:#8796a5;stroke-width:2;stroke-linejoin:round}.include{fill:none;stroke:#475569;stroke-width:2;stroke-dasharray:8 6;marker-end:url(#include-arrow)}.actor{fill:none;stroke:#334155;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.identifier{font-size:16px;font-weight:600;fill:#536779}.uc-title{font-size:23px;font-weight:650}.detail{font-size:17px;fill:#526575}</style>
-</defs>
-<rect width="1540" height="2020" fill="white"/>
-<text x="770" y="64" text-anchor="middle" font-size="36" font-weight="700">제주 비수기 상권 마케팅 캘린더</text>
-<text x="770" y="103" text-anchor="middle" font-size="20">StarUML 모델 기반 미리보기 · 프로젝트 v1.1 기준 · 2026-09-19</text>
-<rect id="system-boundary" x="265" y="145" width="985" height="1730" fill="white" stroke="#334155" stroke-width="2"/><text x="289" y="177" font-size="19" font-weight="650">제주 비수기 상권 마케팅 캘린더</text>
-<polyline class="association" data-actor="사업체 운영자" data-usecase="UC01" points="154,845 525,450"/>
-<polyline class="association" data-actor="서비스 운영자" data-usecase="UC01" points="1354,845 975,450"/>
-<polyline class="association" data-actor="사업체 운영자" data-usecase="UC02" points="154,845 525,620"/>
-<polyline class="association" data-actor="서비스 운영자" data-usecase="UC02" points="1354,845 975,620"/>
-<polyline class="association" data-actor="사업체 운영자" data-usecase="UC03" points="154,845 525,790"/>
-<polyline class="association" data-actor="서비스 운영자" data-usecase="UC03" points="1354,845 975,790"/>
-<polyline class="association" data-actor="사업체 운영자" data-usecase="UC04" points="154,845 525,960"/>
-<polyline class="association" data-actor="서비스 운영자" data-usecase="UC04" points="1354,845 975,960"/>
-<polyline class="association" data-actor="사업체 운영자" data-usecase="UC05" points="154,845 525,1130"/>
-<polyline class="association" data-actor="서비스 운영자" data-usecase="UC05" points="1354,845 975,1130"/>
-<polyline class="association" data-actor="사업체 운영자" data-usecase="UC06" points="154,845 525,1300"/>
-<polyline class="association" data-actor="서비스 운영자" data-usecase="UC06" points="1354,845 975,1300"/>
-<polyline class="association" data-actor="서비스 운영자" data-usecase="UC07" points="1416,845 1480,845 1480,1450 535,1450 535,1498"/>
-<polyline class="association" data-actor="서비스 운영자" data-usecase="UC09" points="1416,845 1500,845 1500,1750 975,1750"/>
-<polyline class="association" data-actor="사용자" data-usecase="UC01" points="154,400 525,450"/>
-<polyline class="association" data-actor="사용자" data-usecase="UC02" points="154,400 525,620"/>
-<g data-role="actor"><circle class="actor" cx="125" cy="350" r="21" fill="white"/><path class="actor" d="M 125 371 L 125 456 M 96 400 L 154 400 M 125 456 L 91 496 M 125 456 L 159 496"/><text x="125" y="531" text-anchor="middle" font-size="22" font-weight="650">사용자</text><text class="detail" x="125" y="560" text-anchor="middle">일반 조회</text></g>
-<g data-role="actor"><circle class="actor" cx="125" cy="795" r="21" fill="white"/><path class="actor" d="M 125 816 L 125 901 M 96 845 L 154 845 M 125 901 L 91 941 M 125 901 L 159 941"/><text x="125" y="976" text-anchor="middle" font-size="22" font-weight="650">사업체 운영자</text><text class="detail" x="125" y="1005" text-anchor="middle">홍보 담당자</text></g>
-<g data-role="actor"><circle class="actor" cx="1385" cy="795" r="21" fill="white"/><path class="actor" d="M 1385 816 L 1385 901 M 1356 845 L 1414 845 M 1385 901 L 1351 941 M 1385 901 L 1419 941"/><text x="1385" y="976" text-anchor="middle" font-size="22" font-weight="650">서비스 운영자</text><text class="detail" x="1385" y="1005" text-anchor="middle">프로젝트 팀</text></g>
-<g id="UC01" data-role="usecase"><ellipse cx="750" cy="450" rx="225" ry="63" fill="#F0F7FF" stroke="#475569" stroke-width="2"/><text class="identifier" x="750" y="423" text-anchor="middle">UC01 · F01 · 필수</text><text class="uc-title" x="750" y="456" text-anchor="middle">지역별 방문 분석 조회</text><text class="detail" x="750" y="484" text-anchor="middle">지역·기간 선택 · 지도·월별 그래프</text></g>
-<g id="UC02" data-role="usecase"><ellipse cx="750" cy="620" rx="225" ry="63" fill="#F0F7FF" stroke="#475569" stroke-width="2"/><text class="identifier" x="750" y="593" text-anchor="middle">UC02 · F02 · 필수</text><text class="uc-title" x="750" y="626" text-anchor="middle">방문·소비 비교와 홍보 제안 조회</text><text class="detail" x="750" y="654" text-anchor="middle">홍보 시기·대상·상품 후보 · 근거 확인</text></g>
-<g id="UC03" data-role="usecase"><ellipse cx="750" cy="790" rx="225" ry="63" fill="#F0F7FF" stroke="#475569" stroke-width="2"/><text class="identifier" x="750" y="763" text-anchor="middle">UC03 · F03 · 필수</text><text class="uc-title" x="750" y="796" text-anchor="middle">3개월 홍보 일정표 관리</text><text class="detail" x="750" y="824" text-anchor="middle">작성 · 수정 · 저장 · 다시 보기</text></g>
-<g id="UC04" data-role="usecase"><ellipse cx="750" cy="960" rx="225" ry="63" fill="#F0F7FF" stroke="#475569" stroke-width="2"/><text class="identifier" x="750" y="933" text-anchor="middle">UC04 · F03 · 필수</text><text class="uc-title" x="750" y="966" text-anchor="middle">실행·사용 기록 입력</text><text class="detail" x="750" y="994" text-anchor="middle">소요 시간 · 선택 여부 · 구한 활동 기록</text></g>
-<g id="UC05" data-role="usecase"><ellipse cx="750" cy="1130" rx="225" ry="63" fill="#F0F7FF" stroke="#475569" stroke-width="2"/><text class="identifier" x="750" y="1103" text-anchor="middle">UC05 · F03 · 필수</text><text class="uc-title" x="750" y="1136" text-anchor="middle">계획과 실행 결과 비교</text><text class="detail" x="750" y="1164" text-anchor="middle">저장한 계획 · 실제 활동 · 사용 결과</text></g>
-<g id="UC06" data-role="usecase"><ellipse cx="750" cy="1300" rx="225" ry="63" fill="#FFF7E8" stroke="#9b6818" stroke-width="2"/><text class="identifier" x="750" y="1273" text-anchor="middle">UC06 · F04 · 선택·검토 중</text><text class="uc-title" x="750" y="1306" text-anchor="middle">근거 설명·보고서 초안 작성</text><text class="detail" x="750" y="1334" text-anchor="middle">AI 활용 여부 검토 중 · 필수 기능과 분리</text></g>
-<g id="UC07" data-role="usecase"><ellipse cx="535" cy="1560" rx="180" ry="62" fill="#F5F7F9" stroke="#475569" stroke-width="2"/><text class="identifier" x="535" y="1533" text-anchor="middle">UC07 · 운영 지원 · F01·F02</text><text class="uc-title" x="535" y="1566" text-anchor="middle">CSV 자료 등록</text><text class="detail" x="535" y="1594" text-anchor="middle">운영자가 확보한 자료</text></g>
-<g id="UC08" data-role="usecase"><ellipse cx="1030" cy="1560" rx="170" ry="62" fill="#F5F7F9" stroke="#475569" stroke-width="2"/><text class="identifier" x="1030" y="1533" text-anchor="middle">UC08 · 공통 검증</text><text class="uc-title" x="1030" y="1566" text-anchor="middle">자료 기준·누락값 검증</text><text class="detail" x="1030" y="1594" text-anchor="middle">기간 · 집계 기준 · 지역 코드</text></g>
-<g id="UC09" data-role="usecase"><ellipse cx="750" cy="1750" rx="225" ry="62" fill="#F5F7F9" stroke="#475569" stroke-width="2"/><text class="identifier" x="750" y="1723" text-anchor="middle">UC09 · 운영 지원 · F02</text><text class="uc-title" x="750" y="1756" text-anchor="middle">추천 기준·근거 관리</text><text class="detail" x="750" y="1784" text-anchor="middle">확인한 분석 결과와 추천 이유</text></g>
-<g id="UC10" data-role="usecase"><ellipse cx="750" cy="260" rx="225" ry="63" fill="#F5F7F9" stroke="#475569" stroke-width="2"/><text class="identifier" x="750" y="233" text-anchor="middle">UC10 · F01·F02 · 공통 확인</text><text class="uc-title" x="750" y="266" text-anchor="middle">자료 출처·기준 확인</text><text class="detail" x="750" y="294" text-anchor="middle">출처 · 기준기간 · 집계 기준</text></g>
-<g data-role="include" data-source="UC01" data-target="UC10"><polyline class="include" points="750,387 750,323"/><rect x="761" y="340" width="112" height="28" fill="white"/><text x="765" y="361" font-size="19">«include»</text></g>
-<g data-role="include" data-source="UC02" data-target="UC10"><polyline class="include" points="975,620 1060,620 1060,260 975,260"/><rect x="1070" y="328" width="112" height="28" fill="white"/><text x="1074" y="349" font-size="19">«include»</text></g>
-<g data-role="include" data-source="UC07" data-target="UC08"><polyline class="include" points="715,1560 860,1560"/><rect x="730" y="1518" width="112" height="28" fill="white"/><text x="734" y="1539" font-size="19">«include»</text></g>
-<text x="290" y="1920" font-size="19">실선: 기능 이용 관계  ·  점선 화살표: 반드시 포함되는 기능  ·  노란 타원: 선택·검토 중</text><text x="290" y="1956" font-size="18" fill="#526575">자동 광고 실행·결제·예약 대행은 제외  ·  AI 에이전트의 자율 계획 기능은 미확정</text><text x="290" y="1988" font-size="17" fill="#526575">편집 기준: Red_USECASE.mdj  ·  앱 직접 열기·내보내기는 미검증</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1560" height="2260" viewBox="0 0 1560 2260" role="img" aria-labelledby="title description">
+<title id="title">Red 유스케이스 다이어그램 — 강의자료 반영</title>
+<desc id="description">동일한 제주 비수기 상권 마케팅 캘린더를 세 관점으로 표현. 액터 모델 3개, 유스케이스 10개, 연관 16개, include 3개. StarUML 편집 원본의 모델과 좌표에서 독립적으로 생성한 통합 미리보기.</desc>
+<defs><marker id="include-arrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1 1 L11 6 L1 11" fill="none" stroke="#334155" stroke-width="1.6"/></marker><style>text{font-family:"Apple SD Gothic Neo","Noto Sans KR",sans-serif;fill:#14263d}.association{fill:none;stroke:#64748b;stroke-width:1.8;stroke-linejoin:round}.include{fill:none;stroke:#334155;stroke-width:2;stroke-dasharray:7 5;marker-end:url(#include-arrow)}.actor{fill:none;stroke:#334155;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}</style></defs>
+<rect width="1560" height="2260" fill="white"/>
+<text x="65" y="62" font-size="34" font-weight="700" text-anchor="start" style="fill:#14263d">Red · 유스케이스 다이어그램</text>
+<text x="65" y="103" font-size="25" font-weight="500" text-anchor="start" style="fill:#14263d">제주 비수기 상권 마케팅 캘린더</text>
+<text x="1495" y="58" font-size="18" font-weight="400" text-anchor="end" style="fill:#64748b">2026.09.21</text>
+<text x="1495" y="92" font-size="18" font-weight="400" text-anchor="end" style="fill:#64748b">프로젝트 v1.1 · 설계 초안</text>
+<text x="65" y="140" font-size="19" font-weight="400" text-anchor="start" style="fill:#53667a">하나의 시스템을 세 관점으로 표시 · 같은 이름의 액터는 같은 역할</text>
+<text x="1495" y="140" font-size="17" font-weight="400" text-anchor="end" style="fill:#53667a">실선: 이용 관계 · 점선 화살표: 필수 포함</text>
+<text x="65" y="192" font-size="25" font-weight="700" text-anchor="start" style="fill:#14263d">01  공통 분석·제안 조회</text>
+<line x1="65" y1="209" x2="1495" y2="209" stroke="#d7e1ea" stroke-width="1.5"/>
+<g transform="translate(40 125)" data-diagram-id="RED-USECASE-00003">
+<rect x="420" y="135" width="770" height="510" fill="white" stroke="#64748b" stroke-width="1.5"/>
+<text x="440" y="164" font-size="18" font-weight="700" text-anchor="start" style="fill:#14263d">제주 비수기 상권 마케팅 캘린더</text>
+<polyline class="association" points="344.00,345.00 563.22,292.66" data-model-id="RED-USECASE-00153"/>
+<polyline class="association" points="1316.00,345.00 1235.00,312.00 1235.00,180.00 800.00,180.00 763.74,209.01" data-model-id="RED-USECASE-00168"/>
+<polyline class="association" points="344.00,345.00 610.15,483.31" data-model-id="RED-USECASE-00183"/>
+<polyline class="association" points="1316.00,345.00 1235.00,390.00 1235.00,620.00 800.00,620.00 757.51,581.76" data-model-id="RED-USECASE-00198"/>
+<polyline class="include" points="785.68,307.50 924.12,361.58" data-model-id="RED-USECASE-00363"/>
+<rect x="870.8986459380288" y="318.53999560858415" width="104" height="27" fill="white"/>
+<text x="922.8986459380288" y="338.53999560858415" font-size="18" font-weight="400" text-anchor="middle" style="fill:#14263d">«include»</text>
+<polyline class="include" points="791.08,483.56 920.43,436.85" data-model-id="RED-USECASE-00368"/>
+<rect x="871.7552843908605" y="444.20631781701536" width="104" height="27" fill="white"/>
+<text x="923.7552843908605" y="464.20631781701536" font-size="18" font-weight="400" text-anchor="middle" style="fill:#14263d">«include»</text>
+<polyline class="association" points="134.00,345.00 190.00,312.00 190.00,180.00 600.00,180.00 636.26,209.01" data-model-id="RED-USECASE-00389"/>
+<polyline class="association" points="134.00,345.00 190.00,390.00 190.00,620.00 600.00,620.00 642.49,581.76" data-model-id="RED-USECASE-00404"/>
+<g data-model-id="RED-USECASE-00378"><circle class="actor" cx="100.0" cy="308" r="18" fill="white"/><path class="actor" d="M100.0 326 V384 M66.0 345 H134.0 M100.0 384 L69.0 420 M100.0 384 L131.0 420"/></g>
+<text x="100.0" y="450" font-size="21" font-weight="700" text-anchor="middle" style="fill:#14263d">사용자</text>
+<text x="100.0" y="474" font-size="15" font-weight="400" text-anchor="middle" style="fill:#64748b">일반 조회 · 설계 가정</text>
+<g data-model-id="RED-USECASE-00011"><circle class="actor" cx="310.0" cy="308" r="18" fill="white"/><path class="actor" d="M310.0 326 V384 M276.0 345 H344.0 M310.0 384 L279.0 420 M310.0 384 L341.0 420"/></g>
+<text x="310.0" y="450" font-size="21" font-weight="700" text-anchor="middle" style="fill:#14263d">사업체 운영자</text>
+<g data-model-id="RED-USECASE-00022"><circle class="actor" cx="1350.0" cy="308" r="18" fill="white"/><path class="actor" d="M1350.0 326 V384 M1316.0 345 H1384.0 M1350.0 384 L1319.0 420 M1350.0 384 L1381.0 420"/></g>
+<text x="1350.0" y="450" font-size="21" font-weight="700" text-anchor="middle" style="fill:#14263d">서비스 운영자</text>
+<ellipse cx="700.0" cy="260.0" rx="170.0" ry="55.0" fill="#FFFFFF" stroke="#334155" stroke-width="1.8" data-model-id="RED-USECASE-00033"/>
+<text x="700.0" y="253.5" font-size="15" font-weight="500" text-anchor="middle" style="fill:#64748b">UC01</text>
+<text x="700.0" y="280.5" font-size="21" font-weight="600" text-anchor="middle" style="fill:#14263d">지역별 방문 분석 조회</text>
+<ellipse cx="700.0" cy="530.0" rx="170.0" ry="55.0" fill="#FFFFFF" stroke="#334155" stroke-width="1.8" data-model-id="RED-USECASE-00045"/>
+<text x="700.0" y="510.5" font-size="15" font-weight="500" text-anchor="middle" style="fill:#64748b">UC02</text>
+<text x="700.0" y="537.5" font-size="21" font-weight="600" text-anchor="middle" style="fill:#14263d">방문·소비 비교와</text>
+<text x="700.0" y="563.5" font-size="21" font-weight="600" text-anchor="middle" style="fill:#14263d">홍보 제안 조회</text>
+<ellipse cx="1022.5" cy="400.0" rx="137.5" ry="55.0" fill="#FFFFFF" stroke="#334155" stroke-width="1.8" data-model-id="RED-USECASE-00141"/>
+<text x="1022.5" y="393.5" font-size="15" font-weight="500" text-anchor="middle" style="fill:#64748b">UC10</text>
+<text x="1022.5" y="420.5" font-size="21" font-weight="600" text-anchor="middle" style="fill:#14263d">자료 출처·기준 표시</text>
+</g>
+<text x="65" y="799" font-size="18" font-weight="400" text-anchor="start" style="fill:#53667a">사용자는 일반 조회 역할이라는 설계 가정 · 세 액터 모두 UC01·UC02 이용 가능</text>
+<text x="65" y="855" font-size="25" font-weight="700" text-anchor="start" style="fill:#14263d">02  홍보 계획·실행 기록</text>
+<line x1="65" y1="872" x2="1495" y2="872" stroke="#d7e1ea" stroke-width="1.5"/>
+<g transform="translate(40 833)" data-diagram-id="RED-USECASE-10150">
+<rect x="330" y="80" width="810" height="640" fill="white" stroke="#64748b" stroke-width="1.5"/>
+<text x="350" y="109" font-size="18" font-weight="700" text-anchor="start" style="fill:#14263d">제주 비수기 상권 마케팅 캘린더</text>
+<polyline class="association" points="184.00,370.00 600.92,245.15" data-model-id="RED-USECASE-00213"/>
+<polyline class="association" points="1291.00,370.00 869.86,245.02" data-model-id="RED-USECASE-00228"/>
+<polyline class="association" points="184.00,370.00 514.55,355.00" data-model-id="RED-USECASE-00243"/>
+<polyline class="association" points="1291.00,370.00 955.53,354.92" data-model-id="RED-USECASE-00258"/>
+<polyline class="association" points="184.00,370.00 570.99,450.77" data-model-id="RED-USECASE-00273"/>
+<polyline class="association" points="1291.00,370.00 899.70,450.93" data-model-id="RED-USECASE-00288"/>
+<polyline class="association" points="184.00,370.00 637.61,579.93" data-model-id="RED-USECASE-00303"/>
+<polyline class="association" points="1291.00,370.00 833.11,580.00" data-model-id="RED-USECASE-00318"/>
+<g data-model-id="RED-USECASE-00011"><circle class="actor" cx="150.0" cy="333" r="18" fill="white"/><path class="actor" d="M150.0 351 V409 M116.0 370 H184.0 M150.0 409 L119.0 445 M150.0 409 L181.0 445"/></g>
+<text x="150.0" y="475" font-size="21" font-weight="700" text-anchor="middle" style="fill:#14263d">사업체 운영자</text>
+<g data-model-id="RED-USECASE-00022"><circle class="actor" cx="1325.0" cy="333" r="18" fill="white"/><path class="actor" d="M1325.0 351 V409 M1291.0 370 H1359.0 M1325.0 409 L1294.0 445 M1325.0 409 L1356.0 445"/></g>
+<text x="1325.0" y="475" font-size="21" font-weight="700" text-anchor="middle" style="fill:#14263d">서비스 운영자</text>
+<text x="1325.0" y="499" font-size="16" font-weight="400" text-anchor="middle" style="fill:#64748b">권한·동의 범위</text>
+<ellipse cx="735.0" cy="205.0" rx="225.0" ry="50.0" fill="#FFFFFF" stroke="#334155" stroke-width="1.8" data-model-id="RED-USECASE-00057"/>
+<text x="735.0" y="198.5" font-size="15" font-weight="500" text-anchor="middle" style="fill:#64748b">UC03</text>
+<text x="735.0" y="225.5" font-size="21" font-weight="600" text-anchor="middle" style="fill:#14263d">3개월 홍보 일정표 관리</text>
+<ellipse cx="735.0" cy="345.0" rx="225.0" ry="50.0" fill="#FFFFFF" stroke="#334155" stroke-width="1.8" data-model-id="RED-USECASE-00069"/>
+<text x="735.0" y="338.5" font-size="15" font-weight="500" text-anchor="middle" style="fill:#64748b">UC04</text>
+<text x="735.0" y="365.5" font-size="21" font-weight="600" text-anchor="middle" style="fill:#14263d">실행·사용 기록 입력</text>
+<ellipse cx="735.0" cy="485.0" rx="225.0" ry="50.0" fill="#FFFFFF" stroke="#334155" stroke-width="1.8" data-model-id="RED-USECASE-00081"/>
+<text x="735.0" y="478.5" font-size="15" font-weight="500" text-anchor="middle" style="fill:#64748b">UC05</text>
+<text x="735.0" y="505.5" font-size="21" font-weight="600" text-anchor="middle" style="fill:#14263d">계획과 실행 결과 비교</text>
+<ellipse cx="735.0" cy="625.0" rx="225.0" ry="50.0" fill="#FFF5DF" stroke="#A56612" stroke-width="1.8" data-model-id="RED-USECASE-00093"/>
+<text x="735.0" y="618.5" font-size="15" font-weight="500" text-anchor="middle" style="fill:#64748b">UC06</text>
+<text x="735.0" y="645.5" font-size="21" font-weight="600" text-anchor="middle" style="fill:#14263d">근거 설명·보고서 초안 작성</text>
+</g>
+<text x="65" y="1592" font-size="18" font-weight="400" text-anchor="start" style="fill:#53667a">UC03: 작성·수정·저장·다시 보기 포함 · 서비스 운영자의 비공개 기록 접근은 권한·동의 범위로 제한</text>
+<text x="65" y="1621" font-size="18" font-weight="400" text-anchor="start" style="fill:#8b5b13">노란 타원 UC06은 선택·검토 중 · 선택 구현 범위를 뜻하며 «extend» 관계를 뜻하지 않음</text>
+<text x="65" y="1690" font-size="25" font-weight="700" text-anchor="start" style="fill:#14263d">03  자료·추천 근거 관리</text>
+<line x1="65" y1="1707" x2="1495" y2="1707" stroke="#d7e1ea" stroke-width="1.5"/>
+<g transform="translate(40 1668)" data-diagram-id="RED-USECASE-10317">
+<rect x="330" y="80" width="940" height="435" fill="white" stroke="#64748b" stroke-width="1.5"/>
+<text x="350" y="109" font-size="18" font-weight="700" text-anchor="start" style="fill:#14263d">제주 비수기 상권 마케팅 캘린더</text>
+<polyline class="association" points="199.00,290.00 449.14,242.63" data-model-id="RED-USECASE-00333"/>
+<polyline class="association" points="199.00,290.00 477.56,377.93" data-model-id="RED-USECASE-00348"/>
+<polyline class="include" points="770.00,215.00 915.00,215.00" data-model-id="RED-USECASE-00373"/>
+<rect x="790.5" y="178.0" width="104" height="27" fill="white"/>
+<text x="842.5" y="198.0" font-size="18" font-weight="400" text-anchor="middle" style="fill:#14263d">«include»</text>
+<g data-model-id="RED-USECASE-00022"><circle class="actor" cx="165.0" cy="253" r="18" fill="white"/><path class="actor" d="M165.0 271 V329 M131.0 290 H199.0 M165.0 329 L134.0 365 M165.0 329 L196.0 365"/></g>
+<text x="165.0" y="395" font-size="21" font-weight="700" text-anchor="middle" style="fill:#14263d">서비스 운영자</text>
+<ellipse cx="595.0" cy="215.0" rx="175.0" ry="50.0" fill="#FFFFFF" stroke="#334155" stroke-width="1.8" data-model-id="RED-USECASE-00105"/>
+<text x="595.0" y="208.5" font-size="15" font-weight="500" text-anchor="middle" style="fill:#64748b">UC07</text>
+<text x="595.0" y="235.5" font-size="21" font-weight="600" text-anchor="middle" style="fill:#14263d">CSV 자료 등록</text>
+<ellipse cx="1075.0" cy="215.0" rx="160.0" ry="50.0" fill="#FFFFFF" stroke="#334155" stroke-width="1.8" data-model-id="RED-USECASE-00117"/>
+<text x="1075.0" y="208.5" font-size="15" font-weight="500" text-anchor="middle" style="fill:#64748b">UC08</text>
+<text x="1075.0" y="235.5" font-size="21" font-weight="600" text-anchor="middle" style="fill:#14263d">자료 기준·누락값 검증</text>
+<ellipse cx="595.0" cy="415.0" rx="175.0" ry="50.0" fill="#FFFFFF" stroke="#334155" stroke-width="1.8" data-model-id="RED-USECASE-00129"/>
+<text x="595.0" y="408.5" font-size="15" font-weight="500" text-anchor="middle" style="fill:#64748b">UC09</text>
+<text x="595.0" y="435.5" font-size="21" font-weight="600" text-anchor="middle" style="fill:#14263d">추천 기준·근거 관리</text>
+</g>
+<text x="65" y="2227" font-size="18" font-weight="400" text-anchor="start" style="fill:#53667a">CSV는 운영자가 확보해 등록 · 자료 검증은 필수 · 외부 데이터 플랫폼의 자동 연동은 미확정</text>
 </svg>

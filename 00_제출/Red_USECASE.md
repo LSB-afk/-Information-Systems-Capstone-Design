@@ -16,7 +16,7 @@ status: 설계 초안
 [StarUML 편집 원본 열기·다운로드](Red_USECASE.mdj) · [SVG 미리보기](assets/Red_USECASE.svg) · [PNG 미리보기](assets/Red_USECASE.png)
 
 
-
+![[Pasted image 20260921212126.png]]
 수정 기준은 `Red_USECASE.mdj`임 StarUML의 액터·유스케이스·시스템 경계·연관·include 모델과 배치 정보를 담은 편집 원본임 **File → Open**으로 연 뒤 모델 탐색기의 **유스케이스 모델 → 전체 유스케이스**를 선택함
 
 | 도면 | 표시하는 기능 | 이용 액터 |

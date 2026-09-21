@@ -18,7 +18,7 @@
           "_parent": {
             "$ref": "RED-USECASE-00002"
           },
-          "name": "01 공통 분석·제안 조회",
+          "name": "전체 유스케이스",
           "defaultDiagram": true,
           "ownedViews": [
             {
@@ -57,11 +57,11 @@
                       "_parent": {
                         "$ref": "RED-USECASE-10002"
                       },
-                      "font": "Apple SD Gothic Neo;18;1",
-                      "left": 438,
-                      "top": 147,
-                      "width": 734,
-                      "height": 28,
+                      "font": "Apple SD Gothic Neo;20;1",
+                      "left": 268,
+                      "top": 120,
+                      "width": 1354,
+                      "height": 26,
                       "text": "제주 비수기 상권 마케팅 캘린더",
                       "wordWrap": true
                     },
@@ -89,10 +89,10 @@
                     }
                   ],
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 434,
-                  "top": 143,
-                  "width": 742,
-                  "height": 36,
+                  "left": 264,
+                  "top": 116,
+                  "width": 1362,
+                  "height": 34,
                   "stereotypeLabel": {
                     "$ref": "RED-USECASE-10003"
                   },
@@ -108,10 +108,10 @@
                 }
               ],
               "font": "Apple SD Gothic Neo;20;0",
-              "left": 420,
-              "top": 135,
-              "width": 770,
-              "height": 510,
+              "left": 250,
+              "top": 110,
+              "width": 1390,
+              "height": 850,
               "nameCompartment": {
                 "$ref": "RED-USECASE-10002"
               },
@@ -151,8 +151,8 @@
                       },
                       "visible": false,
                       "font": "Apple SD Gothic Neo;20;0",
-                      "left": 35,
-                      "top": 290,
+                      "left": 45,
+                      "top": 180,
                       "height": 13
                     },
                     {
@@ -162,9 +162,9 @@
                         "$ref": "RED-USECASE-10008"
                       },
                       "font": "Apple SD Gothic Neo;20;1",
-                      "left": 35,
-                      "top": 405,
-                      "width": 130,
+                      "left": 45,
+                      "top": 305,
+                      "width": 150,
                       "height": 30,
                       "text": "사용자",
                       "wordWrap": true
@@ -177,8 +177,8 @@
                       },
                       "visible": false,
                       "font": "Apple SD Gothic Neo;20;0",
-                      "left": 35,
-                      "top": 290,
+                      "left": 45,
+                      "top": 180,
                       "width": 229,
                       "height": 13
                     },
@@ -190,16 +190,16 @@
                       },
                       "visible": false,
                       "font": "Apple SD Gothic Neo;20;0",
-                      "left": 35,
-                      "top": 290,
+                      "left": 45,
+                      "top": 180,
                       "horizontalAlignment": 1,
                       "wordWrap": true
                     }
                   ],
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 31,
-                  "top": 401,
-                  "width": 138,
+                  "left": 41,
+                  "top": 301,
+                  "width": 158,
                   "height": 38,
                   "stereotypeLabel": {
                     "$ref": "RED-USECASE-10009"
@@ -225,8 +225,8 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 35,
-                  "top": 290,
+                  "left": 45,
+                  "top": 180,
                   "width": 10,
                   "height": 10
                 },
@@ -241,8 +241,8 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 35,
-                  "top": 290,
+                  "left": 45,
+                  "top": 180,
                   "width": 10,
                   "height": 10
                 },
@@ -257,8 +257,8 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 35,
-                  "top": 290,
+                  "left": 45,
+                  "top": 180,
                   "width": 10,
                   "height": 10
                 },
@@ -273,18 +273,18 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 35,
-                  "top": 290,
+                  "left": 45,
+                  "top": 180,
                   "width": 10,
                   "height": 10
                 }
               ],
               "font": "Apple SD Gothic Neo;20;0",
               "containerChangeable": true,
-              "left": 35,
-              "top": 290,
-              "width": 130,
-              "height": 145,
+              "left": 45,
+              "top": 180,
+              "width": 150,
+              "height": 155,
               "nameCompartment": {
                 "$ref": "RED-USECASE-10008"
               },
@@ -338,8 +338,8 @@
                       },
                       "visible": false,
                       "font": "Apple SD Gothic Neo;20;0",
-                      "left": 235,
-                      "top": 290,
+                      "left": 35,
+                      "top": 505,
                       "height": 13
                     },
                     {
@@ -349,9 +349,9 @@
                         "$ref": "RED-USECASE-10018"
                       },
                       "font": "Apple SD Gothic Neo;20;1",
-                      "left": 235,
-                      "top": 405,
-                      "width": 150,
+                      "left": 35,
+                      "top": 630,
+                      "width": 170,
                       "height": 30,
                       "text": "사업체 운영자",
                       "wordWrap": true
@@ -364,8 +364,8 @@
                       },
                       "visible": false,
                       "font": "Apple SD Gothic Neo;20;0",
-                      "left": 235,
-                      "top": 290,
+                      "left": 35,
+                      "top": 505,
                       "width": 229,
                       "height": 13
                     },
@@ -377,16 +377,16 @@
                       },
                       "visible": false,
                       "font": "Apple SD Gothic Neo;20;0",
-                      "left": 235,
-                      "top": 290,
+                      "left": 35,
+                      "top": 505,
                       "horizontalAlignment": 1,
                       "wordWrap": true
                     }
                   ],
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 231,
-                  "top": 401,
-                  "width": 158,
+                  "left": 31,
+                  "top": 626,
+                  "width": 178,
                   "height": 38,
                   "stereotypeLabel": {
                     "$ref": "RED-USECASE-10019"
@@ -412,8 +412,8 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 235,
-                  "top": 290,
+                  "left": 35,
+                  "top": 505,
                   "width": 10,
                   "height": 10
                 },
@@ -428,8 +428,8 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 235,
-                  "top": 290,
+                  "left": 35,
+                  "top": 505,
                   "width": 10,
                   "height": 10
                 },
@@ -444,8 +444,8 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 235,
-                  "top": 290,
+                  "left": 35,
+                  "top": 505,
                   "width": 10,
                   "height": 10
                 },
@@ -460,18 +460,18 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 235,
-                  "top": 290,
+                  "left": 35,
+                  "top": 505,
                   "width": 10,
                   "height": 10
                 }
               ],
               "font": "Apple SD Gothic Neo;20;0",
               "containerChangeable": true,
-              "left": 235,
-              "top": 290,
-              "width": 150,
-              "height": 145,
+              "left": 35,
+              "top": 505,
+              "width": 170,
+              "height": 155,
               "nameCompartment": {
                 "$ref": "RED-USECASE-10018"
               },
@@ -525,8 +525,8 @@
                       },
                       "visible": false,
                       "font": "Apple SD Gothic Neo;20;0",
-                      "left": 1275,
-                      "top": 290,
+                      "left": 1725,
+                      "top": 485,
                       "height": 13
                     },
                     {
@@ -536,9 +536,9 @@
                         "$ref": "RED-USECASE-10028"
                       },
                       "font": "Apple SD Gothic Neo;20;1",
-                      "left": 1275,
-                      "top": 405,
-                      "width": 150,
+                      "left": 1725,
+                      "top": 610,
+                      "width": 170,
                       "height": 30,
                       "text": "서비스 운영자",
                       "wordWrap": true
@@ -551,8 +551,8 @@
                       },
                       "visible": false,
                       "font": "Apple SD Gothic Neo;20;0",
-                      "left": 1275,
-                      "top": 290,
+                      "left": 1725,
+                      "top": 485,
                       "width": 229,
                       "height": 13
                     },
@@ -564,16 +564,16 @@
                       },
                       "visible": false,
                       "font": "Apple SD Gothic Neo;20;0",
-                      "left": 1275,
-                      "top": 290,
+                      "left": 1725,
+                      "top": 485,
                       "horizontalAlignment": 1,
                       "wordWrap": true
                     }
                   ],
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 1271,
-                  "top": 401,
-                  "width": 158,
+                  "left": 1721,
+                  "top": 606,
+                  "width": 178,
                   "height": 38,
                   "stereotypeLabel": {
                     "$ref": "RED-USECASE-10029"
@@ -599,8 +599,8 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 1275,
-                  "top": 290,
+                  "left": 1725,
+                  "top": 485,
                   "width": 10,
                   "height": 10
                 },
@@ -615,8 +615,8 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 1275,
-                  "top": 290,
+                  "left": 1725,
+                  "top": 485,
                   "width": 10,
                   "height": 10
                 },
@@ -631,8 +631,8 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 1275,
-                  "top": 290,
+                  "left": 1725,
+                  "top": 485,
                   "width": 10,
                   "height": 10
                 },
@@ -647,18 +647,18 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 1275,
-                  "top": 290,
+                  "left": 1725,
+                  "top": 485,
                   "width": 10,
                   "height": 10
                 }
               ],
               "font": "Apple SD Gothic Neo;20;0",
               "containerChangeable": true,
-              "left": 1275,
-              "top": 290,
-              "width": 150,
-              "height": 145,
+              "left": 1725,
+              "top": 485,
+              "width": 170,
+              "height": 155,
               "nameCompartment": {
                 "$ref": "RED-USECASE-10028"
               },
@@ -712,8 +712,8 @@
                       },
                       "visible": false,
                       "font": "Apple SD Gothic Neo;20;0",
-                      "left": 530,
-                      "top": 205,
+                      "left": 540,
+                      "top": 146,
                       "height": 13
                     },
                     {
@@ -723,10 +723,10 @@
                         "$ref": "RED-USECASE-10038"
                       },
                       "font": "Apple SD Gothic Neo;20;1",
-                      "left": 554,
-                      "top": 234.0,
-                      "width": 292,
-                      "height": 52,
+                      "left": 558,
+                      "top": 166.0,
+                      "width": 364,
+                      "height": 48,
                       "text": "UC01\n지역별 방문 분석 조회",
                       "wordWrap": true
                     },
@@ -738,8 +738,8 @@
                       },
                       "visible": false,
                       "font": "Apple SD Gothic Neo;20;0",
-                      "left": 530,
-                      "top": 205,
+                      "left": 540,
+                      "top": 146,
                       "width": 229,
                       "height": 13
                     },
@@ -751,17 +751,17 @@
                       },
                       "visible": false,
                       "font": "Apple SD Gothic Neo;20;0",
-                      "left": 530,
-                      "top": 205,
+                      "left": 540,
+                      "top": 146,
                       "horizontalAlignment": 1,
                       "wordWrap": true
                     }
                   ],
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 550,
-                  "top": 230.0,
-                  "width": 300,
-                  "height": 60,
+                  "left": 554,
+                  "top": 162.0,
+                  "width": 372,
+                  "height": 56,
                   "stereotypeLabel": {
                     "$ref": "RED-USECASE-10039"
                   },
@@ -786,8 +786,8 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 530,
-                  "top": 205,
+                  "left": 540,
+                  "top": 146,
                   "width": 10,
                   "height": 10
                 },
@@ -802,8 +802,8 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 530,
-                  "top": 205,
+                  "left": 540,
+                  "top": 146,
                   "width": 10,
                   "height": 10
                 },
@@ -818,8 +818,8 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 530,
-                  "top": 205,
+                  "left": 540,
+                  "top": 146,
                   "width": 10,
                   "height": 10
                 },
@@ -834,8 +834,8 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 530,
-                  "top": 205,
+                  "left": 540,
+                  "top": 146,
                   "width": 10,
                   "height": 10
                 },
@@ -850,18 +850,18 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 530,
-                  "top": 205,
+                  "left": 540,
+                  "top": 146,
                   "width": 10,
                   "height": 10
                 }
               ],
               "font": "Apple SD Gothic Neo;20;0",
               "containerChangeable": true,
-              "left": 530,
-              "top": 205,
-              "width": 340,
-              "height": 110,
+              "left": 540,
+              "top": 146,
+              "width": 400,
+              "height": 88,
               "nameCompartment": {
                 "$ref": "RED-USECASE-10038"
               },
@@ -918,8 +918,8 @@
                       },
                       "visible": false,
                       "font": "Apple SD Gothic Neo;20;0",
-                      "left": 530,
-                      "top": 475,
+                      "left": 540,
+                      "top": 266,
                       "height": 13
                     },
                     {
@@ -929,10 +929,10 @@
                         "$ref": "RED-USECASE-10049"
                       },
                       "font": "Apple SD Gothic Neo;20;1",
-                      "left": 554,
-                      "top": 491.0,
-                      "width": 292,
-                      "height": 78,
+                      "left": 558,
+                      "top": 274.0,
+                      "width": 364,
+                      "height": 72,
                       "text": "UC02\n방문·소비 비교와\n홍보 제안 조회",
                       "wordWrap": true
                     },
@@ -944,8 +944,8 @@
                       },
                       "visible": false,
                       "font": "Apple SD Gothic Neo;20;0",
-                      "left": 530,
-                      "top": 475,
+                      "left": 540,
+                      "top": 266,
                       "width": 229,
                       "height": 13
                     },
@@ -957,17 +957,17 @@
                       },
                       "visible": false,
                       "font": "Apple SD Gothic Neo;20;0",
-                      "left": 530,
-                      "top": 475,
+                      "left": 540,
+                      "top": 266,
                       "horizontalAlignment": 1,
                       "wordWrap": true
                     }
                   ],
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 550,
-                  "top": 487.0,
-                  "width": 300,
-                  "height": 86,
+                  "left": 554,
+                  "top": 270.0,
+                  "width": 372,
+                  "height": 80,
                   "stereotypeLabel": {
                     "$ref": "RED-USECASE-10050"
                   },
@@ -992,8 +992,8 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 530,
-                  "top": 475,
+                  "left": 540,
+                  "top": 266,
                   "width": 10,
                   "height": 10
                 },
@@ -1008,8 +1008,8 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 530,
-                  "top": 475,
+                  "left": 540,
+                  "top": 266,
                   "width": 10,
                   "height": 10
                 },
@@ -1024,8 +1024,8 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 530,
-                  "top": 475,
+                  "left": 540,
+                  "top": 266,
                   "width": 10,
                   "height": 10
                 },
@@ -1040,8 +1040,8 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 530,
-                  "top": 475,
+                  "left": 540,
+                  "top": 266,
                   "width": 10,
                   "height": 10
                 },
@@ -1056,18 +1056,18 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 530,
-                  "top": 475,
+                  "left": 540,
+                  "top": 266,
                   "width": 10,
                   "height": 10
                 }
               ],
               "font": "Apple SD Gothic Neo;20;0",
               "containerChangeable": true,
-              "left": 530,
-              "top": 475,
-              "width": 340,
-              "height": 110,
+              "left": 540,
+              "top": 266,
+              "width": 400,
+              "height": 88,
               "nameCompartment": {
                 "$ref": "RED-USECASE-10049"
               },
@@ -1091,6 +1091,830 @@
               },
               "fillColor": "#FFFFFF",
               "lineColor": "#334155",
+              "fontColor": "#14263D",
+              "showShadow": false,
+              "parentStyle": false,
+              "autoResize": false
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "RED-USECASE-10177",
+              "_parent": {
+                "$ref": "RED-USECASE-00003"
+              },
+              "model": {
+                "$ref": "RED-USECASE-00057"
+              },
+              "subViews": [
+                {
+                  "_type": "UMLNameCompartmentView",
+                  "_id": "RED-USECASE-10178",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10177"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00057"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10179",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10178"
+                      },
+                      "visible": false,
+                      "font": "Apple SD Gothic Neo;20;0",
+                      "left": 540,
+                      "top": 386,
+                      "height": 13
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10180",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10178"
+                      },
+                      "font": "Apple SD Gothic Neo;20;1",
+                      "left": 558,
+                      "top": 406.0,
+                      "width": 364,
+                      "height": 48,
+                      "text": "UC03\n3개월 홍보 일정표 관리",
+                      "wordWrap": true
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10181",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10178"
+                      },
+                      "visible": false,
+                      "font": "Apple SD Gothic Neo;20;0",
+                      "left": 540,
+                      "top": 386,
+                      "width": 229,
+                      "height": 13
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10182",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10178"
+                      },
+                      "visible": false,
+                      "font": "Apple SD Gothic Neo;20;0",
+                      "left": 540,
+                      "top": 386,
+                      "horizontalAlignment": 1,
+                      "wordWrap": true
+                    }
+                  ],
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 554,
+                  "top": 402.0,
+                  "width": 372,
+                  "height": 56,
+                  "stereotypeLabel": {
+                    "$ref": "RED-USECASE-10179"
+                  },
+                  "nameLabel": {
+                    "$ref": "RED-USECASE-10180"
+                  },
+                  "namespaceLabel": {
+                    "$ref": "RED-USECASE-10181"
+                  },
+                  "propertyLabel": {
+                    "$ref": "RED-USECASE-10182"
+                  }
+                },
+                {
+                  "_type": "UMLAttributeCompartmentView",
+                  "_id": "RED-USECASE-10183",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10177"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00057"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 540,
+                  "top": 386,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLOperationCompartmentView",
+                  "_id": "RED-USECASE-10184",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10177"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00057"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 540,
+                  "top": 386,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLReceptionCompartmentView",
+                  "_id": "RED-USECASE-10185",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10177"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00057"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 540,
+                  "top": 386,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLTemplateParameterCompartmentView",
+                  "_id": "RED-USECASE-10186",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10177"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00057"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 540,
+                  "top": 386,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLExtensionPointCompartmentView",
+                  "_id": "RED-USECASE-10187",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10177"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00057"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 540,
+                  "top": 386,
+                  "width": 10,
+                  "height": 10
+                }
+              ],
+              "font": "Apple SD Gothic Neo;20;0",
+              "containerChangeable": true,
+              "left": 540,
+              "top": 386,
+              "width": 400,
+              "height": 88,
+              "nameCompartment": {
+                "$ref": "RED-USECASE-10178"
+              },
+              "wordWrap": true,
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "attributeCompartment": {
+                "$ref": "RED-USECASE-10183"
+              },
+              "operationCompartment": {
+                "$ref": "RED-USECASE-10184"
+              },
+              "receptionCompartment": {
+                "$ref": "RED-USECASE-10185"
+              },
+              "templateParameterCompartment": {
+                "$ref": "RED-USECASE-10186"
+              },
+              "extensionPointCompartment": {
+                "$ref": "RED-USECASE-10187"
+              },
+              "fillColor": "#FFFFFF",
+              "lineColor": "#334155",
+              "fontColor": "#14263D",
+              "showShadow": false,
+              "parentStyle": false,
+              "autoResize": false
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "RED-USECASE-10188",
+              "_parent": {
+                "$ref": "RED-USECASE-00003"
+              },
+              "model": {
+                "$ref": "RED-USECASE-00069"
+              },
+              "subViews": [
+                {
+                  "_type": "UMLNameCompartmentView",
+                  "_id": "RED-USECASE-10189",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10188"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00069"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10190",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10189"
+                      },
+                      "visible": false,
+                      "font": "Apple SD Gothic Neo;20;0",
+                      "left": 540,
+                      "top": 506,
+                      "height": 13
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10191",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10189"
+                      },
+                      "font": "Apple SD Gothic Neo;20;1",
+                      "left": 558,
+                      "top": 526.0,
+                      "width": 364,
+                      "height": 48,
+                      "text": "UC04\n실행·사용 기록 입력",
+                      "wordWrap": true
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10192",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10189"
+                      },
+                      "visible": false,
+                      "font": "Apple SD Gothic Neo;20;0",
+                      "left": 540,
+                      "top": 506,
+                      "width": 229,
+                      "height": 13
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10193",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10189"
+                      },
+                      "visible": false,
+                      "font": "Apple SD Gothic Neo;20;0",
+                      "left": 540,
+                      "top": 506,
+                      "horizontalAlignment": 1,
+                      "wordWrap": true
+                    }
+                  ],
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 554,
+                  "top": 522.0,
+                  "width": 372,
+                  "height": 56,
+                  "stereotypeLabel": {
+                    "$ref": "RED-USECASE-10190"
+                  },
+                  "nameLabel": {
+                    "$ref": "RED-USECASE-10191"
+                  },
+                  "namespaceLabel": {
+                    "$ref": "RED-USECASE-10192"
+                  },
+                  "propertyLabel": {
+                    "$ref": "RED-USECASE-10193"
+                  }
+                },
+                {
+                  "_type": "UMLAttributeCompartmentView",
+                  "_id": "RED-USECASE-10194",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10188"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00069"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 540,
+                  "top": 506,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLOperationCompartmentView",
+                  "_id": "RED-USECASE-10195",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10188"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00069"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 540,
+                  "top": 506,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLReceptionCompartmentView",
+                  "_id": "RED-USECASE-10196",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10188"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00069"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 540,
+                  "top": 506,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLTemplateParameterCompartmentView",
+                  "_id": "RED-USECASE-10197",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10188"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00069"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 540,
+                  "top": 506,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLExtensionPointCompartmentView",
+                  "_id": "RED-USECASE-10198",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10188"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00069"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 540,
+                  "top": 506,
+                  "width": 10,
+                  "height": 10
+                }
+              ],
+              "font": "Apple SD Gothic Neo;20;0",
+              "containerChangeable": true,
+              "left": 540,
+              "top": 506,
+              "width": 400,
+              "height": 88,
+              "nameCompartment": {
+                "$ref": "RED-USECASE-10189"
+              },
+              "wordWrap": true,
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "attributeCompartment": {
+                "$ref": "RED-USECASE-10194"
+              },
+              "operationCompartment": {
+                "$ref": "RED-USECASE-10195"
+              },
+              "receptionCompartment": {
+                "$ref": "RED-USECASE-10196"
+              },
+              "templateParameterCompartment": {
+                "$ref": "RED-USECASE-10197"
+              },
+              "extensionPointCompartment": {
+                "$ref": "RED-USECASE-10198"
+              },
+              "fillColor": "#FFFFFF",
+              "lineColor": "#334155",
+              "fontColor": "#14263D",
+              "showShadow": false,
+              "parentStyle": false,
+              "autoResize": false
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "RED-USECASE-10199",
+              "_parent": {
+                "$ref": "RED-USECASE-00003"
+              },
+              "model": {
+                "$ref": "RED-USECASE-00081"
+              },
+              "subViews": [
+                {
+                  "_type": "UMLNameCompartmentView",
+                  "_id": "RED-USECASE-10200",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10199"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00081"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10201",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10200"
+                      },
+                      "visible": false,
+                      "font": "Apple SD Gothic Neo;20;0",
+                      "left": 540,
+                      "top": 626,
+                      "height": 13
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10202",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10200"
+                      },
+                      "font": "Apple SD Gothic Neo;20;1",
+                      "left": 558,
+                      "top": 646.0,
+                      "width": 364,
+                      "height": 48,
+                      "text": "UC05\n계획과 실행 결과 비교",
+                      "wordWrap": true
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10203",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10200"
+                      },
+                      "visible": false,
+                      "font": "Apple SD Gothic Neo;20;0",
+                      "left": 540,
+                      "top": 626,
+                      "width": 229,
+                      "height": 13
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10204",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10200"
+                      },
+                      "visible": false,
+                      "font": "Apple SD Gothic Neo;20;0",
+                      "left": 540,
+                      "top": 626,
+                      "horizontalAlignment": 1,
+                      "wordWrap": true
+                    }
+                  ],
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 554,
+                  "top": 642.0,
+                  "width": 372,
+                  "height": 56,
+                  "stereotypeLabel": {
+                    "$ref": "RED-USECASE-10201"
+                  },
+                  "nameLabel": {
+                    "$ref": "RED-USECASE-10202"
+                  },
+                  "namespaceLabel": {
+                    "$ref": "RED-USECASE-10203"
+                  },
+                  "propertyLabel": {
+                    "$ref": "RED-USECASE-10204"
+                  }
+                },
+                {
+                  "_type": "UMLAttributeCompartmentView",
+                  "_id": "RED-USECASE-10205",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10199"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00081"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 540,
+                  "top": 626,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLOperationCompartmentView",
+                  "_id": "RED-USECASE-10206",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10199"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00081"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 540,
+                  "top": 626,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLReceptionCompartmentView",
+                  "_id": "RED-USECASE-10207",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10199"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00081"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 540,
+                  "top": 626,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLTemplateParameterCompartmentView",
+                  "_id": "RED-USECASE-10208",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10199"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00081"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 540,
+                  "top": 626,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLExtensionPointCompartmentView",
+                  "_id": "RED-USECASE-10209",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10199"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00081"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 540,
+                  "top": 626,
+                  "width": 10,
+                  "height": 10
+                }
+              ],
+              "font": "Apple SD Gothic Neo;20;0",
+              "containerChangeable": true,
+              "left": 540,
+              "top": 626,
+              "width": 400,
+              "height": 88,
+              "nameCompartment": {
+                "$ref": "RED-USECASE-10200"
+              },
+              "wordWrap": true,
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "attributeCompartment": {
+                "$ref": "RED-USECASE-10205"
+              },
+              "operationCompartment": {
+                "$ref": "RED-USECASE-10206"
+              },
+              "receptionCompartment": {
+                "$ref": "RED-USECASE-10207"
+              },
+              "templateParameterCompartment": {
+                "$ref": "RED-USECASE-10208"
+              },
+              "extensionPointCompartment": {
+                "$ref": "RED-USECASE-10209"
+              },
+              "fillColor": "#FFFFFF",
+              "lineColor": "#334155",
+              "fontColor": "#14263D",
+              "showShadow": false,
+              "parentStyle": false,
+              "autoResize": false
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "RED-USECASE-10210",
+              "_parent": {
+                "$ref": "RED-USECASE-00003"
+              },
+              "model": {
+                "$ref": "RED-USECASE-00093"
+              },
+              "subViews": [
+                {
+                  "_type": "UMLNameCompartmentView",
+                  "_id": "RED-USECASE-10211",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10210"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00093"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10212",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10211"
+                      },
+                      "visible": false,
+                      "font": "Apple SD Gothic Neo;20;0",
+                      "left": 540,
+                      "top": 746,
+                      "height": 13
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10213",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10211"
+                      },
+                      "font": "Apple SD Gothic Neo;20;1",
+                      "left": 558,
+                      "top": 766.0,
+                      "width": 364,
+                      "height": 48,
+                      "text": "UC06\n근거 설명·보고서 초안 작성",
+                      "wordWrap": true
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10214",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10211"
+                      },
+                      "visible": false,
+                      "font": "Apple SD Gothic Neo;20;0",
+                      "left": 540,
+                      "top": 746,
+                      "width": 229,
+                      "height": 13
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10215",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10211"
+                      },
+                      "visible": false,
+                      "font": "Apple SD Gothic Neo;20;0",
+                      "left": 540,
+                      "top": 746,
+                      "horizontalAlignment": 1,
+                      "wordWrap": true
+                    }
+                  ],
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 554,
+                  "top": 762.0,
+                  "width": 372,
+                  "height": 56,
+                  "stereotypeLabel": {
+                    "$ref": "RED-USECASE-10212"
+                  },
+                  "nameLabel": {
+                    "$ref": "RED-USECASE-10213"
+                  },
+                  "namespaceLabel": {
+                    "$ref": "RED-USECASE-10214"
+                  },
+                  "propertyLabel": {
+                    "$ref": "RED-USECASE-10215"
+                  }
+                },
+                {
+                  "_type": "UMLAttributeCompartmentView",
+                  "_id": "RED-USECASE-10216",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10210"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00093"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 540,
+                  "top": 746,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLOperationCompartmentView",
+                  "_id": "RED-USECASE-10217",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10210"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00093"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 540,
+                  "top": 746,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLReceptionCompartmentView",
+                  "_id": "RED-USECASE-10218",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10210"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00093"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 540,
+                  "top": 746,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLTemplateParameterCompartmentView",
+                  "_id": "RED-USECASE-10219",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10210"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00093"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 540,
+                  "top": 746,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLExtensionPointCompartmentView",
+                  "_id": "RED-USECASE-10220",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10210"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00093"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 540,
+                  "top": 746,
+                  "width": 10,
+                  "height": 10
+                }
+              ],
+              "font": "Apple SD Gothic Neo;20;0",
+              "containerChangeable": true,
+              "left": 540,
+              "top": 746,
+              "width": 400,
+              "height": 88,
+              "nameCompartment": {
+                "$ref": "RED-USECASE-10211"
+              },
+              "wordWrap": true,
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "attributeCompartment": {
+                "$ref": "RED-USECASE-10216"
+              },
+              "operationCompartment": {
+                "$ref": "RED-USECASE-10217"
+              },
+              "receptionCompartment": {
+                "$ref": "RED-USECASE-10218"
+              },
+              "templateParameterCompartment": {
+                "$ref": "RED-USECASE-10219"
+              },
+              "extensionPointCompartment": {
+                "$ref": "RED-USECASE-10220"
+              },
+              "fillColor": "#FFF5DF",
+              "lineColor": "#A56612",
               "fontColor": "#14263D",
               "showShadow": false,
               "parentStyle": false,
@@ -1124,8 +1948,8 @@
                       },
                       "visible": false,
                       "font": "Apple SD Gothic Neo;20;0",
-                      "left": 885,
-                      "top": 345,
+                      "left": 1050,
+                      "top": 195,
                       "height": 13
                     },
                     {
@@ -1135,10 +1959,10 @@
                         "$ref": "RED-USECASE-10060"
                       },
                       "font": "Apple SD Gothic Neo;20;1",
-                      "left": 909,
-                      "top": 374.0,
-                      "width": 227,
-                      "height": 52,
+                      "left": 1068,
+                      "top": 221.0,
+                      "width": 304,
+                      "height": 48,
                       "text": "UC10\n자료 출처·기준 표시",
                       "wordWrap": true
                     },
@@ -1150,8 +1974,8 @@
                       },
                       "visible": false,
                       "font": "Apple SD Gothic Neo;20;0",
-                      "left": 885,
-                      "top": 345,
+                      "left": 1050,
+                      "top": 195,
                       "width": 229,
                       "height": 13
                     },
@@ -1163,17 +1987,17 @@
                       },
                       "visible": false,
                       "font": "Apple SD Gothic Neo;20;0",
-                      "left": 885,
-                      "top": 345,
+                      "left": 1050,
+                      "top": 195,
                       "horizontalAlignment": 1,
                       "wordWrap": true
                     }
                   ],
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 905,
-                  "top": 370.0,
-                  "width": 235,
-                  "height": 60,
+                  "left": 1064,
+                  "top": 217.0,
+                  "width": 312,
+                  "height": 56,
                   "stereotypeLabel": {
                     "$ref": "RED-USECASE-10061"
                   },
@@ -1198,8 +2022,8 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 885,
-                  "top": 345,
+                  "left": 1050,
+                  "top": 195,
                   "width": 10,
                   "height": 10
                 },
@@ -1214,8 +2038,8 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 885,
-                  "top": 345,
+                  "left": 1050,
+                  "top": 195,
                   "width": 10,
                   "height": 10
                 },
@@ -1230,8 +2054,8 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 885,
-                  "top": 345,
+                  "left": 1050,
+                  "top": 195,
                   "width": 10,
                   "height": 10
                 },
@@ -1246,8 +2070,8 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 885,
-                  "top": 345,
+                  "left": 1050,
+                  "top": 195,
                   "width": 10,
                   "height": 10
                 },
@@ -1262,18 +2086,18 @@
                   },
                   "visible": false,
                   "font": "Apple SD Gothic Neo;20;0",
-                  "left": 885,
-                  "top": 345,
+                  "left": 1050,
+                  "top": 195,
                   "width": 10,
                   "height": 10
                 }
               ],
               "font": "Apple SD Gothic Neo;20;0",
               "containerChangeable": true,
-              "left": 885,
-              "top": 345,
-              "width": 275,
-              "height": 110,
+              "left": 1050,
+              "top": 195,
+              "width": 340,
+              "height": 100,
               "nameCompartment": {
                 "$ref": "RED-USECASE-10060"
               },
@@ -1294,6 +2118,624 @@
               },
               "extensionPointCompartment": {
                 "$ref": "RED-USECASE-10069"
+              },
+              "fillColor": "#FFFFFF",
+              "lineColor": "#334155",
+              "fontColor": "#14263D",
+              "showShadow": false,
+              "parentStyle": false,
+              "autoResize": false
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "RED-USECASE-10334",
+              "_parent": {
+                "$ref": "RED-USECASE-00003"
+              },
+              "model": {
+                "$ref": "RED-USECASE-00105"
+              },
+              "subViews": [
+                {
+                  "_type": "UMLNameCompartmentView",
+                  "_id": "RED-USECASE-10335",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10334"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00105"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10336",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10335"
+                      },
+                      "visible": false,
+                      "font": "Apple SD Gothic Neo;20;0",
+                      "left": 985,
+                      "top": 755,
+                      "height": 13
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10337",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10335"
+                      },
+                      "font": "Apple SD Gothic Neo;20;1",
+                      "left": 1003,
+                      "top": 771.0,
+                      "width": 224,
+                      "height": 48,
+                      "text": "UC07\nCSV 자료 등록",
+                      "wordWrap": true
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10338",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10335"
+                      },
+                      "visible": false,
+                      "font": "Apple SD Gothic Neo;20;0",
+                      "left": 985,
+                      "top": 755,
+                      "width": 229,
+                      "height": 13
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10339",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10335"
+                      },
+                      "visible": false,
+                      "font": "Apple SD Gothic Neo;20;0",
+                      "left": 985,
+                      "top": 755,
+                      "horizontalAlignment": 1,
+                      "wordWrap": true
+                    }
+                  ],
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 999,
+                  "top": 767.0,
+                  "width": 232,
+                  "height": 56,
+                  "stereotypeLabel": {
+                    "$ref": "RED-USECASE-10336"
+                  },
+                  "nameLabel": {
+                    "$ref": "RED-USECASE-10337"
+                  },
+                  "namespaceLabel": {
+                    "$ref": "RED-USECASE-10338"
+                  },
+                  "propertyLabel": {
+                    "$ref": "RED-USECASE-10339"
+                  }
+                },
+                {
+                  "_type": "UMLAttributeCompartmentView",
+                  "_id": "RED-USECASE-10340",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10334"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00105"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 985,
+                  "top": 755,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLOperationCompartmentView",
+                  "_id": "RED-USECASE-10341",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10334"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00105"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 985,
+                  "top": 755,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLReceptionCompartmentView",
+                  "_id": "RED-USECASE-10342",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10334"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00105"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 985,
+                  "top": 755,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLTemplateParameterCompartmentView",
+                  "_id": "RED-USECASE-10343",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10334"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00105"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 985,
+                  "top": 755,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLExtensionPointCompartmentView",
+                  "_id": "RED-USECASE-10344",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10334"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00105"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 985,
+                  "top": 755,
+                  "width": 10,
+                  "height": 10
+                }
+              ],
+              "font": "Apple SD Gothic Neo;20;0",
+              "containerChangeable": true,
+              "left": 985,
+              "top": 755,
+              "width": 260,
+              "height": 80,
+              "nameCompartment": {
+                "$ref": "RED-USECASE-10335"
+              },
+              "wordWrap": true,
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "attributeCompartment": {
+                "$ref": "RED-USECASE-10340"
+              },
+              "operationCompartment": {
+                "$ref": "RED-USECASE-10341"
+              },
+              "receptionCompartment": {
+                "$ref": "RED-USECASE-10342"
+              },
+              "templateParameterCompartment": {
+                "$ref": "RED-USECASE-10343"
+              },
+              "extensionPointCompartment": {
+                "$ref": "RED-USECASE-10344"
+              },
+              "fillColor": "#FFFFFF",
+              "lineColor": "#334155",
+              "fontColor": "#14263D",
+              "showShadow": false,
+              "parentStyle": false,
+              "autoResize": false
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "RED-USECASE-10345",
+              "_parent": {
+                "$ref": "RED-USECASE-00003"
+              },
+              "model": {
+                "$ref": "RED-USECASE-00117"
+              },
+              "subViews": [
+                {
+                  "_type": "UMLNameCompartmentView",
+                  "_id": "RED-USECASE-10346",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10345"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00117"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10347",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10346"
+                      },
+                      "visible": false,
+                      "font": "Apple SD Gothic Neo;20;0",
+                      "left": 1355,
+                      "top": 755,
+                      "height": 13
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10348",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10346"
+                      },
+                      "font": "Apple SD Gothic Neo;20;1",
+                      "left": 1373,
+                      "top": 771.0,
+                      "width": 244,
+                      "height": 48,
+                      "text": "UC08\n자료 기준·누락값 검증",
+                      "wordWrap": true
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10349",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10346"
+                      },
+                      "visible": false,
+                      "font": "Apple SD Gothic Neo;20;0",
+                      "left": 1355,
+                      "top": 755,
+                      "width": 229,
+                      "height": 13
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10350",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10346"
+                      },
+                      "visible": false,
+                      "font": "Apple SD Gothic Neo;20;0",
+                      "left": 1355,
+                      "top": 755,
+                      "horizontalAlignment": 1,
+                      "wordWrap": true
+                    }
+                  ],
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 1369,
+                  "top": 767.0,
+                  "width": 252,
+                  "height": 56,
+                  "stereotypeLabel": {
+                    "$ref": "RED-USECASE-10347"
+                  },
+                  "nameLabel": {
+                    "$ref": "RED-USECASE-10348"
+                  },
+                  "namespaceLabel": {
+                    "$ref": "RED-USECASE-10349"
+                  },
+                  "propertyLabel": {
+                    "$ref": "RED-USECASE-10350"
+                  }
+                },
+                {
+                  "_type": "UMLAttributeCompartmentView",
+                  "_id": "RED-USECASE-10351",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10345"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00117"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 1355,
+                  "top": 755,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLOperationCompartmentView",
+                  "_id": "RED-USECASE-10352",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10345"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00117"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 1355,
+                  "top": 755,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLReceptionCompartmentView",
+                  "_id": "RED-USECASE-10353",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10345"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00117"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 1355,
+                  "top": 755,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLTemplateParameterCompartmentView",
+                  "_id": "RED-USECASE-10354",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10345"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00117"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 1355,
+                  "top": 755,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLExtensionPointCompartmentView",
+                  "_id": "RED-USECASE-10355",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10345"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00117"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 1355,
+                  "top": 755,
+                  "width": 10,
+                  "height": 10
+                }
+              ],
+              "font": "Apple SD Gothic Neo;20;0",
+              "containerChangeable": true,
+              "left": 1355,
+              "top": 755,
+              "width": 280,
+              "height": 80,
+              "nameCompartment": {
+                "$ref": "RED-USECASE-10346"
+              },
+              "wordWrap": true,
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "attributeCompartment": {
+                "$ref": "RED-USECASE-10351"
+              },
+              "operationCompartment": {
+                "$ref": "RED-USECASE-10352"
+              },
+              "receptionCompartment": {
+                "$ref": "RED-USECASE-10353"
+              },
+              "templateParameterCompartment": {
+                "$ref": "RED-USECASE-10354"
+              },
+              "extensionPointCompartment": {
+                "$ref": "RED-USECASE-10355"
+              },
+              "fillColor": "#FFFFFF",
+              "lineColor": "#334155",
+              "fontColor": "#14263D",
+              "showShadow": false,
+              "parentStyle": false,
+              "autoResize": false
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "RED-USECASE-10356",
+              "_parent": {
+                "$ref": "RED-USECASE-00003"
+              },
+              "model": {
+                "$ref": "RED-USECASE-00129"
+              },
+              "subViews": [
+                {
+                  "_type": "UMLNameCompartmentView",
+                  "_id": "RED-USECASE-10357",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10356"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00129"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10358",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10357"
+                      },
+                      "visible": false,
+                      "font": "Apple SD Gothic Neo;20;0",
+                      "left": 1195,
+                      "top": 870,
+                      "height": 13
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10359",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10357"
+                      },
+                      "font": "Apple SD Gothic Neo;20;1",
+                      "left": 1213,
+                      "top": 886.0,
+                      "width": 274,
+                      "height": 48,
+                      "text": "UC09\n추천 기준·근거 관리",
+                      "wordWrap": true
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10360",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10357"
+                      },
+                      "visible": false,
+                      "font": "Apple SD Gothic Neo;20;0",
+                      "left": 1195,
+                      "top": 870,
+                      "width": 229,
+                      "height": 13
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "RED-USECASE-10361",
+                      "_parent": {
+                        "$ref": "RED-USECASE-10357"
+                      },
+                      "visible": false,
+                      "font": "Apple SD Gothic Neo;20;0",
+                      "left": 1195,
+                      "top": 870,
+                      "horizontalAlignment": 1,
+                      "wordWrap": true
+                    }
+                  ],
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 1209,
+                  "top": 882.0,
+                  "width": 282,
+                  "height": 56,
+                  "stereotypeLabel": {
+                    "$ref": "RED-USECASE-10358"
+                  },
+                  "nameLabel": {
+                    "$ref": "RED-USECASE-10359"
+                  },
+                  "namespaceLabel": {
+                    "$ref": "RED-USECASE-10360"
+                  },
+                  "propertyLabel": {
+                    "$ref": "RED-USECASE-10361"
+                  }
+                },
+                {
+                  "_type": "UMLAttributeCompartmentView",
+                  "_id": "RED-USECASE-10362",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10356"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00129"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 1195,
+                  "top": 870,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLOperationCompartmentView",
+                  "_id": "RED-USECASE-10363",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10356"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00129"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 1195,
+                  "top": 870,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLReceptionCompartmentView",
+                  "_id": "RED-USECASE-10364",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10356"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00129"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 1195,
+                  "top": 870,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLTemplateParameterCompartmentView",
+                  "_id": "RED-USECASE-10365",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10356"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00129"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 1195,
+                  "top": 870,
+                  "width": 10,
+                  "height": 10
+                },
+                {
+                  "_type": "UMLExtensionPointCompartmentView",
+                  "_id": "RED-USECASE-10366",
+                  "_parent": {
+                    "$ref": "RED-USECASE-10356"
+                  },
+                  "model": {
+                    "$ref": "RED-USECASE-00129"
+                  },
+                  "visible": false,
+                  "font": "Apple SD Gothic Neo;20;0",
+                  "left": 1195,
+                  "top": 870,
+                  "width": 10,
+                  "height": 10
+                }
+              ],
+              "font": "Apple SD Gothic Neo;20;0",
+              "containerChangeable": true,
+              "left": 1195,
+              "top": 870,
+              "width": 310,
+              "height": 80,
+              "nameCompartment": {
+                "$ref": "RED-USECASE-10357"
+              },
+              "wordWrap": true,
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "attributeCompartment": {
+                "$ref": "RED-USECASE-10362"
+              },
+              "operationCompartment": {
+                "$ref": "RED-USECASE-10363"
+              },
+              "receptionCompartment": {
+                "$ref": "RED-USECASE-10364"
+              },
+              "templateParameterCompartment": {
+                "$ref": "RED-USECASE-10365"
+              },
+              "extensionPointCompartment": {
+                "$ref": "RED-USECASE-10366"
               },
               "fillColor": "#FFFFFF",
               "lineColor": "#334155",
@@ -1535,7 +2977,7 @@
                 "$ref": "RED-USECASE-10017"
               },
               "lineStyle": 1,
-              "points": "385:355;530:260",
+              "points": "86.00:560.00;20.00:520.00;20.00:140.00;650.00:140.00;666.36:149.09",
               "showVisibility": true,
               "nameLabel": {
                 "$ref": "RED-USECASE-10071"
@@ -1807,7 +3249,7 @@
                 "$ref": "RED-USECASE-10027"
               },
               "lineStyle": 1,
-              "points": "1275:342;1235:312;1235:180;800:180;800:215",
+              "points": "1776.00:540.00;1695.00:160.00;980.00:160.00;913.89:168.26",
               "showVisibility": true,
               "nameLabel": {
                 "$ref": "RED-USECASE-10083"
@@ -2079,7 +3521,7 @@
                 "$ref": "RED-USECASE-10017"
               },
               "lineStyle": 1,
-              "points": "385:355;530:530",
+              "points": "154.00:560.00;648.33:349.11",
               "showVisibility": true,
               "nameLabel": {
                 "$ref": "RED-USECASE-10095"
@@ -2351,7 +3793,7 @@
                 "$ref": "RED-USECASE-10027"
               },
               "lineStyle": 1,
-              "points": "1275:362;1235:390;1235:620;800:620;800:575",
+              "points": "1776.00:540.00;1685.00:360.00;1040.00:360.00;899.42:336.57",
               "showVisibility": true,
               "nameLabel": {
                 "$ref": "RED-USECASE-10107"
@@ -2431,9 +3873,9 @@
                     "$ref": "RED-USECASE-00363"
                   },
                   "font": "Apple SD Gothic Neo;18;0",
-                  "left": 880,
-                  "top": 302,
-                  "width": 104,
+                  "left": 952,
+                  "top": 187,
+                  "width": 100,
                   "height": 24,
                   "alpha": 1.5707963267948966,
                   "distance": 22,
@@ -2474,7 +3916,7 @@
                 "$ref": "RED-USECASE-10037"
               },
               "lineStyle": 1,
-              "points": "852:286;902:372",
+              "points": "912.52:212.26;1060.15:227.98",
               "showVisibility": true,
               "nameLabel": {
                 "$ref": "RED-USECASE-10119"
@@ -2530,9 +3972,9 @@
                     "$ref": "RED-USECASE-00368"
                   },
                   "font": "Apple SD Gothic Neo;18;0",
-                  "left": 880,
-                  "top": 467,
-                  "width": 104,
+                  "left": 952,
+                  "top": 280,
+                  "width": 100,
                   "height": 24,
                   "alpha": 1.5707963267948966,
                   "distance": 22,
@@ -2573,7 +4015,7 @@
                 "$ref": "RED-USECASE-10048"
               },
               "lineStyle": 1,
-              "points": "852:503;902:427",
+              "points": "906.94:285.77;1064.55:265.24",
               "showVisibility": true,
               "nameLabel": {
                 "$ref": "RED-USECASE-10123"
@@ -2821,7 +4263,7 @@
                 "$ref": "RED-USECASE-10007"
               },
               "lineStyle": 1,
-              "points": "165:342;190:312;190:180;600:180;600:215",
+              "points": "154.00:235.00;551.17:204.50",
               "showVisibility": true,
               "nameLabel": {
                 "$ref": "RED-USECASE-10127"
@@ -3093,7 +4535,7 @@
                 "$ref": "RED-USECASE-10007"
               },
               "lineStyle": 1,
-              "points": "165:362;190:390;190:620;600:620;600:575",
+              "points": "154.00:235.00;567.13:287.87",
               "showVisibility": true,
               "nameLabel": {
                 "$ref": "RED-USECASE-10139"
@@ -3131,1323 +4573,12 @@
               "lineColor": "#64748B",
               "showShadow": false,
               "parentStyle": false
-            }
-          ]
-        },
-        {
-          "_type": "UMLUseCaseDiagram",
-          "_id": "RED-USECASE-10150",
-          "_parent": {
-            "$ref": "RED-USECASE-00002"
-          },
-          "name": "02 홍보 계획·실행 기록",
-          "defaultDiagram": false,
-          "ownedViews": [
-            {
-              "_type": "UMLUseCaseSubjectView",
-              "_id": "RED-USECASE-10151",
-              "_parent": {
-                "$ref": "RED-USECASE-10150"
-              },
-              "model": {
-                "$ref": "RED-USECASE-00004"
-              },
-              "subViews": [
-                {
-                  "_type": "UMLNameCompartmentView",
-                  "_id": "RED-USECASE-10152",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10151"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00004"
-                  },
-                  "subViews": [
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10153",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10152"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10154",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10152"
-                      },
-                      "font": "Apple SD Gothic Neo;18;1",
-                      "left": 348,
-                      "top": 92,
-                      "width": 774,
-                      "height": 28,
-                      "text": "제주 비수기 상권 마케팅 캘린더",
-                      "wordWrap": true
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10155",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10152"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "width": 229,
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10156",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10152"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "height": 13,
-                      "horizontalAlignment": 1
-                    }
-                  ],
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 344,
-                  "top": 88,
-                  "width": 782,
-                  "height": 36,
-                  "stereotypeLabel": {
-                    "$ref": "RED-USECASE-10153"
-                  },
-                  "nameLabel": {
-                    "$ref": "RED-USECASE-10154"
-                  },
-                  "namespaceLabel": {
-                    "$ref": "RED-USECASE-10155"
-                  },
-                  "propertyLabel": {
-                    "$ref": "RED-USECASE-10156"
-                  }
-                }
-              ],
-              "font": "Apple SD Gothic Neo;20;0",
-              "left": 330,
-              "top": 80,
-              "width": 810,
-              "height": 640,
-              "nameCompartment": {
-                "$ref": "RED-USECASE-10152"
-              },
-              "fillColor": "#FFFFFF",
-              "lineColor": "#334155",
-              "fontColor": "#14263D",
-              "wordWrap": true,
-              "showShadow": false,
-              "parentStyle": false,
-              "autoResize": false
-            },
-            {
-              "_type": "UMLActorView",
-              "_id": "RED-USECASE-10157",
-              "_parent": {
-                "$ref": "RED-USECASE-10150"
-              },
-              "model": {
-                "$ref": "RED-USECASE-00011"
-              },
-              "subViews": [
-                {
-                  "_type": "UMLNameCompartmentView",
-                  "_id": "RED-USECASE-10158",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10157"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00011"
-                  },
-                  "subViews": [
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10159",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10158"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 70,
-                      "top": 315,
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10160",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10158"
-                      },
-                      "font": "Apple SD Gothic Neo;20;1",
-                      "left": 70,
-                      "top": 440,
-                      "width": 160,
-                      "height": 30,
-                      "text": "사업체 운영자",
-                      "wordWrap": true
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10161",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10158"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 70,
-                      "top": 315,
-                      "width": 229,
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10162",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10158"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 70,
-                      "top": 315,
-                      "horizontalAlignment": 1,
-                      "wordWrap": true
-                    }
-                  ],
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 66,
-                  "top": 436,
-                  "width": 168,
-                  "height": 38,
-                  "stereotypeLabel": {
-                    "$ref": "RED-USECASE-10159"
-                  },
-                  "nameLabel": {
-                    "$ref": "RED-USECASE-10160"
-                  },
-                  "namespaceLabel": {
-                    "$ref": "RED-USECASE-10161"
-                  },
-                  "propertyLabel": {
-                    "$ref": "RED-USECASE-10162"
-                  }
-                },
-                {
-                  "_type": "UMLAttributeCompartmentView",
-                  "_id": "RED-USECASE-10163",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10157"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00011"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 70,
-                  "top": 315,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLOperationCompartmentView",
-                  "_id": "RED-USECASE-10164",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10157"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00011"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 70,
-                  "top": 315,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLReceptionCompartmentView",
-                  "_id": "RED-USECASE-10165",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10157"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00011"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 70,
-                  "top": 315,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLTemplateParameterCompartmentView",
-                  "_id": "RED-USECASE-10166",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10157"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00011"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 70,
-                  "top": 315,
-                  "width": 10,
-                  "height": 10
-                }
-              ],
-              "font": "Apple SD Gothic Neo;20;0",
-              "containerChangeable": true,
-              "left": 70,
-              "top": 315,
-              "width": 160,
-              "height": 155,
-              "nameCompartment": {
-                "$ref": "RED-USECASE-10158"
-              },
-              "wordWrap": true,
-              "suppressAttributes": true,
-              "suppressOperations": true,
-              "attributeCompartment": {
-                "$ref": "RED-USECASE-10163"
-              },
-              "operationCompartment": {
-                "$ref": "RED-USECASE-10164"
-              },
-              "receptionCompartment": {
-                "$ref": "RED-USECASE-10165"
-              },
-              "templateParameterCompartment": {
-                "$ref": "RED-USECASE-10166"
-              },
-              "fillColor": "#FFFFFF",
-              "lineColor": "#334155",
-              "fontColor": "#14263D",
-              "showShadow": false,
-              "parentStyle": false,
-              "autoResize": false
-            },
-            {
-              "_type": "UMLActorView",
-              "_id": "RED-USECASE-10167",
-              "_parent": {
-                "$ref": "RED-USECASE-10150"
-              },
-              "model": {
-                "$ref": "RED-USECASE-00022"
-              },
-              "subViews": [
-                {
-                  "_type": "UMLNameCompartmentView",
-                  "_id": "RED-USECASE-10168",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10167"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00022"
-                  },
-                  "subViews": [
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10169",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10168"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 1240,
-                      "top": 315,
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10170",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10168"
-                      },
-                      "font": "Apple SD Gothic Neo;20;1",
-                      "left": 1240,
-                      "top": 440,
-                      "width": 170,
-                      "height": 30,
-                      "text": "서비스 운영자",
-                      "wordWrap": true
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10171",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10168"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 1240,
-                      "top": 315,
-                      "width": 229,
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10172",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10168"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 1240,
-                      "top": 315,
-                      "horizontalAlignment": 1,
-                      "wordWrap": true
-                    }
-                  ],
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 1236,
-                  "top": 436,
-                  "width": 178,
-                  "height": 38,
-                  "stereotypeLabel": {
-                    "$ref": "RED-USECASE-10169"
-                  },
-                  "nameLabel": {
-                    "$ref": "RED-USECASE-10170"
-                  },
-                  "namespaceLabel": {
-                    "$ref": "RED-USECASE-10171"
-                  },
-                  "propertyLabel": {
-                    "$ref": "RED-USECASE-10172"
-                  }
-                },
-                {
-                  "_type": "UMLAttributeCompartmentView",
-                  "_id": "RED-USECASE-10173",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10167"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00022"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 1240,
-                  "top": 315,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLOperationCompartmentView",
-                  "_id": "RED-USECASE-10174",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10167"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00022"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 1240,
-                  "top": 315,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLReceptionCompartmentView",
-                  "_id": "RED-USECASE-10175",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10167"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00022"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 1240,
-                  "top": 315,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLTemplateParameterCompartmentView",
-                  "_id": "RED-USECASE-10176",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10167"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00022"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 1240,
-                  "top": 315,
-                  "width": 10,
-                  "height": 10
-                }
-              ],
-              "font": "Apple SD Gothic Neo;20;0",
-              "containerChangeable": true,
-              "left": 1240,
-              "top": 315,
-              "width": 170,
-              "height": 155,
-              "nameCompartment": {
-                "$ref": "RED-USECASE-10168"
-              },
-              "wordWrap": true,
-              "suppressAttributes": true,
-              "suppressOperations": true,
-              "attributeCompartment": {
-                "$ref": "RED-USECASE-10173"
-              },
-              "operationCompartment": {
-                "$ref": "RED-USECASE-10174"
-              },
-              "receptionCompartment": {
-                "$ref": "RED-USECASE-10175"
-              },
-              "templateParameterCompartment": {
-                "$ref": "RED-USECASE-10176"
-              },
-              "fillColor": "#FFFFFF",
-              "lineColor": "#334155",
-              "fontColor": "#14263D",
-              "showShadow": false,
-              "parentStyle": false,
-              "autoResize": false
-            },
-            {
-              "_type": "UMLUseCaseView",
-              "_id": "RED-USECASE-10177",
-              "_parent": {
-                "$ref": "RED-USECASE-10150"
-              },
-              "model": {
-                "$ref": "RED-USECASE-00057"
-              },
-              "subViews": [
-                {
-                  "_type": "UMLNameCompartmentView",
-                  "_id": "RED-USECASE-10178",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10177"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00057"
-                  },
-                  "subViews": [
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10179",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10178"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 510,
-                      "top": 155,
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10180",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10178"
-                      },
-                      "font": "Apple SD Gothic Neo;20;1",
-                      "left": 534,
-                      "top": 179.0,
-                      "width": 402,
-                      "height": 52,
-                      "text": "UC03\n3개월 홍보 일정표 관리",
-                      "wordWrap": true
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10181",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10178"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 510,
-                      "top": 155,
-                      "width": 229,
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10182",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10178"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 510,
-                      "top": 155,
-                      "horizontalAlignment": 1,
-                      "wordWrap": true
-                    }
-                  ],
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 530,
-                  "top": 175.0,
-                  "width": 410,
-                  "height": 60,
-                  "stereotypeLabel": {
-                    "$ref": "RED-USECASE-10179"
-                  },
-                  "nameLabel": {
-                    "$ref": "RED-USECASE-10180"
-                  },
-                  "namespaceLabel": {
-                    "$ref": "RED-USECASE-10181"
-                  },
-                  "propertyLabel": {
-                    "$ref": "RED-USECASE-10182"
-                  }
-                },
-                {
-                  "_type": "UMLAttributeCompartmentView",
-                  "_id": "RED-USECASE-10183",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10177"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00057"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 510,
-                  "top": 155,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLOperationCompartmentView",
-                  "_id": "RED-USECASE-10184",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10177"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00057"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 510,
-                  "top": 155,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLReceptionCompartmentView",
-                  "_id": "RED-USECASE-10185",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10177"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00057"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 510,
-                  "top": 155,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLTemplateParameterCompartmentView",
-                  "_id": "RED-USECASE-10186",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10177"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00057"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 510,
-                  "top": 155,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLExtensionPointCompartmentView",
-                  "_id": "RED-USECASE-10187",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10177"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00057"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 510,
-                  "top": 155,
-                  "width": 10,
-                  "height": 10
-                }
-              ],
-              "font": "Apple SD Gothic Neo;20;0",
-              "containerChangeable": true,
-              "left": 510,
-              "top": 155,
-              "width": 450,
-              "height": 100,
-              "nameCompartment": {
-                "$ref": "RED-USECASE-10178"
-              },
-              "wordWrap": true,
-              "suppressAttributes": true,
-              "suppressOperations": true,
-              "attributeCompartment": {
-                "$ref": "RED-USECASE-10183"
-              },
-              "operationCompartment": {
-                "$ref": "RED-USECASE-10184"
-              },
-              "receptionCompartment": {
-                "$ref": "RED-USECASE-10185"
-              },
-              "templateParameterCompartment": {
-                "$ref": "RED-USECASE-10186"
-              },
-              "extensionPointCompartment": {
-                "$ref": "RED-USECASE-10187"
-              },
-              "fillColor": "#FFFFFF",
-              "lineColor": "#334155",
-              "fontColor": "#14263D",
-              "showShadow": false,
-              "parentStyle": false,
-              "autoResize": false
-            },
-            {
-              "_type": "UMLUseCaseView",
-              "_id": "RED-USECASE-10188",
-              "_parent": {
-                "$ref": "RED-USECASE-10150"
-              },
-              "model": {
-                "$ref": "RED-USECASE-00069"
-              },
-              "subViews": [
-                {
-                  "_type": "UMLNameCompartmentView",
-                  "_id": "RED-USECASE-10189",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10188"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00069"
-                  },
-                  "subViews": [
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10190",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10189"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 510,
-                      "top": 295,
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10191",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10189"
-                      },
-                      "font": "Apple SD Gothic Neo;20;1",
-                      "left": 534,
-                      "top": 319.0,
-                      "width": 402,
-                      "height": 52,
-                      "text": "UC04\n실행·사용 기록 입력",
-                      "wordWrap": true
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10192",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10189"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 510,
-                      "top": 295,
-                      "width": 229,
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10193",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10189"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 510,
-                      "top": 295,
-                      "horizontalAlignment": 1,
-                      "wordWrap": true
-                    }
-                  ],
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 530,
-                  "top": 315.0,
-                  "width": 410,
-                  "height": 60,
-                  "stereotypeLabel": {
-                    "$ref": "RED-USECASE-10190"
-                  },
-                  "nameLabel": {
-                    "$ref": "RED-USECASE-10191"
-                  },
-                  "namespaceLabel": {
-                    "$ref": "RED-USECASE-10192"
-                  },
-                  "propertyLabel": {
-                    "$ref": "RED-USECASE-10193"
-                  }
-                },
-                {
-                  "_type": "UMLAttributeCompartmentView",
-                  "_id": "RED-USECASE-10194",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10188"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00069"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 510,
-                  "top": 295,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLOperationCompartmentView",
-                  "_id": "RED-USECASE-10195",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10188"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00069"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 510,
-                  "top": 295,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLReceptionCompartmentView",
-                  "_id": "RED-USECASE-10196",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10188"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00069"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 510,
-                  "top": 295,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLTemplateParameterCompartmentView",
-                  "_id": "RED-USECASE-10197",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10188"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00069"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 510,
-                  "top": 295,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLExtensionPointCompartmentView",
-                  "_id": "RED-USECASE-10198",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10188"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00069"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 510,
-                  "top": 295,
-                  "width": 10,
-                  "height": 10
-                }
-              ],
-              "font": "Apple SD Gothic Neo;20;0",
-              "containerChangeable": true,
-              "left": 510,
-              "top": 295,
-              "width": 450,
-              "height": 100,
-              "nameCompartment": {
-                "$ref": "RED-USECASE-10189"
-              },
-              "wordWrap": true,
-              "suppressAttributes": true,
-              "suppressOperations": true,
-              "attributeCompartment": {
-                "$ref": "RED-USECASE-10194"
-              },
-              "operationCompartment": {
-                "$ref": "RED-USECASE-10195"
-              },
-              "receptionCompartment": {
-                "$ref": "RED-USECASE-10196"
-              },
-              "templateParameterCompartment": {
-                "$ref": "RED-USECASE-10197"
-              },
-              "extensionPointCompartment": {
-                "$ref": "RED-USECASE-10198"
-              },
-              "fillColor": "#FFFFFF",
-              "lineColor": "#334155",
-              "fontColor": "#14263D",
-              "showShadow": false,
-              "parentStyle": false,
-              "autoResize": false
-            },
-            {
-              "_type": "UMLUseCaseView",
-              "_id": "RED-USECASE-10199",
-              "_parent": {
-                "$ref": "RED-USECASE-10150"
-              },
-              "model": {
-                "$ref": "RED-USECASE-00081"
-              },
-              "subViews": [
-                {
-                  "_type": "UMLNameCompartmentView",
-                  "_id": "RED-USECASE-10200",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10199"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00081"
-                  },
-                  "subViews": [
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10201",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10200"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 510,
-                      "top": 435,
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10202",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10200"
-                      },
-                      "font": "Apple SD Gothic Neo;20;1",
-                      "left": 534,
-                      "top": 459.0,
-                      "width": 402,
-                      "height": 52,
-                      "text": "UC05\n계획과 실행 결과 비교",
-                      "wordWrap": true
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10203",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10200"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 510,
-                      "top": 435,
-                      "width": 229,
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10204",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10200"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 510,
-                      "top": 435,
-                      "horizontalAlignment": 1,
-                      "wordWrap": true
-                    }
-                  ],
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 530,
-                  "top": 455.0,
-                  "width": 410,
-                  "height": 60,
-                  "stereotypeLabel": {
-                    "$ref": "RED-USECASE-10201"
-                  },
-                  "nameLabel": {
-                    "$ref": "RED-USECASE-10202"
-                  },
-                  "namespaceLabel": {
-                    "$ref": "RED-USECASE-10203"
-                  },
-                  "propertyLabel": {
-                    "$ref": "RED-USECASE-10204"
-                  }
-                },
-                {
-                  "_type": "UMLAttributeCompartmentView",
-                  "_id": "RED-USECASE-10205",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10199"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00081"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 510,
-                  "top": 435,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLOperationCompartmentView",
-                  "_id": "RED-USECASE-10206",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10199"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00081"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 510,
-                  "top": 435,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLReceptionCompartmentView",
-                  "_id": "RED-USECASE-10207",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10199"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00081"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 510,
-                  "top": 435,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLTemplateParameterCompartmentView",
-                  "_id": "RED-USECASE-10208",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10199"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00081"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 510,
-                  "top": 435,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLExtensionPointCompartmentView",
-                  "_id": "RED-USECASE-10209",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10199"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00081"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 510,
-                  "top": 435,
-                  "width": 10,
-                  "height": 10
-                }
-              ],
-              "font": "Apple SD Gothic Neo;20;0",
-              "containerChangeable": true,
-              "left": 510,
-              "top": 435,
-              "width": 450,
-              "height": 100,
-              "nameCompartment": {
-                "$ref": "RED-USECASE-10200"
-              },
-              "wordWrap": true,
-              "suppressAttributes": true,
-              "suppressOperations": true,
-              "attributeCompartment": {
-                "$ref": "RED-USECASE-10205"
-              },
-              "operationCompartment": {
-                "$ref": "RED-USECASE-10206"
-              },
-              "receptionCompartment": {
-                "$ref": "RED-USECASE-10207"
-              },
-              "templateParameterCompartment": {
-                "$ref": "RED-USECASE-10208"
-              },
-              "extensionPointCompartment": {
-                "$ref": "RED-USECASE-10209"
-              },
-              "fillColor": "#FFFFFF",
-              "lineColor": "#334155",
-              "fontColor": "#14263D",
-              "showShadow": false,
-              "parentStyle": false,
-              "autoResize": false
-            },
-            {
-              "_type": "UMLUseCaseView",
-              "_id": "RED-USECASE-10210",
-              "_parent": {
-                "$ref": "RED-USECASE-10150"
-              },
-              "model": {
-                "$ref": "RED-USECASE-00093"
-              },
-              "subViews": [
-                {
-                  "_type": "UMLNameCompartmentView",
-                  "_id": "RED-USECASE-10211",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10210"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00093"
-                  },
-                  "subViews": [
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10212",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10211"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 510,
-                      "top": 575,
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10213",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10211"
-                      },
-                      "font": "Apple SD Gothic Neo;20;1",
-                      "left": 534,
-                      "top": 599.0,
-                      "width": 402,
-                      "height": 52,
-                      "text": "UC06\n근거 설명·보고서 초안 작성",
-                      "wordWrap": true
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10214",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10211"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 510,
-                      "top": 575,
-                      "width": 229,
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10215",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10211"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 510,
-                      "top": 575,
-                      "horizontalAlignment": 1,
-                      "wordWrap": true
-                    }
-                  ],
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 530,
-                  "top": 595.0,
-                  "width": 410,
-                  "height": 60,
-                  "stereotypeLabel": {
-                    "$ref": "RED-USECASE-10212"
-                  },
-                  "nameLabel": {
-                    "$ref": "RED-USECASE-10213"
-                  },
-                  "namespaceLabel": {
-                    "$ref": "RED-USECASE-10214"
-                  },
-                  "propertyLabel": {
-                    "$ref": "RED-USECASE-10215"
-                  }
-                },
-                {
-                  "_type": "UMLAttributeCompartmentView",
-                  "_id": "RED-USECASE-10216",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10210"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00093"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 510,
-                  "top": 575,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLOperationCompartmentView",
-                  "_id": "RED-USECASE-10217",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10210"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00093"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 510,
-                  "top": 575,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLReceptionCompartmentView",
-                  "_id": "RED-USECASE-10218",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10210"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00093"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 510,
-                  "top": 575,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLTemplateParameterCompartmentView",
-                  "_id": "RED-USECASE-10219",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10210"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00093"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 510,
-                  "top": 575,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLExtensionPointCompartmentView",
-                  "_id": "RED-USECASE-10220",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10210"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00093"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 510,
-                  "top": 575,
-                  "width": 10,
-                  "height": 10
-                }
-              ],
-              "font": "Apple SD Gothic Neo;20;0",
-              "containerChangeable": true,
-              "left": 510,
-              "top": 575,
-              "width": 450,
-              "height": 100,
-              "nameCompartment": {
-                "$ref": "RED-USECASE-10211"
-              },
-              "wordWrap": true,
-              "suppressAttributes": true,
-              "suppressOperations": true,
-              "attributeCompartment": {
-                "$ref": "RED-USECASE-10216"
-              },
-              "operationCompartment": {
-                "$ref": "RED-USECASE-10217"
-              },
-              "receptionCompartment": {
-                "$ref": "RED-USECASE-10218"
-              },
-              "templateParameterCompartment": {
-                "$ref": "RED-USECASE-10219"
-              },
-              "extensionPointCompartment": {
-                "$ref": "RED-USECASE-10220"
-              },
-              "fillColor": "#FFF5DF",
-              "lineColor": "#A56612",
-              "fontColor": "#14263D",
-              "showShadow": false,
-              "parentStyle": false,
-              "autoResize": false
             },
             {
               "_type": "UMLAssociationView",
               "_id": "RED-USECASE-10221",
               "_parent": {
-                "$ref": "RED-USECASE-10150"
+                "$ref": "RED-USECASE-00003"
               },
               "model": {
                 "$ref": "RED-USECASE-00213"
@@ -4673,10 +4804,10 @@
                 "$ref": "RED-USECASE-10177"
               },
               "tail": {
-                "$ref": "RED-USECASE-10157"
+                "$ref": "RED-USECASE-10017"
               },
               "lineStyle": 1,
-              "points": "230:380;510:205.0",
+              "points": "154.00:560.00;599.17:461.24",
               "showVisibility": true,
               "nameLabel": {
                 "$ref": "RED-USECASE-10222"
@@ -4719,7 +4850,7 @@
               "_type": "UMLAssociationView",
               "_id": "RED-USECASE-10233",
               "_parent": {
-                "$ref": "RED-USECASE-10150"
+                "$ref": "RED-USECASE-00003"
               },
               "model": {
                 "$ref": "RED-USECASE-00228"
@@ -4945,10 +5076,10 @@
                 "$ref": "RED-USECASE-10177"
               },
               "tail": {
-                "$ref": "RED-USECASE-10167"
+                "$ref": "RED-USECASE-10027"
               },
               "lineStyle": 1,
-              "points": "1240:380;960:205.0",
+              "points": "1776.00:540.00;920.12:449.12",
               "showVisibility": true,
               "nameLabel": {
                 "$ref": "RED-USECASE-10234"
@@ -4991,7 +5122,7 @@
               "_type": "UMLAssociationView",
               "_id": "RED-USECASE-10245",
               "_parent": {
-                "$ref": "RED-USECASE-10150"
+                "$ref": "RED-USECASE-00003"
               },
               "model": {
                 "$ref": "RED-USECASE-00243"
@@ -5217,10 +5348,10 @@
                 "$ref": "RED-USECASE-10188"
               },
               "tail": {
-                "$ref": "RED-USECASE-10157"
+                "$ref": "RED-USECASE-10017"
               },
               "lineStyle": 1,
-              "points": "230:380;510:345.0",
+              "points": "154.00:560.00;540.60:553.40",
               "showVisibility": true,
               "nameLabel": {
                 "$ref": "RED-USECASE-10246"
@@ -5263,7 +5394,7 @@
               "_type": "UMLAssociationView",
               "_id": "RED-USECASE-10257",
               "_parent": {
-                "$ref": "RED-USECASE-10150"
+                "$ref": "RED-USECASE-00003"
               },
               "model": {
                 "$ref": "RED-USECASE-00258"
@@ -5489,10 +5620,10 @@
                 "$ref": "RED-USECASE-10188"
               },
               "tail": {
-                "$ref": "RED-USECASE-10167"
+                "$ref": "RED-USECASE-10027"
               },
               "lineStyle": 1,
-              "points": "1240:380;960:345.0",
+              "points": "1776.00:540.00;939.81:548.07",
               "showVisibility": true,
               "nameLabel": {
                 "$ref": "RED-USECASE-10258"
@@ -5535,7 +5666,7 @@
               "_type": "UMLAssociationView",
               "_id": "RED-USECASE-10269",
               "_parent": {
-                "$ref": "RED-USECASE-10150"
+                "$ref": "RED-USECASE-00003"
               },
               "model": {
                 "$ref": "RED-USECASE-00273"
@@ -5761,10 +5892,10 @@
                 "$ref": "RED-USECASE-10199"
               },
               "tail": {
-                "$ref": "RED-USECASE-10157"
+                "$ref": "RED-USECASE-10017"
               },
               "lineStyle": 1,
-              "points": "230:380;510:485.0",
+              "points": "154.00:560.00;587.86:641.44",
               "showVisibility": true,
               "nameLabel": {
                 "$ref": "RED-USECASE-10270"
@@ -5807,7 +5938,7 @@
               "_type": "UMLAssociationView",
               "_id": "RED-USECASE-10281",
               "_parent": {
-                "$ref": "RED-USECASE-10150"
+                "$ref": "RED-USECASE-00003"
               },
               "model": {
                 "$ref": "RED-USECASE-00288"
@@ -6033,10 +6164,10 @@
                 "$ref": "RED-USECASE-10199"
               },
               "tail": {
-                "$ref": "RED-USECASE-10167"
+                "$ref": "RED-USECASE-10027"
               },
               "lineStyle": 1,
-              "points": "1240:380;960:485.0",
+              "points": "1776.00:540.00;913.73:648.20",
               "showVisibility": true,
               "nameLabel": {
                 "$ref": "RED-USECASE-10282"
@@ -6079,7 +6210,7 @@
               "_type": "UMLAssociationView",
               "_id": "RED-USECASE-10293",
               "_parent": {
-                "$ref": "RED-USECASE-10150"
+                "$ref": "RED-USECASE-00003"
               },
               "model": {
                 "$ref": "RED-USECASE-00303"
@@ -6305,10 +6436,10 @@
                 "$ref": "RED-USECASE-10210"
               },
               "tail": {
-                "$ref": "RED-USECASE-10157"
+                "$ref": "RED-USECASE-10017"
               },
               "lineStyle": 1,
-              "points": "230:380;510:625.0",
+              "points": "154.00:560.00;642.21:751.62",
               "showVisibility": true,
               "nameLabel": {
                 "$ref": "RED-USECASE-10294"
@@ -6351,7 +6482,7 @@
               "_type": "UMLAssociationView",
               "_id": "RED-USECASE-10305",
               "_parent": {
-                "$ref": "RED-USECASE-10150"
+                "$ref": "RED-USECASE-00003"
               },
               "model": {
                 "$ref": "RED-USECASE-00318"
@@ -6577,10 +6708,10 @@
                 "$ref": "RED-USECASE-10210"
               },
               "tail": {
-                "$ref": "RED-USECASE-10167"
+                "$ref": "RED-USECASE-10027"
               },
               "lineStyle": 1,
-              "points": "1240:380;960:625.0",
+              "points": "1776.00:540.00;874.74:757.48",
               "showVisibility": true,
               "nameLabel": {
                 "$ref": "RED-USECASE-10306"
@@ -6618,930 +6749,12 @@
               "lineColor": "#64748B",
               "showShadow": false,
               "parentStyle": false
-            }
-          ]
-        },
-        {
-          "_type": "UMLUseCaseDiagram",
-          "_id": "RED-USECASE-10317",
-          "_parent": {
-            "$ref": "RED-USECASE-00002"
-          },
-          "name": "03 자료·추천 근거 관리",
-          "defaultDiagram": false,
-          "ownedViews": [
-            {
-              "_type": "UMLUseCaseSubjectView",
-              "_id": "RED-USECASE-10318",
-              "_parent": {
-                "$ref": "RED-USECASE-10317"
-              },
-              "model": {
-                "$ref": "RED-USECASE-00004"
-              },
-              "subViews": [
-                {
-                  "_type": "UMLNameCompartmentView",
-                  "_id": "RED-USECASE-10319",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10318"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00004"
-                  },
-                  "subViews": [
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10320",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10319"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10321",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10319"
-                      },
-                      "font": "Apple SD Gothic Neo;18;1",
-                      "left": 348,
-                      "top": 92,
-                      "width": 904,
-                      "height": 28,
-                      "text": "제주 비수기 상권 마케팅 캘린더",
-                      "wordWrap": true
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10322",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10319"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "width": 229,
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10323",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10319"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "height": 13,
-                      "horizontalAlignment": 1
-                    }
-                  ],
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 344,
-                  "top": 88,
-                  "width": 912,
-                  "height": 36,
-                  "stereotypeLabel": {
-                    "$ref": "RED-USECASE-10320"
-                  },
-                  "nameLabel": {
-                    "$ref": "RED-USECASE-10321"
-                  },
-                  "namespaceLabel": {
-                    "$ref": "RED-USECASE-10322"
-                  },
-                  "propertyLabel": {
-                    "$ref": "RED-USECASE-10323"
-                  }
-                }
-              ],
-              "font": "Apple SD Gothic Neo;20;0",
-              "left": 330,
-              "top": 80,
-              "width": 940,
-              "height": 435,
-              "nameCompartment": {
-                "$ref": "RED-USECASE-10319"
-              },
-              "fillColor": "#FFFFFF",
-              "lineColor": "#334155",
-              "fontColor": "#14263D",
-              "wordWrap": true,
-              "showShadow": false,
-              "parentStyle": false,
-              "autoResize": false
-            },
-            {
-              "_type": "UMLActorView",
-              "_id": "RED-USECASE-10324",
-              "_parent": {
-                "$ref": "RED-USECASE-10317"
-              },
-              "model": {
-                "$ref": "RED-USECASE-00022"
-              },
-              "subViews": [
-                {
-                  "_type": "UMLNameCompartmentView",
-                  "_id": "RED-USECASE-10325",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10324"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00022"
-                  },
-                  "subViews": [
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10326",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10325"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 80,
-                      "top": 235,
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10327",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10325"
-                      },
-                      "font": "Apple SD Gothic Neo;20;1",
-                      "left": 80,
-                      "top": 360,
-                      "width": 170,
-                      "height": 30,
-                      "text": "서비스 운영자",
-                      "wordWrap": true
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10328",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10325"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 80,
-                      "top": 235,
-                      "width": 229,
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10329",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10325"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 80,
-                      "top": 235,
-                      "horizontalAlignment": 1,
-                      "wordWrap": true
-                    }
-                  ],
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 76,
-                  "top": 356,
-                  "width": 178,
-                  "height": 38,
-                  "stereotypeLabel": {
-                    "$ref": "RED-USECASE-10326"
-                  },
-                  "nameLabel": {
-                    "$ref": "RED-USECASE-10327"
-                  },
-                  "namespaceLabel": {
-                    "$ref": "RED-USECASE-10328"
-                  },
-                  "propertyLabel": {
-                    "$ref": "RED-USECASE-10329"
-                  }
-                },
-                {
-                  "_type": "UMLAttributeCompartmentView",
-                  "_id": "RED-USECASE-10330",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10324"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00022"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 80,
-                  "top": 235,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLOperationCompartmentView",
-                  "_id": "RED-USECASE-10331",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10324"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00022"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 80,
-                  "top": 235,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLReceptionCompartmentView",
-                  "_id": "RED-USECASE-10332",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10324"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00022"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 80,
-                  "top": 235,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLTemplateParameterCompartmentView",
-                  "_id": "RED-USECASE-10333",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10324"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00022"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 80,
-                  "top": 235,
-                  "width": 10,
-                  "height": 10
-                }
-              ],
-              "font": "Apple SD Gothic Neo;20;0",
-              "containerChangeable": true,
-              "left": 80,
-              "top": 235,
-              "width": 170,
-              "height": 155,
-              "nameCompartment": {
-                "$ref": "RED-USECASE-10325"
-              },
-              "wordWrap": true,
-              "suppressAttributes": true,
-              "suppressOperations": true,
-              "attributeCompartment": {
-                "$ref": "RED-USECASE-10330"
-              },
-              "operationCompartment": {
-                "$ref": "RED-USECASE-10331"
-              },
-              "receptionCompartment": {
-                "$ref": "RED-USECASE-10332"
-              },
-              "templateParameterCompartment": {
-                "$ref": "RED-USECASE-10333"
-              },
-              "fillColor": "#FFFFFF",
-              "lineColor": "#334155",
-              "fontColor": "#14263D",
-              "showShadow": false,
-              "parentStyle": false,
-              "autoResize": false
-            },
-            {
-              "_type": "UMLUseCaseView",
-              "_id": "RED-USECASE-10334",
-              "_parent": {
-                "$ref": "RED-USECASE-10317"
-              },
-              "model": {
-                "$ref": "RED-USECASE-00105"
-              },
-              "subViews": [
-                {
-                  "_type": "UMLNameCompartmentView",
-                  "_id": "RED-USECASE-10335",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10334"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00105"
-                  },
-                  "subViews": [
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10336",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10335"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 420,
-                      "top": 165,
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10337",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10335"
-                      },
-                      "font": "Apple SD Gothic Neo;20;1",
-                      "left": 444,
-                      "top": 189.0,
-                      "width": 302,
-                      "height": 52,
-                      "text": "UC07\nCSV 자료 등록",
-                      "wordWrap": true
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10338",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10335"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 420,
-                      "top": 165,
-                      "width": 229,
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10339",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10335"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 420,
-                      "top": 165,
-                      "horizontalAlignment": 1,
-                      "wordWrap": true
-                    }
-                  ],
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 440,
-                  "top": 185.0,
-                  "width": 310,
-                  "height": 60,
-                  "stereotypeLabel": {
-                    "$ref": "RED-USECASE-10336"
-                  },
-                  "nameLabel": {
-                    "$ref": "RED-USECASE-10337"
-                  },
-                  "namespaceLabel": {
-                    "$ref": "RED-USECASE-10338"
-                  },
-                  "propertyLabel": {
-                    "$ref": "RED-USECASE-10339"
-                  }
-                },
-                {
-                  "_type": "UMLAttributeCompartmentView",
-                  "_id": "RED-USECASE-10340",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10334"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00105"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 420,
-                  "top": 165,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLOperationCompartmentView",
-                  "_id": "RED-USECASE-10341",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10334"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00105"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 420,
-                  "top": 165,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLReceptionCompartmentView",
-                  "_id": "RED-USECASE-10342",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10334"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00105"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 420,
-                  "top": 165,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLTemplateParameterCompartmentView",
-                  "_id": "RED-USECASE-10343",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10334"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00105"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 420,
-                  "top": 165,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLExtensionPointCompartmentView",
-                  "_id": "RED-USECASE-10344",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10334"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00105"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 420,
-                  "top": 165,
-                  "width": 10,
-                  "height": 10
-                }
-              ],
-              "font": "Apple SD Gothic Neo;20;0",
-              "containerChangeable": true,
-              "left": 420,
-              "top": 165,
-              "width": 350,
-              "height": 100,
-              "nameCompartment": {
-                "$ref": "RED-USECASE-10335"
-              },
-              "wordWrap": true,
-              "suppressAttributes": true,
-              "suppressOperations": true,
-              "attributeCompartment": {
-                "$ref": "RED-USECASE-10340"
-              },
-              "operationCompartment": {
-                "$ref": "RED-USECASE-10341"
-              },
-              "receptionCompartment": {
-                "$ref": "RED-USECASE-10342"
-              },
-              "templateParameterCompartment": {
-                "$ref": "RED-USECASE-10343"
-              },
-              "extensionPointCompartment": {
-                "$ref": "RED-USECASE-10344"
-              },
-              "fillColor": "#FFFFFF",
-              "lineColor": "#334155",
-              "fontColor": "#14263D",
-              "showShadow": false,
-              "parentStyle": false,
-              "autoResize": false
-            },
-            {
-              "_type": "UMLUseCaseView",
-              "_id": "RED-USECASE-10345",
-              "_parent": {
-                "$ref": "RED-USECASE-10317"
-              },
-              "model": {
-                "$ref": "RED-USECASE-00117"
-              },
-              "subViews": [
-                {
-                  "_type": "UMLNameCompartmentView",
-                  "_id": "RED-USECASE-10346",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10345"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00117"
-                  },
-                  "subViews": [
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10347",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10346"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 915,
-                      "top": 165,
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10348",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10346"
-                      },
-                      "font": "Apple SD Gothic Neo;20;1",
-                      "left": 939,
-                      "top": 189.0,
-                      "width": 272,
-                      "height": 52,
-                      "text": "UC08\n자료 기준·누락값 검증",
-                      "wordWrap": true
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10349",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10346"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 915,
-                      "top": 165,
-                      "width": 229,
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10350",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10346"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 915,
-                      "top": 165,
-                      "horizontalAlignment": 1,
-                      "wordWrap": true
-                    }
-                  ],
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 935,
-                  "top": 185.0,
-                  "width": 280,
-                  "height": 60,
-                  "stereotypeLabel": {
-                    "$ref": "RED-USECASE-10347"
-                  },
-                  "nameLabel": {
-                    "$ref": "RED-USECASE-10348"
-                  },
-                  "namespaceLabel": {
-                    "$ref": "RED-USECASE-10349"
-                  },
-                  "propertyLabel": {
-                    "$ref": "RED-USECASE-10350"
-                  }
-                },
-                {
-                  "_type": "UMLAttributeCompartmentView",
-                  "_id": "RED-USECASE-10351",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10345"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00117"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 915,
-                  "top": 165,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLOperationCompartmentView",
-                  "_id": "RED-USECASE-10352",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10345"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00117"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 915,
-                  "top": 165,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLReceptionCompartmentView",
-                  "_id": "RED-USECASE-10353",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10345"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00117"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 915,
-                  "top": 165,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLTemplateParameterCompartmentView",
-                  "_id": "RED-USECASE-10354",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10345"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00117"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 915,
-                  "top": 165,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLExtensionPointCompartmentView",
-                  "_id": "RED-USECASE-10355",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10345"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00117"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 915,
-                  "top": 165,
-                  "width": 10,
-                  "height": 10
-                }
-              ],
-              "font": "Apple SD Gothic Neo;20;0",
-              "containerChangeable": true,
-              "left": 915,
-              "top": 165,
-              "width": 320,
-              "height": 100,
-              "nameCompartment": {
-                "$ref": "RED-USECASE-10346"
-              },
-              "wordWrap": true,
-              "suppressAttributes": true,
-              "suppressOperations": true,
-              "attributeCompartment": {
-                "$ref": "RED-USECASE-10351"
-              },
-              "operationCompartment": {
-                "$ref": "RED-USECASE-10352"
-              },
-              "receptionCompartment": {
-                "$ref": "RED-USECASE-10353"
-              },
-              "templateParameterCompartment": {
-                "$ref": "RED-USECASE-10354"
-              },
-              "extensionPointCompartment": {
-                "$ref": "RED-USECASE-10355"
-              },
-              "fillColor": "#FFFFFF",
-              "lineColor": "#334155",
-              "fontColor": "#14263D",
-              "showShadow": false,
-              "parentStyle": false,
-              "autoResize": false
-            },
-            {
-              "_type": "UMLUseCaseView",
-              "_id": "RED-USECASE-10356",
-              "_parent": {
-                "$ref": "RED-USECASE-10317"
-              },
-              "model": {
-                "$ref": "RED-USECASE-00129"
-              },
-              "subViews": [
-                {
-                  "_type": "UMLNameCompartmentView",
-                  "_id": "RED-USECASE-10357",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10356"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00129"
-                  },
-                  "subViews": [
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10358",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10357"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 420,
-                      "top": 365,
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10359",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10357"
-                      },
-                      "font": "Apple SD Gothic Neo;20;1",
-                      "left": 444,
-                      "top": 389.0,
-                      "width": 302,
-                      "height": 52,
-                      "text": "UC09\n추천 기준·근거 관리",
-                      "wordWrap": true
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10360",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10357"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 420,
-                      "top": 365,
-                      "width": 229,
-                      "height": 13
-                    },
-                    {
-                      "_type": "LabelView",
-                      "_id": "RED-USECASE-10361",
-                      "_parent": {
-                        "$ref": "RED-USECASE-10357"
-                      },
-                      "visible": false,
-                      "font": "Apple SD Gothic Neo;20;0",
-                      "left": 420,
-                      "top": 365,
-                      "horizontalAlignment": 1,
-                      "wordWrap": true
-                    }
-                  ],
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 440,
-                  "top": 385.0,
-                  "width": 310,
-                  "height": 60,
-                  "stereotypeLabel": {
-                    "$ref": "RED-USECASE-10358"
-                  },
-                  "nameLabel": {
-                    "$ref": "RED-USECASE-10359"
-                  },
-                  "namespaceLabel": {
-                    "$ref": "RED-USECASE-10360"
-                  },
-                  "propertyLabel": {
-                    "$ref": "RED-USECASE-10361"
-                  }
-                },
-                {
-                  "_type": "UMLAttributeCompartmentView",
-                  "_id": "RED-USECASE-10362",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10356"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00129"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 420,
-                  "top": 365,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLOperationCompartmentView",
-                  "_id": "RED-USECASE-10363",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10356"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00129"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 420,
-                  "top": 365,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLReceptionCompartmentView",
-                  "_id": "RED-USECASE-10364",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10356"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00129"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 420,
-                  "top": 365,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLTemplateParameterCompartmentView",
-                  "_id": "RED-USECASE-10365",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10356"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00129"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 420,
-                  "top": 365,
-                  "width": 10,
-                  "height": 10
-                },
-                {
-                  "_type": "UMLExtensionPointCompartmentView",
-                  "_id": "RED-USECASE-10366",
-                  "_parent": {
-                    "$ref": "RED-USECASE-10356"
-                  },
-                  "model": {
-                    "$ref": "RED-USECASE-00129"
-                  },
-                  "visible": false,
-                  "font": "Apple SD Gothic Neo;20;0",
-                  "left": 420,
-                  "top": 365,
-                  "width": 10,
-                  "height": 10
-                }
-              ],
-              "font": "Apple SD Gothic Neo;20;0",
-              "containerChangeable": true,
-              "left": 420,
-              "top": 365,
-              "width": 350,
-              "height": 100,
-              "nameCompartment": {
-                "$ref": "RED-USECASE-10357"
-              },
-              "wordWrap": true,
-              "suppressAttributes": true,
-              "suppressOperations": true,
-              "attributeCompartment": {
-                "$ref": "RED-USECASE-10362"
-              },
-              "operationCompartment": {
-                "$ref": "RED-USECASE-10363"
-              },
-              "receptionCompartment": {
-                "$ref": "RED-USECASE-10364"
-              },
-              "templateParameterCompartment": {
-                "$ref": "RED-USECASE-10365"
-              },
-              "extensionPointCompartment": {
-                "$ref": "RED-USECASE-10366"
-              },
-              "fillColor": "#FFFFFF",
-              "lineColor": "#334155",
-              "fontColor": "#14263D",
-              "showShadow": false,
-              "parentStyle": false,
-              "autoResize": false
             },
             {
               "_type": "UMLAssociationView",
               "_id": "RED-USECASE-10367",
               "_parent": {
-                "$ref": "RED-USECASE-10317"
+                "$ref": "RED-USECASE-00003"
               },
               "model": {
                 "$ref": "RED-USECASE-00333"
@@ -7767,10 +6980,10 @@
                 "$ref": "RED-USECASE-10334"
               },
               "tail": {
-                "$ref": "RED-USECASE-10324"
+                "$ref": "RED-USECASE-10027"
               },
               "lineStyle": 1,
-              "points": "250:300;420:215.0",
+              "points": "1776.00:540.00;1196.06:763.73",
               "showVisibility": true,
               "nameLabel": {
                 "$ref": "RED-USECASE-10368"
@@ -7813,7 +7026,7 @@
               "_type": "UMLAssociationView",
               "_id": "RED-USECASE-10379",
               "_parent": {
-                "$ref": "RED-USECASE-10317"
+                "$ref": "RED-USECASE-00003"
               },
               "model": {
                 "$ref": "RED-USECASE-00348"
@@ -8039,10 +7252,10 @@
                 "$ref": "RED-USECASE-10356"
               },
               "tail": {
-                "$ref": "RED-USECASE-10324"
+                "$ref": "RED-USECASE-10027"
               },
               "lineStyle": 1,
-              "points": "250:300;420:415.0",
+              "points": "1844.00:540.00;1890.00:575.00;1890.00:910.00;1505.00:910.00",
               "showVisibility": true,
               "nameLabel": {
                 "$ref": "RED-USECASE-10380"
@@ -8085,7 +7298,7 @@
               "_type": "UMLIncludeView",
               "_id": "RED-USECASE-10391",
               "_parent": {
-                "$ref": "RED-USECASE-10317"
+                "$ref": "RED-USECASE-00003"
               },
               "model": {
                 "$ref": "RED-USECASE-00373"
@@ -8122,9 +7335,9 @@
                     "$ref": "RED-USECASE-00373"
                   },
                   "font": "Apple SD Gothic Neo;18;0",
-                  "left": 790,
-                  "top": 181,
-                  "width": 104,
+                  "left": 1248,
+                  "top": 758,
+                  "width": 100,
                   "height": 24,
                   "alpha": 1.5707963267948966,
                   "distance": 22,
@@ -8165,7 +7378,7 @@
                 "$ref": "RED-USECASE-10334"
               },
               "lineStyle": 1,
-              "points": "770:215;915:215",
+              "points": "1245.00:795.00;1355.00:795.00",
               "showVisibility": true,
               "nameLabel": {
                 "$ref": "RED-USECASE-10392"
@@ -8189,7 +7402,7 @@
             "$ref": "RED-USECASE-00002"
           },
           "name": "제주 비수기 상권 마케팅 캘린더",
-          "documentation": "Red_PROJECT.md v1.1 및 2026-09-21 강의자료 기준 설계 초안 동일 시스템을 공통 조회·계획과 기록·운영 지원의 세 관점으로 표시함"
+          "documentation": "Red_PROJECT.md v1.1 및 강의자료 기준 하나의 시스템 경계 안에 전체 유스케이스를 표시함"
         },
         {
           "_type": "UMLActor",
@@ -8794,5 +8007,5 @@
       ]
     }
   ],
-  "documentation": "2026-09-21 수업자료 반영 · 액터 3개·유스케이스 10개·연관 16개·포함 3개 · 동일 모델을 세 다이어그램에서 재사용"
+  "documentation": "2026-09-21 한 화면 구성 · 고유 액터 3개·유스케이스 10개·연관 16개·포함 3개 · 하나의 시스템 경계와 하나의 다이어그램"
 }

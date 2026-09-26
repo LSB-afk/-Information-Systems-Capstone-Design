@@ -53,6 +53,11 @@ function sha256(file) {
   return crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
 }
 
+function flowStep(step) {
+  const match = String(step).match(/^(SCR-[A-Z]-\d{3}(?:-P\d{2})?)\s+([\s\S]+)$/);
+  return match ? `<span class="flow-id">${escape(match[1])}</span><span>${escape(match[2])}</span>` : escape(step);
+}
+
 function imagePath(image) {
   if (typeof image !== 'string' || !image) throw new Error('Every storyboard needs a local captured image');
   const resolved = path.resolve(ROOT, image);
@@ -68,7 +73,7 @@ function validate(data) {
   const ids = data.inventory.map(row => row.id);
   if (new Set(ids).size !== ids.length) throw new Error('Screen inventory contains duplicate IDs');
   for (const board of data.boards) {
-    if (!ids.includes(board.screenId)) throw new Error(`Storyboard is missing from the screen inventory: ${board.screenId}`);
+    if (!ids.some(id => board.screenId === id || board.screenId.startsWith(`${id}-P`))) throw new Error(`Storyboard is missing from the screen inventory: ${board.screenId}`);
     if (!Array.isArray(board.items) || !board.items.length) throw new Error(`Storyboard has no behavior descriptions: ${board.screenId}`);
     if (new Set(board.items.map(item => item.n)).size !== board.items.length) throw new Error(`Duplicate annotation numbers: ${board.screenId}`);
     for (const item of board.items) {
@@ -135,7 +140,8 @@ h3{font-size:25px;line-height:1.25;font-weight:740;letter-spacing:-.02em}
 .flow-lane{border:1px solid #dce4de;border-left:5px solid #236447;border-radius:9px;padding:25px 28px;margin-bottom:24px}
 .flow-lane h3{margin-bottom:17px}
 .flow-route{display:flex;flex-wrap:wrap;align-items:stretch;gap:11px}
-.flow-step{display:flex;align-items:center;justify-content:center;text-align:center;min-height:73px;flex:1 1 160px;max-width:360px;background:#f0f5ef;border:1px solid #d7e3d6;border-radius:8px;padding:13px 16px;font-size:20px;font-weight:650;white-space:pre-line}
+.flow-step{display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;text-align:center;min-height:73px;flex:1 1 145px;max-width:360px;background:#f0f5ef;border:1px solid #d7e3d6;border-radius:8px;padding:13px 14px;font-size:18px;font-weight:650;white-space:pre-line;word-break:keep-all;overflow-wrap:break-word}
+.flow-id{font-size:15px;line-height:1.3;white-space:nowrap;color:#49634f}
 .flow-arrow{display:flex;align-items:center;color:#8da292;font-size:27px;flex:0 0 20px}
 .flow-note{font-size:18px;color:#637369;margin-top:15px}
 .scope-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:19px;margin-top:28px}
@@ -146,7 +152,7 @@ h3{font-size:25px;line-height:1.25;font-weight:740;letter-spacing:-.02em}
 .metadata div{font-size:18px;line-height:1.45;overflow-wrap:anywhere}
 .metadata label{font-size:14px;font-weight:700;color:#6d7b71;display:block;letter-spacing:.04em;margin-bottom:4px}
 .board .page-header{margin-bottom:17px}
-.board-layout{height:765px;display:grid;grid-template-columns:minmax(0,1.98fr) minmax(0,1fr);gap:29px}
+.board-layout{height:725px;display:grid;grid-template-columns:minmax(0,1.98fr) minmax(0,1fr);gap:29px}
 .capture-panel{min-width:0;min-height:0;display:flex;flex-direction:column}
 .capture-top{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:11px;font-size:16px;color:#627469}
 .capture-stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;background:#f2f5f0;border:1px solid #d9e1d7;border-radius:9px;padding:12px;overflow:hidden}
@@ -162,7 +168,7 @@ h3{font-size:25px;line-height:1.25;font-weight:740;letter-spacing:-.02em}
 .description-heading h3{font-size:23px}
 .description-heading span{font-size:14px;color:#637769}
 .description-items{padding:6px 21px 8px;flex:1;min-height:0}
-.description-item{padding:15px 0;border-bottom:1px solid #dfe6dc;font-size:19px;line-height:1.48}
+.description-item{padding:12px 0;border-bottom:1px solid #dfe6dc;font-size:18px;line-height:1.44}
 .description-item:last-child{border-bottom:0}
 .item-title{display:flex;align-items:center;gap:10px;font-weight:740;font-size:20px;line-height:1.3;margin-bottom:6px}
 .number{flex:none;display:inline-flex;width:28px;height:28px;align-items:center;justify-content:center;background:#236447;color:#fff;border-radius:50%;font-size:16px;font-weight:750}
@@ -170,11 +176,11 @@ h3{font-size:25px;line-height:1.25;font-weight:740;letter-spacing:-.02em}
 .behavior strong{color:#273d30;font-weight:640}
 .behavior .arrow{color:#739580;padding:0 4px;font-weight:700}
 .target{display:block;font-size:15px;color:#236447;margin-top:5px;font-weight:650}
-.description.dense .description-item{font-size:17px;padding:12px 0;line-height:1.46}
+.description.dense .description-item{font-size:16.5px;padding:9px 0;line-height:1.42}
 .description.dense .item-title{font-size:18px;margin-bottom:5px}
 .description.dense .behavior{padding-left:34px}
 .description.dense .number{width:25px;height:25px;font-size:15px}
-.description.tight .description-item{font-size:16px;padding:10px 0;line-height:1.4}
+.description.tight .description-item{font-size:16px;padding:7px 0;line-height:1.36}
 .description.tight .item-title{font-size:17px}
 .checklist-table td{padding:17px 14px;font-size:19px}
 .checklist-table td:first-child{font-size:19px;color:#20352d;font-weight:650}
@@ -199,7 +205,7 @@ function header(section, title, badge = '') {
 }
 
 function status(value, compact = false) {
-  const pending = /대기|미완|미확인|보완|예정|검토|진행|실패|차단/.test(String(value));
+  const pending = /대기|미완|미확인|미검증|보완|예정|검토|진행|실패|차단/.test(String(value));
   return `<span class="status${pending ? ' pending' : ''}${compact ? ' compact' : ''}">${escape(value)}</span>`;
 }
 
@@ -213,27 +219,27 @@ function makePages(data) {
   pages.push({ key: 'cover', className: 'cover', html: `
     <header class="page-header"><p class="eyebrow">SCREEN DESIGN DOCUMENT</p>${status(isPending ? 'Figma 연결 · 캡처 · 공유 권한 확인 대기 / 검토본' : (meta.figma.status || '화면설계서'))}</header>
     <h1 class="cover-title">${escape(meta.title)}<br>화면설계서</h1>
-    <p class="cover-subtitle">PROJECT.md와 Use Case를 화면 구조, 사용자 동작, 시스템 처리 및 결과로 연결</p>
+    <p class="cover-subtitle">${escape(meta.subtitle || 'PROJECT.md와 Use Case를 화면 구조, 사용자 동작, 시스템 처리 및 결과로 연결')}</p>
     <div class="cover-meta"><div><label>팀</label>${escape(meta.team)}</div><div><label>작성 기준일</label>${escape(meta.date)}</div><div><label>버전</label>${escape(meta.version)}</div><div><label>Actor</label>${join(actors)}</div></div>
-    <div class="cover-stats"><div><strong>${screenCount}</strong><span>고유 Screen ID</span></div><div><strong>${ucCount}</strong><span>연결된 Use Case</span></div><div><strong>${data.boards.length}</strong><span>주요 화면 · 상태 스토리보드</span></div></div>
+    <div class="cover-stats"><div><strong>${screenCount}</strong><span>주요 Screen ID</span></div><div><strong>${ucCount}</strong><span>연결된 Use Case</span></div><div><strong>${data.boards.length}</strong><span>주요 화면 · 상태 스토리보드</span></div></div>
     <section class="figma-block">${figmaContent(meta)}</section>` });
 
-  const flowGroups = chunks(data.flows, 3);
+  const flowGroups = chunks(data.flows, 2);
   if (!flowGroups.length) flowGroups.push([]);
   flowGroups.forEach((flows, index) => {
     pages.push({ key: `flows-${index + 1}`, html: `${header('01 / SERVICE STRUCTURE', `Actor별 화면구성도${flowGroups.length > 1 ? ` (${index + 1}/${flowGroups.length})` : ''}`)}
       <p class="section-lead">메뉴와 버튼 선택에 따른 전체 흐름 · 세부 분기와 예외 동작은 각 Screen ID의 스토리보드에 표시</p>
-      ${flows.map(flow => `<section class="flow-lane"><h3>${escape(flow.actor)}</h3><div class="flow-route">${list(flow.steps).map((step, stepIndex) => `${stepIndex ? '<span class="flow-arrow" aria-hidden="true">→</span>' : ''}<div class="flow-step">${escape(step)}</div>`).join('')}</div>${flow.note ? `<p class="flow-note">${escape(flow.note)}</p>` : ''}</section>`).join('')}
+      ${flows.map(flow => `<section class="flow-lane"><h3>${escape(flow.actor)}</h3><div class="flow-route">${list(flow.steps).map((step, stepIndex) => `${stepIndex ? '<span class="flow-arrow" aria-hidden="true">→</span>' : ''}<div class="flow-step">${flowStep(step)}</div>`).join('')}</div>${flow.note ? `<p class="flow-note">${escape(flow.note)}</p>` : ''}</section>`).join('')}
       ${index === flowGroups.length - 1 ? `<div class="scope-summary"><section class="scope-card"><h3>구현 범위</h3><p>필수 · 선택 · 공통 기능의 구분은 화면 목록과 Use Case 연결표의 범위를 따름</p></section><section class="scope-card"><h3>화면 수 기준</h3><p>같은 작업 흐름의 탭, 팝업, 오류 상태는 하나의 주요 화면에 포함하며 필요한 상태만 별도로 설명</p></section><section class="scope-card"><h3>캡처 출처</h3><p>${escape(meta.captureSource || '로컬 웹 시안')}${isPending ? ' · Figma 캡처 반영 대기' : ''}</p></section></div>` : ''}` });
   });
 
-  chunks(data.inventory, 8).forEach((rows, index, groups) => {
-    pages.push({ key: `inventory-${index + 1}`, html: `${header('02 / SCREEN INVENTORY', `화면 목록 (${index + 1}/${groups.length})`, status(`${screenCount}개 Screen ID`, true))}
+  chunks(data.inventory, 4).forEach((rows, index, groups) => {
+    pages.push({ key: `inventory-${index + 1}`, html: `${header('02 / SCREEN INVENTORY', `화면 목록 (${index + 1}/${groups.length})`, status(`${screenCount}개 주요 Screen ID`, true))}
       <p class="section-lead">화면 경로와 Actor를 고정하고, 관련 Use Case를 통해 요구사항을 추적</p>
-      <table class="table"><colgroup><col style="width:13%"><col style="width:12%"><col style="width:17%"><col style="width:19%"><col style="width:25%"><col style="width:14%"></colgroup><thead><tr><th>Screen ID</th><th>Actor</th><th>화면명</th><th>관련 Use Case</th><th>화면 경로</th><th>범위</th></tr></thead><tbody>${rows.map(row => `<tr><td>${escape(row.id)}</td><td>${join(row.actors, '<br>')}</td><td>${escape(row.name)}</td><td>${join(row.ucs, '<br>')}</td><td>${escape(row.path)}</td><td class="scope-cell">${escape(row.scope)}</td></tr>`).join('')}</tbody></table>` });
+      <table class="table"><colgroup><col style="width:12%"><col style="width:12%"><col style="width:14%"><col style="width:20%"><col style="width:21%"><col style="width:21%"></colgroup><thead><tr><th>Screen ID</th><th>Actor</th><th>화면명</th><th>관련 Use Case</th><th>화면 경로</th><th>범위</th></tr></thead><tbody>${rows.map(row => `<tr><td>${escape(row.id)}</td><td>${join(row.actors, '<br>')}</td><td>${escape(row.name)}</td><td>${join(row.ucs, ', ') || '별도 UC ID 없음'}</td><td>${escape(row.path)}</td><td class="scope-cell">${escape(row.scope)}</td></tr>`).join('')}</tbody></table>` });
   });
 
-  chunks(data.coverage, 16).forEach((rows, index, groups) => {
+  chunks(data.coverage, 12).forEach((rows, index, groups) => {
     pages.push({ key: `coverage-${index + 1}`, html: `${header('03 / REQUIREMENT TRACEABILITY', `Use Case와 화면 연결 (${index + 1}/${groups.length})`)}
       <p class="section-lead">Use Case마다 하나 이상의 화면 또는 화면 내 동작을 연결 · 선택 기능의 실제 구현 여부는 범위에 표시</p>
       <table class="table compact"><colgroup><col style="width:12%"><col style="width:28%"><col style="width:16%"><col style="width:24%"><col style="width:20%"></colgroup><thead><tr><th>Use Case</th><th>Use Case명</th><th>기능 ID</th><th>화면 / 화면 내 기능</th><th>구현 범위</th></tr></thead><tbody>${rows.map(row => `<tr><td>${escape(row.uc)}</td><td>${escape(row.name)}</td><td>${escape(row.feature)}</td><td>${join(row.screen, '<br>')}</td><td>${escape(row.scope)}</td></tr>`).join('')}</tbody></table>` });
@@ -242,12 +248,12 @@ function makePages(data) {
   data.boards.forEach(board => {
     const markers = board.items.filter(item => Number.isFinite(item.x) && Number.isFinite(item.y)).map(item => `<span class="marker" style="left:${item.x}%;top:${item.y}%" title="${escape(item.title)}">${escape(item.n)}</span>`).join('');
     pages.push({ key: board.key || board.screenId, className: 'board', html: `${header(board.screenId, board.name, status(board.scope || '주요 화면', true))}
-      <section class="metadata"><div><label>ACTOR</label>${join(board.actors)}</div><div><label>RELATED USE CASE</label>${join(board.ucs)}</div><div><label>PATH</label>${escape(board.path)}</div></section>
+      <section class="metadata"><div><label>ACTOR</label>${join(board.actors)}</div><div><label>RELATED USE CASE</label>${join(board.ucs) || '별도 UC ID 없음'}</div><div><label>PATH</label>${escape(board.path)}</div></section>
       <div class="board-layout"><section class="capture-panel"><div class="capture-top"><span>${escape(meta.captureSource || '로컬 웹 시안')}</span><span>번호 ↔ 우측 동작 설명</span></div><div class="capture-stage"><div class="shot-wrap"><img src="${escape(pathToFileURL(imagePath(board.image)).href)}" alt="${escape(`${board.screenId} ${board.name}`)}">${markers}</div></div><p class="capture-caption">${escape(board.caption)}</p>${list(board.states).length ? `<section class="state-block"><h3>주요 상태와 예외 처리</h3><ul>${list(board.states).map(state => `<li>${escape(state)}</li>`).join('')}</ul></section>` : ''}</section>
-      <section class="description${board.items.length >= 6 ? ' dense' : ''}${board.items.length >= 8 ? ' tight' : ''}"><div class="description-heading"><h3>Description</h3><span>행위 → 처리 → 결과</span></div><div class="description-items">${board.items.map(item => `<article class="description-item"><h3 class="item-title"><span class="number">${escape(item.n)}</span>${escape(item.title)}</h3><p class="behavior"><strong>${escape(item.action)}</strong><span class="arrow">→</span>${escape(item.process)}<span class="arrow">→</span>${escape(item.result)}${item.target ? `<span class="target">이동 / 연결: ${escape(item.target)}</span>` : ''}</p></article>`).join('')}</div></section></div>` });
+      <section class="description${board.items.length >= 5 ? ' dense' : ''}${board.items.length >= 6 ? ' tight' : ''}"><div class="description-heading"><h3>Description</h3><span>행위 → 처리 → 결과</span></div><div class="description-items">${board.items.map(item => `<article class="description-item"><h3 class="item-title"><span class="number">${escape(item.n)}</span>${escape(item.title)}</h3><p class="behavior"><strong>${escape(item.action)}</strong><span class="arrow">→</span>${escape(item.process)}<span class="arrow">→</span>${escape(item.result)}${item.target ? `<span class="target">이동 / 연결: ${escape(item.target)}</span>` : ''}</p></article>`).join('')}</div></section></div>` });
   });
 
-  chunks(data.checklist, 8).forEach((rows, index, groups) => {
+  chunks(data.checklist, 5).forEach((rows, index, groups) => {
     pages.push({ key: `checklist-${index + 1}`, html: `${header('05 / SUBMISSION CHECK', `제출 전 일관성 확인 (${index + 1}/${groups.length})`, status(isPending ? '검토본 · Figma 확인 대기' : '검증 기록', true))}
       <p class="section-lead">PROJECT.md → Use Case Diagram → 화면설계서 → Figma의 기능명, Actor, 범위 및 이동 흐름 확인</p>
       <table class="table checklist-table"><colgroup><col style="width:31%"><col style="width:17%"><col style="width:52%"></colgroup><thead><tr><th>확인 항목</th><th>현재 상태</th><th>증거 / 남은 확인</th></tr></thead><tbody>${rows.map(row => `<tr><td>${escape(row.requirement)}</td><td>${status(row.status, true)}</td><td class="evidence">${escape(row.evidence)}</td></tr>`).join('')}</tbody></table>
@@ -281,6 +287,10 @@ async function main() {
     await page.evaluate(async () => {
       await document.fonts.ready;
       await Promise.all([...document.images].map(image => image.decode()));
+      for (const layout of document.querySelectorAll('.board-layout')) {
+        const footerTop = layout.closest('.page').querySelector('.page-footer').getBoundingClientRect().top;
+        layout.style.height = `${footerTop - layout.getBoundingClientRect().top - 20}px`;
+      }
       for (const image of document.images) {
         const stage = image.closest('.capture-stage');
         if (!stage) continue;
@@ -321,10 +331,11 @@ async function main() {
     report.captureSource = data.meta.captureSource || '로컬 웹 시안';
     report.networkRequests = requests;
     report.annotationGaps = data.boards.filter(board => !board.annotated && board.items.some(item => item.x == null || item.y == null)).map(board => board.key || board.screenId);
-    if (!report.fontLoaded || report.images.some(image => !image.loaded) || report.violations.length || requests.length) {
+    if (!report.fontLoaded || report.images.some(image => !image.loaded) || report.violations.length || requests.length || report.annotationGaps.length) {
       fs.writeFileSync(options.report, `${JSON.stringify(report, null, 2)}\n`);
-      throw new Error(`PDF validation failed: ${report.violations.length} overflow violations, font=${report.fontLoaded}, remoteRequests=${requests.length}; see ${options.report}`);
+      throw new Error(`PDF validation failed: ${report.violations.length} overflow violations, font=${report.fontLoaded}, remoteRequests=${requests.length}, annotationGaps=${report.annotationGaps.length}; see ${options.report}`);
     }
+    fs.writeFileSync(options.html, await page.content());
     await page.pdf({ path: options.output, preferCSSPageSize: true, printBackground: true, displayHeaderFooter: false });
     report.pdfSha256 = sha256(options.output);
     report.pdfBytes = fs.statSync(options.output).size;

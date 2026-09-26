@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-09-26T13:57:03.633Z",
+  "traceability": "passed",
+  "actors": 3,
+  "useCases": 32,
+  "mainScreens": 8,
+  "storyboardPages": 21,
+  "callouts": 73,
+  "requiredAndSupportUseCases": 30,
+  "optionalUnderReview": 2,
+  "figmaPending": true,
+  "submissionReady": false,
+  "limits": [
+    "Figma connector account connection pending",
+    "Screenshots are local web captures",
+    "Figma file generation, prototype links, shared URL and anonymous access check not completed"
+  ],
+  "hashes": {
+    "00_제출/Red_PROJECT.md": "eb4d0dad6193ff53b48345bce68f00f8d7caeb6a36db79c2a131cea8689552a5",
+    "00_제출/Red_USECASE.md": "d2ad0fb865ef0d0f3d3c1e0a3235b521138531da1a8f8771651dc1c2ff1f5558",
+    "00_제출/Red_USECASE.mdj": "4d34e67e324a27eb1c2b299b76b12ebfab01659d2e19aa17830a8bfa0ec1205c",
+    "02_제품/화면설계/requirements.json": "0ef620aec4d7eca617a6a7b88b44cb264f9799b22057c36b736375c89105faf7",
+    "02_제품/화면설계/storyboards.json": "667f936be44b3f65423061cc92870ec8e7b16fedcc731bfc4cf57ef29afaa88b"
+  }
+}

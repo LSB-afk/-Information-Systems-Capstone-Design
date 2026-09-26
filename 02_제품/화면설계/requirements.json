@@ -359,7 +359,7 @@
       "uc": "UC10",
       "name": "자료 출처·기준 표시",
       "feature": "F01·F02 공통",
-      "screen": "SCR-C-003, SCR-C-004",
+      "screen": "SCR-C-003",
       "scope": "분석·제안 조회에 필수 포함"
     }
   ],
@@ -418,12 +418,12 @@
     {
       "requirement": "Actor별 화면구성도·화면 목록",
       "status": "문서 반영",
-      "evidence": "3 Actor 흐름·8 Screen ID·화면 경로·6 팝업 ID를 Red_SCREEN.md에 기록; 일반 사용자는 설계 가정"
+      "evidence": "3 Actor 흐름·8 Screen ID·화면 경로·6 팝업·패널 ID를 Red_SCREEN.md에 기록; 일반 사용자는 설계 가정"
     },
     {
       "requirement": "화면별 번호와 행동→처리→결과 Description",
       "status": "문서 반영·캡처 대조 대기",
-      "evidence": "8개 주요 화면 및 6개 팝업의 번호·동작·이동 화면을 Red_SCREEN.md에 정의"
+      "evidence": "8개 주요 화면 및 6개 팝업·패널의 번호·동작·이동 화면을 Red_SCREEN.md에 정의"
     },
     {
       "requirement": "입력 오류·빈 결과·불가·실패·완료 상태",

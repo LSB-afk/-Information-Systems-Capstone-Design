@@ -11,7 +11,7 @@ const model=read('00_제출/Red_USECASE.mdj');
 const nodes=[];
 function walk(x){if(!x||typeof x!=='object')return;if(x._type)nodes.push(x);Object.values(x).forEach(v=>Array.isArray(v)?v.forEach(walk):walk(v));}
 walk(model);
-const canonical=nodes.filter(n=>n._type==='UMLUseCase').map(n=>({id:n.name.match(/^UC\d+(?:-\d+)?/)[0],name:n.name.replace(/^UC\d+(?:-\d+)?\\n/,'')}));
+const canonical=nodes.filter(n=>n._type==='UMLUseCase').map(n=>({id:n.name.match(/^UC\d+(?:-\d+)?/)[0],name:n.name.replace(/^UC\d+(?:-\d+)?/,'').replace(/^(?:\\n|\s)+/,'')}));
 const actors=nodes.filter(n=>n._type==='UMLActor').map(n=>n.name).sort();
 assert.deepEqual(actors,['사용자','사업체 운영자','서비스 운영자'].sort());
 assert.equal(canonical.length,32);

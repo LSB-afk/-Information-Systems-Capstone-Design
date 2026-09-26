@@ -1,0 +1,166 @@
+TAP version 13
+# Subtest: Desktop menu starts at 248px with an accessible width separator at 1440px and 1024px
+ok 1 - Desktop menu starts at 248px with an accessible width separator at 1440px and 1024px
+  ---
+  duration_ms: 872.683792
+  type: 'test'
+  ...
+# Subtest: Dragging the menu clamps to 216–360px and saves its width across refresh
+ok 2 - Dragging the menu clamps to 216–360px and saves its width across refresh
+  ---
+  duration_ms: 719.820791
+  type: 'test'
+  ...
+# Subtest: Keyboard resizing, collapse, restore and reset retain the correct saved width
+ok 3 - Keyboard resizing, collapse, restore and reset retain the correct saved width
+  ---
+  duration_ms: 453.682167
+  type: 'test'
+  ...
+# Subtest: A mobile drawer stays expanded despite desktop preferences and its bottom is reachable at short height
+ok 4 - A mobile drawer stays expanded despite desktop preferences and its bottom is reachable at short height
+  ---
+  duration_ms: 278.533166
+  type: 'test'
+  ...
+# Subtest: A fresh visit opens the login form without horizontal overflow at desktop, tablet and mobile widths
+ok 5 - A fresh visit opens the login form without horizontal overflow at desktop, tablet and mobile widths
+  ---
+  duration_ms: 482.731125
+  type: 'test'
+  ...
+# Subtest: Password visibility changes without submitting the form or losing its values
+ok 6 - Password visibility changes without submitting the form or losing its values
+  ---
+  duration_ms: 288.494542
+  type: 'test'
+  ...
+# Subtest: Unknown credentials and credentials for the other role are rejected visibly without navigation
+ok 7 - Unknown credentials and credentials for the other role are rejected visibly without navigation
+  ---
+  duration_ms: 365.256
+  type: 'test'
+  ...
+# Subtest: Each public demo account opens its role and stores only the role in its session
+ok 8 - Each public demo account opens its role and stores only the role in its session
+  ---
+  duration_ms: 578.519667
+  type: 'test'
+  ...
+# Subtest: Logout clears the demo session while keeping saved plans and menu preferences
+ok 9 - Logout clears the demo session while keeping saved plans and menu preferences
+  ---
+  duration_ms: 405.694125
+  type: 'test'
+  ...
+# Subtest: Explicit preview links and the preview button remain available without a demo session
+ok 10 - Explicit preview links and the preview button remain available without a demo session
+  ---
+  duration_ms: 238.466708
+  type: 'test'
+  ...
+# Subtest: Skip to content keeps the current view and focuses its main element
+ok 11 - Skip to content keeps the current view and focuses its main element
+  ---
+  duration_ms: 678.646625
+  type: 'test'
+  ...
+# Subtest: Metric, source, role and region choices retain keyboard focus
+ok 12 - Metric, source, role and region choices retain keyboard focus
+  ---
+  duration_ms: 270.314791
+  type: 'test'
+  ...
+# Subtest: Selecting the active mobile menu closes it and releases the page
+ok 13 - Selecting the active mobile menu closes it and releases the page
+  ---
+  duration_ms: 250.42025
+  type: 'test'
+  ...
+# Subtest: Saving a plan restores focus to its replacement launch button
+ok 14 - Saving a plan restores focus to its replacement launch button
+  ---
+  duration_ms: 255.319584
+  type: 'test'
+  ...
+# Subtest: Replacing an open dialog puts focus inside its new controls
+ok 15 - Replacing an open dialog puts focus inside its new controls
+  ---
+  duration_ms: 265.601333
+  type: 'test'
+  ...
+# Subtest: A null saved value does not leave the prototype blank
+ok 16 - A null saved value does not leave the prototype blank
+  ---
+  duration_ms: 177.580708
+  type: 'test'
+  ...
+# Subtest: Recovery keeps valid plans and records while excluding malformed entries
+ok 17 - Recovery keeps valid plans and records while excluding malformed entries
+  ---
+  duration_ms: 164.239541
+  type: 'test'
+  ...
+# Subtest: Unavailable years show an empty state instead of retaining example statistics
+ok 18 - Unavailable years show an empty state instead of retaining example statistics
+  ---
+  duration_ms: 678.79075
+  type: 'test'
+  ...
+# Subtest: All proposal categories and source conditions are shown inline
+ok 19 - All proposal categories and source conditions are shown inline
+  ---
+  duration_ms: 192.918792
+  type: 'test'
+  ...
+# Subtest: New record fields distinguish missing results from zero after save and reload
+ok 20 - New record fields distinguish missing results from zero after save and reload
+  ---
+  duration_ms: 553.916125
+  type: 'test'
+  ...
+# Subtest: Older saved records gain empty new fields and remain usable
+ok 21 - Older saved records gain empty new fields and remain usable
+  ---
+  duration_ms: 238.471417
+  type: 'test'
+  ...
+# Subtest: CSV five validations block missing values, allow good examples, and invalidate edited metadata
+ok 22 - CSV five validations block missing values, allow good examples, and invalidate edited metadata
+  ---
+  duration_ms: 440.935833
+  type: 'test'
+  ...
+# Subtest: Local CSV file selection is validated without server upload
+ok 23 - Local CSV file selection is validated without server upload
+  ---
+  duration_ms: 291.086541
+  type: 'test'
+  ...
+# Subtest: Recommendation rules and evidence persist only in the browser
+ok 24 - Recommendation rules and evidence persist only in the browser
+  ---
+  duration_ms: 391.475916
+  type: 'test'
+  ...
+# Subtest: Failed plan saves preserve inputs for retry and do not count as a completed plan
+ok 25 - Failed plan saves preserve inputs for retry and do not count as a completed plan
+  ---
+  duration_ms: 298.261334
+  type: 'test'
+  ...
+# Subtest: Failed record saves retain inputs, and optional AI remains unavailable
+ok 26 - Failed record saves retain inputs, and optional AI remains unavailable
+  ---
+  duration_ms: 364.424167
+  type: 'test'
+  ...
+1..26
+# tests 26
+# suites 0
+# pass 26
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4882.256291

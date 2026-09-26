@@ -10,6 +10,18 @@ const common = ['사업체 운영자','서비스 운영자'];
 const readers = ['사용자(조회 가정)',...common];
 const item = (n, selector, title, action, process, result, target='현재 화면') => ({n,selector,title,action,process,result,target});
 const scenes = [];
+async function fillRecordExample(page,save=true){
+  await page.locator('[data-record=sample-oct]').click();
+  await page.locator('#record-minutes').fill('18');
+  await page.locator('#record-adopted').selectOption('yes');
+  await page.locator('#record-date').fill('2026-10-06');
+  await page.locator('#record-activity').fill('가을 메뉴 사진을 촬영하고 매장 안내물에 게시함');
+  await page.locator('#record-clicks').fill('0');
+  await page.locator('#record-bookings').fill('');
+  await page.locator('#record-coupons').fill('3');
+  await page.locator('#record-note').fill('화면 설계용 인위적 기록 · 실제 사업체 결과가 아님');
+  if(save)await page.locator('#record-form button[type=submit]').click();
+}
 const add = (key,screenId,name,route,ucs,items,extra={}) => scenes.push({key,screenId,name,route,ucs,items,actors:common,path:`로그인 > 한눈에 보기 > ${name}`,scope:'필수 기능의 화면 시안',states:[],...extra});
 add('login','SCR-C-001','로그인','login',[],[
   item(1,'.login-roles','로그인 역할','사업체 또는 서비스 운영자 선택','선택한 체험 역할과 계정 안내 갱신','이메일·비밀번호 입력 준비'),
@@ -36,7 +48,8 @@ add('analysis-visits','SCR-C-003','지역 분석 · 방문과 계절','analysis'
 add('analysis-consumption','SCR-C-003','지역 분석 · 소비 비교','analysis',['UC02-1','UC02-2','UC02-3','UC10'],[
   item(1,'[data-analysis-mode="consumption"]','소비 비교 상태','소비 비교 탭 선택','분석 조건에 맞는 예시 표 조회','방문·소비를 단위별로 따로 표시'),
   item(2,'#consumption-comparison','방문·소비 비교','동일 월의 두 지표 확인','기간 겹침·누락 여부 표시','실제 구매전환율이나 1인당 소비액으로 계산하지 않음'),
-  item(3,'#timeband-table','시간대별 소비','시간대별 표 확인','월별로 집계한 분포 제공','실시간 혼잡도 또는 개인 기록을 표시하지 않음')
+  item(3,'.consumption-tables>section:first-child','내국인·외국인 비교','업종별 두 비중 확인','같은 월·업종 소비액 기준으로 비교','분모·출처를 확인하고 실제 대상 선정은 원자료 확인'),
+  item(4,'#timeband-table','시간대별 소비','시간대별 표 확인','월별로 집계한 분포 제공','실시간 혼잡도 또는 개인 기록을 표시하지 않음')
 ],{actors:readers,prepare:async p=>p.locator('[data-analysis-mode=consumption]').click(),states:['내국인·외국인 비중: 예시 집계값과 단위 표시','소비 미수집: 0원으로 바꾸지 않음','공급사·집계 기준이 다르면 비교 제한']});
 add('recommendations','SCR-C-004','홍보 제안','recommendations',['UC02-4','UC02-5','UC02-6','UC02-7','UC10'],[
   item(1,'.recommendation:first-child','시기·대상·상품·관광지','제안과 판단 이유 확인','사용한 출처·기간·조건을 함께 제시','상품 판매 가능성은 사업체가 확인'),
@@ -60,8 +73,9 @@ add('plan-edit','SCR-B-001-P01','계획 작성·수정 팝업','calendar',['UC03
 add('records','SCR-B-002','실행 기록·사용 결과','records',['UC04-1','UC04-2','UC04-3','UC04-4','UC04-5','UC04-6','UC05-1','UC05-2'],[
   item(1,'[data-record=sample-oct]','사용 기록 입력','기록 입력·수정 클릭','해당 계획에 연결된 기록 불러오기','소요 시간·채택·실행·결과 입력','SCR-B-002-P01'),
   item(2,'.record-row:first-child','계획과 실제 비교','계획별 기록 확인','예정 활동·날짜와 실제 활동·날짜 구분','미기록은 실행 실패로 간주하지 않음'),
-  item(3,'[data-action=report]','필수 사용 결과 요약','사용 결과 요약 클릭','입력한 기록만 집계','소요 시간·채택·실행 및 확보한 결과 요약','SCR-B-002-P02')
-],{states:['빈 상태: 먼저 계획을 만들도록 일정 이동 제공','숫자 0: 실제 확인한 0건, 빈칸: 미수집','F04 보고서 초안은 도입 검토 중, 필수 요약과 분리']});
+  item(3,'[data-action=report]','필수 사용 결과 요약','사용 결과 요약 클릭','입력한 기록만 집계','소요 시간·채택·실행 및 확보한 결과 요약','SCR-B-002-P02'),
+  item(4,'#optional-report','선택 보고서 기능','도입 상태 확인','검토 중인 F04 보고서 초안은 비활성 표시','필수 사용 결과 요약은 계속 이용 가능')
+],{prepare:fillRecordExample,states:['빈 상태: 먼저 계획을 만들도록 일정 이동 제공','숫자 0: 실제 확인한 0건, 빈칸: 미수집','F04 보고서 초안은 도입 검토 중, 필수 요약과 분리']});
 add('record-edit','SCR-B-002-P01','사용·실행 기록 입력 팝업','records',['UC04-1','UC04-2','UC04-3','UC04-4','UC04-5','UC04-6'],[
   item(1,'#record-minutes','계획 소요 시간','소요 시간을 분 단위로 입력','음수·유효 범위 검사, 빈칸은 미측정','계획별 시간 보관'),
   item(2,'#record-adopted','추천 채택 여부','채택·미채택·확인 중 선택','선택 내용과 연결해 저장','채택 여부를 자동 추정하지 않음'),
@@ -69,11 +83,11 @@ add('record-edit','SCR-B-002-P01','사용·실행 기록 입력 팝업','records
   item(4,'#record-coupons','활동 결과','클릭·예약·쿠폰 사용 건수 입력','비음수 정수 검사, 빈칸은 null 유지','미수집과 실제 0건 구분'),
   item(5,'#record-note','수집 방법','결과 출처·확인 방법 입력','기록과 함께 보관','이후 사용 결과 해석에 활용'),
   item(6,'#record-form button[type=submit]','기록 저장','기록 저장 클릭','입력 검증 후 저장, 실패 시 입력 유지','성공 시 기록 비교 목록 갱신','SCR-B-002')
-],{prepare:async p=>p.locator('[data-record=sample-oct]').click(),states:['미실행: 실제 실행 날짜 필수 아님','결과 미확보: 빈칸 허용·0 자동 입력 금지','수집값 오류·저장 오류: 입력 내용 유지']});
+],{prepare:async p=>fillRecordExample(p,false),states:['미실행: 실제 실행 날짜 필수 아님','결과 미확보: 빈칸 허용·0 자동 입력 금지','수집값 오류·저장 오류: 입력 내용 유지']});
 add('summary','SCR-B-002-P02','사용 결과 요약 팝업','records',['UC05-1','UC05-2'],[
   item(1,'#dialog .dialog-body','기록 기반 요약','사용 결과 요약 조회','저장한 계획·채택·시간·결과와 미확보 상태 집계','매출 증가나 인과 효과를 추정하지 않음'),
   item(2,'#dialog [data-action=close-dialog]','기록으로 돌아가기','닫기 클릭','요약 팝업 닫기','이전 기록 화면으로 복귀','SCR-B-002')
-],{prepare:async p=>p.locator('[data-action=report]').click(),states:['기록 없음: 미기록 안내','미확보 결과: 요약에서도 미확보로 유지','규칙 기반 필수 요약이며 선택 AI 보고서와 구분']});
+],{prepare:async p=>{await fillRecordExample(p);await p.locator('[data-action=report]').click();},states:['기록 없음: 미기록 안내','미확보 결과: 요약에서도 미확보로 유지','규칙 기반 필수 요약이며 선택 AI 보고서와 구분']});
 add('ontology','SCR-C-005','근거 연결','ontology',['UC10'],[
   item(1,'[data-node=source]','자료 버전','자료 버전 선택','해당 관계의 출처·기간 설명 표시','우측 설명 갱신'),
   item(2,'[data-node=recommendation]','제안과 관측값','홍보 제안 관계 선택','사용한 수치와 확인할 운영 조건 표시','상관관계를 인과효과로 해석하지 않음'),

@@ -53,7 +53,7 @@ test('Stale CSV reads cannot replace a newer file, example or screen',()=>visit(
   assert(await p.locator('[data-action=csv-register]').isDisabled());
   assert(!(await p.locator('[data-action=validate]').isDisabled()));
   await select('delayed-navigation.csv');
-  await p.locator('.sidebar a[href="#overview"]').click();await p.waitForURL('**/#overview');
+  await p.locator('.sidebar .nav-link[href="#overview"]').click();await p.waitForURL('**/#overview');
   await p.evaluate(()=>window.releaseCSVRead());
   assert.deepEqual(errors,[]);
   await p.locator('.sidebar a[href="#data"]').click();await p.waitForURL('**/#data');

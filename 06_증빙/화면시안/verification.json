@@ -1,16 +1,16 @@
 {
   "status": "passed",
-  "runAt": "2026-09-26T13:54:44.192Z",
+  "runAt": "2026-09-26T14:03:49.125Z",
   "browserVersion": "153.0.8010.54",
   "nodeVersion": "v24.11.1",
   "sourceHashes": {
     "index.html": "699bd622767fad6e9e542cb5be72976e399cc717da5abfe807716f815dd4ddef",
     "styles.css": "7dde1e7060242d853765f1cb8fe7fad647515d52d0326f795256fe394a5e41e4",
-    "app.js": "01b4c5443d97cc6122d53df0928f19c969d6f585fe091a7c30c72a9d7a1ec39b",
+    "app.js": "757a4555fe6e59b65c29018f2b3afce05a8355a23b85397d539423f5475da9c4",
     "verify.cjs": "ef7c1177766457650dbefa859d3da0a3fceb894f5285c82eb32de125dadd8927",
     "verify-regressions.cjs": "657c5cc25632dfb734ab5db424ea5a13c703602f9137fd457b4fffcd193699ba",
     "verify-layout-login.cjs": "06d6a0fb4cfb74ce52a7137fce443e114848e6ef7a9d33efe909a1b4a098bf71",
-    "verify-usecase-gaps.cjs": "8202fa0f8c7f2857e687f01aee72248e5dd61621514835b7409a79c66e48f1a3"
+    "verify-usecase-gaps.cjs": "77cadda99e7a067c3363c780e5be061c5f414623cad6bc3ccc822e315086a925"
   },
   "checks": [
     "8 views: 1440px, no page overflow, real Pretendard loaded, light under OS dark mode",

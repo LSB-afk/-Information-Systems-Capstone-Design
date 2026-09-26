@@ -22,7 +22,12 @@ async function fillRecordExample(page,save=true){
   await page.locator('#record-note').fill('화면 설계용 인위적 기록 · 실제 사업체 결과가 아님');
   if(save)await page.locator('#record-form button[type=submit]').click();
 }
-const add = (key,screenId,name,route,ucs,items,extra={}) => scenes.push({key,screenId,name,route,ucs,items,actors:common,path:`로그인 > 한눈에 보기 > ${name}`,scope:'필수 기능의 화면 시안',states:[],...extra});
+const add = (key,screenId,name,route,ucs,items,extra={}) => {
+  const parent={overview:'한눈에 보기',analysis:'지역 분석',recommendations:'홍보 제안',calendar:'3개월 일정',records:'실행 기록',ontology:'근거 연결',data:extra.role==='service'?'자료·기준 관리':'자료 둘러보기',login:'로그인'}[route];
+  const basePath=route==='overview'?'로그인 > 한눈에 보기':`로그인 > 한눈에 보기 > ${parent}`;
+  const detail=screenId.includes('-P')?name:name.startsWith(parent+' · ')?name.slice(parent.length+3):'';
+  scenes.push({key,screenId,name,route,ucs,items,actors:common,path:detail?`${basePath} > ${detail}`:basePath,scope:'필수 기능의 화면 시안',states:[],...extra});
+};
 add('login','SCR-C-001','로그인','login',[],[
   item(1,'.login-roles','로그인 역할','사업체 또는 서비스 운영자 선택','선택한 체험 역할과 계정 안내 갱신','이메일·비밀번호 입력 준비'),
   item(2,'#login-email','이메일','이메일 입력','형식·빈칸 검사','입력 오류는 해당 필드에 안내'),

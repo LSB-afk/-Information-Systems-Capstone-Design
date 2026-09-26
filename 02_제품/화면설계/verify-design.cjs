@@ -21,6 +21,7 @@ assert.equal(new Set(req.coverage.map(c=>c.uc)).size,32);
 assert.deepEqual(req.coverage.map(c=>c.uc).sort(),canonical.map(c=>c.id).sort());
 const screenIDs=new Set(req.inventory.map(s=>s.id));
 const boardIDs=new Set(doc.boards.map(b=>b.screenId));
+const manuscript=fs.readFileSync(path.join(root,'00_제출/Red_SCREEN.md'),'utf8');
 for(const source of canonical){const row=req.coverage.find(c=>c.uc===source.id);assert.equal(row.name,source.name,`${source.id}: canonical name mismatch`);}
 for(const row of req.coverage){
   const targets=Array.isArray(row.screen)?row.screen:[row.screen];
@@ -38,15 +39,21 @@ for(const board of doc.boards){
   assert(fs.existsSync(path.join(root,board.image)),`Missing screenshot ${board.image}`);
   assert(board.actors.length&&board.path&&board.name&&board.states.length);
   assert.deepEqual(board.items.map(i=>i.n),Array.from({length:board.items.length},(_,i)=>i+1));
-  for(const i of board.items){for(const field of ['title','action','process','result','target'])assert(i[field]?.trim(),`${board.key} item ${i.n} lacks ${field}`);}
+  assert(manuscript.includes(`](../${board.image})`),`${board.key} lacks manuscript image`);
+  for(const i of board.items){
+    for(const field of ['title','action','process','result','target'])assert(i[field]?.trim(),`${board.key} item ${i.n} lacks ${field}`);
+    assert(manuscript.includes(`${i.action} → ${i.process} → ${i.result}`),`${board.key} item ${i.n} differs from manuscript`);
+  }
   callouts+=board.items.length;
 }
 assert.deepEqual(doc.coverage,req.coverage);
 assert.deepEqual(doc.inventory,req.inventory);
+assert.deepEqual(doc.flows,req.flows);
+assert.deepEqual(doc.checklist,req.checklist);
 const figmaPending=!doc.meta.figma?.url || doc.meta.captureSource!=='Figma';
 if(figmaPending){assert.match(doc.meta.version,/검토/);assert(doc.boards.every(b=>/로컬 웹/.test(b.caption)));}
-const paths=['00_제출/Red_PROJECT.md','00_제출/Red_USECASE.md','00_제출/Red_USECASE.mdj','02_제품/화면설계/requirements.json','02_제품/화면설계/storyboards.json'];
+const paths=['00_제출/Red_PROJECT.md','00_제출/Red_USECASE.md','00_제출/Red_USECASE.mdj','00_제출/Red_SCREEN.md','02_제품/화면설계/requirements.json','02_제품/화면설계/storyboards.json'];
 const hashes=Object.fromEntries(paths.map(p=>[p,createHash('sha256').update(fs.readFileSync(path.join(root,p))).digest('hex')]));
-const result={checkedAt:new Date().toISOString(),traceability:'passed',actors:actors.length,useCases:canonical.length,mainScreens:screenIDs.size,storyboardPages:doc.boards.length,callouts,requiredAndSupportUseCases:30,optionalUnderReview:2,figmaPending,submissionReady:!figmaPending,limits:figmaPending?['Figma connector account connection pending','Screenshots are local web captures','Figma file generation, prototype links, shared URL and anonymous access check not completed']:[],hashes};
+const result={checkedAt:new Date().toISOString(),traceability:'passed',actors:actors.length,useCases:canonical.length,mainScreens:screenIDs.size,storyboardPages:doc.boards.length,callouts,requiredAndSupportUseCases:30,optionalUnderReview:2,figmaPending,submissionReady:!figmaPending&&doc.meta.figma?.sharedAccessVerified===true,limits:figmaPending?['Figma connector account connection pending','Screenshots are local web captures','Figma file generation, prototype links, shared URL and anonymous access check not completed']:[],hashes};
 fs.writeFileSync(path.join(root,'06_증빙/화면설계/coverage-result.json'),JSON.stringify(result,null,2)+'\n');
 console.log(JSON.stringify(result,null,2));

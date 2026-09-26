@@ -1,11 +1,11 @@
 {
-  "runAt": "2026-09-26T13:57:03.605Z",
+  "runAt": "2026-09-26T14:07:55.248Z",
   "screens": 21,
   "callouts": 73,
   "source": "web-prototype",
   "figmaCapture": false,
   "hashes": {
-    "app.js": "01b4c5443d97cc6122d53df0928f19c969d6f585fe091a7c30c72a9d7a1ec39b",
+    "app.js": "757a4555fe6e59b65c29018f2b3afce05a8355a23b85397d539423f5475da9c4",
     "styles.css": "7dde1e7060242d853765f1cb8fe7fad647515d52d0326f795256fe394a5e41e4"
   },
   "errors": []

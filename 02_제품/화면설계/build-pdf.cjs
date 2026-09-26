@@ -76,6 +76,9 @@ function validate(data) {
     if (!ids.some(id => board.screenId === id || board.screenId.startsWith(`${id}-P`))) throw new Error(`Storyboard is missing from the screen inventory: ${board.screenId}`);
     if (!Array.isArray(board.items) || !board.items.length) throw new Error(`Storyboard has no behavior descriptions: ${board.screenId}`);
     if (new Set(board.items.map(item => item.n)).size !== board.items.length) throw new Error(`Duplicate annotation numbers: ${board.screenId}`);
+    if (data.meta.captureSource === 'Figma' && (!board.figma?.url || board.annotated || board.items.some(item => !Number.isFinite(item.x) || !Number.isFinite(item.y)))) {
+      throw new Error(`Figma capture requires its original frame link and separate callout positions: ${board.key}`);
+    }
     for (const item of board.items) {
       for (const key of ['n', 'title', 'action', 'process', 'result']) {
         if (item[key] == null || item[key] === '') throw new Error(`Missing ${key} in ${board.screenId} annotation ${item.n}`);
@@ -212,12 +215,12 @@ function status(value, compact = false) {
 function makePages(data) {
   const pages = [];
   const { meta } = data;
-  const isPending = !meta.figma?.url;
+  const isPending = !meta.figma?.url || meta.captureSource !== 'Figma' || meta.figma.sharedAccessVerified !== true;
   const screenCount = data.inventory.length;
   const ucCount = new Set(data.coverage.map(row => row.uc)).size;
   const actors = [...new Set(data.inventory.flatMap(row => list(row.actors)))];
   pages.push({ key: 'cover', className: 'cover', html: `
-    <header class="page-header"><p class="eyebrow">SCREEN DESIGN DOCUMENT</p>${status(isPending ? 'Figma 연결 · 캡처 · 공유 권한 확인 대기 / 검토본' : (meta.figma.status || '화면설계서'))}</header>
+    <header class="page-header"><p class="eyebrow">SCREEN DESIGN DOCUMENT</p>${status(meta.figma?.status || (isPending ? 'Figma 확인 대기 / 검토본' : '화면설계서'))}</header>
     <h1 class="cover-title">${escape(meta.title)}<br>화면설계서</h1>
     <p class="cover-subtitle">${escape(meta.subtitle || 'PROJECT.md와 Use Case를 화면 구조, 사용자 동작, 시스템 처리 및 결과로 연결')}</p>
     <div class="cover-meta"><div><label>팀</label>${escape(meta.team)}</div><div><label>작성 기준일</label>${escape(meta.date)}</div><div><label>버전</label>${escape(meta.version)}</div><div><label>Actor</label>${join(actors)}</div></div>
@@ -230,7 +233,7 @@ function makePages(data) {
     pages.push({ key: `flows-${index + 1}`, html: `${header('01 / SERVICE STRUCTURE', `Actor별 화면구성도${flowGroups.length > 1 ? ` (${index + 1}/${flowGroups.length})` : ''}`)}
       <p class="section-lead">메뉴와 버튼 선택에 따른 전체 흐름 · 세부 분기와 예외 동작은 각 Screen ID의 스토리보드에 표시</p>
       ${flows.map(flow => `<section class="flow-lane"><h3>${escape(flow.actor)}</h3><div class="flow-route">${list(flow.steps).map((step, stepIndex) => `${stepIndex ? '<span class="flow-arrow" aria-hidden="true">→</span>' : ''}<div class="flow-step">${flowStep(step)}</div>`).join('')}</div>${flow.note ? `<p class="flow-note">${escape(flow.note)}</p>` : ''}</section>`).join('')}
-      ${index === flowGroups.length - 1 ? `<div class="scope-summary"><section class="scope-card"><h3>구현 범위</h3><p>필수 · 선택 · 공통 기능의 구분은 화면 목록과 Use Case 연결표의 범위를 따름</p></section><section class="scope-card"><h3>화면 수 기준</h3><p>같은 작업 흐름의 탭, 팝업, 오류 상태는 하나의 주요 화면에 포함하며 필요한 상태만 별도로 설명</p></section><section class="scope-card"><h3>캡처 출처</h3><p>${escape(meta.captureSource || '로컬 웹 시안')}${isPending ? ' · Figma 캡처 반영 대기' : ''}</p></section></div>` : ''}` });
+      ${index === flowGroups.length - 1 ? `<div class="scope-summary"><section class="scope-card"><h3>구현 범위</h3><p>필수 · 선택 · 공통 기능의 구분은 화면 목록과 Use Case 연결표의 범위를 따름</p></section><section class="scope-card"><h3>화면 수 기준</h3><p>같은 작업 흐름의 탭, 팝업, 오류 상태는 하나의 주요 화면에 포함하며 필요한 상태만 별도로 설명</p></section><section class="scope-card"><h3>캡처 출처</h3><p>${escape(meta.captureSource || '로컬 웹 시안')}${meta.captureSource !== 'Figma' ? ' · Figma 캡처 반영 대기' : ' · 설명 번호는 PDF에서 표시'}</p></section></div>` : ''}` });
   });
 
   chunks(data.inventory, 4).forEach((rows, index, groups) => {

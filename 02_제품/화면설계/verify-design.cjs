@@ -52,8 +52,33 @@ assert.deepEqual(doc.flows,req.flows);
 assert.deepEqual(doc.checklist,req.checklist);
 const figmaPending=!doc.meta.figma?.url || doc.meta.captureSource!=='Figma';
 if(figmaPending){assert.match(doc.meta.version,/검토/);assert(doc.boards.every(b=>/로컬 웹/.test(b.caption)));}
-const paths=['00_제출/Red_PROJECT.md','00_제출/Red_USECASE.md','00_제출/Red_USECASE.mdj','00_제출/Red_SCREEN.md','02_제품/화면설계/requirements.json','02_제품/화면설계/storyboards.json'];
+else {
+  const manifest=read(doc.meta.figma.manifest);
+  assert.equal(manifest.fileKey,doc.meta.figma.fileKey);
+  assert.equal(manifest.boards.length,doc.boards.length);
+  assert.equal(new Set(manifest.boards.map(b=>b.nodeId)).size,doc.boards.length,'Figma frames must be distinct');
+  for(const board of doc.boards){
+    const frame=manifest.boards.find(frame=>frame.key===board.key);
+    assert(frame,`${board.key} lacks Figma frame mapping`);
+    assert.equal(frame.nodeId,board.figma?.nodeId);
+    assert.equal(frame.screenId,board.screenId);
+    assert.equal(frame.image,board.image);
+    assert.match(board.caption,/Figma 프레임 캡처/);
+    assert.equal(board.annotated,false,'Clean Figma captures must receive PDF callouts');
+    assert(manuscript.includes(board.figma.url),`${board.key} lacks original frame link`);
+    assert.deepEqual(board.items.map(({n,x,y})=>({n,x,y})),frame.callouts.map(({n,x,y})=>({n,x,y})));
+    assert(board.items.every(item=>[item.x,item.y].every(value=>Number.isFinite(value)&&value>=0&&value<=100)),`${board.key} lacks PDF callout positions`);
+  }
+}
+assert.equal(doc.boards.length,21);
+assert.equal(callouts,73);
+const paths=['00_제출/Red_PROJECT.md','00_제출/Red_USECASE.md','00_제출/Red_USECASE.mdj','00_제출/Red_SCREEN.md','02_제품/화면설계/requirements.json','02_제품/화면설계/storyboards.json','02_제품/화면설계/figma-status.json'];
 const hashes=Object.fromEntries(paths.map(p=>[p,createHash('sha256').update(fs.readFileSync(path.join(root,p))).digest('hex')]));
-const result={checkedAt:new Date().toISOString(),traceability:'passed',actors:actors.length,useCases:canonical.length,mainScreens:screenIDs.size,storyboardPages:doc.boards.length,callouts,requiredAndSupportUseCases:30,optionalUnderReview:2,figmaPending,submissionReady:!figmaPending&&doc.meta.figma?.sharedAccessVerified===true,limits:figmaPending?['Figma connector account connection pending','Screenshots are local web captures','Figma file generation, prototype links, shared URL and anonymous access check not completed']:[],hashes};
+const limits=[];
+if(figmaPending)limits.push('Whole-screen Figma import/capture not completed; current images are local web captures');
+if(!doc.meta.figma?.sharedAccessVerified)limits.push(doc.meta.figma?.sharedAccessStatus||'Anonymous shared access not verified');
+if(doc.meta.figma?.prototypeStatus!=='verified')limits.push(doc.meta.figma?.prototypeEvidence||'Figma prototype navigation not verified');
+if(!doc.meta.figma?.cloudTextEditVerified)limits.push(doc.meta.figma?.fontStatus||'Cloud font editing not verified');
+const result={checkedAt:new Date().toISOString(),traceability:'passed',actors:actors.length,useCases:canonical.length,mainScreens:screenIDs.size,storyboardPages:doc.boards.length,callouts,requiredAndSupportUseCases:30,optionalUnderReview:2,figmaPending,figmaUrl:doc.meta.figma?.url,submissionReady:!figmaPending&&doc.meta.figma?.sharedAccessVerified===true,limits,hashes};
 fs.writeFileSync(path.join(root,'06_증빙/화면설계/coverage-result.json'),JSON.stringify(result,null,2)+'\n');
 console.log(JSON.stringify(result,null,2));

@@ -1,0 +1,15 @@
+{
+  "url": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30",
+  "fileKey": "3g5xR8OkcV6sUclyGM5d30",
+  "team": "이승보의 팀",
+  "accountConnected": true,
+  "importStatus": "in_progress",
+  "captureStatus": "pending",
+  "manifest": "06_증빙/화면설계/figma/manifest.json",
+  "sharedAccessVerified": false,
+  "sharedAccessStatus": "비로그인 요청이 CloudFront 403으로 차단되어 실제 프레임 열람 미검증",
+  "prototypeStatus": "pending",
+  "prototypeEvidence": "화면 간 이동은 문서에 정의되어 있으며 Figma Prototype 연결 확인 전",
+  "cloudTextEditVerified": false,
+  "fontStatus": "Pretendard Variable 이름 유지·로컬 Mac 글꼴 설치 확인; MCP의 글꼴 누락 표시로 클라우드 텍스트 편집은 미검증"
+}

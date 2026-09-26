@@ -40,7 +40,7 @@ const icons = {
 };
 const icon = name => `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">${icons[name] || icons.grid}</svg>`;
 const logo = () => '<svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="12" fill="#eaf3ec"/><path d="M12 27c3-6 6-8 9-11 4 5 8 9 8 13H12Z" fill="#236447"/><circle cx="14" cy="14" r="4" fill="#eba849"/><path d="M20 10q2-6 9-4-1 6-9 4" fill="#82a777"/><path d="M9 31h22" stroke="#236447" stroke-width="1.5" stroke-linecap="round"/></svg>';
-const button = (label, action, extra = '', symbol = '') => `<button class="button ${extra}" data-action="${action}">${symbol ? icon(symbol) : ''}${label}</button>`;
+const button = (label, action, extra = '', symbol = '') => `<button type="button" class="button ${extra}" data-action="${action}">${symbol ? icon(symbol) : ''}${label}</button>`;
 const STORAGE_KEY = 'jeju-design-prototype-v1';
 const LAYOUT_KEY = 'jeju-design-layout-v1';
 const DEMO_SESSION_KEY = 'jeju-design-demo-session-v1';
@@ -234,7 +234,8 @@ const ADMIN_KEY='jeju-design-admin-v1';
 const defaultCriteria={threshold:20,source:'화면 시안 v1 · 2025년 월별 지역 방문 집계(만 명)',reason:'10월 대비 11월 예시 방문 감소를 참고하며 판매 가능 상품·휴무일을 별도로 확인',condition:'상품 판매 가능 여부·실제 예산·관광지 접근 경로 확인 필요'};
 let adminState={criteria:{...defaultCriteria},registrations:[]};
 try{const a=JSON.parse(localStorage.getItem(ADMIN_KEY)||'null');if(a?.criteria&&Number.isFinite(a.criteria.threshold)&&a.criteria.threshold>=0&&a.criteria.threshold<=100&&['source','reason','condition'].every(k=>typeof a.criteria[k]==='string'))adminState.criteria=a.criteria;if(Array.isArray(a?.registrations))adminState.registrations=a.registrations.filter(x=>x&&typeof x.source==='string'&&Number.isInteger(x.count)&&x.count>0);}catch{}
-let csvText='',csvFilename='',csvValidated=false;
+let csvText='',csvFilename='',csvValidated=false,csvReadGeneration=0;
+function resetCSVSelection(){csvText='';csvFilename='';csvValidated=false;return ++csvReadGeneration;}
 function saveAdmin(next){try{localStorage.setItem(ADMIN_KEY,JSON.stringify(next));adminState=next;return true;}catch{return false;}}
 function sourceManager() {
   return `<section class="panel panel-padding source-manager"><div class="panel-heading"><div><h2>CSV 자료 등록</h2><p>운영 지원 · 파일은 현재 브라우저에서 검사하며 서버에 전송하지 않습니다.</p></div><span class="badge amber">시연</span></div><form id="csv-form"><div class="metadata-grid"><div><label class="field-label" for="csv-file">CSV 파일</label><input class="field" id="csv-file" type="file" accept=".csv,text/csv"><p class="hint">최대 1MB · 원본 내용은 저장하지 않음</p></div><div><label class="field-label" for="csv-source">자료 출처·버전</label><input class="field" id="csv-source" value="화면 시안 방문 자료 v1" maxlength="120" required></div><div><label class="field-label" for="csv-from">기준기간 시작</label><input class="field" id="csv-from" type="month" value="2025-01" required></div><div><label class="field-label" for="csv-to">기준기간 종료</label><input class="field" id="csv-to" type="month" value="2025-12" required></div><div><label class="field-label" for="csv-unit">단위</label><select class="field" id="csv-unit"><option>만 명</option><option>억 원</option></select></div><div><label class="field-label" for="csv-provider">제공자·집계 기준</label><input class="field" id="csv-provider" value="화면 시안 제작팀" maxlength="80" required><p class="hint">비교 기준: 화면 시안 제작팀 · 월별 지역 집계</p></div></div><details class="csv-format"><summary>CSV 열과 예시 형식 보기</summary><code>region_code,month,value,unit,provider,aggregation</code><p class="hint">지역 코드: 애월읍 50110253, 구좌읍 50110256 · 월: 2025-10 · 집계: 월별 지역 집계</p></details><div class="row wrap source-actions"><button type="button" class="button small" data-action="csv-sample">정상 예시 불러오기</button><button type="button" class="button small" data-action="csv-sample-invalid">누락 예시 검증</button><button type="button" class="button small" data-action="validate">선택 자료 검증</button><button type="button" class="button primary small" data-action="csv-register" disabled>검증한 예시 등록</button></div><p class="notice" id="csv-status" role="status">자료를 선택하고 메타데이터를 확인한 뒤 검증해 주세요. 비교 기준은 2025년 월별 방문 예시입니다.</p><ol class="validation-grid" id="csv-validation"><li>자료 기간 · 대기</li><li>집계 기준 · 대기</li><li>지역 코드 · 대기</li><li>누락값 · 대기</li><li>제공 기준 일관성 · 대기</li></ol></form><div class="row between criteria-toolbar"><div><h3>추천 기준·근거 관리</h3><p class="small muted">방문 감소 기준 ${escapeHTML(adminState.criteria.threshold)}% · 브라우저에 등록한 예시 ${adminState.registrations.length}개</p></div>${button('기준·근거 수정','criteria','','edit')}</div><p class="source-inline">CSV 등록과 기준 저장은 UI 시연입니다. 검증된 원자료의 운영 DB 반영과 추천 엔진은 연결되지 않았습니다.</p></section>`;
@@ -274,6 +275,7 @@ function validateCSV() {
   $('#csv-status').textContent=parseError||`${csvFilename} · ${rows.length}행 · ${csvValidated?'다섯 검증을 통과했습니다. 현재 브라우저에 예시 등록을 할 수 있습니다.':'등록할 수 없습니다. 오류를 수정한 뒤 다시 검증해 주세요.'}`;
 }
 function loadCSVExample(invalid=false){
+  resetCSVSelection();$('[data-action="validate"]').disabled=false;
   $('#csv-file').value='';$('#csv-source').value='화면 시안 방문 자료 v1';$('#csv-from').value='2025-01';$('#csv-to').value='2025-12';$('#csv-unit').value='만 명';$('#csv-provider').value='화면 시안 제작팀';
   csvFilename=invalid?'누락값 포함 예시.csv':'정상 예시.csv';csvText=`region_code,month,value,unit,provider,aggregation\n50110253,2025-10,51,만 명,화면 시안 제작팀,월별 지역 집계\n50110256,2025-10,${invalid?'':'39'},만 명,화면 시안 제작팀,월별 지역 집계`;validateCSV();
 }
@@ -324,6 +326,7 @@ function startDemoLogin(form) {
   notify(sessionSaved?'체험 계정으로 로그인했습니다.':'체험 화면을 열었습니다. 로그인 상태는 새로고침 후 유지되지 않습니다.');
 }
 function render() {
+  resetCSVSelection();
   const hash=location.hash.slice(1);currentView=titles[hash]?hash:(demoSessionRole?'overview':'login');
   document.title=`${titles[currentView]} · 제주 마케팅 캘린더 시안`;
   const views={overview,analysis,recommendations,calendar,records,ontology,data:dataView};
@@ -451,12 +454,15 @@ document.addEventListener('change',async event=>{
   if(event.target.id==='analysis-year'){state.analysisYear=event.target.value;render();$('#analysis-year').focus();}
   if(event.target.closest('#csv-form'))invalidateCSV();
   if(event.target.id==='csv-file'){
-    const file=event.target.files[0];csvText='';csvFilename='';if(!file)return;
+    const generation=resetCSVSelection(),input=event.target,file=input.files[0];
+    const validate=$('[data-action="validate"]');validate.disabled=false;
+    if(!file)return;
     if(!/\.csv$/i.test(file.name)||file.size>1024*1024){$('#csv-status').textContent='1MB 이하의 CSV 파일을 선택해 주세요.';return;}
-    const validate=$('[data-action="validate"]');validate.disabled=true;
-    try{csvText=await file.text();csvFilename=file.name;$('#csv-status').textContent=`${file.name} 선택됨 · 메타데이터를 확인하고 검증해 주세요.`;}
-    catch{$('#csv-status').textContent='파일을 읽지 못했습니다. 다시 선택해 주세요.';}
-    finally{validate.disabled=false;}
+    const isCurrent=()=>generation===csvReadGeneration&&input.isConnected&&input.files[0]===file;
+    validate.disabled=true;
+    try{const text=await file.text();if(!isCurrent())return;csvText=text;csvFilename=file.name;$('#csv-status').textContent=`${file.name} 선택됨 · 메타데이터를 확인하고 검증해 주세요.`;}
+    catch{if(isCurrent())$('#csv-status').textContent='파일을 읽지 못했습니다. 다시 선택해 주세요.';}
+    finally{if(isCurrent())validate.disabled=false;}
   }
   if(event.target.id==='region'){state.region=event.target.value;persist();render();$('#region').focus();notify(`${state.region} 예시 자료를 표시합니다.`);}
   if(event.target.id==='record-status'){$('#record-date').required=event.target.value==='실행함';if(event.target.value!=='실행함')$('#record-date').value='';}

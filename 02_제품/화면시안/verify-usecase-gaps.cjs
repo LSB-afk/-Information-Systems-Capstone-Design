@@ -16,3 +16,48 @@ test('Local CSV file selection is validated without server upload',()=>visit('da
 test('Recommendation rules and evidence persist only in the browser',()=>visit('data',async p=>{await admin(p);await p.locator('[data-action=criteria]').click();await p.locator('#criteria-threshold').fill('20');await p.locator('#criteria-reason').fill('직전 월 대비 방문 감소와 휴무일을 함께 확인');await p.locator('#criteria-form button[type=submit]').click();await p.reload();await p.locator('[data-action=criteria]').click();assert.equal(await p.locator('#criteria-threshold').inputValue(),'20');assert.equal(await p.locator('#criteria-reason').inputValue(),'직전 월 대비 방문 감소와 휴무일을 함께 확인');assert.match(await p.locator('#dialog').textContent(),/고정 예시.*추천 엔진/s);}));
 test('Failed plan saves preserve inputs for retry and do not count as a completed plan',()=>visit('calendar',async p=>{await p.locator('[data-action=new-plan]').click();await p.locator('#plan-title').fill('저장 실패 후 다시 저장');await p.evaluate(()=>{window.restoreStorage=Storage.prototype.setItem;Storage.prototype.setItem=function(){throw new DOMException('blocked','QuotaExceededError');};});await p.locator('#plan-form button[type=submit]').click();assert(await p.locator('#dialog').evaluate(el=>el.open));assert.match(await p.locator('#plan-error').textContent(),/저장에 실패/);assert.equal(await p.locator('#plan-title').inputValue(),'저장 실패 후 다시 저장');await p.evaluate(()=>{Storage.prototype.setItem=window.restoreStorage;});await p.locator('#plan-form button[type=submit]').click();assert.equal(await p.getByRole('heading',{name:'저장 실패 후 다시 저장',exact:true}).count(),1);await p.reload();assert.equal(await p.getByRole('heading',{name:'저장 실패 후 다시 저장',exact:true}).count(),1);}));
 test('Failed record saves retain inputs, and optional AI remains unavailable',()=>visit('records',async p=>{assert(await p.getByRole('button',{name:'보고서 초안 · UC06-2',exact:true}).isDisabled());await p.locator('[data-record=sample-oct]').click();await p.locator('#record-activity').fill('저장 재시도 활동');await p.evaluate(()=>{window.restoreStorage=Storage.prototype.setItem;Storage.prototype.setItem=function(){throw new DOMException('blocked','QuotaExceededError');};});await p.locator('#record-form button[type=submit]').click();assert(await p.locator('#dialog').evaluate(el=>el.open));assert.match(await p.locator('#record-error').textContent(),/저장에 실패/);assert.equal(await p.locator('#record-activity').inputValue(),'저장 재시도 활동');await p.evaluate(()=>{Storage.prototype.setItem=window.restoreStorage;});await p.locator('#record-form button[type=submit]').click();await p.reload();await p.locator('[data-record=sample-oct]').click();assert.equal(await p.locator('#record-activity').inputValue(),'저장 재시도 활동');await p.keyboard.press('Escape');await p.goto(base+'#recommendations');assert(await p.getByRole('button',{name:'추천 이유 설명 초안 · UC06-1',exact:true}).isDisabled());}));
+test('Cancelling recommendation criteria leaves saved and displayed values unchanged',()=>visit('data',async p=>{
+  await admin(p);
+  const saved=await p.evaluate(()=>localStorage.getItem('jeju-design-admin-v1'));
+  await p.locator('[data-action=criteria]').click();
+  const reason=await p.locator('#criteria-reason').inputValue();
+  await p.locator('#criteria-reason').fill('취소했으므로 저장되면 안 되는 변경');
+  await p.locator('#criteria-form [data-action=close-dialog]').click();
+  assert.equal(await p.locator('#dialog').evaluate(el=>el.open),false);
+  assert.equal(await p.evaluate(()=>localStorage.getItem('jeju-design-admin-v1')),saved);
+  await p.locator('[data-action=criteria]').click();
+  assert.equal(await p.locator('#criteria-reason').inputValue(),reason);
+}));
+test('Stale CSV reads cannot replace a newer file, example or screen',()=>visit('data',async p=>{
+  await admin(p);
+  const errors=[];p.on('pageerror',error=>errors.push(error.message));
+  await p.evaluate(()=>{
+    const original=File.prototype.text,pending=[];
+    File.prototype.text=function(){return this.name.startsWith('delayed-')?new Promise(resolve=>pending.push({file:this,resolve})):original.call(this);};
+    window.releaseCSVRead=async()=>{const {file,resolve}=pending.shift();resolve(await original.call(file));await new Promise(requestAnimationFrame);};
+  });
+  const header='region_code,month,value,unit,provider,aggregation\n';
+  const valid=Buffer.from(header+'50110253,2025-10,51,만 명,화면 시안 제작팀,월별 지역 집계');
+  const invalid=Buffer.from(header+'50110256,2025-10,,만 명,화면 시안 제작팀,월별 지역 집계');
+  const select=(name,buffer=valid)=>p.locator('#csv-file').setInputFiles({name,mimeType:'text/csv',buffer});
+  await select('delayed-first.csv');await select('current-invalid.csv',invalid);
+  await p.waitForFunction(()=>document.querySelector('#csv-status').textContent.includes('current-invalid.csv'));
+  await p.evaluate(()=>window.releaseCSVRead());
+  await p.locator('[data-action=validate]').click();
+  assert.match(await p.locator('#csv-status').textContent(),/current-invalid\.csv/);
+  assert(await p.locator('[data-action=csv-register]').isDisabled());
+  assert.equal(await p.locator('#csv-validation [data-result=pass]').count(),4);
+  await select('delayed-example.csv');await p.locator('[data-action=csv-sample-invalid]').click();
+  await p.evaluate(()=>window.releaseCSVRead());
+  assert.match(await p.locator('#csv-status').textContent(),/누락값 포함 예시\.csv/);
+  assert(await p.locator('[data-action=csv-register]').isDisabled());
+  assert(!(await p.locator('[data-action=validate]').isDisabled()));
+  await select('delayed-navigation.csv');
+  await p.locator('.sidebar a[href="#overview"]').click();await p.waitForURL('**/#overview');
+  await p.evaluate(()=>window.releaseCSVRead());
+  assert.deepEqual(errors,[]);
+  await p.locator('.sidebar a[href="#data"]').click();await p.waitForURL('**/#data');
+  await p.locator('[data-action=validate]').click();
+  assert.match(await p.locator('#csv-status').textContent(),/먼저 CSV 파일 또는 예시를 선택/);
+  assert(await p.locator('[data-action=csv-register]').isDisabled());
+}));

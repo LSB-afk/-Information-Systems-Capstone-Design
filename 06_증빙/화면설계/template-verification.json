@@ -1,0 +1,29 @@
+{
+  "date": "2026-09-27",
+  "templateSha256": "0648527ceee142a639ff631bbf23f18e3ad290d273486d1aab9d869baecff735",
+  "pptx": "00_제출/Red 화면설계서_20260927.pptx",
+  "pptxSha256": "c73f6ed2bd6df0409a1c7380a8265055121e7489406c6d6b531c19af3544dd9f",
+  "pdfSha256": "9ed24822ad75c74225050b2c15f80b7698a3e4bb43fd47f8d0deaa7152865070",
+  "slides": 34,
+  "pdfPages": 34,
+  "mainScreens": 8,
+  "popupPanelIds": 6,
+  "storyboardCaptures": 21,
+  "descriptionNumbers": 73,
+  "useCases": 32,
+  "requiredAndSupportUseCases": 30,
+  "optionalUnderReviewUseCases": 2,
+  "exactOriginalScreenshotBytes": true,
+  "unchangedMasterLayoutThemeParts": 25,
+  "unchangedTextStyleRunsChecked": 1278,
+  "nativePowerPointOpened": true,
+  "fontFamiliesInOriginalAndFinalPowerPointPDF": [
+    "MalgunGothicBold",
+    "MalgunGothicRegular",
+    "SegoeUISymbol"
+  ],
+  "sourceFontXmlCaveat": "Source has no explicit East Asian font declaration; kept original font XML. Compared unchanged text run styles and actual PowerPoint PDF fonts instead of unresolved inherited-font validator.",
+  "figmaUrl": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30",
+  "figmaSharedAccessVerified": false,
+  "prototypePlaybackVerified": false
+}

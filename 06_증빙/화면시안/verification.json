@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "runAt": "2026-09-26T09:27:10.589Z",
+  "browserVersion": "153.0.8010.54",
+  "nodeVersion": "v24.11.1",
+  "sourceHashes": {
+    "index.html": "699bd622767fad6e9e542cb5be72976e399cc717da5abfe807716f815dd4ddef",
+    "styles.css": "9464a598d6aea666d493d0d90eb5745e7c575a2615bf402d8676cae0ac97ebcc",
+    "app.js": "a6b850b6e8f65f12ab014493a78804ec332b130eaca1b853c83bf6431e4e89b9",
+    "verify.cjs": "2313bd5659218fee4a34a39257a6490ad3d3a0811862641ebb490248ceda4b36",
+    "verify-regressions.cjs": "657c5cc25632dfb734ab5db424ea5a13c703602f9137fd457b4fffcd193699ba"
+  },
+  "checks": [
+    "8 views: 1440px, no page overflow, real Pretendard loaded, light under OS dark mode",
+    "8 views: 1024px, no page overflow, real Pretendard loaded, light under OS dark mode",
+    "8 views: 390px, no page overflow, real Pretendard loaded, light under OS dark mode",
+    "Mobile menu: open, background inert, Escape close",
+    "Direct plan: whitespace validation, escaped text, persistence and editing",
+    "Records distinguish a measured zero from uncollected data",
+    "Evidence drawer: content, Escape and focus restoration",
+    "Adding an existing recommendation opens edit without duplication",
+    "Agent demo: goal changes candidates, product reflected, holiday shifted, selected drafts persist",
+    "Ontology relation selection changes the explanation",
+    "Source table: filter works and missing consumption stays missing",
+    "CSV download identifies fixtures and retains missing values",
+    "Two role previews; source validation demo appears only for service operator",
+    "Blocked storage preserves in-memory changes and reports failure",
+    "No JavaScript runtime errors during screen and interaction checks"
+  ],
+  "errors": [],
+  "screenshots": "verified",
+  "limits": [
+    "Standalone prototype, not original Figma application",
+    "Fixture data and scripted AI demo",
+    "No server authentication, real CSV ingestion or real ontology inference",
+    "No screen-reader, real mobile device or full WCAG conformance audit"
+  ]
+}

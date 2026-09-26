@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: Skip to content keeps the current view and focuses its main element
+ok 1 - Skip to content keeps the current view and focuses its main element
+  ---
+  duration_ms: 607.63325
+  type: 'test'
+  ...
+# Subtest: Metric, source, role and region choices retain keyboard focus
+ok 2 - Metric, source, role and region choices retain keyboard focus
+  ---
+  duration_ms: 239.130166
+  type: 'test'
+  ...
+# Subtest: Selecting the active mobile menu closes it and releases the page
+ok 3 - Selecting the active mobile menu closes it and releases the page
+  ---
+  duration_ms: 241.524166
+  type: 'test'
+  ...
+# Subtest: Saving a plan restores focus to its replacement launch button
+ok 4 - Saving a plan restores focus to its replacement launch button
+  ---
+  duration_ms: 349.155875
+  type: 'test'
+  ...
+# Subtest: Replacing an open dialog puts focus inside its new controls
+ok 5 - Replacing an open dialog puts focus inside its new controls
+  ---
+  duration_ms: 230.409959
+  type: 'test'
+  ...
+# Subtest: A null saved value does not leave the prototype blank
+ok 6 - A null saved value does not leave the prototype blank
+  ---
+  duration_ms: 140.176792
+  type: 'test'
+  ...
+# Subtest: Recovery keeps valid plans and records while excluding malformed entries
+ok 7 - Recovery keeps valid plans and records while excluding malformed entries
+  ---
+  duration_ms: 152.874209
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2153.83325

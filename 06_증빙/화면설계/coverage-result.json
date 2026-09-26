@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-09-26T14:07:55.296Z",
+  "checkedAt": "2026-09-26T15:04:50.844Z",
   "traceability": "passed",
   "actors": 3,
   "useCases": 32,
@@ -8,19 +8,21 @@
   "callouts": 73,
   "requiredAndSupportUseCases": 30,
   "optionalUnderReview": 2,
-  "figmaPending": true,
+  "figmaPending": false,
+  "figmaUrl": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30",
   "submissionReady": false,
   "limits": [
-    "Figma connector account connection pending",
-    "Screenshots are local web captures",
-    "Figma file generation, prototype links, shared URL and anonymous access check not completed"
+    "비로그인 요청이 CloudFront 403으로 차단되어 실제 프레임 열람 미검증",
+    "144개 Prototype 연결 정의와 이동 대상 유효성 확인; 실제 클릭 재생 테스트는 미실시",
+    "Pretendard Variable 유지; 로컬 Figma 앱·FigmaAgent 실행과 글꼴 캐시 9개 스타일 인식 확인; 클라우드 MCP의 글꼴 누락 표시로 클라우드 텍스트 편집 미검증"
   ],
   "hashes": {
     "00_제출/Red_PROJECT.md": "eb4d0dad6193ff53b48345bce68f00f8d7caeb6a36db79c2a131cea8689552a5",
     "00_제출/Red_USECASE.md": "d2ad0fb865ef0d0f3d3c1e0a3235b521138531da1a8f8771651dc1c2ff1f5558",
     "00_제출/Red_USECASE.mdj": "4d34e67e324a27eb1c2b299b76b12ebfab01659d2e19aa17830a8bfa0ec1205c",
-    "00_제출/Red_SCREEN.md": "27eb99028f6e1412df1e25bec466df3150ffcf8822edf14a526ed7b4d3a0bee0",
-    "02_제품/화면설계/requirements.json": "08e978636163310909f24e391dfc467fc7938edd5ac4baaa29ab7b3827212f0b",
-    "02_제품/화면설계/storyboards.json": "0a35f8332e343f0456329d870e7eba465f394bf56a30117905c9b115ce9ead0a"
+    "00_제출/Red_SCREEN.md": "9a2069474fd7cacd644b2c86e7fc34f7540c4b5cef2f48556d37aac0631d401f",
+    "02_제품/화면설계/requirements.json": "926ed1c38a132e37507a1cf39521ed8e0cdbb721fe6b1a8fa7e3e44a58dd35b5",
+    "02_제품/화면설계/storyboards.json": "92196dbd2f12f5df6038d487d3b4d60de66817a34252690bdc53bd428c02794d",
+    "02_제품/화면설계/figma-status.json": "8a5697364e8b355a21ec63189d0bf90828ee8347a3be74801ff9e3834f410c7b"
   }
 }

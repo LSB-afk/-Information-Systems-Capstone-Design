@@ -1,0 +1,310 @@
+{
+  "page": "전체 화면 · 주요 화면 8개 / 상태 21개",
+  "frames": [
+    {
+      "key": "login",
+      "id": "8:2",
+      "name": "SCR-C-001 · 로그인",
+      "width": 1440,
+      "height": 1120,
+      "text": 29,
+      "vectors": 11
+    },
+    {
+      "key": "overview",
+      "id": "9:2",
+      "name": "SCR-C-002 · 한눈에 보기",
+      "width": 1440,
+      "height": 1120,
+      "text": 141,
+      "vectors": 98
+    },
+    {
+      "key": "analysis-visits",
+      "id": "10:2",
+      "name": "SCR-C-003 · 지역 분석 · 방문과 계절",
+      "width": 1440,
+      "height": 1120,
+      "text": 115,
+      "vectors": 67
+    },
+    {
+      "key": "analysis-consumption",
+      "id": "11:2",
+      "name": "SCR-C-003 · 지역 분석 · 소비 비교",
+      "width": 1440,
+      "height": 1120,
+      "text": 79,
+      "vectors": 40
+    },
+    {
+      "key": "recommendations",
+      "id": "12:2",
+      "name": "SCR-C-004 · 홍보 제안",
+      "width": 1440,
+      "height": 1240,
+      "text": 115,
+      "vectors": 76
+    },
+    {
+      "key": "calendar",
+      "id": "13:2",
+      "name": "SCR-B-001 · 3개월 일정",
+      "width": 1440,
+      "height": 1120,
+      "text": 66,
+      "vectors": 48
+    },
+    {
+      "key": "plan-edit",
+      "id": "38:2",
+      "name": "SCR-B-001-P01 · 계획 작성·수정 팝업",
+      "width": 1440,
+      "height": 1120,
+      "text": 80,
+      "vectors": 51
+    },
+    {
+      "key": "records",
+      "id": "15:2",
+      "name": "SCR-B-002 · 실행 기록·사용 결과",
+      "width": 1440,
+      "height": 1120,
+      "text": 58,
+      "vectors": 35
+    },
+    {
+      "key": "record-edit",
+      "id": "39:2",
+      "name": "SCR-B-002-P01 · 사용·실행 기록 입력 팝업",
+      "width": 1440,
+      "height": 1120,
+      "text": 80,
+      "vectors": 38
+    },
+    {
+      "key": "summary",
+      "id": "40:2",
+      "name": "SCR-B-002-P02 · 사용 결과 요약 팝업",
+      "width": 1440,
+      "height": 1120,
+      "text": 77,
+      "vectors": 36
+    },
+    {
+      "key": "ontology",
+      "id": "19:2",
+      "name": "SCR-C-005 · 근거 연결",
+      "width": 1440,
+      "height": 1120,
+      "text": 66,
+      "vectors": 42
+    },
+    {
+      "key": "evidence",
+      "id": "41:2",
+      "name": "SCR-C-004-P01 · 추천 근거 상세 패널",
+      "width": 1440,
+      "height": 1120,
+      "text": 135,
+      "vectors": 79
+    },
+    {
+      "key": "data-read",
+      "id": "21:2",
+      "name": "SCR-A-001 · 자료 둘러보기 · 조회 상태",
+      "width": 1440,
+      "height": 1120,
+      "text": 187,
+      "vectors": 37
+    },
+    {
+      "key": "data-admin",
+      "id": "35:2",
+      "name": "SCR-A-001 · 자료·기준 관리",
+      "width": 1440,
+      "height": 1120,
+      "text": 220,
+      "vectors": 39
+    },
+    {
+      "key": "csv-validation",
+      "id": "42:2",
+      "name": "SCR-A-001-P01 · CSV 검증 결과",
+      "width": 1440,
+      "height": 1120,
+      "text": 225,
+      "vectors": 39
+    },
+    {
+      "key": "csv-error",
+      "id": "44:2",
+      "name": "SCR-A-001-P01 · CSV 검증 · 등록 불가 상태",
+      "width": 1440,
+      "height": 1120,
+      "text": 225,
+      "vectors": 39
+    },
+    {
+      "key": "criteria",
+      "id": "45:2",
+      "name": "SCR-A-001-P02 · 추천 기준·근거 편집",
+      "width": 1440,
+      "height": 1120,
+      "text": 233,
+      "vectors": 40
+    },
+    {
+      "key": "login-error",
+      "id": "26:2",
+      "name": "SCR-C-001 · 로그인 · 입력 오류 상태",
+      "width": 1440,
+      "height": 1120,
+      "text": 30,
+      "vectors": 11
+    },
+    {
+      "key": "analysis-empty",
+      "id": "28:2",
+      "name": "SCR-C-003 · 지역 분석 · 자료 없음 상태",
+      "width": 1440,
+      "height": 1120,
+      "text": 40,
+      "vectors": 42
+    },
+    {
+      "key": "plan-save-error",
+      "id": "46:2",
+      "name": "SCR-B-001-P01 · 계획 작성 · 저장 실패 상태",
+      "width": 1440,
+      "height": 1120,
+      "text": 80,
+      "vectors": 51
+    },
+    {
+      "key": "data-empty",
+      "id": "30:2",
+      "name": "SCR-A-001 · 자료 둘러보기 · 검색 결과 없음",
+      "width": 1440,
+      "height": 1120,
+      "text": 44,
+      "vectors": 37
+    }
+  ],
+  "linkCount": 144,
+  "invalid": [],
+  "extras": [],
+  "flows": [
+    {
+      "nodeId": "8:2",
+      "name": "사업체 운영자 · 로그인부터 시작"
+    },
+    {
+      "nodeId": "35:2",
+      "name": "서비스 운영자 · 자료와 기준 관리"
+    }
+  ],
+  "checkedAt": "2026-09-26T15:04:12.143Z",
+  "visualReview": {
+    "scope": "figma-transfer",
+    "iteration": 7,
+    "verdict": "pass-final-21-frames",
+    "submissionReady": false,
+    "evidence": [
+      "06_증빙/화면설계/figma/contact-01.png",
+      "06_증빙/화면설계/figma/contact-02.png",
+      "06_증빙/화면설계/figma/contact-03.png",
+      "06_증빙/화면설계/figma/screens/recommendations.png"
+    ],
+    "review": [
+      "21 imported screen and state captures match intended views",
+      "Modal date values, input text, backdrop and action buttons visible",
+      "CSV validation success/error and login/empty/save-error messages visible",
+      "Default viewport1440x1120; recommendations1440x1240 includes both action buttons; longer pages retain scrollable content",
+      "Recommendation action button markers use exact Figma coordinates"
+    ],
+    "remaining": [
+      "External sharing access unverified due to CloudFront 403",
+      "Prototype link targets verified; interactive playback not verified",
+      "Make app not created"
+    ]
+  },
+  "supersededFramesRemoved": [
+    {
+      "id": "2:2",
+      "name": "SCR-B-002 · 실행 기록 · 사업체 운영자",
+      "type": "FRAME"
+    },
+    {
+      "id": "14:2",
+      "name": "3개월 일정 · 제주 마케팅 캘린더 시안",
+      "type": "FRAME"
+    },
+    {
+      "id": "17:2",
+      "name": "실행 기록 · 제주 마케팅 캘린더 시안",
+      "type": "FRAME"
+    },
+    {
+      "id": "18:2",
+      "name": "실행 기록 · 제주 마케팅 캘린더 시안",
+      "type": "FRAME"
+    },
+    {
+      "id": "20:2",
+      "name": "홍보 제안 · 제주 마케팅 캘린더 시안",
+      "type": "FRAME"
+    },
+    {
+      "id": "22:2",
+      "name": "자료 둘러보기 · 제주 마케팅 캘린더 시안",
+      "type": "FRAME"
+    },
+    {
+      "id": "23:2",
+      "name": "자료 둘러보기 · 제주 마케팅 캘린더 시안",
+      "type": "FRAME"
+    },
+    {
+      "id": "24:2",
+      "name": "자료 둘러보기 · 제주 마케팅 캘린더 시안",
+      "type": "FRAME"
+    },
+    {
+      "id": "25:2",
+      "name": "자료 둘러보기 · 제주 마케팅 캘린더 시안",
+      "type": "FRAME"
+    },
+    {
+      "id": "29:2",
+      "name": "3개월 일정 · 제주 마케팅 캘린더 시안",
+      "type": "FRAME"
+    },
+    {
+      "id": "31:2",
+      "name": "3개월 일정 · 제주 마케팅 캘린더 시안",
+      "type": "FRAME"
+    },
+    {
+      "id": "32:2",
+      "name": "실행 기록 · 제주 마케팅 캘린더 시안",
+      "type": "FRAME"
+    },
+    {
+      "id": "33:2",
+      "name": "실행 기록 · 제주 마케팅 캘린더 시안",
+      "type": "FRAME"
+    },
+    {
+      "id": "34:2",
+      "name": "홍보 제안 · 제주 마케팅 캘린더 시안",
+      "type": "FRAME"
+    },
+    {
+      "id": "36:2",
+      "name": "3개월 일정 · 제주 마케팅 캘린더 시안",
+      "type": "FRAME"
+    }
+  ],
+  "finalFrameCount": 21
+}

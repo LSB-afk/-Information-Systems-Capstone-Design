@@ -8,8 +8,9 @@
 - [화면구성도·목록·Storyboard 원고](../../00_제출/Red_SCREEN.md)
 - [검증 결과와 남은 Figma 항목](../../06_증빙/화면설계/검증.md)
 - [Figma Design — 이승보의 팀](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30)
+- [Figma Make 활용 경로·시작 프롬프트](FIGMA_MAKE.md)
 
-PDF에는 화면·상태 캡처 21개와 번호별 동작 설명 73개가 포함됨 Figma 플러그인 연결과 팀 Design 파일 생성을 완료했으며 전체 화면·캡처 이관을 진행 중임 공유 링크의 비로그인 열람은 CloudFront 403으로 미검증 상태임
+주요 화면 8개와 팝업·상태를 포함한 21개 프레임을 Figma로 옮겼으며 원본 캡처 21개와 설명 번호 73개를 문서 공통 입력에 반영함 캡처는 1440×1120px이고 긴 화면은 Figma 프레임 안에 스크롤할 내용이 유지됨 공유 링크의 비로그인 열람은 CloudFront 403으로 미검증 상태임
 
 ## 자료 수정 위치
 
@@ -46,4 +47,6 @@ node 02_제품/화면설계/build-pdf.cjs --report 06_증빙/화면설계/pdf-bu
 
 Figma 원본 캡처는 `06_증빙/화면설계/figma/screens/<key>.png`에 보관함 `callouts`의 `x`, `y`는 캡처 이미지 기준 번호 중심 좌표의 백분율임 PDF는 이 좌표에 번호를 표시하고 Markdown은 번호 없는 캡처와 원본 프레임 링크를 제공함
 
-공유 URL만으로 열람 검증 완료로 처리하지 않음 비로그인 환경의 실제 프레임 열람과 Figma Prototype 동작을 각각 확인해야 함 Pretendard Variable 이름은 유지했으나 MCP의 글꼴 누락 표시로 클라우드 텍스트 편집은 미검증 상태임
+Prototype 연결 144개의 정의와 이동 대상은 검사했으며 실제 클릭 재생은 미검증 상태임 공유 URL만으로 열람 검증 완료로 처리하지 않음
+
+Pretendard Variable을 유지했으며 로컬 Figma 앱·FigmaAgent 실행과 글꼴 캐시 9개 스타일 인식을 확인함 클라우드 MCP는 글꼴 누락으로 표시되어 클라우드 텍스트 편집은 미검증 상태임

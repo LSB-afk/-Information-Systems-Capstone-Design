@@ -3,13 +3,15 @@
   "fileKey": "3g5xR8OkcV6sUclyGM5d30",
   "team": "이승보의 팀",
   "accountConnected": true,
-  "importStatus": "in_progress",
-  "captureStatus": "pending",
+  "importStatus": "completed",
+  "captureStatus": "completed",
   "manifest": "06_증빙/화면설계/figma/manifest.json",
   "sharedAccessVerified": false,
   "sharedAccessStatus": "비로그인 요청이 CloudFront 403으로 차단되어 실제 프레임 열람 미검증",
-  "prototypeStatus": "pending",
-  "prototypeEvidence": "화면 간 이동은 문서에 정의되어 있으며 Figma Prototype 연결 확인 전",
+  "prototypeStatus": "defined",
+  "prototypeEvidence": "144개 Prototype 연결 정의와 이동 대상 유효성 확인; 실제 클릭 재생 테스트는 미실시",
   "cloudTextEditVerified": false,
-  "fontStatus": "Pretendard Variable 유지; 로컬 Figma 앱·FigmaAgent 실행과 글꼴 캐시 9개 스타일 인식 확인; 클라우드 MCP의 글꼴 누락 표시로 클라우드 텍스트 편집 미검증"
+  "fontStatus": "Pretendard Variable 유지; 로컬 Figma 앱·FigmaAgent 실행과 글꼴 캐시 9개 스타일 인식 확인; 클라우드 MCP의 글꼴 누락 표시로 클라우드 텍스트 편집 미검증",
+  "prototypeConnections": 144,
+  "captureVerifiedAt": "2026-09-26T15:01:29.405Z"
 }

@@ -47,7 +47,7 @@ check('Figma 활용 화면 설계', capturesComplete ? '전체 화면 이관 완
 check('Figma 캡처 삽입', capturesComplete ? '캡처 21개 반영' : '캡처 교체 대기', capturesComplete ? 'Figma 원본 프레임 캡처를 사용하고 PDF에서 설명 번호 73개를 좌표에 맞춰 표시; 원본 프레임 링크 포함' : 'Figma 캡처 완료 전까지 현재 로컬 웹 캡처의 출처 표시 유지');
 check('팀 Figma 공유 링크 첨부', 'Design 링크 첨부', `${figma.team} 파일 URL을 화면설계서와 PDF 공통 입력에 기록; 링크 확보와 열람 권한 검증을 구분`);
 check('제출 후 열람 가능한 공유 권한', figma.sharedAccessVerified ? '열람 검증 완료' : '미검증', figma.sharedAccessStatus);
-check('Figma Prototype 화면 이동', figma.prototypeStatus === 'verified' ? '연결·동작 검증 완료' : '미완료·권장 항목', figma.prototypeEvidence);
+check('Figma Prototype 화면 이동', figma.prototypeStatus === 'verified' ? '연결·동작 검증 완료' : figma.prototypeStatus === 'defined' ? '연결 정의 완료 / 재생 미검증' : '미완료·권장 항목', figma.prototypeEvidence);
 check('PROJECT→UC→화면설계서→Figma 최종 일관성', capturesComplete ? '화면·UC 대응 반영 / 공유 권한 미검증' : '문서·웹 시안 완료 / Figma 이관 중', capturesComplete ? '정본 32 UC·8개 화면 ID와 21개 Figma 프레임을 대응; 공유 권한과 클라우드 글꼴 편집은 별도 확인 필요' : '정본 32 UC·명칭·필수/선택·화면 이동 대조 완료; Figma 이관 완료 후 프레임·캡처 대조 필요');
 data.checklist = requirements.checklist;
 fs.writeFileSync(requirementsPath, JSON.stringify(requirements, null, 2) + '\n');

@@ -1,0 +1,620 @@
+{
+  "fileKey": "3g5xR8OkcV6sUclyGM5d30",
+  "url": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30",
+  "team": "이승보의 팀",
+  "capturedAt": "2026-09-26T15:04:12.143Z",
+  "boards": [
+    {
+      "key": "login",
+      "nodeId": "8:2",
+      "image": "06_증빙/화면설계/figma/screens/login.png",
+      "width": 1440,
+      "height": 1120,
+      "screenId": "SCR-C-001",
+      "url": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=8-2",
+      "callouts": [
+        {
+          "n": 1,
+          "x": 61.72019958496093,
+          "y": 31.288133348737443
+        },
+        {
+          "n": 2,
+          "x": 61.72019958496093,
+          "y": 40.852865491594585
+        },
+        {
+          "n": 3,
+          "x": 61.72019958496093,
+          "y": 49.31640625
+        },
+        {
+          "n": 4,
+          "x": 61.72019958496093,
+          "y": 55.83426339285714
+        },
+        {
+          "n": 5,
+          "x": 61.72019958496093,
+          "y": 61.99497767857143
+        },
+        {
+          "n": 6,
+          "x": 61.72019958496093,
+          "y": 78.36309705461775
+        }
+      ]
+    },
+    {
+      "key": "overview",
+      "nodeId": "9:2",
+      "image": "06_증빙/화면설계/figma/screens/overview.png",
+      "width": 1440,
+      "height": 1120,
+      "screenId": "SCR-C-002",
+      "url": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=9-2",
+      "callouts": [
+        {
+          "n": 1,
+          "x": 19.86111111111111,
+          "y": 3.363095351627895
+        },
+        {
+          "n": 2,
+          "x": 16.944444444444446,
+          "y": 1.6964285714285716
+        },
+        {
+          "n": 3,
+          "x": 25.84490882025824,
+          "y": 23.885789598737446
+        },
+        {
+          "n": 4,
+          "x": 19.907408820258247,
+          "y": 28.736980983189177
+        },
+        {
+          "n": 5,
+          "x": 92.91739569769965,
+          "y": 76.88802446637835
+        }
+      ]
+    },
+    {
+      "key": "analysis-visits",
+      "nodeId": "10:2",
+      "image": "06_증빙/화면설계/figma/screens/analysis-visits.png",
+      "width": 1440,
+      "height": 1120,
+      "screenId": "SCR-C-003",
+      "url": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=10-2",
+      "callouts": [
+        {
+          "n": 1,
+          "x": 25.84490882025824,
+          "y": 23.885789598737443
+        },
+        {
+          "n": 2,
+          "x": 37.47685326470269,
+          "y": 23.885789598737443
+        },
+        {
+          "n": 3,
+          "x": 38.62558152940538,
+          "y": 50.33575330461775
+        },
+        {
+          "n": 4,
+          "x": 51.579861111111114,
+          "y": 34.581473214285715
+        },
+        {
+          "n": 5,
+          "x": 26.67173173692491,
+          "y": 28.67745535714286
+        }
+      ]
+    },
+    {
+      "key": "analysis-consumption",
+      "nodeId": "11:2",
+      "image": "06_증빙/화면설계/figma/screens/analysis-consumption.png",
+      "width": 1440,
+      "height": 1120,
+      "screenId": "SCR-C-003",
+      "url": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=11-2",
+      "callouts": [
+        {
+          "n": 1,
+          "x": 26.665221320258247,
+          "y": 28.677455357142854
+        },
+        {
+          "n": 2,
+          "x": 19.86111111111111,
+          "y": 34.52195031302316
+        },
+        {
+          "n": 3,
+          "x": 21.643519931369358,
+          "y": 60.55059705461775
+        },
+        {
+          "n": 4,
+          "x": 59.72222222222222,
+          "y": 60.55059705461775
+        }
+      ]
+    },
+    {
+      "key": "recommendations",
+      "nodeId": "12:2",
+      "image": "06_증빙/화면설계/figma/screens/recommendations.png",
+      "width": 1440,
+      "height": 1240,
+      "screenId": "SCR-C-004",
+      "url": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=12-2",
+      "callouts": [
+        {
+          "n": 1,
+          "x": 19.86111111111111,
+          "y": 38.496305404170876
+        },
+        {
+          "n": 2,
+          "x": 21.365704006618923,
+          "y": 90.17473774571573
+        },
+        {
+          "n": 3,
+          "x": 36.08791775173611,
+          "y": 90.33602806829637
+        },
+        {
+          "n": 4,
+          "x": 89.88137139214409,
+          "y": 28.024193548387096
+        }
+      ]
+    },
+    {
+      "key": "calendar",
+      "nodeId": "13:2",
+      "image": "06_증빙/화면설계/figma/screens/calendar.png",
+      "width": 1440,
+      "height": 1120,
+      "screenId": "SCR-B-001",
+      "url": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=13-2",
+      "callouts": [
+        {
+          "n": 1,
+          "x": 88.47946166992188,
+          "y": 12.767857142857142
+        },
+        {
+          "n": 2,
+          "x": 22.175926632351345,
+          "y": 48.037578037806924
+        },
+        {
+          "n": 3,
+          "x": 38.173467848036026,
+          "y": 48.037578037806924
+        },
+        {
+          "n": 4,
+          "x": 73.63426208496094,
+          "y": 45.91332026890346
+        }
+      ]
+    },
+    {
+      "key": "plan-edit",
+      "nodeId": "38:2",
+      "image": "06_증빙/화면설계/figma/screens/plan-edit.png",
+      "width": 1440,
+      "height": 1120,
+      "screenId": "SCR-B-001-P01",
+      "url": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=38-2",
+      "callouts": [
+        {
+          "n": 1,
+          "x": 30.416666666666668,
+          "y": 40.760323660714285
+        },
+        {
+          "n": 2,
+          "x": 30.416666666666668,
+          "y": 48.812779017857146
+        },
+        {
+          "n": 3,
+          "x": 30.416666666666668,
+          "y": 56.86523437499999
+        },
+        {
+          "n": 4,
+          "x": 59.095052083333336,
+          "y": 69.88141741071429
+        },
+        {
+          "n": 5,
+          "x": 54.478081597222236,
+          "y": 69.88141741071429
+        }
+      ]
+    },
+    {
+      "key": "records",
+      "nodeId": "15:2",
+      "image": "06_증빙/화면설계/figma/screens/records.png",
+      "width": 1440,
+      "height": 1120,
+      "screenId": "SCR-B-002",
+      "url": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=15-2",
+      "callouts": [
+        {
+          "n": 1,
+          "x": 91.22757805718317,
+          "y": 40.37295477730887
+        },
+        {
+          "n": 2,
+          "x": 19.907408820258247,
+          "y": 37.60509763445173
+        },
+        {
+          "n": 3,
+          "x": 88.47946166992188,
+          "y": 12.767857142857142
+        },
+        {
+          "n": 4,
+          "x": 19.86111111111111,
+          "y": 63.41983250209263
+        }
+      ]
+    },
+    {
+      "key": "record-edit",
+      "nodeId": "39:2",
+      "image": "06_증빙/화면설계/figma/screens/record-edit.png",
+      "width": 1440,
+      "height": 1120,
+      "screenId": "SCR-B-002-P01",
+      "url": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=39-2",
+      "callouts": [
+        {
+          "n": 1,
+          "x": 30.416666666666668,
+          "y": 27.127511160714285
+        },
+        {
+          "n": 2,
+          "x": 50.625,
+          "y": 27.127511160714285
+        },
+        {
+          "n": 3,
+          "x": 30.416666666666668,
+          "y": 51.24999999999999
+        },
+        {
+          "n": 4,
+          "x": 57.361111111111114,
+          "y": 62.445591517857146
+        },
+        {
+          "n": 5,
+          "x": 30.416666666666668,
+          "y": 72.65764508928572
+        },
+        {
+          "n": 6,
+          "x": 64.16558159722221,
+          "y": 83.51422991071429
+        }
+      ]
+    },
+    {
+      "key": "summary",
+      "nodeId": "40:2",
+      "image": "06_증빙/화면설계/figma/screens/summary.png",
+      "width": 1440,
+      "height": 1120,
+      "screenId": "SCR-B-002-P02",
+      "url": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=40-2",
+      "callouts": [
+        {
+          "n": 1,
+          "x": 28.680555555555557,
+          "y": 32.486049107142854
+        },
+        {
+          "n": 2,
+          "x": 67.5,
+          "y": 26.808035714285715
+        }
+      ]
+    },
+    {
+      "key": "ontology",
+      "nodeId": "19:2",
+      "image": "06_증빙/화면설계/figma/screens/ontology.png",
+      "width": 1440,
+      "height": 1120,
+      "screenId": "SCR-C-005",
+      "url": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=19-2",
+      "callouts": [
+        {
+          "n": 1,
+          "x": 39.084926181369354,
+          "y": 42.27492741176059
+        },
+        {
+          "n": 2,
+          "x": 35.959926181369354,
+          "y": 62.26190839494978
+        },
+        {
+          "n": 3,
+          "x": 70.57798173692491,
+          "y": 70.70870535714285
+        }
+      ]
+    },
+    {
+      "key": "evidence",
+      "nodeId": "41:2",
+      "image": "06_증빙/화면설계/figma/screens/evidence.png",
+      "width": 1440,
+      "height": 1120,
+      "screenId": "SCR-C-004-P01",
+      "url": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=41-2",
+      "callouts": [
+        {
+          "n": 1,
+          "x": 66.52777777777777,
+          "y": 16.23046875
+        },
+        {
+          "n": 2,
+          "x": 66.52777777777777,
+          "y": 21.123046875000004
+        },
+        {
+          "n": 3,
+          "x": 90.19097222222221,
+          "y": 59.1015625
+        }
+      ]
+    },
+    {
+      "key": "data-read",
+      "nodeId": "21:2",
+      "image": "06_증빙/화면설계/figma/screens/data-read.png",
+      "width": 1440,
+      "height": 1120,
+      "screenId": "SCR-A-001",
+      "url": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=21-2",
+      "callouts": [
+        {
+          "n": 1,
+          "x": 26.63266923692491,
+          "y": 22.784598214285715
+        },
+        {
+          "n": 2,
+          "x": 19.86111111111111,
+          "y": 28.629093170166016
+        },
+        {
+          "n": 3,
+          "x": 19.907408820258247,
+          "y": 38.414249420166016
+        }
+      ]
+    },
+    {
+      "key": "data-admin",
+      "nodeId": "35:2",
+      "image": "06_증빙/화면설계/figma/screens/data-admin.png",
+      "width": 1440,
+      "height": 1120,
+      "screenId": "SCR-A-001",
+      "url": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=35-2",
+      "callouts": [
+        {
+          "n": 1,
+          "x": 21.666666666666668,
+          "y": 34.334542410714285
+        },
+        {
+          "n": 2,
+          "x": 71.94444444444444,
+          "y": 43.54771205357143
+        },
+        {
+          "n": 3,
+          "x": 21.666666666666668,
+          "y": 53.74302455357143
+        },
+        {
+          "n": 4,
+          "x": 86.59288194444444,
+          "y": 71.48716517857143
+        }
+      ]
+    },
+    {
+      "key": "csv-validation",
+      "nodeId": "42:2",
+      "image": "06_증빙/화면설계/figma/screens/csv-validation.png",
+      "width": 1440,
+      "height": 1120,
+      "screenId": "SCR-A-001-P01",
+      "url": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=42-2",
+      "callouts": [
+        {
+          "n": 1,
+          "x": 21.666666666666668,
+          "y": 64.17131696428571
+        },
+        {
+          "n": 2,
+          "x": 44.75368923611111,
+          "y": 53.74302455357143
+        }
+      ]
+    },
+    {
+      "key": "csv-error",
+      "nodeId": "44:2",
+      "image": "06_증빙/화면설계/figma/screens/csv-error.png",
+      "width": 1440,
+      "height": 1120,
+      "screenId": "SCR-A-001-P01",
+      "url": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=44-2",
+      "callouts": [
+        {
+          "n": 1,
+          "x": 21.666666666666668,
+          "y": 64.17131696428571
+        },
+        {
+          "n": 2,
+          "x": 44.75368923611111,
+          "y": 53.74302455357143
+        }
+      ]
+    },
+    {
+      "key": "criteria",
+      "nodeId": "45:2",
+      "image": "06_증빙/화면설계/figma/screens/criteria.png",
+      "width": 1440,
+      "height": 1120,
+      "screenId": "SCR-A-001-P02",
+      "url": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=45-2",
+      "callouts": [
+        {
+          "n": 1,
+          "x": 30.416666666666668,
+          "y": 28.8671875
+        },
+        {
+          "n": 2,
+          "x": 60.050998263888886,
+          "y": 79.29129464285714
+        }
+      ]
+    },
+    {
+      "key": "login-error",
+      "nodeId": "26:2",
+      "image": "06_증빙/화면설계/figma/screens/login-error.png",
+      "width": 1440,
+      "height": 1120,
+      "screenId": "SCR-C-001",
+      "url": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=26-2",
+      "callouts": [
+        {
+          "n": 1,
+          "x": 61.72019958496093,
+          "y": 38.067338126046316
+        },
+        {
+          "n": 2,
+          "x": 61.72019958496093,
+          "y": 52.33445303780692
+        }
+      ]
+    },
+    {
+      "key": "analysis-empty",
+      "nodeId": "28:2",
+      "image": "06_증빙/화면설계/figma/screens/analysis-empty.png",
+      "width": 1440,
+      "height": 1120,
+      "screenId": "SCR-C-003",
+      "url": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=28-2",
+      "callouts": [
+        {
+          "n": 1,
+          "x": 37.47685326470269,
+          "y": 23.885789598737446
+        },
+        {
+          "n": 2,
+          "x": 19.86111111111111,
+          "y": 34.52195031302316
+        }
+      ]
+    },
+    {
+      "key": "plan-save-error",
+      "nodeId": "46:2",
+      "image": "06_증빙/화면설계/figma/screens/plan-save-error.png",
+      "width": 1440,
+      "height": 1120,
+      "screenId": "SCR-B-001-P01",
+      "url": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=46-2",
+      "callouts": [
+        {
+          "n": 1,
+          "x": 30.416666666666668,
+          "y": 38.536551339285715
+        },
+        {
+          "n": 2,
+          "x": 30.416666666666668,
+          "y": 65.51478794642858
+        },
+        {
+          "n": 3,
+          "x": 59.095052083333336,
+          "y": 72.10379464285714
+        }
+      ]
+    },
+    {
+      "key": "data-empty",
+      "nodeId": "30:2",
+      "image": "06_증빙/화면설계/figma/screens/data-empty.png",
+      "width": 1440,
+      "height": 1120,
+      "screenId": "SCR-A-001",
+      "url": "https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=30-2",
+      "callouts": [
+        {
+          "n": 1,
+          "x": 19.86111111111111,
+          "y": 28.629093170166016
+        },
+        {
+          "n": 2,
+          "x": 19.907408820258247,
+          "y": 38.414249420166016
+        }
+      ]
+    }
+  ],
+  "prototype": {
+    "status": "link_targets_verified",
+    "connections": 144,
+    "invalidTargets": 0,
+    "playbackVerified": false
+  },
+  "sharedAccess": {
+    "verified": false,
+    "status": "CloudFront 403으로 비로그인 열람 미검증"
+  },
+  "fonts": {
+    "family": "Pretendard Variable",
+    "localFontCacheVerified": true,
+    "cloudTextEditVerified": false
+  },
+  "visualReview": "06_증빙/화면설계/figma/verification.json"
+}

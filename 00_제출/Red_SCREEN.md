@@ -8,7 +8,7 @@
 | 화면 표시명 | 제주 마케팅 캘린더 — 화면 폭을 고려한 공식 프로젝트명의 축약 표시 |
 | 팀 | Red · 이승보·김예원·김혜원 |
 | 작성일 | 2026-09-26 |
-| 문서 상태 | **계정 연결·팀 Design 파일 생성 완료 · 전체 화면 이관·캡처 진행 중 · 제출 준비 미완료** |
+| 문서 상태 | **전체 화면·Figma 캡처 반영 · 공유 권한 확인 전 검토본 · 제출 준비 미완료** |
 | 기준 문서 | [Red_PROJECT.md](Red_PROJECT.md) · [Red_USECASE.md](Red_USECASE.md) · [StarUML 원본](Red_USECASE.mdj) |
 | 편집 원고 | 이 문서와 [화면·UC 대응 자료](../02_제품/화면설계/requirements.json) |
 | 최종 제출 형식 | [Red_SCREEN.pdf 검토본](Red_SCREEN.pdf) 32쪽 + [팀 Figma Design 공유 링크](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30) |
@@ -22,13 +22,13 @@
 | --- | --- |
 | 제출용 Figma Design 공유 링크 | [이승보의 팀 · 제주 마케팅 캘린더](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30) |
 | Figma 계정 연결 | 플러그인 설치·계정 인증·팀 Design 파일 생성 확인 |
-| Figma 원본 프레임 | 전체 21개 화면·상태 이관 중 |
-| Figma 화면 캡처 | 전체 캡처 완료 전까지 로컬 웹 시안 캡처 사용 |
+| Figma 원본 프레임 | 주요 화면 8개와 팝업·상태를 포함한 21개 프레임 반영; 각 Storyboard의 원본 프레임 링크 참조 |
+| Figma 화면 캡처 | [캡처 명세](../06_증빙/화면설계/figma/manifest.json)의 Figma 캡처 21개 사용; 설명 번호 73개는 PDF에서 표시 |
 | 공유 권한 | 비로그인 요청이 CloudFront 403으로 차단되어 실제 프레임 열람 미검증 |
-| Prototype 이동 연결 | 화면 간 이동은 문서에 정의되어 있으며 Figma Prototype 연결 확인 전 |
-| 글꼴 편집 | Pretendard Variable 이름 유지·로컬 Mac 글꼴 설치 확인; MCP의 글꼴 누락 표시로 클라우드 텍스트 편집은 미검증 |
+| Prototype 이동 연결 | 144개 Prototype 연결 정의와 이동 대상 유효성 확인; 실제 클릭 재생 테스트는 미실시 |
+| 글꼴 편집 | Pretendard Variable 유지; 로컬 Figma 앱·FigmaAgent 실행과 글꼴 캐시 9개 스타일 인식 확인; 클라우드 MCP의 글꼴 누락 표시로 클라우드 텍스트 편집 미검증 |
 
-Figma 계정 연결과 팀 Design 파일 생성을 완료했으며 화면·캡처를 이관 중임 제출 후 열람 가능 여부는 비로그인 환경에서 주요 프레임이 실제로 열리는지 확인한 뒤 완료로 바꿈
+Figma 파일과 화면 캡처를 반영함 제출 후 열람 가능 여부는 비로그인 환경에서 주요 프레임이 실제로 열리는지 확인한 뒤 완료로 바꿈
 
 ## 1. 요구사항과 구현 범위
 
@@ -54,7 +54,7 @@ Figma 계정 연결과 팀 Design 파일 생성을 완료했으며 화면·캡�
 | 이 문서의 화면·처리 명세 | 실제 서비스에서 필요한 사용자 흐름과 상태를 정의한 목표 |
 | 로컬 화면 시안 | 예시 자료와 브라우저 저장으로 입력·전환을 체험하는 검토용 결과 최신 동작 검증은 [시안 검증 기록](../06_증빙/화면시안/검증.md)에서 별도 확인 |
 | 실제 서비스 | 실제 통계·서버 인증·사업체 접근 통제·CSV 적재·LLM·온톨로지 추론 연결 전 |
-| Figma·PDF | PDF 32쪽 검토본 제작·표시 확인 완료; 전체 Figma 화면·캡처 이관 중 공유 권한 검증 후 제출 상태 확정 |
+| Figma·PDF | 21개 Figma 프레임 캡처를 반영한 PDF 32쪽 검토본 공유 권한 검증 후 제출 상태 확정 |
 
 예시 지역·업종·기간은 화면 검토 조건임 시범 지역·업종·사업체가 확정되었다는 뜻이 아님 지역 방문 집계를 가게의 손님 수로, 과거 분석을 미래의 확정 예측으로 표현하지 않음 클릭·예약·쿠폰 미확보는 실제 0건과 구분함
 
@@ -172,7 +172,7 @@ flowchart TD
 
 8개 주요 화면의 탭·팝업·예외를 21개 Storyboard로 설명함 상태가 달라도 부모 Screen ID를 유지하며 새 독립 화면으로 세지 않음 PDF 화면 위 원형 숫자는 아래 ①, ② 등의 설명 번호와 같음
 
-아래 설명과 PDF는 [동일한 Storyboard 자료](../02_제품/화면설계/storyboards.json)에서 생성함 현재 이미지는 **로컬 웹 시안 캡처**이며 Figma 캡처 완료 후 교체함 입력·전환·저장은 시안의 동작이고 실제 서버 인증·권한·자료 적재는 후속 구현 범위임
+아래 설명과 PDF는 [동일한 Storyboard 자료](../02_제품/화면설계/storyboards.json)에서 생성함 현재 이미지는 **Figma 프레임 캡처**이며 번호는 PDF에서만 캡처 위에 덧붙임 원본 프레임은 각 화면의 링크에서 확인 입력·전환·저장은 시안의 동작이고 실제 서버 인증·권한·자료 적재는 후속 구현 범위임
 
 ### 5.1 SCR-C-001 / 로그인
 
@@ -180,9 +180,11 @@ flowchart TD
 
 **범위:** 최신 사용자 요청에 따른 공통 접근 화면 · 별도 UC ID 없음
 
-![SCR-C-001 로그인](../06_증빙/화면설계/screens/login.png)
+![SCR-C-001 로그인](../06_증빙/화면설계/figma/screens/login.png)
 
-로컬 웹 시안 캡처 · 인위적 예시 자료 · Figma 캡처로 교체 전
+Figma 프레임 캡처 · 인위적 예시 자료 · 번호는 PDF에서 캡처 위에 표시
+
+[Figma 원본 프레임](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=8-2) · Node ID: 8:2
 
 
 | 번호·요소 | Description — 사용자 행위 → 시스템 처리 → 결과 | 이동·연결 |
@@ -206,9 +208,11 @@ flowchart TD
 
 **범위:** 필수 기능의 화면 시안
 
-![SCR-C-002 한눈에 보기](../06_증빙/화면설계/screens/overview.png)
+![SCR-C-002 한눈에 보기](../06_증빙/화면설계/figma/screens/overview.png)
 
-로컬 웹 시안 캡처 · 인위적 예시 자료 · Figma 캡처로 교체 전
+Figma 프레임 캡처 · 인위적 예시 자료 · 번호는 PDF에서 캡처 위에 표시
+
+[Figma 원본 프레임](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=9-2) · Node ID: 9:2
 
 
 | 번호·요소 | Description — 사용자 행위 → 시스템 처리 → 결과 | 이동·연결 |
@@ -231,9 +235,11 @@ flowchart TD
 
 **범위:** 필수 기능의 화면 시안
 
-![SCR-C-003 지역 분석 · 방문과 계절](../06_증빙/화면설계/screens/analysis-visits.png)
+![SCR-C-003 지역 분석 · 방문과 계절](../06_증빙/화면설계/figma/screens/analysis-visits.png)
 
-로컬 웹 시안 캡처 · 인위적 예시 자료 · Figma 캡처로 교체 전
+Figma 프레임 캡처 · 인위적 예시 자료 · 번호는 PDF에서 캡처 위에 표시
+
+[Figma 원본 프레임](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=10-2) · Node ID: 10:2
 
 
 | 번호·요소 | Description — 사용자 행위 → 시스템 처리 → 결과 | 이동·연결 |
@@ -256,9 +262,11 @@ flowchart TD
 
 **범위:** 필수 기능의 화면 시안
 
-![SCR-C-003 지역 분석 · 소비 비교](../06_증빙/화면설계/screens/analysis-consumption.png)
+![SCR-C-003 지역 분석 · 소비 비교](../06_증빙/화면설계/figma/screens/analysis-consumption.png)
 
-로컬 웹 시안 캡처 · 인위적 예시 자료 · Figma 캡처로 교체 전
+Figma 프레임 캡처 · 인위적 예시 자료 · 번호는 PDF에서 캡처 위에 표시
+
+[Figma 원본 프레임](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=11-2) · Node ID: 11:2
 
 
 | 번호·요소 | Description — 사용자 행위 → 시스템 처리 → 결과 | 이동·연결 |
@@ -280,9 +288,11 @@ flowchart TD
 
 **범위:** 필수 기능의 화면 시안
 
-![SCR-C-004 홍보 제안](../06_증빙/화면설계/screens/recommendations.png)
+![SCR-C-004 홍보 제안](../06_증빙/화면설계/figma/screens/recommendations.png)
 
-로컬 웹 시안 캡처 · 인위적 예시 자료 · Figma 캡처로 교체 전
+Figma 프레임 캡처 · 인위적 예시 자료 · 번호는 PDF에서 캡처 위에 표시
+
+[Figma 원본 프레임](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=12-2) · Node ID: 12:2
 
 
 | 번호·요소 | Description — 사용자 행위 → 시스템 처리 → 결과 | 이동·연결 |
@@ -304,9 +314,11 @@ flowchart TD
 
 **범위:** 필수 기능의 화면 시안
 
-![SCR-B-001 3개월 일정](../06_증빙/화면설계/screens/calendar.png)
+![SCR-B-001 3개월 일정](../06_증빙/화면설계/figma/screens/calendar.png)
 
-로컬 웹 시안 캡처 · 인위적 예시 자료 · Figma 캡처로 교체 전
+Figma 프레임 캡처 · 인위적 예시 자료 · 번호는 PDF에서 캡처 위에 표시
+
+[Figma 원본 프레임](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=13-2) · Node ID: 13:2
 
 
 | 번호·요소 | Description — 사용자 행위 → 시스템 처리 → 결과 | 이동·연결 |
@@ -328,9 +340,11 @@ flowchart TD
 
 **범위:** 필수 기능의 화면 시안
 
-![SCR-B-001-P01 계획 작성·수정 팝업](../06_증빙/화면설계/screens/plan-edit.png)
+![SCR-B-001-P01 계획 작성·수정 팝업](../06_증빙/화면설계/figma/screens/plan-edit.png)
 
-로컬 웹 시안 캡처 · 인위적 예시 자료 · Figma 캡처로 교체 전
+Figma 프레임 캡처 · 인위적 예시 자료 · 번호는 PDF에서 캡처 위에 표시
+
+[Figma 원본 프레임](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=38-2) · Node ID: 38:2
 
 
 | 번호·요소 | Description — 사용자 행위 → 시스템 처리 → 결과 | 이동·연결 |
@@ -353,9 +367,11 @@ flowchart TD
 
 **범위:** 필수 기능의 화면 시안
 
-![SCR-B-002 실행 기록·사용 결과](../06_증빙/화면설계/screens/records.png)
+![SCR-B-002 실행 기록·사용 결과](../06_증빙/화면설계/figma/screens/records.png)
 
-로컬 웹 시안 캡처 · 인위적 예시 자료 · Figma 캡처로 교체 전
+Figma 프레임 캡처 · 인위적 예시 자료 · 번호는 PDF에서 캡처 위에 표시
+
+[Figma 원본 프레임](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=15-2) · Node ID: 15:2
 
 
 | 번호·요소 | Description — 사용자 행위 → 시스템 처리 → 결과 | 이동·연결 |
@@ -377,9 +393,11 @@ flowchart TD
 
 **범위:** 필수 기능의 화면 시안
 
-![SCR-B-002-P01 사용·실행 기록 입력 팝업](../06_증빙/화면설계/screens/record-edit.png)
+![SCR-B-002-P01 사용·실행 기록 입력 팝업](../06_증빙/화면설계/figma/screens/record-edit.png)
 
-로컬 웹 시안 캡처 · 인위적 예시 자료 · Figma 캡처로 교체 전
+Figma 프레임 캡처 · 인위적 예시 자료 · 번호는 PDF에서 캡처 위에 표시
+
+[Figma 원본 프레임](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=39-2) · Node ID: 39:2
 
 
 | 번호·요소 | Description — 사용자 행위 → 시스템 처리 → 결과 | 이동·연결 |
@@ -403,9 +421,11 @@ flowchart TD
 
 **범위:** 필수 기능의 화면 시안
 
-![SCR-B-002-P02 사용 결과 요약 팝업](../06_증빙/화면설계/screens/summary.png)
+![SCR-B-002-P02 사용 결과 요약 팝업](../06_증빙/화면설계/figma/screens/summary.png)
 
-로컬 웹 시안 캡처 · 인위적 예시 자료 · Figma 캡처로 교체 전
+Figma 프레임 캡처 · 인위적 예시 자료 · 번호는 PDF에서 캡처 위에 표시
+
+[Figma 원본 프레임](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=40-2) · Node ID: 40:2
 
 
 | 번호·요소 | Description — 사용자 행위 → 시스템 처리 → 결과 | 이동·연결 |
@@ -425,9 +445,11 @@ flowchart TD
 
 **범위:** UC10의 보조 표현 · 새 독립 필수 UC를 추가하지 않음
 
-![SCR-C-005 근거 연결](../06_증빙/화면설계/screens/ontology.png)
+![SCR-C-005 근거 연결](../06_증빙/화면설계/figma/screens/ontology.png)
 
-로컬 웹 시안 캡처 · 인위적 예시 자료 · Figma 캡처로 교체 전
+Figma 프레임 캡처 · 인위적 예시 자료 · 번호는 PDF에서 캡처 위에 표시
+
+[Figma 원본 프레임](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=19-2) · Node ID: 19:2
 
 
 | 번호·요소 | Description — 사용자 행위 → 시스템 처리 → 결과 | 이동·연결 |
@@ -448,9 +470,11 @@ flowchart TD
 
 **범위:** 필수 기능의 화면 시안
 
-![SCR-C-004-P01 추천 근거 상세 패널](../06_증빙/화면설계/screens/evidence.png)
+![SCR-C-004-P01 추천 근거 상세 패널](../06_증빙/화면설계/figma/screens/evidence.png)
 
-로컬 웹 시안 캡처 · 인위적 예시 자료 · Figma 캡처로 교체 전
+Figma 프레임 캡처 · 인위적 예시 자료 · 번호는 PDF에서 캡처 위에 표시
+
+[Figma 원본 프레임](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=41-2) · Node ID: 41:2
 
 
 | 번호·요소 | Description — 사용자 행위 → 시스템 처리 → 결과 | 이동·연결 |
@@ -470,9 +494,11 @@ flowchart TD
 
 **범위:** 자료·기준 관리의 조회 상태 · UC10 보조
 
-![SCR-A-001 자료 둘러보기 · 조회 상태](../06_증빙/화면설계/screens/data-read.png)
+![SCR-A-001 자료 둘러보기 · 조회 상태](../06_증빙/화면설계/figma/screens/data-read.png)
 
-로컬 웹 시안 캡처 · 인위적 예시 자료 · Figma 캡처로 교체 전
+Figma 프레임 캡처 · 인위적 예시 자료 · 번호는 PDF에서 캡처 위에 표시
+
+[Figma 원본 프레임](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=21-2) · Node ID: 21:2
 
 
 | 번호·요소 | Description — 사용자 행위 → 시스템 처리 → 결과 | 이동·연결 |
@@ -492,9 +518,11 @@ flowchart TD
 
 **범위:** 필수 기능의 화면 시안
 
-![SCR-A-001 자료·기준 관리](../06_증빙/화면설계/screens/data-admin.png)
+![SCR-A-001 자료·기준 관리](../06_증빙/화면설계/figma/screens/data-admin.png)
 
-로컬 웹 시안 캡처 · 인위적 예시 자료 · Figma 캡처로 교체 전
+Figma 프레임 캡처 · 인위적 예시 자료 · 번호는 PDF에서 캡처 위에 표시
+
+[Figma 원본 프레임](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=35-2) · Node ID: 35:2
 
 
 | 번호·요소 | Description — 사용자 행위 → 시스템 처리 → 결과 | 이동·연결 |
@@ -516,9 +544,11 @@ flowchart TD
 
 **범위:** 필수 기능의 화면 시안
 
-![SCR-A-001-P01 CSV 검증 결과](../06_증빙/화면설계/screens/csv-validation.png)
+![SCR-A-001-P01 CSV 검증 결과](../06_증빙/화면설계/figma/screens/csv-validation.png)
 
-로컬 웹 시안 캡처 · 인위적 예시 자료 · Figma 캡처로 교체 전
+Figma 프레임 캡처 · 인위적 예시 자료 · 번호는 PDF에서 캡처 위에 표시
+
+[Figma 원본 프레임](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=42-2) · Node ID: 42:2
 
 
 | 번호·요소 | Description — 사용자 행위 → 시스템 처리 → 결과 | 이동·연결 |
@@ -538,9 +568,11 @@ flowchart TD
 
 **범위:** 필수 기능의 화면 시안
 
-![SCR-A-001-P01 CSV 검증 · 등록 불가 상태](../06_증빙/화면설계/screens/csv-error.png)
+![SCR-A-001-P01 CSV 검증 · 등록 불가 상태](../06_증빙/화면설계/figma/screens/csv-error.png)
 
-로컬 웹 시안 캡처 · 인위적 예시 자료 · Figma 캡처로 교체 전
+Figma 프레임 캡처 · 인위적 예시 자료 · 번호는 PDF에서 캡처 위에 표시
+
+[Figma 원본 프레임](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=44-2) · Node ID: 44:2
 
 
 | 번호·요소 | Description — 사용자 행위 → 시스템 처리 → 결과 | 이동·연결 |
@@ -559,9 +591,11 @@ flowchart TD
 
 **범위:** 필수 기능의 화면 시안
 
-![SCR-A-001-P02 추천 기준·근거 편집](../06_증빙/화면설계/screens/criteria.png)
+![SCR-A-001-P02 추천 기준·근거 편집](../06_증빙/화면설계/figma/screens/criteria.png)
 
-로컬 웹 시안 캡처 · 인위적 예시 자료 · Figma 캡처로 교체 전
+Figma 프레임 캡처 · 인위적 예시 자료 · 번호는 PDF에서 캡처 위에 표시
+
+[Figma 원본 프레임](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=45-2) · Node ID: 45:2
 
 
 | 번호·요소 | Description — 사용자 행위 → 시스템 처리 → 결과 | 이동·연결 |
@@ -581,9 +615,11 @@ flowchart TD
 
 **범위:** 공통 접근 보조 화면
 
-![SCR-C-001 로그인 · 입력 오류 상태](../06_증빙/화면설계/screens/login-error.png)
+![SCR-C-001 로그인 · 입력 오류 상태](../06_증빙/화면설계/figma/screens/login-error.png)
 
-로컬 웹 시안 캡처 · 인위적 예시 자료 · Figma 캡처로 교체 전
+Figma 프레임 캡처 · 인위적 예시 자료 · 번호는 PDF에서 캡처 위에 표시
+
+[Figma 원본 프레임](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=26-2) · Node ID: 26:2
 
 
 | 번호·요소 | Description — 사용자 행위 → 시스템 처리 → 결과 | 이동·연결 |
@@ -601,9 +637,11 @@ flowchart TD
 
 **범위:** 필수 기능의 화면 시안
 
-![SCR-C-003 지역 분석 · 자료 없음 상태](../06_증빙/화면설계/screens/analysis-empty.png)
+![SCR-C-003 지역 분석 · 자료 없음 상태](../06_증빙/화면설계/figma/screens/analysis-empty.png)
 
-로컬 웹 시안 캡처 · 인위적 예시 자료 · Figma 캡처로 교체 전
+Figma 프레임 캡처 · 인위적 예시 자료 · 번호는 PDF에서 캡처 위에 표시
+
+[Figma 원본 프레임](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=28-2) · Node ID: 28:2
 
 
 | 번호·요소 | Description — 사용자 행위 → 시스템 처리 → 결과 | 이동·연결 |
@@ -621,9 +659,11 @@ flowchart TD
 
 **범위:** 필수 기능의 화면 시안
 
-![SCR-B-001-P01 계획 작성 · 저장 실패 상태](../06_증빙/화면설계/screens/plan-save-error.png)
+![SCR-B-001-P01 계획 작성 · 저장 실패 상태](../06_증빙/화면설계/figma/screens/plan-save-error.png)
 
-로컬 웹 시안 캡처 · 인위적 예시 자료 · Figma 캡처로 교체 전
+Figma 프레임 캡처 · 인위적 예시 자료 · 번호는 PDF에서 캡처 위에 표시
+
+[Figma 원본 프레임](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=46-2) · Node ID: 46:2
 
 
 | 번호·요소 | Description — 사용자 행위 → 시스템 처리 → 결과 | 이동·연결 |
@@ -643,9 +683,11 @@ flowchart TD
 
 **범위:** 조회 상태
 
-![SCR-A-001 자료 둘러보기 · 검색 결과 없음](../06_증빙/화면설계/screens/data-empty.png)
+![SCR-A-001 자료 둘러보기 · 검색 결과 없음](../06_증빙/화면설계/figma/screens/data-empty.png)
 
-로컬 웹 시안 캡처 · 인위적 예시 자료 · Figma 캡처로 교체 전
+Figma 프레임 캡처 · 인위적 예시 자료 · 번호는 PDF에서 캡처 위에 표시
+
+[Figma 원본 프레임](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30?node-id=30-2) · Node ID: 30:2
 
 
 | 번호·요소 | Description — 사용자 행위 → 시스템 처리 → 결과 | 이동·연결 |
@@ -678,12 +720,12 @@ flowchart TD
 | Actor별 화면구성도·화면 목록 | 구성도·목록 반영 완료 | 3 Actor 흐름·8 주요 Screen ID·6 팝업·패널 ID·경로 기록; 일반 사용자 조회는 설계 가정 |
 | 화면별 번호와 행동→처리→결과 Description | 번호·동작 설명 대조 완료 | 캡처 21개·설명 번호 73개; PDF와 Markdown이 동일한 Storyboard 자료를 사용 |
 | 입력 오류·빈 결과·불가·실패·완료 상태 | 시안 상태 검증 완료 | 빈 결과·입력 오류·CSV 등록 불가·저장 실패·성공 동작 확인; 실제 서버 오류는 후속 검증 |
-| Figma 활용 화면 설계 | 계정 연결·파일 생성 완료 / 이관 중 | Figma 플러그인 인증과 이승보의 팀 Design 파일 생성 확인; 전체 21개 화면·상태를 이관 중 |
-| Figma 캡처 삽입 | 캡처 교체 대기 | Figma 캡처 완료 전까지 현재 로컬 웹 캡처의 출처 표시 유지 |
+| Figma 활용 화면 설계 | 전체 화면 이관 완료 | 이승보의 팀 Design 파일에 주요 화면 8개와 팝업·상태를 포함한 21개 프레임 반영; 프레임 ID는 캡처 명세에 기록 |
+| Figma 캡처 삽입 | 캡처 21개 반영 | Figma 원본 프레임 캡처를 사용하고 PDF에서 설명 번호 73개를 좌표에 맞춰 표시; 원본 프레임 링크 포함 |
 | 팀 Figma 공유 링크 첨부 | Design 링크 첨부 | 이승보의 팀 파일 URL을 화면설계서와 PDF 공통 입력에 기록; 링크 확보와 열람 권한 검증을 구분 |
 | 제출 후 열람 가능한 공유 권한 | 미검증 | 비로그인 요청이 CloudFront 403으로 차단되어 실제 프레임 열람 미검증 |
-| Figma Prototype 화면 이동 | 미완료·권장 항목 | 화면 간 이동은 문서에 정의되어 있으며 Figma Prototype 연결 확인 전 |
+| Figma Prototype 화면 이동 | 연결 정의 완료 / 재생 미검증 | 144개 Prototype 연결 정의와 이동 대상 유효성 확인; 실제 클릭 재생 테스트는 미실시 |
 | PPT 또는 PDF 화면설계서 | PDF 검토본 제작·표시 확인 | Red_SCREEN.pdf 32쪽; 21개 화면 이미지·한글 글꼴 로드·페이지 넘침 검사와 실제 렌더링 확인 |
-| PROJECT→UC→화면설계서→Figma 최종 일관성 | 문서·웹 시안 완료 / Figma 이관 중 | 정본 32 UC·명칭·필수/선택·화면 이동 대조 완료; Figma 이관 완료 후 프레임·캡처 대조 필요 |
+| PROJECT→UC→화면설계서→Figma 최종 일관성 | 화면·UC 대응 반영 / 공유 권한 미검증 | 정본 32 UC·8개 화면 ID와 21개 Figma 프레임을 대응; 공유 권한과 클라우드 글꼴 편집은 별도 확인 필요 |
 
 문서 구조·ID 검사와 실제 화면 표시 검사는 [화면설계 검증 기록](../06_증빙/화면설계/검증.md)에 구분함 Figma 필수 제출 항목을 실제로 확인한 뒤 표지의 ‘제출 준비 미완료’를 갱신함

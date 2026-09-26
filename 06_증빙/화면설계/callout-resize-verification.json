@@ -1,0 +1,29 @@
+{
+  "circles": 73,
+  "changedSlides": 21,
+  "diameterScale": 0.65,
+  "diameterBeforePt": 21.6,
+  "diameterAfterPt": 14.04,
+  "numberFontBeforePt": 8,
+  "numberFontAfterPt": 6,
+  "centersPreserved": true,
+  "allOtherShapesUnchanged": true,
+  "otherPackagePartsByteIdentical": true,
+  "sourceSha256": "c73f6ed2bd6df0409a1c7380a8265055121e7489406c6d6b531c19af3544dd9f",
+  "pptx": "00_제출/Red 화면설계서_20260927_번호축소.pptx",
+  "pdf": "00_제출/Red 화면설계서_20260927_번호축소.pdf",
+  "pptxSha256": "0d5c6d0230739f010857ae9f16ee3915dad4409c7f5415f1b0cddaa7aef1d567",
+  "pdfSha256": "933eb14a71130d998fd093eacc230f95fbece132aa82eca29b916d4d634038a1",
+  "slides": 34,
+  "pdfPages": 34,
+  "nativePowerPointPDFExported": true,
+  "all34RenderedPagesCompared": true,
+  "changesOutsideAnnotationRegions": false,
+  "visualSpotChecks": [
+    13,
+    18,
+    21
+  ],
+  "packageIntegrityPassed": true,
+  "firstPartyImportPassed": true
+}

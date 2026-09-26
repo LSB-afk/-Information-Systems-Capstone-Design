@@ -30,6 +30,9 @@ const icons = {
   download:'<path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/>',
   upload:'<path d="M12 16V4m-5 5 5-5 5 5M4 16v5h16v-5"/>',
   menu:'<path d="M4 6h16M4 12h16M4 18h16"/>',
+  panel:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16m7-12-3 4 3 4"/>',
+  eye:'<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>',
+  logout:'<path d="M10 4H5v16h5m4-12 4 4-4 4m-6-4h13"/>',
   people:'<circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 5a3 3 0 0 1 0 6m2 4a5 5 0 0 1 3 4v2"/>',
   edit:'<path d="m15 4 5 5M4 20l5-1L21 7a2 2 0 0 0-5-5L4 14l-1 7M12 21h9"/>',
   book:'<path d="M3 4h6a3 3 0 0 1 3 3v14a3 3 0 0 0-3-3H3V4Zm18 0h-6a3 3 0 0 0-3 3m0 14a3 3 0 0 1 3-3h6V4"/>',
@@ -39,6 +42,19 @@ const icon = name => `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">$
 const logo = () => '<svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="12" fill="#eaf3ec"/><path d="M12 27c3-6 6-8 9-11 4 5 8 9 8 13H12Z" fill="#236447"/><circle cx="14" cy="14" r="4" fill="#eba849"/><path d="M20 10q2-6 9-4-1 6-9 4" fill="#82a777"/><path d="M9 31h22" stroke="#236447" stroke-width="1.5" stroke-linecap="round"/></svg>';
 const button = (label, action, extra = '', symbol = '') => `<button class="button ${extra}" data-action="${action}">${symbol ? icon(symbol) : ''}${label}</button>`;
 const STORAGE_KEY = 'jeju-design-prototype-v1';
+const LAYOUT_KEY = 'jeju-design-layout-v1';
+const DEMO_SESSION_KEY = 'jeju-design-demo-session-v1';
+// Public fixtures for the login preview; these are not real account credentials.
+const demoAccounts = {business:'cafe@example.com',service:'operator@example.com'};
+const demoPassword = 'JejuDemo26!';
+let demoSessionRole = null;
+try { const role=sessionStorage.getItem(DEMO_SESSION_KEY);if(['business','service'].includes(role))demoSessionRole=role; } catch {}
+const sidebarLayout = {width:248,collapsed:false};
+try {
+  const layout=JSON.parse(localStorage.getItem(LAYOUT_KEY)||'null');
+  if(Number.isFinite(layout?.width))sidebarLayout.width=Math.min(360,Math.max(216,layout.width));
+  sidebarLayout.collapsed=layout?.collapsed===true;
+} catch {}
 const initialPlans = () => [
   {id:'sample-oct',title:'가을 메뉴 콘텐츠 준비',date:'2026-10-05',channel:'인스타그램',memo:'계절 음료 사진과 소개 문구 준비',region:'애월읍',recId:null},
   {id:'sample-nov',title:'평일 티타임 세트 안내',date:'2026-11-09',channel:'매장 안내',memo:'판매 가능한 메뉴 구성 먼저 확인',region:'애월읍',recId:null}
@@ -61,7 +77,7 @@ const recordEntries = saved.records && typeof saved.records === 'object' && !Arr
 const restoredRecords = recordEntries.filter(([id,record]) => restoredPlans.some(p => p.id === id) && validRecord(record));
 if (saved.records !== undefined && (!saved.records || typeof saved.records !== 'object' || Array.isArray(saved.records) || restoredRecords.length !== recordEntries.length)) recoveryIssue = true;
 let state = {
-  role:saved.role === 'service' ? 'service' : 'business',
+  role:demoSessionRole || (saved.role === 'service' ? 'service' : 'business'),
   region:['애월읍','구좌읍'].includes(saved.region) ? saved.region : '애월읍',
   plans:restoredPlans,
   records:Object.fromEntries(restoredRecords),
@@ -76,7 +92,7 @@ const recs = [
   {id:'winter',month:11,date:'2026-11-16',title:'따뜻한 음료로 채우는 평일 오후',description:'실내에서 머물 이유를 제안하세요. 판매 가능한 음료 세트부터 확인합니다.',tag:'비수기 준비',icon:'cup',color:'',channel:'매장 안내',reason:'예시 방문 자료에서 11월은 10월보다 방문이 적습니다. 실내 상품을 알리는 방안이며, 오후 수요는 추가 확인이 필요합니다.',task:'판매 가능한 음료·디저트 구성을 정하고 매장 안내물을 만듭니다.'},
   {id:'return',month:12,date:'2026-12-07',title:'다시 찾고 싶은 연말의 작은 혜택',description:'다음 방문에 쓸 혜택을 설계하고 비용과 운영 가능 여부를 확인하세요.',tag:'재방문 제안',icon:'people',color:'blue',channel:'매장 안내',reason:'예시 자료에서 12월 방문은 10월보다 적습니다. 재방문 혜택의 효과는 확인되지 않았으며 실제 운영 결과를 기록해야 합니다.',task:'운영 가능한 혜택과 이용 조건을 정하고 안내합니다.'}
 ];
-const titles = {overview:'한눈에 보기',analysis:'지역 분석',recommendations:'홍보 제안',calendar:'3개월 일정',records:'실행 기록',ontology:'근거 연결',data:'자료 둘러보기',login:'시안 시작'};
+const titles = {overview:'한눈에 보기',analysis:'지역 분석',recommendations:'홍보 제안',calendar:'3개월 일정',records:'실행 기록',ontology:'근거 연결',data:'자료 둘러보기',login:'로그인'};
 let currentView = 'overview';
 let opener = null;
 let toastTimer;
@@ -89,6 +105,29 @@ function notify(message) {
   clearTimeout(toastTimer);$('#toast').textContent=message;$('#toast').classList.add('visible');
   toastTimer=setTimeout(()=>$('#toast').classList.remove('visible'),4000);
 }
+function applySidebarLayout() {
+  document.documentElement.style.setProperty('--sidebar-width',`${sidebarLayout.collapsed?76:sidebarLayout.width}px`);
+  document.documentElement.classList.toggle('sidebar-collapsed',sidebarLayout.collapsed);
+  const toggle=$('[data-action="sidebar-toggle"]');
+  if(toggle){
+    const label=sidebarLayout.collapsed?'메뉴 펼치기':'메뉴 접기';
+    toggle.setAttribute('aria-label',label);toggle.title=label;
+    toggle.setAttribute('aria-expanded',String(!sidebarLayout.collapsed));
+  }
+  const handle=$('#sidebar-resizer');
+  if(handle){handle.setAttribute('aria-valuenow',String(sidebarLayout.width));handle.setAttribute('aria-valuetext',`${sidebarLayout.width}px`);}
+}
+function saveSidebarLayout() {
+  try {localStorage.setItem(LAYOUT_KEY,JSON.stringify(sidebarLayout));}
+  catch {notify('메뉴 설정을 저장하지 못했어요. 현재 화면에는 적용했습니다.');}
+}
+function closeMobileMenu(restoreFocus=false) {
+  $('.sidebar')?.classList.remove('open');$('.mobile-scrim')?.classList.remove('open');
+  if($('.workspace'))$('.workspace').inert=false;
+  document.documentElement.classList.remove('menu-open');
+  $('.mobile-menu')?.setAttribute('aria-expanded','false');
+  if(restoreFocus)$('.mobile-menu')?.focus();
+}
 function navigate(view) {
   if (!titles[view]) view='overview';
   closeDialog();
@@ -96,16 +135,17 @@ function navigate(view) {
 }
 function navItem(view,symbol) {
   const label=view==='data' && state.role==='service'?'자료·기준 관리':titles[view];
-  return `<a class="nav-link ${currentView===view?'active':''}" href="#${view}" ${currentView===view?'aria-current="page"':''}>${icon(symbol)}<span>${label}</span>${view==='calendar'?`<span class="count">${state.plans.length}</span>`:''}</a>`;
+  return `<a class="nav-link ${currentView===view?'active':''}" href="#${view}" aria-label="${label}" title="${label}" ${currentView===view?'aria-current="page"':''}>${icon(symbol)}<span>${label}</span>${view==='calendar'?`<span class="count">${state.plans.length}</span>`:''}</a>`;
 }
 function shell(content) {
-  return `<button class="mobile-scrim" data-action="close-menu" aria-label="메뉴 닫기"></button>
-  <aside class="sidebar" id="sidebar"><a class="brand" href="#overview">${logo()}<span><strong>제주 마케팅<br>캘린더</strong><small>다음 계절을 준비하는 공간</small></span></a>
+  return `<button class="mobile-scrim" data-action="close-menu" aria-label="메뉴 닫기" tabindex="-1"></button>
+  <aside class="sidebar" id="sidebar" aria-label="워크스페이스 메뉴"><a class="brand" href="#overview" aria-label="제주 마케팅 캘린더 홈" title="제주 마케팅 캘린더 홈">${logo()}<span><strong>제주 마케팅<br>캘린더</strong><small>다음 계절을 준비하는 공간</small></span></a>
     <div class="business-card"><span class="avatar">${icon(state.role==='service'?'database':'shop')}</span><span><b>${state.role==='service'?'자료 운영 워크스페이스':'제주 예시 카페'}</b><small>${state.role==='service'?'서비스 운영자 시안':'사업체 운영자 시안'}</small></span></div>
+    <div class="sidebar-controls"><span>나에게 맞는 메뉴 너비</span><button class="text-button" data-action="sidebar-reset" title="메뉴 너비 초기화" aria-label="메뉴 너비 초기화">초기화</button></div>
     <p class="nav-label">마케팅 워크스페이스</p><nav aria-label="주요 메뉴" class="nav-group">${navItem('overview','grid')}${navItem('analysis','chart')}${navItem('recommendations','spark')}${navItem('calendar','calendar')}${navItem('records','clipboard')}</nav>
     <p class="nav-label">자료와 근거</p><nav aria-label="자료 메뉴" class="nav-group">${navItem('ontology','network')}${navItem('data','database')}</nav>
-    <div class="sidebar-bottom"><div class="sidebar-note">${icon('leaf')}<b>작은 계획부터 차근차근</b><p>우리 가게에 맞는 제안을 고르고<br>실행할 수 있는 일정으로 바꿔요.</p></div><button class="profile" data-action="roles"><span class="avatar">${state.role==='service'?'운':'가'}</span><span><b>${state.role==='service'?'서비스 운영자':'사업체 운영자'}</b><small>시안 역할 변경</small></span>${icon('chevron')}</button></div>
-  </aside><div class="workspace"><header class="topbar"><div class="row"><button class="icon-button mobile-menu" data-action="menu" aria-label="메뉴 열기" aria-expanded="false" aria-controls="sidebar">${icon('menu')}</button><div class="breadcrumb"><span>워크스페이스</span>${icon('chevron')}<strong>${titles[currentView]}</strong></div></div><div class="topbar-actions"><span class="prototype-label">예시 데이터 · 화면 시안</span><button class="icon-button" data-action="help" aria-label="시안 사용 안내">${icon('help')}</button><span class="avatar" aria-label="예시 계정">${state.role==='service'?'운':'가'}</span></div></header><main id="main" class="content" tabindex="-1">${storageIssue?'<p class="notice error">브라우저 저장을 사용할 수 없습니다. 변경 내용은 현재 화면에서만 유지됩니다.</p>':''}${recoveryIssue?'<p class="notice">저장된 자료에 복원하지 못한 항목이 있습니다. 정상 항목은 유지했으니 계획과 기록을 확인해 주세요.</p>':''}${content}<footer class="footer-note"><span>화면 검토용 예시 자료입니다. 지역 방문 집계는 가게의 실제 고객 수가 아닙니다.</span><button data-action="help">시안 사용 안내</button></footer></main></div>`;
+    <div class="sidebar-bottom"><div class="sidebar-note">${icon('leaf')}<b>작은 계획부터 차근차근</b><p>우리 가게에 맞는 제안을 고르고<br>실행할 수 있는 일정으로 바꿔요.</p></div><button class="profile" data-action="roles" aria-label="계정과 역할 선택" title="계정과 역할 선택"><span class="avatar">${state.role==='service'?'운':'가'}</span><span><b>${state.role==='service'?'서비스 운영자':'사업체 운영자'}</b><small>계정과 역할 선택</small></span>${icon('chevron')}</button>${demoSessionRole?`<button class="sidebar-session" data-action="logout" title="로그아웃" aria-label="로그아웃">${icon('logout')}<span>로그아웃</span></button>`:`<a class="sidebar-session" href="#login" title="로그인" aria-label="로그인">${icon('lock')}<span>로그인</span></a>`}</div>
+  </aside><div id="sidebar-resizer" class="sidebar-resizer" role="separator" aria-label="메뉴 너비 조절" aria-controls="sidebar" aria-orientation="vertical" aria-valuemin="216" aria-valuemax="360" aria-valuenow="${sidebarLayout.width}" tabindex="0" title="끌어서 너비 조절 · 방향키로도 조절할 수 있어요"><span></span></div><div class="workspace"><header class="topbar"><div class="row"><button class="icon-button desktop-menu" data-action="sidebar-toggle" aria-label="메뉴 접기" aria-controls="sidebar" aria-expanded="true">${icon('panel')}</button><button class="icon-button mobile-menu" data-action="menu" aria-label="메뉴 열기" aria-expanded="false" aria-controls="sidebar">${icon('menu')}</button><div class="breadcrumb"><span>워크스페이스</span>${icon('chevron')}<strong>${titles[currentView]}</strong></div></div><div class="topbar-actions"><span class="prototype-label">예시 데이터 · 화면 시안</span><button class="icon-button" data-action="help" aria-label="시안 사용 안내">${icon('help')}</button><span class="avatar" aria-label="예시 계정">${state.role==='service'?'운':'가'}</span></div></header><main id="main" class="content" tabindex="-1">${storageIssue?'<p class="notice error">브라우저 저장을 사용할 수 없습니다. 변경 내용은 현재 화면에서만 유지됩니다.</p>':''}${recoveryIssue?'<p class="notice">저장된 자료에 복원하지 못한 항목이 있습니다. 정상 항목은 유지했으니 계획과 기록을 확인해 주세요.</p>':''}${content}<footer class="footer-note"><span>화면 검토용 예시 자료입니다. 지역 방문 집계는 가게의 실제 고객 수가 아닙니다.</span><button data-action="help">시안 사용 안내</button></footer></main></div>`;
 }
 function heading(title,description,action='') {
   return `<div class="page-heading"><div><div class="eyebrow">${icon('pin')}제주 ${state.region} · 카페</div><h1>${title}</h1><p>${description}</p></div>${action?`<div class="heading-action">${action}</div>`:''}</div>`;
@@ -182,13 +222,49 @@ function dataView() {
   return `${heading(state.role==='service'?'자료와 기준을 관리하는 공간':'추천에 사용한 자료를 살펴보세요','시안에 포함된 예시 자료이며, 실제 통계와 연결되지 않았습니다.',button('예시 CSV 내려받기','export','','download'))}${state.role==='service'?`<section class="panel panel-padding" style="margin-bottom:22px"><div class="upload-area">${icon('upload')}<h3>자료 등록 흐름 미리보기</h3><p>실제 파일을 업로드하지 않고, 형식·누락 검증 화면을 체험합니다.</p>${button('예시 파일 검증하기','validate','','check')}</div></section>`:''}<div class="source-tabs" aria-label="자료 종류"><button data-tab="visits" class="${state.dataTab==='visits'?'selected':''}" aria-pressed="${state.dataTab==='visits'}">지역 방문 자료</button><button data-tab="spend" class="${state.dataTab==='spend'?'selected':''}" aria-pressed="${state.dataTab==='spend'}">카드 소비 자료</button></div><div class="toolbar"><label class="search">${icon('search')}<input class="field" id="data-search" placeholder="지역명 또는 월로 검색" aria-label="자료 검색" value="${escapeHTML(state.search)}"></label><span class="badge">예시 자료 v1 · 2025년</span></div><section class="panel"><div class="table-wrap"><table><thead><tr><th scope="col">지역</th><th scope="col">기준기간</th><th scope="col">지표</th><th scope="col">값</th><th scope="col">단위</th><th scope="col">자료 상태</th></tr></thead><tbody id="data-rows">${dataRows()}</tbody></table></div><p class="table-caption">출처: 화면 시안 내 예시 자료 v1 · 다운로드 파일에도 예시 자료임을 표시합니다.</p></section>`;
 }
 function login() {
-  return `<main class="login-page" id="main" tabindex="-1"><section class="login-story"><a class="brand" href="#overview">${logo()}<span><strong>제주 마케팅 캘린더</strong><small>다음 계절을 준비하는 공간</small></span></a><h1>다음 계절의 기회를,<br>오늘의 계획으로.</h1><p>우리 지역의 흐름을 이해하고<br>가게에 맞는 3개월 홍보 계획을 세워보세요.</p><div class="season-art" aria-hidden="true"><div class="season-arch"><b>10</b><span>가을을 준비하고</span></div><div class="season-arch"><b>11</b><span>겨울을 맞이하고</span></div><div class="season-arch"><b>12</b><span>다음 방문을 잇는</span></div></div></section><section class="login-form"><span class="badge green" style="margin-bottom:14px">클릭 가능한 화면 시안</span><h2>어떤 공간을 둘러볼까요?</h2><p>역할에 따라 필요한 화면을 확인할 수 있어요.</p>${['business','service'].map(role=>`<button class="role-option ${roleChoice===role?'selected':''}" data-role="${role}" aria-pressed="${roleChoice===role}">${icon(role==='business'?'shop':'database')}<span><b>${role==='business'?'사업체 운영자':'서비스 운영자'}</b><p>${role==='business'?'지역 분석 · 홍보 제안 · 일정과 실행 기록':'예시 자료 등록 · 품질 확인 · 근거 관리'}</p></span></button>`).join('')}${button('시안 둘러보기','enter','primary full','arrow')}<div class="notice green">역할 선택은 화면 체험용입니다. 실제 로그인이나 서버 권한 검증은 연결되지 않았어요.</div><p class="hint" style="margin-top:18px">모든 수치와 사업체 정보는 예시입니다.</p></section></main>`;
+  return `<main class="login-page" id="main" tabindex="-1">
+    <section class="login-story"><a class="brand" href="#overview">${logo()}<span><strong>제주 마케팅 캘린더</strong><small>다음 계절을 준비하는 공간</small></span></a>
+      <div class="login-story-copy"><span class="login-kicker">우리 가게의 다음 계절</span><h1>준비한 오늘이<br>다음 방문으로.</h1><p>지역의 흐름을 읽고, 우리 가게에 맞는<br>3개월 홍보 계획을 이어가세요.</p></div>
+      <div class="season-art" aria-hidden="true"><div class="season-arch"><b>10</b><span>가을을 준비하고</span></div><div class="season-arch"><b>11</b><span>겨울을 맞이하고</span></div><div class="season-arch"><b>12</b><span>다음 방문을 잇는</span></div></div>
+      <p class="login-story-foot">제주에서 시작하는, 작고 꾸준한 계획</p>
+    </section>
+    <section class="login-form" aria-labelledby="login-title"><span class="badge green">제주 마케팅 캘린더</span><h2 id="login-title">다시 만나 반가워요</h2><p>로그인하고 준비하던 계획을 이어가세요.</p>
+      <div class="login-roles" aria-label="로그인 역할">${['business','service'].map(role=>`<button type="button" data-role="${role}" class="${roleChoice===role?'selected':''}" aria-pressed="${roleChoice===role}">${icon(role==='business'?'shop':'database')}${role==='business'?'사업체 운영자':'서비스 운영자'}</button>`).join('')}</div>
+      <form id="login-form" novalidate>
+        <label class="field-label" for="login-email">이메일</label><input class="field" id="login-email" name="email" type="email" autocomplete="username" placeholder="이메일 주소를 입력하세요" required maxlength="254" aria-describedby="login-error login-demo-note">
+        <label class="field-label" for="login-password">비밀번호</label><div class="password-field"><input class="field" id="login-password" name="password" type="password" autocomplete="current-password" placeholder="비밀번호를 입력하세요" required maxlength="128" aria-describedby="login-error login-demo-note"><button type="button" class="password-toggle" data-action="toggle-password" aria-label="비밀번호 보기" aria-pressed="false">${icon('eye')}</button></div>
+        <p id="login-error" class="notice error" role="alert" hidden></p>
+        <button class="button primary full login-submit" type="submit">로그인 ${icon('arrow')}</button>
+      </form>
+      <div class="demo-account"><div><b>체험용 계정</b><span>${demoAccounts[roleChoice]}</span></div><button type="button" class="text-button" data-action="fill-demo">체험 계정 채우기</button></div>
+      <p class="login-demo-note" id="login-demo-note">화면 시안입니다. 실제 계정 대신 체험 계정을 사용해 주세요. 입력한 비밀번호는 저장하거나 전송하지 않습니다.</p>
+      <div class="login-divider"><span>먼저 살펴보고 싶다면</span></div>
+      ${button('로그인 없이 시안 둘러보기','enter','full secondary')}
+      <p class="login-footnote">예시 자료로 지역 분석부터 홍보 일정까지 살펴보세요.</p>
+    </section></main>`;
+}
+function loginError(message,field) {
+  const error=$('#login-error');error.textContent=message;error.hidden=false;
+  field.setAttribute('aria-invalid','true');field.focus();
+}
+function startDemoLogin(form) {
+  const email=$('#login-email'),password=$('#login-password');
+  if(!email.value.trim()||!email.validity.valid){loginError('올바른 이메일 주소를 입력해 주세요.',email);return;}
+  if(!password.value){loginError('비밀번호를 입력해 주세요.',password);return;}
+  if(email.value.trim().toLowerCase()!==demoAccounts[roleChoice]||password.value!==demoPassword){loginError('체험용 계정 정보를 확인해 주세요. 아래 버튼으로 이메일과 비밀번호를 채울 수 있어요.',password);return;}
+  demoSessionRole=roleChoice;state.role=roleChoice;
+  let sessionSaved=true;
+  try {sessionStorage.setItem(DEMO_SESSION_KEY,demoSessionRole);} catch {sessionSaved=false;}
+  form.reset();persist();navigate('overview');
+  notify(sessionSaved?'체험 계정으로 로그인했습니다.':'체험 화면을 열었습니다. 로그인 상태는 새로고침 후 유지되지 않습니다.');
 }
 function render() {
-  const hash=location.hash.slice(1);currentView=titles[hash]?hash:'overview';
+  const hash=location.hash.slice(1);currentView=titles[hash]?hash:(demoSessionRole?'overview':'login');
   document.title=`${titles[currentView]} · 제주 마케팅 캘린더 시안`;
   const views={overview,analysis,recommendations,calendar,records,ontology,data:dataView};
+  closeMobileMenu();
   app.innerHTML=currentView==='login'?login():shell(views[currentView]());
+  applySidebarLayout();
 }
 function openDialog(title,subtitle,body,drawer=false) {
   if(!dialog.open) opener=document.activeElement;
@@ -283,9 +359,14 @@ document.addEventListener('click',event=>{
     case 'help':helpDialog();break;
     case 'report':reportDialog();break;
     case 'roles':roleChoice=state.role;navigate('login');break;
-    case 'enter':state.role=roleChoice;persist();navigate('overview');break;
-    case 'menu':$('.sidebar').classList.add('open');$('.mobile-scrim').classList.add('open');target.setAttribute('aria-expanded','true');$('.workspace').inert=true;$('.sidebar .nav-link').focus();break;
-    case 'close-menu':$('.sidebar')?.classList.remove('open');$('.mobile-scrim')?.classList.remove('open');$('.workspace').inert=false;$('.mobile-menu')?.setAttribute('aria-expanded','false');$('.mobile-menu')?.focus();break;
+    case 'enter':demoSessionRole=null;try{sessionStorage.removeItem(DEMO_SESSION_KEY);}catch{}state.role=roleChoice;persist();navigate('overview');break;
+    case 'fill-demo':$('#login-email').value=demoAccounts[roleChoice];$('#login-password').value=demoPassword;$('#login-error').hidden=true;$('#login-email').removeAttribute('aria-invalid');$('#login-password').removeAttribute('aria-invalid');$('#login-form button[type="submit"]').focus();break;
+    case 'toggle-password':{const field=$('#login-password'),visible=field.type==='password';field.type=visible?'text':'password';target.setAttribute('aria-pressed',String(visible));target.setAttribute('aria-label',visible?'비밀번호 숨기기':'비밀번호 보기');break;}
+    case 'logout':demoSessionRole=null;try{sessionStorage.removeItem(DEMO_SESSION_KEY);}catch{}roleChoice=state.role;navigate('login');notify('로그아웃했습니다. 저장한 계획은 그대로 남아 있어요.');break;
+    case 'sidebar-toggle':sidebarLayout.collapsed=!sidebarLayout.collapsed;applySidebarLayout();saveSidebarLayout();break;
+    case 'sidebar-reset':sidebarLayout.width=248;sidebarLayout.collapsed=false;applySidebarLayout();saveSidebarLayout();notify('메뉴 너비를 초기화했습니다.');break;
+    case 'menu':$('.sidebar').classList.add('open');$('.mobile-scrim').classList.add('open');target.setAttribute('aria-expanded','true');document.documentElement.classList.add('menu-open');$('.workspace').inert=true;$('.sidebar .nav-link').focus();break;
+    case 'close-menu':closeMobileMenu(true);break;
     case 'export':exportCSV();break;
     case 'validate':if(state.role==='service')openDialog('예시 파일 검증 결과','실제 업로드 없이 화면 흐름을 확인하는 시연',`<div class="notice green">예시 필수 열·단위·기간 형식을 확인했습니다.</div><ul class="relation-list"><li><b>지역 코드·지표·기준월·단위</b>예시 형식 일치</li><li><b>카드 소비 11월</b>두 지역 모두 누락 · 0으로 변환하지 않음</li><li><b>추천 사용 여부</b>누락된 소비값을 제외하고 방문 예시만 사용</li></ul><div class="notice">실제 CSV 검증기는 연결되지 않았습니다.</div><div class="dialog-actions">${button('확인','close-dialog','primary')}</div>`);break;
     case 'reset':openDialog('시안 데이터를 초기화할까요?','이 브라우저에서 만든 계획과 기록이 초기 예시로 바뀝니다.',`<div class="dialog-actions">${button('취소','close-dialog')}${button('초기화','confirm-reset','primary')}</div>`);break;
@@ -296,10 +377,44 @@ document.addEventListener('change',event=>{
   if(event.target.id==='region'){state.region=event.target.value;persist();render();$('#region').focus();notify(`${state.region} 예시 자료를 표시합니다.`);}
   if(event.target.id==='record-status'){$('#record-date').required=event.target.value==='실행함';if(event.target.value!=='실행함')$('#record-date').value='';}
 });
-document.addEventListener('input',event=>{if(event.target.id==='data-search'){state.search=event.target.value;$('#data-rows').innerHTML=dataRows();}});
-document.addEventListener('keydown',event=>{if(event.key==='Escape' && !dialog.open && $('.sidebar.open')){$('.sidebar').classList.remove('open');$('.mobile-scrim').classList.remove('open');$('.workspace').inert=false;$('.mobile-menu')?.setAttribute('aria-expanded','false');$('.mobile-menu')?.focus();}});
+document.addEventListener('input',event=>{
+  if(event.target.id==='data-search'){state.search=event.target.value;$('#data-rows').innerHTML=dataRows();}
+  if(['login-email','login-password'].includes(event.target.id)){$('#login-error').hidden=true;event.target.removeAttribute('aria-invalid');}
+});
+document.addEventListener('keydown',event=>{
+  if(event.target.id==='sidebar-resizer' && ['ArrowLeft','ArrowRight','Home','End'].includes(event.key)){
+    event.preventDefault();sidebarLayout.width=event.key==='Home'?216:event.key==='End'?360:Math.min(360,Math.max(216,sidebarLayout.width+(event.key==='ArrowRight'?10:-10)));applySidebarLayout();saveSidebarLayout();return;
+  }
+  if(!dialog.open && $('.sidebar.open')){
+    if(event.key==='Escape')closeMobileMenu(true);
+    if(event.key==='Tab'){
+      const items=[...$('.sidebar').querySelectorAll('a[href],button')].filter(el=>el.getClientRects().length),first=items[0],last=items.at(-1);
+      if(event.shiftKey && document.activeElement===first){event.preventDefault();last.focus();}
+      else if(!event.shiftKey && document.activeElement===last){event.preventDefault();first.focus();}
+    }
+  }
+});
+let sidebarDrag=null;
+document.addEventListener('pointerdown',event=>{
+  const handle=event.target.closest('#sidebar-resizer');
+  if(!handle||event.button!==0||sidebarLayout.collapsed)return;
+  sidebarDrag={id:event.pointerId,x:event.clientX,width:sidebarLayout.width};handle.setPointerCapture(event.pointerId);handle.focus();document.documentElement.classList.add('sidebar-resizing');event.preventDefault();
+});
+document.addEventListener('pointermove',event=>{
+  if(!sidebarDrag||event.pointerId!==sidebarDrag.id)return;
+  sidebarLayout.width=Math.round(Math.min(360,Math.max(216,sidebarDrag.width+event.clientX-sidebarDrag.x)));applySidebarLayout();
+});
+function finishSidebarDrag(event) {
+  if(!sidebarDrag||event.pointerId!==sidebarDrag.id)return;
+  if(event.type==='pointercancel')sidebarLayout.width=sidebarDrag.width;
+  sidebarDrag=null;document.documentElement.classList.remove('sidebar-resizing');applySidebarLayout();
+  if(event.type==='pointerup')saveSidebarLayout();
+}
+document.addEventListener('pointerup',finishSidebarDrag);
+document.addEventListener('pointercancel',finishSidebarDrag);
+window.matchMedia('(max-width:767px)').addEventListener('change',()=>closeMobileMenu());
 document.addEventListener('submit',event=>{
-  const form=event.target;if(!['plan-form','record-form','agent-form','agent-apply-form'].includes(form.id))return;
+  const form=event.target;if(form.id==='login-form'){event.preventDefault();startDemoLogin(form);return;}if(!['plan-form','record-form','agent-form','agent-apply-form'].includes(form.id))return;
   event.preventDefault();const data=new FormData(form);
   if(form.id==='plan-form'){
     const title=String(data.get('title')).trim(),date=String(data.get('date'));

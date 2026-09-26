@@ -11,5 +11,5 @@
   "prototypeStatus": "pending",
   "prototypeEvidence": "화면 간 이동은 문서에 정의되어 있으며 Figma Prototype 연결 확인 전",
   "cloudTextEditVerified": false,
-  "fontStatus": "Pretendard Variable 이름 유지·로컬 Mac 글꼴 설치 확인; MCP의 글꼴 누락 표시로 클라우드 텍스트 편집은 미검증"
+  "fontStatus": "Pretendard Variable 유지; 로컬 Figma 앱·FigmaAgent 실행과 글꼴 캐시 9개 스타일 인식 확인; 클라우드 MCP의 글꼴 누락 표시로 클라우드 텍스트 편집 미검증"
 }

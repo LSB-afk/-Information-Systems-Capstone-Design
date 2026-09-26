@@ -260,8 +260,8 @@ document.addEventListener('click',event=>{
     case 'report':reportDialog();break;
     case 'roles':roleChoice=state.role;navigate('login');break;
     case 'enter':state.role=roleChoice;persist();navigate('overview');break;
-    case 'menu':$('.sidebar').classList.add('open');$('.mobile-scrim').classList.add('open');target.setAttribute('aria-expanded','true');$('.sidebar .nav-link').focus();break;
-    case 'close-menu':$('.sidebar')?.classList.remove('open');$('.mobile-scrim')?.classList.remove('open');$('.mobile-menu')?.setAttribute('aria-expanded','false');$('.mobile-menu')?.focus();break;
+    case 'menu':$('.sidebar').classList.add('open');$('.mobile-scrim').classList.add('open');target.setAttribute('aria-expanded','true');$('.workspace').inert=true;$('.sidebar .nav-link').focus();break;
+    case 'close-menu':$('.sidebar')?.classList.remove('open');$('.mobile-scrim')?.classList.remove('open');$('.workspace').inert=false;$('.mobile-menu')?.setAttribute('aria-expanded','false');$('.mobile-menu')?.focus();break;
     case 'export':exportCSV();break;
     case 'validate':if(state.role==='service')openDialog('예시 파일 검증 결과','실제 업로드 없이 화면 흐름을 확인하는 시연',`<div class="notice green">예시 필수 열·단위·기간 형식을 확인했습니다.</div><ul class="relation-list"><li><b>지역 코드·지표·기준월·단위</b>예시 형식 일치</li><li><b>카드 소비 11월</b>두 지역 모두 누락 · 0으로 변환하지 않음</li><li><b>추천 사용 여부</b>누락된 소비값을 제외하고 방문 예시만 사용</li></ul><div class="notice">실제 CSV 검증기는 연결되지 않았습니다.</div><div class="dialog-actions">${button('확인','close-dialog','primary')}</div>`);break;
     case 'reset':openDialog('시안 데이터를 초기화할까요?','이 브라우저에서 만든 계획과 기록이 초기 예시로 바뀝니다.',`<div class="dialog-actions">${button('취소','close-dialog')}${button('초기화','confirm-reset','primary')}</div>`);break;
@@ -273,7 +273,7 @@ document.addEventListener('change',event=>{
   if(event.target.id==='record-status'){$('#record-date').required=event.target.value==='실행함';if(event.target.value!=='실행함')$('#record-date').value='';}
 });
 document.addEventListener('input',event=>{if(event.target.id==='data-search'){state.search=event.target.value;$('#data-rows').innerHTML=dataRows();}});
-document.addEventListener('keydown',event=>{if(event.key==='Escape' && !dialog.open && $('.sidebar.open')){$('.sidebar').classList.remove('open');$('.mobile-scrim').classList.remove('open');$('.mobile-menu')?.setAttribute('aria-expanded','false');$('.mobile-menu')?.focus();}});
+document.addEventListener('keydown',event=>{if(event.key==='Escape' && !dialog.open && $('.sidebar.open')){$('.sidebar').classList.remove('open');$('.mobile-scrim').classList.remove('open');$('.workspace').inert=false;$('.mobile-menu')?.setAttribute('aria-expanded','false');$('.mobile-menu')?.focus();}});
 document.addEventListener('submit',event=>{
   const form=event.target;if(!['plan-form','record-form','agent-form','agent-apply-form'].includes(form.id))return;
   event.preventDefault();const data=new FormData(form);

@@ -6,3 +6,6 @@
 .obsidian/cache/
 .obsidian/plugins/
 .trash/
+
+# PowerPoint creates these temporary lock files while a deck is open
+~$*.pptx

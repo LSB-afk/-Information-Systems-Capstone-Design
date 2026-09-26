@@ -192,13 +192,13 @@ test('Each public demo account opens its role and stores only the role in its se
       session:localStorage.getItem(key) || sessionStorage.getItem(key),
       all:[...Object.entries(localStorage),...Object.entries(sessionStorage)]
     }), sessionKey);
-    assert.deepEqual(JSON.parse(stored.session), {role});
+    assert.equal(stored.session, role);
     for (const [key,value] of stored.all) {
       assert(!value.includes(credentials.email), `${key} must not store the demo email`);
       assert(!value.includes(credentials.password), `${key} must not store the demo password`);
     }
     await page.goto(base);
-    await page.waitForURL('**/#overview', {timeout:3000});
+    await page.locator('#sidebar a[href="#overview"].active').waitFor({state:'visible'});
     assert((await page.locator('.profile').textContent()).includes(role === 'service' ? '서비스 운영자' : '사업체 운영자'));
   });
 });

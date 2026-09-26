@@ -34,7 +34,8 @@ python3 -m http.server 8766 --bind 127.0.0.1
 - 동일 지역·같은 추천을 중복 추가하면 기존 계획 수정으로 연결
 - AI 시연의 목표 선택으로 후보가 달라지고 상품명이 초안에 반영됨 선택한 정기 휴무일에 걸리면 예시 날짜를 다음 날로 조정
 - 적용할 AI 시연 초안을 선택한 뒤 일정에 저장 초안을 보는 것만으로 저장하지 않음
-- 근거 패널·메뉴의 키보드 조작, 모바일 메뉴 접기, CSV 다운로드 지원
+- 근거 패널·메뉴의 키보드 조작, 본문 바로가기, 필터·저장 후 초점 유지, 모바일 메뉴 접기, CSV 다운로드 지원
+- 저장 자료 형식이 잘못된 경우 정상 계획·기록은 복원하고 제외된 항목이 있음을 안내
 - 사용 안내에서 초기 예시로 되돌릴 수 있음 초기화는 확인 후 진행
 
 ## 실제 서비스와의 구분
@@ -55,18 +56,23 @@ python3 -m http.server 8766 --bind 127.0.0.1
 PLAYWRIGHT_MODULE=/path/to/installed/playwright \
 CHROME_PATH=/path/to/chrome \
 node verify.cjs
+
+PLAYWRIGHT_MODULE=/path/to/installed/playwright \
+CHROME_PATH=/path/to/chrome \
+node --test verify-regressions.cjs
 ```
 
 화면별 1440px·1024px·390px 검토, 실제 폰트 로드, OS 다크 설정에서 밝은 테마 유지, 계획 작성·수정·복원·중복 방지, 기록의 0/미수집 구분, 근거 패널, AI 시연 조건·적용, 자료 검색·다운로드, 역할별 화면, 저장 불가 상태를 검사함
 
-최종 검증 결과와 캡처는 [화면 시안 검증 기록](../../06_증빙/화면시안/검증.md) 참조 테스트 스크립트의 실행은 실제 서비스의 품질·접근성 전체 인증을 뜻하지 않음
+2026-09-26 기준 기본 검사 15개 항목·회귀 검사 7개 통과 최종 검증 결과와 캡처는 [화면 시안 검증 기록](../../06_증빙/화면시안/검증.md) 참조 테스트 스크립트의 실행은 실제 서비스의 품질·접근성 전체 인증을 뜻하지 않음
 
 ## 파일과 글꼴
 
 - `index.html`: 시작 문서
 - `styles.css`: 공통 디자인 토큰·컴포넌트·반응형
 - `app.js`: 예시 자료, 화면과 클릭 흐름
-- `verify.cjs`: 로컬 브라우저 검증
+- `verify.cjs`: 로컬 브라우저 검증·캡처·검증 대상 파일 해시 기록
+- `verify-regressions.cjs`: 키보드 이동·초점·저장 복원 오류 회귀 검사
 - `assets/PretendardVariable.woff2`: Pretendard v1.3.9 원본 가변 글꼴
 - `assets/OFL.txt`: 글꼴의 SIL Open Font License
 

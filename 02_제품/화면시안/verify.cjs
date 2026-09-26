@@ -54,7 +54,7 @@ function pass(name){checks.push(name);console.log('PASS',name);}
     const count=await page.evaluate(()=>JSON.parse(localStorage.getItem('jeju-design-prototype-v1')).plans.length);
     await page.locator('#app [data-rec="winter"]').click();await page.getByRole('heading',{name:'계획 수정',exact:true}).waitFor();await page.locator('#plan-form button[type=submit]').click();
     assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('jeju-design-prototype-v1')).plans.length),count);pass('Adding an existing recommendation opens edit without duplication');
-    await page.evaluate(()=>localStorage.removeItem('jeju-design-prototype-v1'));await page.goto(base+'#overview');
+    await page.evaluate(()=>localStorage.removeItem('jeju-design-prototype-v1'));await page.goto(base+'#overview');await page.reload();
     await page.getByRole('button',{name:'AI로 계획 세우기',exact:true}).click();await page.locator('#agent-goal').selectOption('weekday');await page.locator('#agent-product').fill('귤차 세트');await page.locator('#agent-day').selectOption('1');await page.locator('#agent-form button[type=submit]').click();
     await page.getByText('귤차 세트 평일 안내',{exact:true}).waitFor();await page.getByText('선택한 휴무일과 겹친 일정을 다음 날로 옮겼어요.',{exact:false}).waitFor();
     await page.screenshot({path:path.join(screenshots,'agent-1440.png'),fullPage:true,animations:'disabled'});

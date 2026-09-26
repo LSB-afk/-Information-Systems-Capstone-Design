@@ -10,6 +10,18 @@
   <link rel="preload" href="assets/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+<script>
+window.addEventListener('load', async () => {
+  if (new URLSearchParams(location.search).get('figma-import') !== 'records') return;
+  await document.fonts.ready;
+  const ready = setInterval(async () => {
+    if (!window.figma?.captureForDesign) return;
+    clearInterval(ready);
+    await window.figma.captureForDesign({captureId:'9eef5b18-0c6f-4248-b9b9-4f828f529d94',endpoint:'https://mcp.figma.com/mcp/capture/9eef5b18-0c6f-4248-b9b9-4f828f529d94/submit?bindVariables=true',selector:'body'});
+  }, 500);
+});
+</script>
 </head>
 <body>
   <a class="skip" href="#main">본문으로 이동</a>

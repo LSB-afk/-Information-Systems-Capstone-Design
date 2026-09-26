@@ -44,14 +44,27 @@ const initialPlans = () => [
   {id:'sample-nov',title:'평일 티타임 세트 안내',date:'2026-11-09',channel:'매장 안내',memo:'판매 가능한 메뉴 구성 먼저 확인',region:'애월읍',recId:null}
 ];
 let storageIssue = false;
+let recoveryIssue = false;
 let saved = {};
-try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch { storageIssue = true; }
-const validPlan = p => p && typeof p.id === 'string' && typeof p.title === 'string' && /^2026-(10|11|12)-\d{2}$/.test(p.date) && typeof p.channel === 'string' && typeof p.memo === 'string' && typeof p.region === 'string';
+try {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  try { saved = raw === null ? {} : JSON.parse(raw); } catch { recoveryIssue = true; }
+} catch { storageIssue = true; }
+if (!saved || typeof saved !== 'object' || Array.isArray(saved)) { saved = {}; recoveryIssue = true; }
+const validDate = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) && !Number.isNaN(Date.parse(value)) && new Date(value).toISOString().slice(0,10) === value;
+const validPlan = p => p && typeof p.id === 'string' && typeof p.title === 'string' && validDate(p.date) && p.date >= '2026-10-01' && p.date <= '2026-12-31' && typeof p.channel === 'string' && typeof p.memo === 'string' && typeof p.region === 'string';
+const validCount = value => value === null || (Number.isInteger(value) && value >= 0 && value <= 99999999);
+const validRecord = r => r && typeof r === 'object' && !Array.isArray(r) && ['실행함','미실행','확인 중'].includes(r.status) && (validDate(r.date) || (r.status !== '실행함' && r.date === '')) && validCount(r.clicks) && validCount(r.bookings) && typeof r.note === 'string';
+const restoredPlans = Array.isArray(saved.plans) ? saved.plans.filter(validPlan) : initialPlans();
+if (saved.plans !== undefined && (!Array.isArray(saved.plans) || restoredPlans.length !== saved.plans.length)) recoveryIssue = true;
+const recordEntries = saved.records && typeof saved.records === 'object' && !Array.isArray(saved.records) ? Object.entries(saved.records) : [];
+const restoredRecords = recordEntries.filter(([id,record]) => restoredPlans.some(p => p.id === id) && validRecord(record));
+if (saved.records !== undefined && (!saved.records || typeof saved.records !== 'object' || Array.isArray(saved.records) || restoredRecords.length !== recordEntries.length)) recoveryIssue = true;
 let state = {
   role:saved.role === 'service' ? 'service' : 'business',
   region:['애월읍','구좌읍'].includes(saved.region) ? saved.region : '애월읍',
-  plans:Array.isArray(saved.plans) && saved.plans.every(validPlan) ? saved.plans : initialPlans(),
-  records:saved.records && typeof saved.records === 'object' && !Array.isArray(saved.records) ? saved.records : {},
+  plans:restoredPlans,
+  records:Object.fromEntries(restoredRecords),
   metric:'visits',dataTab:'visits',search:'',ontologyNode:'recommendation'
 };
 const regionData = {
@@ -92,7 +105,7 @@ function shell(content) {
     <p class="nav-label">마케팅 워크스페이스</p><nav aria-label="주요 메뉴" class="nav-group">${navItem('overview','grid')}${navItem('analysis','chart')}${navItem('recommendations','spark')}${navItem('calendar','calendar')}${navItem('records','clipboard')}</nav>
     <p class="nav-label">자료와 근거</p><nav aria-label="자료 메뉴" class="nav-group">${navItem('ontology','network')}${navItem('data','database')}</nav>
     <div class="sidebar-bottom"><div class="sidebar-note">${icon('leaf')}<b>작은 계획부터 차근차근</b><p>우리 가게에 맞는 제안을 고르고<br>실행할 수 있는 일정으로 바꿔요.</p></div><button class="profile" data-action="roles"><span class="avatar">${state.role==='service'?'운':'가'}</span><span><b>${state.role==='service'?'서비스 운영자':'사업체 운영자'}</b><small>시안 역할 변경</small></span>${icon('chevron')}</button></div>
-  </aside><div class="workspace"><header class="topbar"><div class="row"><button class="icon-button mobile-menu" data-action="menu" aria-label="메뉴 열기" aria-expanded="false" aria-controls="sidebar">${icon('menu')}</button><div class="breadcrumb"><span>워크스페이스</span>${icon('chevron')}<strong>${titles[currentView]}</strong></div></div><div class="topbar-actions"><span class="prototype-label">예시 데이터 · 화면 시안</span><button class="icon-button" data-action="help" aria-label="시안 사용 안내">${icon('help')}</button><span class="avatar" aria-label="예시 계정">${state.role==='service'?'운':'가'}</span></div></header><main id="main" class="content" tabindex="-1">${storageIssue?'<p class="notice error">브라우저 저장을 사용할 수 없습니다. 변경 내용은 현재 화면에서만 유지됩니다.</p>':''}${content}<footer class="footer-note"><span>화면 검토용 예시 자료입니다. 지역 방문 집계는 가게의 실제 고객 수가 아닙니다.</span><button data-action="help">시안 사용 안내</button></footer></main></div>`;
+  </aside><div class="workspace"><header class="topbar"><div class="row"><button class="icon-button mobile-menu" data-action="menu" aria-label="메뉴 열기" aria-expanded="false" aria-controls="sidebar">${icon('menu')}</button><div class="breadcrumb"><span>워크스페이스</span>${icon('chevron')}<strong>${titles[currentView]}</strong></div></div><div class="topbar-actions"><span class="prototype-label">예시 데이터 · 화면 시안</span><button class="icon-button" data-action="help" aria-label="시안 사용 안내">${icon('help')}</button><span class="avatar" aria-label="예시 계정">${state.role==='service'?'운':'가'}</span></div></header><main id="main" class="content" tabindex="-1">${storageIssue?'<p class="notice error">브라우저 저장을 사용할 수 없습니다. 변경 내용은 현재 화면에서만 유지됩니다.</p>':''}${recoveryIssue?'<p class="notice">저장된 자료에 복원하지 못한 항목이 있습니다. 정상 항목은 유지했으니 계획과 기록을 확인해 주세요.</p>':''}${content}<footer class="footer-note"><span>화면 검토용 예시 자료입니다. 지역 방문 집계는 가게의 실제 고객 수가 아닙니다.</span><button data-action="help">시안 사용 안내</button></footer></main></div>`;
 }
 function heading(title,description,action='') {
   return `<div class="page-heading"><div><div class="eyebrow">${icon('pin')}제주 ${state.region} · 카페</div><h1>${title}</h1><p>${description}</p></div>${action?`<div class="heading-action">${action}</div>`:''}</div>`;
@@ -169,7 +182,7 @@ function dataView() {
   return `${heading(state.role==='service'?'자료와 기준을 관리하는 공간':'추천에 사용한 자료를 살펴보세요','시안에 포함된 예시 자료이며, 실제 통계와 연결되지 않았습니다.',button('예시 CSV 내려받기','export','','download'))}${state.role==='service'?`<section class="panel panel-padding" style="margin-bottom:22px"><div class="upload-area">${icon('upload')}<h3>자료 등록 흐름 미리보기</h3><p>실제 파일을 업로드하지 않고, 형식·누락 검증 화면을 체험합니다.</p>${button('예시 파일 검증하기','validate','','check')}</div></section>`:''}<div class="source-tabs" aria-label="자료 종류"><button data-tab="visits" class="${state.dataTab==='visits'?'selected':''}" aria-pressed="${state.dataTab==='visits'}">지역 방문 자료</button><button data-tab="spend" class="${state.dataTab==='spend'?'selected':''}" aria-pressed="${state.dataTab==='spend'}">카드 소비 자료</button></div><div class="toolbar"><label class="search">${icon('search')}<input class="field" id="data-search" placeholder="지역명 또는 월로 검색" aria-label="자료 검색" value="${escapeHTML(state.search)}"></label><span class="badge">예시 자료 v1 · 2025년</span></div><section class="panel"><div class="table-wrap"><table><thead><tr><th scope="col">지역</th><th scope="col">기준기간</th><th scope="col">지표</th><th scope="col">값</th><th scope="col">단위</th><th scope="col">자료 상태</th></tr></thead><tbody id="data-rows">${dataRows()}</tbody></table></div><p class="table-caption">출처: 화면 시안 내 예시 자료 v1 · 다운로드 파일에도 예시 자료임을 표시합니다.</p></section>`;
 }
 function login() {
-  return `<main class="login-page" id="main"><section class="login-story"><a class="brand" href="#overview">${logo()}<span><strong>제주 마케팅 캘린더</strong><small>다음 계절을 준비하는 공간</small></span></a><h1>다음 계절의 기회를,<br>오늘의 계획으로.</h1><p>우리 지역의 흐름을 이해하고<br>가게에 맞는 3개월 홍보 계획을 세워보세요.</p><div class="season-art" aria-hidden="true"><div class="season-arch"><b>10</b><span>가을을 준비하고</span></div><div class="season-arch"><b>11</b><span>겨울을 맞이하고</span></div><div class="season-arch"><b>12</b><span>다음 방문을 잇는</span></div></div></section><section class="login-form"><span class="badge green" style="margin-bottom:14px">클릭 가능한 화면 시안</span><h2>어떤 공간을 둘러볼까요?</h2><p>역할에 따라 필요한 화면을 확인할 수 있어요.</p>${['business','service'].map(role=>`<button class="role-option ${roleChoice===role?'selected':''}" data-role="${role}" aria-pressed="${roleChoice===role}">${icon(role==='business'?'shop':'database')}<span><b>${role==='business'?'사업체 운영자':'서비스 운영자'}</b><p>${role==='business'?'지역 분석 · 홍보 제안 · 일정과 실행 기록':'예시 자료 등록 · 품질 확인 · 근거 관리'}</p></span></button>`).join('')}${button('시안 둘러보기','enter','primary full','arrow')}<div class="notice green">역할 선택은 화면 체험용입니다. 실제 로그인이나 서버 권한 검증은 연결되지 않았어요.</div><p class="hint" style="margin-top:18px">모든 수치와 사업체 정보는 예시입니다.</p></section></main>`;
+  return `<main class="login-page" id="main" tabindex="-1"><section class="login-story"><a class="brand" href="#overview">${logo()}<span><strong>제주 마케팅 캘린더</strong><small>다음 계절을 준비하는 공간</small></span></a><h1>다음 계절의 기회를,<br>오늘의 계획으로.</h1><p>우리 지역의 흐름을 이해하고<br>가게에 맞는 3개월 홍보 계획을 세워보세요.</p><div class="season-art" aria-hidden="true"><div class="season-arch"><b>10</b><span>가을을 준비하고</span></div><div class="season-arch"><b>11</b><span>겨울을 맞이하고</span></div><div class="season-arch"><b>12</b><span>다음 방문을 잇는</span></div></div></section><section class="login-form"><span class="badge green" style="margin-bottom:14px">클릭 가능한 화면 시안</span><h2>어떤 공간을 둘러볼까요?</h2><p>역할에 따라 필요한 화면을 확인할 수 있어요.</p>${['business','service'].map(role=>`<button class="role-option ${roleChoice===role?'selected':''}" data-role="${role}" aria-pressed="${roleChoice===role}">${icon(role==='business'?'shop':'database')}<span><b>${role==='business'?'사업체 운영자':'서비스 운영자'}</b><p>${role==='business'?'지역 분석 · 홍보 제안 · 일정과 실행 기록':'예시 자료 등록 · 품질 확인 · 근거 관리'}</p></span></button>`).join('')}${button('시안 둘러보기','enter','primary full','arrow')}<div class="notice green">역할 선택은 화면 체험용입니다. 실제 로그인이나 서버 권한 검증은 연결되지 않았어요.</div><p class="hint" style="margin-top:18px">모든 수치와 사업체 정보는 예시입니다.</p></section></main>`;
 }
 function render() {
   const hash=location.hash.slice(1);currentView=titles[hash]?hash:'overview';
@@ -182,10 +195,19 @@ function openDialog(title,subtitle,body,drawer=false) {
   dialog.className=drawer?'drawer':'';
   dialog.innerHTML=`<header class="dialog-header"><div><h2 id="dialog-title">${title}</h2>${subtitle?`<p>${subtitle}</p>`:''}</div><button class="icon-button" data-action="close-dialog" aria-label="닫기">${icon('close')}</button></header><div class="dialog-body">${body}</div>`;
   if(!dialog.open)dialog.showModal();
+  else $('[data-action="close-dialog"]',dialog).focus();
   document.body.style.overflow='hidden';
 }
 function closeDialog() {if(dialog.open)dialog.close();}
-dialog.addEventListener('close',()=>{document.body.style.overflow='';if(opener?.isConnected)opener.focus();});
+dialog.addEventListener('close',()=>{
+  document.body.style.overflow='';
+  let target=opener;
+  if(target && !target.isConnected){
+    const attribute=target.getAttributeNames().find(name=>name.startsWith('data-'));
+    target=attribute?$(`[${attribute}="${CSS.escape(target.getAttribute(attribute))}"]`,app):null;
+  }
+  (target||$('#main'))?.focus({preventScroll:true});
+});
 function sourceDialog() {
   openDialog('자료의 출처와 기준','화면 시안에 포함된 예시 자료',`<span class="badge amber">실제 통계 아님</span><h3 style="margin-top:18px">2025년 월별 방문·카드 소비 예시</h3><ul class="relation-list"><li><b>제공 범위</b>애월읍·구좌읍, 2025년 1월부터 12월</li><li><b>방문 집계</b>단위 만 명 · 12개월 예시 값 · 개별 가게의 고객 수와 구분</li><li><b>카드 소비</b>단위 억 원 · 11월 값은 미수집으로 처리</li><li><b>자료 버전</b>화면 시안 v1 · 화면 배치와 동작 검토를 위해 작성</li></ul><p class="notice">실제 적용에는 원본 CSV, 이용 조건, 집계 기준 확인이 필요합니다. 과거 예시 수치를 미래 전망으로 사용하지 않습니다.</p><div class="dialog-actions">${button('확인','close-dialog','primary')}</div>`);
 }
@@ -239,15 +261,17 @@ function exportCSV() {
 }
 document.addEventListener('click',event=>{
   const target=event.target.closest('button,a');if(!target)return;
-  if(target.dataset.metric){state.metric=target.dataset.metric;render();return;}
-  if(target.dataset.tab){state.dataTab=target.dataset.tab;render();return;}
+  if(target.matches('.skip')){event.preventDefault();$('#main')?.focus();return;}
+  if(target.matches('.sidebar a') && target.hash===location.hash){event.preventDefault();render();$('#main')?.focus();return;}
+  if(target.dataset.metric){state.metric=target.dataset.metric;render();$(`[data-metric="${state.metric}"]`).focus();return;}
+  if(target.dataset.tab){state.dataTab=target.dataset.tab;render();$(`[data-tab="${state.dataTab}"]`).focus();return;}
   if(target.dataset.evidence){evidenceDialog(target.dataset.evidence);return;}
   if(target.dataset.rec){planDialog({recId:target.dataset.rec});return;}
   if(target.dataset.edit){planDialog({id:target.dataset.edit});return;}
   if(target.dataset.record){recordDialog(target.dataset.record);return;}
   if(target.dataset.month){planDialog({month:Number(target.dataset.month)});return;}
   if(target.dataset.node){state.ontologyNode=target.dataset.node;render();$(`[data-node="${state.ontologyNode}"]`)?.focus();return;}
-  if(target.dataset.role){roleChoice=target.dataset.role;render();return;}
+  if(target.dataset.role){roleChoice=target.dataset.role;render();$(`[data-role="${roleChoice}"]`).focus();return;}
   if(target.dataset.delete){const id=target.dataset.delete;openDialog('이 계획을 삭제할까요?','연결된 예시 실행 기록도 함께 삭제됩니다.',`<p>삭제할 계획을 확인한 뒤 진행해 주세요.</p><div class="dialog-actions">${button('취소','close-dialog')}<button class="button primary" data-confirm-delete="${escapeHTML(id)}">삭제하기</button></div>`);return;}
   if(target.dataset.confirmDelete){const id=target.dataset.confirmDelete;state.plans=state.plans.filter(p=>p.id!==id);delete state.records[id];const ok=persist();closeDialog();render();notify(ok?'계획을 삭제했습니다.':'현재 화면에서 삭제했습니다. 브라우저 저장은 실패했습니다.');return;}
   switch(target.dataset.action){
@@ -269,7 +293,7 @@ document.addEventListener('click',event=>{
   }
 });
 document.addEventListener('change',event=>{
-  if(event.target.id==='region'){state.region=event.target.value;persist();render();notify(`${state.region} 예시 자료를 표시합니다.`);}
+  if(event.target.id==='region'){state.region=event.target.value;persist();render();$('#region').focus();notify(`${state.region} 예시 자료를 표시합니다.`);}
   if(event.target.id==='record-status'){$('#record-date').required=event.target.value==='실행함';if(event.target.value!=='실행함')$('#record-date').value='';}
 });
 document.addEventListener('input',event=>{if(event.target.id==='data-search'){state.search=event.target.value;$('#data-rows').innerHTML=dataRows();}});

@@ -3,6 +3,7 @@ const {chromium} = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const {createHash} = require('node:crypto');
 const base = process.env.PREVIEW_URL || 'http://127.0.0.1:8766/';
 const output = process.env.PREVIEW_QA_DIR || '/private/tmp/jeju-screen-design';
 const screenshots = path.join(output,'verified');
@@ -71,6 +72,7 @@ function pass(name){checks.push(name);console.log('PASS',name);}
     await blocked.addInitScript(()=>{Storage.prototype.setItem=function(){throw new DOMException('Storage blocked','SecurityError')};});
     await blocked.goto(base+'#calendar');await blocked.getByRole('button',{name:'직접 계획 추가',exact:true}).click();await blocked.locator('#plan-title').fill('저장 제한 시안');await blocked.locator('#plan-form button[type=submit]').click();await blocked.getByText('브라우저 저장을 사용할 수 없습니다.',{exact:false}).waitFor();assert((await blocked.locator('#toast').textContent()).includes('실패'));pass('Blocked storage preserves in-memory changes and reports failure');await limited.close();
     assert.deepEqual(errors,[]);pass('No JavaScript runtime errors during screen and interaction checks');
-    fs.writeFileSync(path.join(output,'verification.json'),JSON.stringify({status:'passed',checks,errors,screenshots,limits:['Standalone prototype, not original Figma application','Fixture data and scripted AI demo','No server authentication, real CSV ingestion or real ontology inference']},null,2));
+    const sourceHashes=Object.fromEntries(['index.html','styles.css','app.js','verify.cjs','verify-regressions.cjs'].map(file=>[file,createHash('sha256').update(fs.readFileSync(path.join(__dirname,file))).digest('hex')]));
+    fs.writeFileSync(path.join(output,'verification.json'),JSON.stringify({status:'passed',runAt:new Date().toISOString(),browserVersion:browser.version(),nodeVersion:process.version,sourceHashes,checks,errors,screenshots:'verified',limits:['Standalone prototype, not original Figma application','Fixture data and scripted AI demo','No server authentication, real CSV ingestion or real ontology inference','No screen-reader, real mobile device or full WCAG conformance audit']},null,2)+'\n');
   }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1});

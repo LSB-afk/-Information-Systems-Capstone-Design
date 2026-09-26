@@ -96,3 +96,27 @@ main:focus{outline:none}
  .login-roles{margin-bottom:23px}.login-roles button{font-size:12px;gap:7px}
  .demo-account{padding:12px;gap:9px}.demo-account .text-button{font-size:11px}
 }
+
+/* Resizing the menu changes the space available to content, independently of the viewport. */
+.workspace{container:workspace / inline-size}
+@container workspace (max-width:760px){
+ .overview-grid,.recommendation-grid,.calendar-grid{grid-template-columns:1fr}
+ .assistant-card{display:flex;gap:0}
+ .assistant-card h2{font-size:25px;margin-top:16px}
+ .assistant-card p{max-width:none}
+ .assistant-illustration{align-self:stretch;margin:14px 0 18px;height:100px;gap:12px}
+ .assistant-card .button{width:100%;margin-top:0}
+ .assistant-card .demo-sub{align-self:center;margin-top:9px}
+ .breadcrumb>span,.breadcrumb>.icon{display:none}
+ .topbar-actions>.icon-button{display:none}
+ .prototype-label{white-space:nowrap}
+ .mini-stats{grid-template-columns:1fr}
+ .timeline-panel{align-items:flex-start;flex-wrap:wrap}
+ .timeline-months{flex-basis:100%}
+ .timeline-panel>.button{margin-left:auto}
+}
+@container workspace (max-width:520px){
+ .topbar{padding-inline:18px;gap:8px}.topbar-actions{gap:10px}.breadcrumb{font-size:12px}.prototype-label{font-size:11px}
+ .content{padding-inline:18px}.page-heading{flex-wrap:wrap;gap:16px}.page-heading h1{font-size:28px}.page-heading .heading-action{margin-top:0}
+ .rec-bottom{flex-wrap:wrap}.chart-box{padding-inline:17px}.chart-foot{padding-inline:17px;flex-wrap:wrap}
+}

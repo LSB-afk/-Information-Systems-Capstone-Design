@@ -1,0 +1,38 @@
+{
+  "reviewedAt": "2026-09-26T23:08:59.843704+09:00",
+  "result": "passed for local review draft",
+  "pdf": "00_제출/Red_SCREEN.pdf",
+  "pdfSha256": "720fd6a2665b38b92775c2f20ba83cd151da5c01f8d9e23bc687344a7aa2ba6c",
+  "pageCount": 32,
+  "renderEngine": "macOS PDFKit / AppKit",
+  "renderedPageSize": [
+    1920,
+    1080
+  ],
+  "allPagesReviewedAsContactSheets": true,
+  "representativeFullPagesReviewed": [
+    12,
+    17,
+    22,
+    32
+  ],
+  "contactSheets": [
+    "pdf-contact-01.png",
+    "pdf-contact-02.png",
+    "pdf-contact-03.png"
+  ],
+  "findings": [
+    "한글 글꼴·캡처·번호·Description 표시 확인",
+    "설명·표·페이지 번호 잘림 없음",
+    "화면 또는 주요 상태 하나를 한 Storyboard 페이지에 배치",
+    "최종 확인표에 로컬 완료 항목과 Figma 미완료 항목 구분"
+  ],
+  "figmaCapture": false,
+  "sharedAccessVerified": false,
+  "submissionReady": false,
+  "limits": [
+    "Figma 연결·프레임·캡처·Prototype·공유 URL·비로그인 열람 확인 미완료",
+    "작은 UI 문구는 PDF 확대 또는 원본 PNG에서 확인",
+    "Obsidian 읽기 화면·실제 서비스·서버 권한은 미검증"
+  ]
+}

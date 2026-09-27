@@ -1,0 +1,398 @@
+{
+  "schemaVersion": "presentation-finalization.v1",
+  "finalSha256": "96eaef580bf6ed52fd62d04765b3e4ec03a595b770543291d257015272eab9f9",
+  "byteCount": 3173090,
+  "packageIntegrity": {
+    "chart_count": 0,
+    "claim_boundary": "Structural package checks only; no slide text, notes, formulas, chart values, or native PowerPoint execution were inspected.",
+    "finding_count": 0,
+    "findings": [],
+    "notes_parts_skipped": 30,
+    "relationship_part_count": 65,
+    "slide_count": 30,
+    "status": "pass",
+    "exitCode": 0,
+    "findingCount": 0,
+    "warnings": []
+  },
+  "presentationLayout": {
+    "finding_count": 0,
+    "findings": [],
+    "font_policy": {
+      "checked_text_script_count": 1542,
+      "native_font_rendering_verified": false,
+      "observed_font_families": [
+        "Arial",
+        "Malgun Gothic"
+      ],
+      "observed_font_use_counts": {
+        "Arial": 128,
+        "Malgun Gothic": 1414
+      },
+      "passed": true,
+      "performed": true
+    },
+    "slide_count": 30,
+    "slide_size_in": [
+      13.3333,
+      7.5
+    ],
+    "warning_count": 0,
+    "warnings": [],
+    "exitCode": 0,
+    "findingCount": 0,
+    "fontPolicy": {
+      "checked_text_script_count": 1542,
+      "native_font_rendering_verified": false,
+      "observed_font_families": [
+        "Arial",
+        "Malgun Gothic"
+      ],
+      "observed_font_use_counts": {
+        "Arial": 128,
+        "Malgun Gothic": 1414
+      },
+      "passed": true,
+      "performed": true
+    }
+  },
+  "fontSelection": {
+    "basis": "reference",
+    "approvedFamilies": [
+      "Malgun Gothic",
+      "Arial"
+    ],
+    "scriptFonts": {},
+    "referenceSha256": "9efc022b79b12c3671e7e119d3f36070bdde83caac18270299ee91b7263afc86",
+    "referenceFontsVerifiedInEncodedText": true,
+    "checked_text_script_count": 1542,
+    "native_font_rendering_verified": false,
+    "observed_font_families": [
+      "Arial",
+      "Malgun Gothic"
+    ],
+    "observed_font_use_counts": {
+      "Arial": 128,
+      "Malgun Gothic": 1414
+    },
+    "passed": true,
+    "performed": true
+  },
+  "firstPartyImport": {
+    "performed": true,
+    "passed": true,
+    "slideCount": 30,
+    "sha256": "96eaef580bf6ed52fd62d04765b3e4ec03a595b770543291d257015272eab9f9",
+    "runtimeNodeModules": "/Users/leeseungbo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules",
+    "nodeExecutable": "/Users/leeseungbo/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node"
+  },
+  "nativeTableArithmetic": {
+    "performed": true,
+    "checked_column_count": 0,
+    "checks": [],
+    "claim_boundary": "Displayed-value arithmetic with rounding tolerance; not source-data verification.",
+    "eligible_table_count": 0,
+    "finding_count": 0,
+    "findings": [],
+    "native_table_count": 42,
+    "passed": true,
+    "schema_version": "presentation-native-table-arithmetic.v1",
+    "skipped_tables": [
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 6,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 7,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 8,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 9,
+        "table": 1
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 10,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 10,
+        "table": 2
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 11,
+        "table": 1
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 11,
+        "table": 2
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 12,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 12,
+        "table": 2
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 13,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 13,
+        "table": 2
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 14,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 14,
+        "table": 2
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 15,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 15,
+        "table": 2
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 16,
+        "table": 1
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 16,
+        "table": 2
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 17,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 17,
+        "table": 2
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 18,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 18,
+        "table": 2
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 19,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 19,
+        "table": 2
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 20,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 20,
+        "table": 2
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 21,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 21,
+        "table": 2
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 22,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 22,
+        "table": 2
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 23,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 23,
+        "table": 2
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 24,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 24,
+        "table": 2
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 25,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 25,
+        "table": 2
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 26,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 26,
+        "table": 2
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 27,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 27,
+        "table": 2
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 28,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 28,
+        "table": 2
+      }
+    ],
+    "slide_count": 30,
+    "warning_count": 0,
+    "warnings": []
+  },
+  "nativeChartTitles": {
+    "performed": true,
+    "checks": [],
+    "finding_count": 0,
+    "findings": [],
+    "native_chart_count": 0,
+    "native_powerpoint_verified": false,
+    "passed": true,
+    "presentation_sha256": "96eaef580bf6ed52fd62d04765b3e4ec03a595b770543291d257015272eab9f9",
+    "schema_version": "presentation-native-chart-titles.v1",
+    "slide_count": 30,
+    "source_text_emitted": false,
+    "unresolved_linked_title_count": 0
+  },
+  "sourceDerivedPolicyFlags": [
+    "--expected-slide-size-emu",
+    "12192000,6858000",
+    "--validate-bullet-geometry",
+    "--validate-heading-fit",
+    "--require-native-table-slide",
+    "6",
+    "--require-native-table-slide",
+    "7",
+    "--require-native-table-slide",
+    "8",
+    "--require-native-table-slide",
+    "9",
+    "--require-native-table-slide",
+    "10",
+    "--require-native-table-slide",
+    "11",
+    "--require-native-table-slide",
+    "12",
+    "--require-native-table-slide",
+    "13",
+    "--require-native-table-slide",
+    "14",
+    "--require-native-table-slide",
+    "15",
+    "--require-native-table-slide",
+    "16",
+    "--require-native-table-slide",
+    "17",
+    "--require-native-table-slide",
+    "18",
+    "--require-native-table-slide",
+    "19",
+    "--require-native-table-slide",
+    "20",
+    "--require-native-table-slide",
+    "21",
+    "--require-native-table-slide",
+    "22",
+    "--require-native-table-slide",
+    "23",
+    "--require-native-table-slide",
+    "24",
+    "--require-native-table-slide",
+    "25",
+    "--require-native-table-slide",
+    "26",
+    "--require-native-table-slide",
+    "27",
+    "--require-native-table-slide",
+    "28",
+    "--cover-role",
+    "none",
+    "--expected-slide-count",
+    "30",
+    "--approved-font-family",
+    "Malgun Gothic",
+    "--approved-font-family",
+    "Arial"
+  ],
+  "nativeChartValidation": {
+    "detectedOwnerSlides": [],
+    "detectedChartCount": 0,
+    "targetApplication": null,
+    "sourceChartOwnersExplicitlyDeclared": false,
+    "validatorRan": false,
+    "passed": true
+  }
+}

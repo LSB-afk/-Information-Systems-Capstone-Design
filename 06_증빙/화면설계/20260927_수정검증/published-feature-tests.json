@@ -1,0 +1,54 @@
+{
+  "url": "https://blob-silver-16955234.figma.site",
+  "at": "2026-09-27T13:42:35.107Z",
+  "tests": [
+    {
+      "name": "A session is required for direct routes and business accounts cannot enter management",
+      "status": "pass"
+    },
+    {
+      "name": "Service management keeps its existing URL and contains management controls without a browsing table",
+      "status": "pass"
+    },
+    {
+      "name": "Removed ontology and demo actions cannot be entered; required evidence stays reachable",
+      "status": "pass"
+    },
+    {
+      "name": "Logout cancel preserves active role; confirmation ends session and requires login screen",
+      "status": "pass"
+    },
+    {
+      "name": "Saved recommendation threshold filters actual cards and evidence reflects saved rationale",
+      "status": "pass"
+    },
+    {
+      "name": "Recommendation criterion write failure retains previous criteria and entered values",
+      "status": "pass"
+    },
+    {
+      "name": "CSV validation gates registration, metadata edits invalidate success and invalid rows cannot register",
+      "status": "pass"
+    },
+    {
+      "name": "Deleting a plan cancels safely, rolls back on failed persistence and retries successfully",
+      "status": "pass"
+    },
+    {
+      "name": "CSV management downloads a template that the registration validator accepts",
+      "status": "pass"
+    },
+    {
+      "name": "Overview keeps schedule summary and opens full proposal details from its compact card",
+      "status": "pass"
+    },
+    {
+      "name": "Make CSS keeps centered dialogs and avoids horizontal overflow at desktop and mobile widths",
+      "status": "pass"
+    },
+    {
+      "name": "Analysis source caption remains a readable block under the Make Tailwind stylesheet",
+      "status": "pass"
+    }
+  ]
+}

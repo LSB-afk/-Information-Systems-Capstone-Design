@@ -1,0 +1,141 @@
+{
+  "artifact": ".omx/review-revision/candidate.pptx",
+  "audited_sha256": "5fe442744164efd03631c9548e3661e0fc25a09710cedbb20b628c70f839a749",
+  "source_sha256": "9efc022b79b12c3671e7e119d3f36070bdde83caac18270299ee91b7263afc86",
+  "source_unchanged": true,
+  "counts": {
+    "slides": 30,
+    "storyboard_slides": 19,
+    "screen_list_rows": 20,
+    "unique_screen_ids": 14,
+    "description_rows": 128,
+    "number_markers": 128,
+    "circle_markers": 128,
+    "figma_make_screenshot_images": 24,
+    "notes_slides": 30
+  },
+  "package_verification": {
+    "template_master_layout_theme_parts": 10,
+    "template_parts_byte_identical": true,
+    "font_families_identical_to_source": [
+      "Malgun Gothic",
+      "Arial"
+    ],
+    "new_font_sizes_introduced": false,
+    "circle_dimensions_emu": [
+      182880,
+      182880
+    ],
+    "screen_ids_list_vs_storyboard_match": true,
+    "path_mismatches": 0,
+    "actor_mismatches": 0,
+    "uc_mapping_mismatches": 0,
+    "number_to_description_count_mismatches": 0,
+    "description_rows_have_two_action_processing_result_arrows": true,
+    "forbidden_ontology_demo_text_visible_or_notes": 0,
+    "F04_UC06_only_in_scope_slide": true,
+    "all_capture_alt_text_and_links_use_real_Make_origins": true,
+    "active_external_link_targets": [
+      "https://www.figma.com/make/AlZOwKZXABo7G6BkUhTG03/Start-Task",
+      "https://blob-silver-16955234.figma.site"
+    ],
+    "final_diagram_check": "triangle pending; latest diagram has 10 main plus 4 duplicate cases"
+  },
+  "visual_review": {
+    "renderer": "Native Microsoft PowerPoint PDF",
+    "path": ".omx/review-revision/final-native-previews",
+    "individually_reviewed_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+    ],
+    "result": "No clipped text, branch gaps, table overflow or marker collisions in inspected pages. Small inset caption proximity and final-syllable wrapping are tracked below.",
+    "parent_review_pages": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ]
+  },
+  "findings": [
+    {
+      "id": "registration-result-text",
+      "pages": [
+        25,
+        26
+      ],
+      "severity": "content mismatch",
+      "finding": "Registration result descriptions referred to a nonexistent list; actual UI updates registered count and summary.",
+      "resolution": "Parent corrected source26 description10, source27 description3 and navigation wording in content-plan; awaiting regeneration."
+    },
+    {
+      "id": "inset-captions",
+      "pages": [
+        20,
+        28
+      ],
+      "severity": "layout",
+      "finding": "Inset caption lower edge touched the image border.",
+      "resolution": "Parent changed positioning to image top minus own caption height minus 20000 EMU; awaiting regeneration."
+    },
+    {
+      "id": "empty-description-wrap",
+      "pages": [
+        16
+      ],
+      "severity": "layout",
+      "finding": "Description2 wrapped the final syllable after notice/action alignment correction.",
+      "resolution": "Parent shortened same meaning in content-plan; awaiting regeneration."
+    },
+    {
+      "id": "csv-error-location",
+      "pages": [
+        27
+      ],
+      "severity": "content mismatch",
+      "finding": "Description2 promises specific row/column locations, but capture shows failed validation criterion and general reason.",
+      "recommended_text": "오류 항목 확인 → 실패한 검증 기준 확인 → 수정 후 재검증 안내",
+      "resolution": "Reported to parent; awaiting decision/regeneration."
+    },
+    {
+      "id": "scope-wrap",
+      "pages": [
+        29
+      ],
+      "severity": "minor layout",
+      "finding": "Scope implementation disclosure wraps final 다. alone.",
+      "recommended_text": "화면은 서버 인증·저장·검증을 기준으로 설계합니다. 현재 시안은 예시 자료와 브라우저 저장을 사용하며 서버 기능은 미연결입니다.",
+      "resolution": "Reported to parent; awaiting decision/regeneration."
+    }
+  ],
+  "remaining_verification": [
+    "Regenerate candidate and native PDF after latest content/caption corrections",
+    "Update hash and recheck changed pages 16,20,25,26,27,28,29",
+    "Keep diagram consistency pending unless final source diagram actually aligned"
+  ],
+  "candidate_sha256_seen_when_saving_audit": "e75f692f6d78e907cf991d412ccd11d2015ef8daed464004b4795dafc16dbcc4",
+  "hash_note": "The parent regenerated candidate while this audit was being saved. Full text/native visual review refers to audited_sha256. Circle count and size were reconfirmed on candidate_sha256_seen_when_saving_audit. Parent will update final hash after changed-page verification."
+}

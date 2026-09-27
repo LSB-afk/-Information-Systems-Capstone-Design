@@ -1,0 +1,301 @@
+{
+  "screens": 26,
+  "storyboards": 19,
+  "marker_count": 128,
+  "issues": [],
+  "prohibited_strings": [],
+  "all_numbering_valid": true,
+  "ppt_mapping": [
+    {
+      "source_slide": 10,
+      "primary": "login",
+      "auxiliary": [],
+      "marker_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "numbering_valid": true
+    },
+    {
+      "source_slide": 11,
+      "primary": "login-error",
+      "auxiliary": [],
+      "marker_numbers": [
+        1,
+        2
+      ],
+      "numbering_valid": true
+    },
+    {
+      "source_slide": 12,
+      "primary": "common-layout",
+      "auxiliary": [
+        "logout-confirm"
+      ],
+      "marker_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "numbering_valid": true
+    },
+    {
+      "source_slide": 13,
+      "primary": "overview",
+      "auxiliary": [],
+      "marker_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "numbering_valid": true
+    },
+    {
+      "source_slide": 14,
+      "primary": "analysis-visits",
+      "auxiliary": [],
+      "marker_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "numbering_valid": true
+    },
+    {
+      "source_slide": 15,
+      "primary": "analysis-consumption",
+      "auxiliary": [],
+      "marker_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "numbering_valid": true
+    },
+    {
+      "source_slide": 16,
+      "primary": "analysis-empty",
+      "auxiliary": [],
+      "marker_numbers": [
+        1,
+        2
+      ],
+      "numbering_valid": true
+    },
+    {
+      "source_slide": 17,
+      "primary": "recommendations",
+      "auxiliary": [],
+      "marker_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "numbering_valid": true
+    },
+    {
+      "source_slide": 18,
+      "primary": "evidence",
+      "auxiliary": [],
+      "marker_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "numbering_valid": true
+    },
+    {
+      "source_slide": 20,
+      "primary": "calendar",
+      "auxiliary": [],
+      "marker_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "numbering_valid": true
+    },
+    {
+      "source_slide": 21,
+      "primary": "plan-edit",
+      "auxiliary": [
+        "plan-delete-confirm",
+        "plan-saved"
+      ],
+      "marker_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "numbering_valid": true
+    },
+    {
+      "source_slide": 22,
+      "primary": "plan-save-error",
+      "auxiliary": [],
+      "marker_numbers": [
+        1,
+        2,
+        3
+      ],
+      "numbering_valid": true
+    },
+    {
+      "source_slide": 23,
+      "primary": "records",
+      "auxiliary": [],
+      "marker_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "numbering_valid": true
+    },
+    {
+      "source_slide": 24,
+      "primary": "record-edit",
+      "auxiliary": [],
+      "marker_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "numbering_valid": true
+    },
+    {
+      "source_slide": 25,
+      "primary": "summary",
+      "auxiliary": [],
+      "marker_numbers": [
+        1,
+        2,
+        3
+      ],
+      "numbering_valid": true
+    },
+    {
+      "source_slide": 26,
+      "primary": "data-admin",
+      "auxiliary": [],
+      "marker_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "numbering_valid": true
+    },
+    {
+      "source_slide": 27,
+      "primary": "csv-validation",
+      "auxiliary": [
+        "csv-registered"
+      ],
+      "marker_numbers": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "numbering_valid": true
+    },
+    {
+      "source_slide": 28,
+      "primary": "csv-error",
+      "auxiliary": [],
+      "marker_numbers": [
+        1,
+        2,
+        3
+      ],
+      "numbering_valid": true
+    },
+    {
+      "source_slide": 29,
+      "primary": "criteria",
+      "auxiliary": [
+        "criteria-saved"
+      ],
+      "marker_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "numbering_valid": true
+    }
+  ],
+  "source": "Figma Make",
+  "verified": true
+}

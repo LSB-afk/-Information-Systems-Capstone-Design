@@ -1,0 +1,235 @@
+{
+  "source": "Published Figma Make",
+  "captured_at": "2026-09-27T13:42:58.179Z",
+  "base_url": "https://blob-silver-16955234.figma.site/",
+  "published_assets": [
+    {
+      "url": "https://blob-silver-16955234.figma.site/assets/index-Cy3nF8CL.js",
+      "status": 200,
+      "bytes": 452621,
+      "sha256": "d0df2f1b735f506a4f5b0c8fddb628e6e6be875439237f990e4af1704a4597af"
+    },
+    {
+      "url": "https://blob-silver-16955234.figma.site/assets/index-CEpKENwd.css",
+      "status": 200,
+      "bytes": 45841,
+      "sha256": "29ec36ac4f3f55c9e9be0b008aeb1b37614fc9162082bbb988f2b6c6d8ecdc66"
+    },
+    {
+      "url": "https://blob-silver-16955234.figma.site/__figma__/make_community_banner_v1.js",
+      "status": 200,
+      "bytes": 11246,
+      "sha256": "95d13adee1cd292c470f6bf0aee27100d10edec3f246fbbdb699952aa33e6f05"
+    }
+  ],
+  "captures": [
+    {
+      "name": "login",
+      "source_slide": 10,
+      "url": "https://blob-silver-16955234.figma.site/#login",
+      "sha256": "a688a1cba8ee1edd7fafc0dc74e16f6d6509e82a9944b1db16f79c26685ee2ee",
+      "marker_count": 5,
+      "embedded_in_submission": true
+    },
+    {
+      "name": "login-error",
+      "source_slide": 11,
+      "url": "https://blob-silver-16955234.figma.site/#login",
+      "sha256": "b628318727cde208f850ae8aad6c7db6f5809521eb3c5ffcda0edaec62b79bc9",
+      "marker_count": 2,
+      "embedded_in_submission": true
+    },
+    {
+      "name": "common-layout",
+      "source_slide": 12,
+      "url": "https://blob-silver-16955234.figma.site/#overview",
+      "sha256": "f80c74f429ecd6cff72c63c9a7eca9b588945866cc6f3dc181c20036d00285fa",
+      "marker_count": 11,
+      "embedded_in_submission": true
+    },
+    {
+      "name": "logout-confirm",
+      "source_slide": 12,
+      "url": "https://blob-silver-16955234.figma.site/#overview",
+      "sha256": "b98aeff4c6837eb5fc90e99d631c742bf2a9fa91d99b2f2ee3ef3a2abfd5526c",
+      "marker_count": 2,
+      "embedded_in_submission": true
+    },
+    {
+      "name": "overview",
+      "source_slide": 13,
+      "url": "https://blob-silver-16955234.figma.site/#overview",
+      "sha256": "a36609b05380059a17d0538b50df798e2ddc7f8cd9812a277f0de98afc4e67f4",
+      "marker_count": 8,
+      "embedded_in_submission": true
+    },
+    {
+      "name": "analysis-visits",
+      "source_slide": 14,
+      "url": "https://blob-silver-16955234.figma.site/#analysis",
+      "sha256": "0e17a831a1c793e0650fda9c3c4a327feab4881e9e2695b331b42348e504e285",
+      "marker_count": 9,
+      "embedded_in_submission": true
+    },
+    {
+      "name": "analysis-consumption",
+      "source_slide": 15,
+      "url": "https://blob-silver-16955234.figma.site/#analysis",
+      "sha256": "99df204bb3af626d1ad453f3f5407786116e8c524acedb33b2975d5c0e1b9be6",
+      "marker_count": 6,
+      "embedded_in_submission": true
+    },
+    {
+      "name": "analysis-empty",
+      "source_slide": 16,
+      "url": "https://blob-silver-16955234.figma.site/#analysis",
+      "sha256": "efadc74460e9b2df074d5c7052b077e2d5c97eb898659b673dd41477256a4ada",
+      "marker_count": 2,
+      "embedded_in_submission": true
+    },
+    {
+      "name": "recommendations",
+      "source_slide": 17,
+      "url": "https://blob-silver-16955234.figma.site/#recommendations",
+      "sha256": "6d3dca39640622e80d9f1d3a48d663cbe8e483745b6ff496027186bb3a3f92f8",
+      "marker_count": 5,
+      "embedded_in_submission": true
+    },
+    {
+      "name": "recommendations-empty",
+      "source_slide": 17,
+      "url": "https://blob-silver-16955234.figma.site/#recommendations",
+      "sha256": "d9b2db391dd9b8e3c556bac28bc0b3e930a46e684fefb4b72a8a12e2e45535cf",
+      "marker_count": 1,
+      "embedded_in_submission": false
+    },
+    {
+      "name": "evidence",
+      "source_slide": 18,
+      "url": "https://blob-silver-16955234.figma.site/#recommendations",
+      "sha256": "33b0b26d67551ba3b635948ca4b18bac6734487ace6475db773c3715bbd36f47",
+      "marker_count": 7,
+      "embedded_in_submission": true
+    },
+    {
+      "name": "calendar",
+      "source_slide": 20,
+      "url": "https://blob-silver-16955234.figma.site/#calendar",
+      "sha256": "44c63a0e17d37861fa38d645a4261ed8766134e7d6d952b60b383641377e5c17",
+      "marker_count": 7,
+      "embedded_in_submission": true
+    },
+    {
+      "name": "plan-edit",
+      "source_slide": 21,
+      "url": "https://blob-silver-16955234.figma.site/#calendar",
+      "sha256": "0335187351b3c952828fcddf9ee597748b59f8a75ce87290c82a1bc8e63dc32f",
+      "marker_count": 8,
+      "embedded_in_submission": true
+    },
+    {
+      "name": "plan-delete-confirm",
+      "source_slide": 21,
+      "url": "https://blob-silver-16955234.figma.site/#calendar",
+      "sha256": "2f3490fed51cefddfce128230b0af5fee96b6a2d333978c83a413e0019a2ffd4",
+      "marker_count": 2,
+      "embedded_in_submission": true
+    },
+    {
+      "name": "plan-saved",
+      "source_slide": 21,
+      "url": "https://blob-silver-16955234.figma.site/#calendar",
+      "sha256": "bdd4e4bc99aaa299613af87ebdac1bf2d235fd0a2d1588de921e65eea57df10d",
+      "marker_count": 1,
+      "embedded_in_submission": true
+    },
+    {
+      "name": "plan-save-error",
+      "source_slide": 22,
+      "url": "https://blob-silver-16955234.figma.site/#calendar",
+      "sha256": "6347a3c106ec3123e3de5e9ac83296af4cf7cf4951e400c133207efad5297429",
+      "marker_count": 3,
+      "embedded_in_submission": true
+    },
+    {
+      "name": "records",
+      "source_slide": 23,
+      "url": "https://blob-silver-16955234.figma.site/#records",
+      "sha256": "1ad58e6ec13c229846685d83345f5cd451abad87b562727cedffbbf1a078cc60",
+      "marker_count": 6,
+      "embedded_in_submission": true
+    },
+    {
+      "name": "record-saved",
+      "source_slide": 23,
+      "url": "https://blob-silver-16955234.figma.site/#records",
+      "sha256": "e9e6025b8efcb3bab6147b2a52d0b62f6dd7deb6f2991d950ccc1e0e04614a1e",
+      "marker_count": 1,
+      "embedded_in_submission": false
+    },
+    {
+      "name": "record-edit",
+      "source_slide": 24,
+      "url": "https://blob-silver-16955234.figma.site/#records",
+      "sha256": "b454ae597b5d76ad772ac2aba22c3fe67546d1653d23cd2f0a27d26ffd0dc65d",
+      "marker_count": 12,
+      "embedded_in_submission": true
+    },
+    {
+      "name": "summary",
+      "source_slide": 25,
+      "url": "https://blob-silver-16955234.figma.site/#records",
+      "sha256": "2a886cddcfed76e2e5e6782576785df5f2fd406139ad84df0351bb902f2074f5",
+      "marker_count": 3,
+      "embedded_in_submission": true
+    },
+    {
+      "name": "data-admin",
+      "source_slide": 26,
+      "url": "https://blob-silver-16955234.figma.site/#data",
+      "sha256": "0f31d94c1f179f1063ffee4e37a3849a84868d26ff58318a1ed181db48844722",
+      "marker_count": 13,
+      "embedded_in_submission": true
+    },
+    {
+      "name": "csv-validation",
+      "source_slide": 27,
+      "url": "https://blob-silver-16955234.figma.site/#data",
+      "sha256": "15631493c436513b479dd1f20eb85c4c183f0af6d0c471d4f451ad47b02579dc",
+      "marker_count": 3,
+      "embedded_in_submission": true
+    },
+    {
+      "name": "csv-registered",
+      "source_slide": 27,
+      "url": "https://blob-silver-16955234.figma.site/#data",
+      "sha256": "fc6efeb79fa14df852ee9ddec7e36c4e5400b08e4119953c82710bae45ca5d6f",
+      "marker_count": 1,
+      "embedded_in_submission": true
+    },
+    {
+      "name": "csv-error",
+      "source_slide": 28,
+      "url": "https://blob-silver-16955234.figma.site/#data",
+      "sha256": "d6fd902d467df2abed3ef9f3bedc26736e625c25000ea01e00a8c9490269e288",
+      "marker_count": 3,
+      "embedded_in_submission": true
+    },
+    {
+      "name": "criteria",
+      "source_slide": 29,
+      "url": "https://blob-silver-16955234.figma.site/#data",
+      "sha256": "63195c574408009c0d407edf2a4514ab665fa8ac16aa7c19231797dd11e70d43",
+      "marker_count": 8,
+      "embedded_in_submission": true
+    },
+    {
+      "name": "criteria-saved",
+      "source_slide": 29,
+      "url": "https://blob-silver-16955234.figma.site/#data",
+      "sha256": "4f5bbd848f1bf1ea0c867d18b5551446fd52c3017cda36e5aabdf9dcab0c5f7f",
+      "marker_count": 1,
+      "embedded_in_submission": true
+    }
+  ]
+}

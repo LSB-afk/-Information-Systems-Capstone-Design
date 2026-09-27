@@ -81,7 +81,7 @@ let state = {
   region:['애월읍','구좌읍'].includes(saved.region) ? saved.region : '애월읍',
   plans:restoredPlans,
   records:Object.fromEntries(restoredRecords.map(([id,r])=>[id,{planningMinutes:null,adopted:'unknown',activity:'',coupons:null,...r}])),
-  metric:'visits',dataTab:'visits',search:'',analysisYear:'2025',analysisMode:'visits'
+  metric:'visits',analysisYear:'2025',analysisMode:'visits'
 };
 const regionData = {
   '애월읍':{visits:[35,32,44,49,55,47,65,72,57,51,37,34],spend:[18,19,23,24,30,28,35,42,32,29,null,21]},
@@ -143,7 +143,7 @@ function shell(content) {
     <div class="business-card"><span class="avatar">${icon(state.role==='service'?'database':'shop')}</span><span><b>${state.role==='service'?'자료 운영 워크스페이스':'제주 예시 카페'}</b><small>${state.role==='service'?'서비스 운영자':'사업체 운영자'}</small></span></div>
     <div class="sidebar-controls"><span>나에게 맞는 메뉴 너비</span><button class="text-button" data-action="sidebar-reset" title="메뉴 너비 초기화" aria-label="메뉴 너비 초기화">초기화</button></div>
     <p class="nav-label">마케팅 워크스페이스</p><nav aria-label="주요 메뉴" class="nav-group">${navItem('overview','grid')}${navItem('analysis','chart')}${navItem('recommendations','spark')}${navItem('calendar','calendar')}${navItem('records','clipboard')}</nav>
-    <p class="nav-label">자료와 근거</p><nav aria-label="자료 메뉴" class="nav-group">${navItem('data','database')}</nav>
+    ${state.role==='service'?`<p class="nav-label">자료와 근거</p><nav aria-label="자료 메뉴" class="nav-group">${navItem('data','database')}</nav>`:''}
     <div class="sidebar-bottom"><div class="sidebar-note">${icon('leaf')}<b>작은 계획부터 차근차근</b><p>우리 가게에 맞는 제안을 고르고<br>실행할 수 있는 일정으로 바꿔요.</p></div><button class="profile" data-action="logout" aria-label="계정 로그아웃" title="계정 로그아웃"><span class="avatar">${state.role==='service'?'운':'가'}</span><span><b>${state.role==='service'?'서비스 운영자':'사업체 운영자'}</b><small>로그아웃</small></span>${icon('chevron')}</button>${demoSessionRole?`<button class="sidebar-session" data-action="logout" title="로그아웃" aria-label="로그아웃">${icon('logout')}<span>로그아웃</span></button>`:`<a class="sidebar-session" href="#login" title="로그인" aria-label="로그인">${icon('lock')}<span>로그인</span></a>`}</div>
   </aside><div id="sidebar-resizer" class="sidebar-resizer" role="separator" aria-label="메뉴 너비 조절" aria-controls="sidebar" aria-orientation="vertical" aria-valuemin="216" aria-valuemax="360" aria-valuenow="${sidebarLayout.width}" tabindex="0" title="끌어서 너비 조절 · 방향키로도 조절할 수 있어요"><span></span></div><div class="workspace"><header class="topbar"><div class="row"><button class="icon-button desktop-menu" data-action="sidebar-toggle" aria-label="메뉴 접기" aria-controls="sidebar" aria-expanded="true">${icon('panel')}</button><button class="icon-button mobile-menu" data-action="menu" aria-label="메뉴 열기" aria-expanded="false" aria-controls="sidebar">${icon('menu')}</button><div class="breadcrumb"><span>워크스페이스</span>${icon('chevron')}<strong>${titles[currentView]}</strong></div></div><div class="topbar-actions"><button class="icon-button" data-action="help" aria-label="사용 안내">${icon('help')}</button><span class="avatar" aria-label="예시 계정">${state.role==='service'?'운':'가'}</span></div></header><main id="main" class="content" tabindex="-1">${storageIssue?'<p class="notice error">저장에 실패했습니다. 기존 내용은 유지되며 다시 시도할 수 있습니다.</p>':''}${recoveryIssue?'<p class="notice">저장된 자료에 복원하지 못한 항목이 있습니다. 정상 항목은 유지했으니 계획과 기록을 확인해 주세요.</p>':''}${state.role==='service'&&['overview','calendar','records'].includes(currentView)?'<p class="notice">권한을 부여받은 사업체: 제주 예시 카페 · 허용된 계획과 기록만 관리합니다.</p>':''}${content}<footer class="footer-note"><span>화면 검토용 예시 자료입니다. 지역 방문 집계는 가게의 실제 고객 수가 아닙니다.</span><button data-action="help">사용 안내</button></footer></main></div>`;
 }
@@ -227,9 +227,6 @@ function records() {
   const done=state.plans.filter(p=>state.records[p.id]);
   return `${heading('실행한 만큼, 다음 계획이 선명해져요','계획별 실행 여부와 실제로 수집한 결과를 기록하세요.',button('사용 결과 요약','report','','book'))}<div class="mini-stats"><div class="mini-stat"><p>준비한 계획</p><strong>${state.plans.length}<small>개</small></strong><span>2026년 10월부터 12월</span></div><div class="mini-stat"><p>실행 기록 작성</p><strong>${done.length}<small>개</small></strong><span>입력한 기록 기준</span></div><div class="mini-stat"><p>아직 기록하지 않은 계획</p><strong>${state.plans.length-done.length}<small>개</small></strong><span>기록 없음은 실행 실패를 뜻하지 않아요</span></div></div><section class="panel">${state.plans.length?state.plans.map(p=>{const record=state.records[p.id];return `<div class="record-row"><div class="date-box"><small>${Number(p.date.slice(5,7))}월</small><strong>${Number(p.date.slice(8))}</strong></div><div><h3>${escapeHTML(p.title)}</h3><p>${escapeHTML(p.channel)} · ${record?`${escapeHTML(record.status)} / 클릭 ${record.clicks===null?'미수집':escapeHTML(record.clicks)+'건'}`:'실행 결과를 아직 입력하지 않았어요'}</p></div><span class="badge ${record?'green':''}">${record?'기록 있음':'미기록'}</span><button class="button small" data-record="${escapeHTML(p.id)}">${record?'기록 수정':'기록 입력'}</button></div>`;}).join(''):`<div class="empty-state"><div class="empty-icon">${icon('clipboard')}</div><h3>먼저 작은 계획을 만들어 볼까요?</h3><p>일정에서 직접 계획을 추가하면 이곳에서 실행 여부와 결과를 기록할 수 있어요.</p><a class="button primary" href="#calendar">일정 작성하기</a></div>`}</section><p class="notice" style="margin-top:20px">수집하지 않은 클릭·예약·쿠폰 사용 수는 빈칸으로 남겨 주세요. 0건과 미수집은 다르게 기록됩니다.</p>`;
 }
-function dataRows() {
-  return Object.entries(regionData).flatMap(([region,data])=>Array.from({length:12},(_,i)=>({region,month:i+1,value:data[state.dataTab==='visits'?'visits':'spend'][i]}))).filter(r=>`${r.region} ${r.month}월`.includes(state.search)).map(r=>`<tr><td>${r.region}</td><td>2025년 ${r.month}월</td><td>${state.dataTab==='visits'?'지역 방문 집계':'카드 소비 집계'}</td><td>${r.value===null?'미수집':r.value}</td><td>${state.dataTab==='visits'?'만 명':'억 원'}</td><td><span class="badge ${r.value===null?'amber':''}">${r.value===null?'자료 누락':'화면용 예시'}</span></td></tr>`).join('') || '<tr><td colspan="6">검색 결과가 없습니다. 지역명 또는 월을 입력해 주세요.</td></tr>';
-}
 const ADMIN_KEY='jeju-design-admin-v1';
 const defaultCriteria={threshold:20,source:'화면 시안 v1 · 2025년 월별 지역 방문 집계(만 명)',reason:'10월 대비 11월 예시 방문 감소를 참고하며 판매 가능 상품·휴무일을 별도로 확인',condition:'상품 판매 가능 여부·실제 예산·관광지 접근 경로 확인 필요'};
 let adminState={criteria:{...defaultCriteria},registrations:[]};
@@ -279,7 +276,7 @@ function criteriaDialog(){
   openDialog('추천 기준과 근거 수정','검증한 자료와 판단 이유를 함께 기록',`<form id="criteria-form"><p class="notice">저장한 방문 감소 기준은 홍보 제안 조회에 바로 적용됩니다. 출처·판단 이유·적용 조건도 제안과 함께 표시됩니다.</p><label class="field-label" for="criteria-threshold">직전 월 대비 방문 감소 기준 · %</label><input class="field" id="criteria-threshold" name="threshold" type="number" min="0" max="100" step="1" required value="${escapeHTML(c.threshold)}"><label class="field-label" for="criteria-source">분석 결과·출처·기준기간·단위</label><input class="field" id="criteria-source" name="source" required maxlength="250" value="${escapeHTML(c.source)}"><label class="field-label" for="criteria-reason">추천 판단 이유</label><textarea class="field" id="criteria-reason" name="reason" required maxlength="500">${escapeHTML(c.reason)}</textarea><label class="field-label" for="criteria-condition">적용 조건·확인이 필요한 항목</label><textarea class="field" id="criteria-condition" name="condition" required maxlength="500">${escapeHTML(c.condition)}</textarea><p id="criteria-error" class="notice error" role="alert" hidden></p><div class="dialog-actions">${button('취소','close-dialog')}<button class="button primary" type="submit">저장</button></div></form>`);
 }
 function dataView() {
-  return `${heading(state.role==='service'?'자료와 기준을 관리하는 공간':'추천에 사용한 자료를 살펴보세요','자료의 출처·기간·단위와 누락 여부를 확인하세요.',button(state.role==='service'?'CSV 양식 내려받기':'자료 내려받기','export','','download'))}${state.role==='service'?sourceManager():''}<div class="source-tabs" aria-label="자료 종류"><button data-tab="visits" class="${state.dataTab==='visits'?'selected':''}" aria-pressed="${state.dataTab==='visits'}">지역 방문 자료</button><button data-tab="spend" class="${state.dataTab==='spend'?'selected':''}" aria-pressed="${state.dataTab==='spend'}">카드 소비 자료</button></div><div class="toolbar"><label class="search">${icon('search')}<input class="field" id="data-search" placeholder="지역명 또는 월로 검색" aria-label="자료 검색" value="${escapeHTML(state.search)}"></label><span class="badge">예시 자료 v1 · 2025년</span></div><section class="panel"><div class="table-wrap"><table><thead><tr><th scope="col">지역</th><th scope="col">기준기간</th><th scope="col">지표</th><th scope="col">값</th><th scope="col">단위</th><th scope="col">자료 상태</th></tr></thead><tbody id="data-rows">${dataRows()}</tbody></table></div><p class="table-caption">출처: 화면 시안 내 예시 자료 v1 · 다운로드 파일에도 예시 자료임을 표시합니다.</p></section>`;
+  return `${heading('자료와 기준을 관리하는 공간','자료의 출처·기간·단위와 누락 여부를 확인하세요.',button('CSV 양식 내려받기','export','','download'))}${sourceManager()}`;
 }
 function login() {
   return `<main class="login-page" id="main" tabindex="-1">
@@ -315,8 +312,10 @@ function startDemoLogin(form) {
 }
 function render() {
   resetCSVSelection();
-  const hash=location.hash.slice(1);currentView=titles[hash]?hash:(hash?'overview':(demoSessionRole?'overview':'login'));
-  if(hash && !titles[hash])history.replaceState(null,'','#overview');
+  const hash=location.hash.slice(1),requested=hash==='dataAdmin'?'data':hash;
+  currentView=!demoSessionRole?'login':(titles[requested]?requested:'overview');
+  if(currentView==='data'&&state.role!=='service')currentView='overview';
+  if(hash!==currentView)history.replaceState(null,'',`#${currentView}`);
   document.title=`${titles[currentView]} · 제주 마케팅 캘린더`;
   const views={overview,analysis,recommendations,calendar,records,data:dataView};
   closeMobileMenu();
@@ -375,12 +374,11 @@ function logoutDialog() {
   openDialog('로그아웃할까요?','저장한 계획과 기록은 유지됩니다.',`<p>다른 계정을 사용하려면 로그아웃한 뒤 다시 로그인하세요.</p><div class="dialog-actions">${button('취소','close-dialog')}${button('로그아웃','confirm-logout','primary')}</div>`);
 }
 function exportCSV() {
+  if(state.role!=='service')return;
   const quote=v=>`"${String(v).replace(/"/g,'""')}"`;
-  const template=state.role==='service';
-  const rows=template?[['region_code','month','value','unit','provider','aggregation'],['50110253','2025-10','51','만 명','화면 시안 제작팀','월별 지역 집계'],['50110256','2025-10','39','만 명','화면 시안 제작팀','월별 지역 집계']]:[['자료구분','지역','기준월','지표','값','단위','상태']];
-  if(!template)for(const [region,d] of Object.entries(regionData)) d[state.dataTab==='visits'?'visits':'spend'].forEach((v,i)=>rows.push(['화면 검토용 예시',region,`2025-${String(i+1).padStart(2,'0')}`,state.dataTab==='visits'?'지역 방문 집계':'카드 소비',v??'',state.dataTab==='visits'?'만 명':'억 원',v===null?'미수집':'예시']));
+  const rows=[['region_code','month','value','unit','provider','aggregation'],['50110253','2025-10','51','만 명','화면 시안 제작팀','월별 지역 집계'],['50110256','2025-10','39','만 명','화면 시안 제작팀','월별 지역 집계']];
   const blob=new Blob(['\uFEFF'+rows.map(r=>r.map(quote).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8;'});
-  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=template?'CSV_등록_양식_예시.csv':`제주_화면용_예시_${state.dataTab}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);notify(template?'CSV 양식 예시를 내려받습니다. 입력할 자료의 출처와 기준을 확인해 주세요.':'자료 CSV를 내려받습니다.');
+  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='CSV_등록_양식_예시.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);notify('CSV 양식 예시를 내려받습니다. 입력할 자료의 출처와 기준을 확인해 주세요.');
 }
 document.addEventListener('click',event=>{
   const target=event.target.closest('button,a');if(!target)return;
@@ -389,7 +387,6 @@ document.addEventListener('click',event=>{
   if(target.dataset.analysisMode){state.analysisMode=target.dataset.analysisMode;render();$(`[data-analysis-mode="${state.analysisMode}"]`).focus();return;}
   if(target.dataset.regionMap){state.region=target.dataset.regionMap;persist();render();$(`[data-region-map="${state.region}"]`).focus();return;}
   if(target.dataset.metric){state.metric=target.dataset.metric;render();$(`[data-metric="${state.metric}"]`).focus();return;}
-  if(target.dataset.tab){state.dataTab=target.dataset.tab;render();$(`[data-tab="${state.dataTab}"]`).focus();return;}
   if(target.dataset.evidence){evidenceDialog(target.dataset.evidence);return;}
   if(target.dataset.rec){planDialog({recId:target.dataset.rec});return;}
   if(target.dataset.edit){planDialog({id:target.dataset.edit});return;}
@@ -436,7 +433,6 @@ document.addEventListener('change',async event=>{
 });
 document.addEventListener('input',event=>{
   if(event.target.closest('#csv-form'))invalidateCSV();
-  if(event.target.id==='data-search'){state.search=event.target.value;$('#data-rows').innerHTML=dataRows();}
   if(['login-email','login-password'].includes(event.target.id)){$('#login-error').hidden=true;event.target.removeAttribute('aria-invalid');}
 });
 document.addEventListener('keydown',event=>{

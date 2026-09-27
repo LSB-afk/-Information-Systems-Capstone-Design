@@ -134,3 +134,5 @@ main:focus{outline:none}
 @media(max-width:767px){.recommendation-summary{align-items:flex-start;flex-direction:column;gap:12px}.recommendation-summary>.button{align-self:flex-end}}
 
 .overview-trend .chart{max-height:175px}.overview-trend .chart-box{padding:18px 24px 12px}.overview-trend .panel-heading{margin-bottom:12px}
+
+p.table-caption { display: block; width: auto; }

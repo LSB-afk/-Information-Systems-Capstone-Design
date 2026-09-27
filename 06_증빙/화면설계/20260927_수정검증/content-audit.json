@@ -1,6 +1,6 @@
 {
   "artifact": ".omx/review-revision/candidate.pptx",
-  "audited_sha256": "5fe442744164efd03631c9548e3661e0fc25a09710cedbb20b628c70f839a749",
+  "audited_sha256": "e7084cb94b3284482a668584e0dbb68f37b6c4e21891b5d45efa6d30dd136736",
   "source_sha256": "9efc022b79b12c3671e7e119d3f36070bdde83caac18270299ee91b7263afc86",
   "source_unchanged": true,
   "counts": {
@@ -89,7 +89,8 @@
       ],
       "severity": "content mismatch",
       "finding": "Registration result descriptions referred to a nonexistent list; actual UI updates registered count and summary.",
-      "resolution": "Parent corrected source26 description10, source27 description3 and navigation wording in content-plan; awaiting regeneration."
+      "resolution": "Verified in final XML and native pages 25–26; descriptions and navigation refer to registered data count.",
+      "status": "corrected; verified by inventory agent"
     },
     {
       "id": "inset-captions",
@@ -99,7 +100,8 @@
       ],
       "severity": "layout",
       "finding": "Inset caption lower edge touched the image border.",
-      "resolution": "Parent changed positioning to image top minus own caption height minus 20000 EMU; awaiting regeneration."
+      "resolution": "Verified source21/source29 caption geometry in final XML; native page28 is clear; parent checks page20.",
+      "status": "corrected; verified by inventory agent"
     },
     {
       "id": "empty-description-wrap",
@@ -108,7 +110,8 @@
       ],
       "severity": "layout",
       "finding": "Description2 wrapped the final syllable after notice/action alignment correction.",
-      "resolution": "Parent shortened same meaning in content-plan; awaiting regeneration."
+      "resolution": "Parent applied concise equivalent wording; parent owns final native visual recheck on page16/page29.",
+      "status": "corrected; parent visual verification"
     },
     {
       "id": "csv-error-location",
@@ -118,7 +121,8 @@
       "severity": "content mismatch",
       "finding": "Description2 promises specific row/column locations, but capture shows failed validation criterion and general reason.",
       "recommended_text": "오류 항목 확인 → 실패한 검증 기준 확인 → 수정 후 재검증 안내",
-      "resolution": "Reported to parent; awaiting decision/regeneration."
+      "resolution": "Verified exact recommended wording in final XML and native page27; no unsupported row/column promise remains.",
+      "status": "corrected; verified by inventory agent"
     },
     {
       "id": "scope-wrap",
@@ -128,14 +132,43 @@
       "severity": "minor layout",
       "finding": "Scope implementation disclosure wraps final 다. alone.",
       "recommended_text": "화면은 서버 인증·저장·검증을 기준으로 설계합니다. 현재 시안은 예시 자료와 브라우저 저장을 사용하며 서버 기능은 미연결입니다.",
-      "resolution": "Reported to parent; awaiting decision/regeneration."
+      "resolution": "Parent applied concise equivalent wording; parent owns final native visual recheck on page16/page29.",
+      "status": "corrected; parent visual verification"
     }
   ],
   "remaining_verification": [
-    "Regenerate candidate and native PDF after latest content/caption corrections",
-    "Update hash and recheck changed pages 16,20,25,26,27,28,29",
-    "Keep diagram consistency pending unless final source diagram actually aligned"
+    "Parent final native visual checks on pages 16,20,29",
+    "Final Use Case Diagram alignment remains explicitly pending (triangle), not claimed complete"
   ],
-  "candidate_sha256_seen_when_saving_audit": "e75f692f6d78e907cf991d412ccd11d2015ef8daed464004b4795dafc16dbcc4",
-  "hash_note": "The parent regenerated candidate while this audit was being saved. Full text/native visual review refers to audited_sha256. Circle count and size were reconfirmed on candidate_sha256_seen_when_saving_audit. Parent will update final hash after changed-page verification."
+  "hash_note": "Initial full ZIP/native review plus a bounded final recheck of all reported XML corrections and native pages 25–28. Parent independently rechecks changed native pages 16,20,29.",
+  "previous_audited_sha256": "5fe442744164efd03631c9548e3661e0fc25a09710cedbb20b628c70f839a749",
+  "final_recheck": {
+    "sha256": "96eaef580bf6ed52fd62d04765b3e4ec03a595b770543291d257015272eab9f9",
+    "native_visual_pages": [
+      25,
+      26,
+      27,
+      28
+    ],
+    "native_visual_result": "pass: updated descriptions fit; all markers align; notes fully visible; inset caption clear of image border",
+    "xml_corrections_verified": [
+      "source26 description10 uses registered-count update",
+      "source27 description3 and navigation use registered-count update",
+      "source28 description2 matches failed validation criterion",
+      "source21/source29 inset captions clear image top by 20000 EMU"
+    ],
+    "parent_changed_pages_recheck": [
+      16,
+      20,
+      29
+    ]
+  },
+  "visually_audited_sha256": "96eaef580bf6ed52fd62d04765b3e4ec03a595b770543291d257015272eab9f9",
+  "orphan_media_cleanup": {
+    "removed": [
+      "ppt/media/image-19-1.png"
+    ],
+    "remaining_package_parts_byte_identical_to_visually_reviewed_deck": true,
+    "changed_surviving_parts": []
+  }
 }

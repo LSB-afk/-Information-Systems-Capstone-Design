@@ -1,8 +1,8 @@
 {
   "source_unchanged": true,
   "source_sha256": "9efc022b79b12c3671e7e119d3f36070bdde83caac18270299ee91b7263afc86",
-  "final_pptx_sha256": "96eaef580bf6ed52fd62d04765b3e4ec03a595b770543291d257015272eab9f9",
-  "final_pdf_sha256": "8770982f3c0592ea1f8f91ec52ac705b9982d84bcd4fea0951ea42847948064c",
+  "final_pptx_sha256": "e7084cb94b3284482a668584e0dbb68f37b6c4e21891b5d45efa6d30dd136736",
+  "final_pdf_sha256": "fa096cdce7d7c89377ac0a0a5223e3bcbbdff40e7385d799ea81776f42a5f981",
   "slides": 30,
   "storyboards": 19,
   "descriptions": 128,
@@ -11,6 +11,7 @@
   "actual_make_captures": 24,
   "template_parts_byte_identical": 10,
   "prohibited_text_findings": 0,
+  "deleted_ontology_orphan_image_removed": true,
   "structural_findings": 0,
   "layout_findings": 0,
   "native_powerpoint_pdf_pages": 30,

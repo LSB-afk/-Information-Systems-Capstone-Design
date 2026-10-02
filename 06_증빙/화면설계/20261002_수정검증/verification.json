@@ -1,0 +1,107 @@
+{
+  "date": "2026-10-02",
+  "source": {
+    "figma": "https://www.figma.com/make/AlZOwKZXABo7G6BkUhTG03/Start-Task",
+    "version": 8,
+    "anonymousViewVerified": true,
+    "referencePptxSha256": "e7084cb94b3284482a668584e0dbb68f37b6c4e21891b5d45efa6d30dd136736"
+  },
+  "outputs": {
+    "pptx": {
+      "path": "00_제출/Red 화면설계서_20260927.pptx",
+      "sha256": "8d794dd9f643a1c18e815e3fae3d97c78e97ceb00a6e5ca5d253c0f64c93c4a5"
+    },
+    "pdf": {
+      "path": "00_제출/Red 화면설계서_20260927.pdf",
+      "sha256": "b9c7512390f7823083125c46b7ba6d777d0b478c8b828912921d8d1ef5b9298a"
+    },
+    "markdown": {
+      "path": "00_제출/Red_SCREEN.md",
+      "sha256": "641a65cf7c6ea2dd8b5aa4f4b4164a945681717f6a4200f0a6115567f19407cb"
+    }
+  },
+  "checks": {
+    "slideCount": 32,
+    "storyboardPageCount": 21,
+    "uniqueScreenIds": 14,
+    "representativeUseCases": [
+      "UC01",
+      "UC02",
+      "UC03",
+      "UC04",
+      "UC05",
+      "UC07",
+      "UC08",
+      "UC09",
+      "UC10",
+      "UC11",
+      "UC12"
+    ],
+    "descriptionCount": 141,
+    "markerCount": 141,
+    "markerDiameterInches": 0.2,
+    "embeddedCurrentCaptures": 27,
+    "captureHashesMatch": true,
+    "templateMasterLayoutThemePartsUnchanged": 10,
+    "sourceFontsPreserved": [
+      "Arial",
+      "Malgun Gothic"
+    ],
+    "packageFindings": 0,
+    "layoutFindings": 0,
+    "firstPartyImportPassed": true,
+    "pdfDescriptionTextMatches": 141,
+    "pdfPageCount": 32,
+    "pdfOffPageTextCount": 0,
+    "pdfHasMakeLinks": true,
+    "standaloneUserActorAbsent": true,
+    "ontologyScreensAbsent": true,
+    "uc06ExcludedFromStoryboards": true,
+    "pendingChecklistMarks": 2,
+    "markdownDescriptionsMatch": 141,
+    "revision3ChangedRenderedPages": [
+      12
+    ]
+  },
+  "visualReview": {
+    "allPdfPagesReviewed": true,
+    "independentReviewPages": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+    ],
+    "fixed": [
+      "Table category alignment",
+      "Overview timeline button marker",
+      "Consumption source marker",
+      "Sidebar boundary marker 2",
+      "Monthly recommendation capture aspect ratio"
+    ],
+    "pdfRenderer": "LibreOffice with reference fonts",
+    "powerPointNativeRenderVerified": false,
+    "powerPointAutomationResult": "AppleEvent timeout (-1712)"
+  },
+  "limitations": [
+    "PROJECT and original Use Case Diagram final alignment remains pending",
+    "Cases and effect figures are unverified fixed examples",
+    "Displayed 25 percent is a status ratio including recommendation rules, not measured data integration",
+    "CSV stores source and row count; graphs remain sample data",
+    "Authentication, authorization and server persistence remain target service behavior",
+    "Separate Figma Design Prototype connections not verified"
+  ]
+}

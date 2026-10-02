@@ -1,0 +1,1794 @@
+{
+  "captures": [
+    {
+      "page": 10,
+      "scene": "login",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#login",
+      "sha256": "afa3845d6c4b46aad2dc8169ce4b8cf8ff54c210d6c5d7b78310571ca17e55bc",
+      "media": "ppt/media/oct02-10-login.png",
+      "frame": [
+        969629.7600000002,
+        1389888.0,
+        5430804.4799999995,
+        4242816.0
+      ],
+      "marker_count": 5
+    },
+    {
+      "page": 11,
+      "scene": "login-error",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#login",
+      "sha256": "0d82d4eb54e3d222c82327b3e0e5b079c683c9740635a4ce71ff8beec886cac6",
+      "media": "ppt/media/oct02-11-login-error.png",
+      "frame": [
+        2440796.5190839693,
+        1389888.0,
+        2488470.9618320614,
+        4242816.0
+      ],
+      "marker_count": 2
+    },
+    {
+      "page": 12,
+      "scene": "common-layout",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#overview",
+      "sha256": "a97995a92c852231f7edbcc60b4841d7ddbfb895426ff85e13846a2a7fb2fde7",
+      "media": "ppt/media/oct02-12-common-layout.png",
+      "frame": [
+        603504.0,
+        1893236.6249999998,
+        4142232.0,
+        3236118.75
+      ],
+      "marker_count": 11
+    },
+    {
+      "page": 12,
+      "scene": "logout-confirm",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#overview",
+      "sha256": "b98aeff4c6837eb5fc90e99d631c742bf2a9fa91d99b2f2ee3ef3a2abfd5526c",
+      "media": "ppt/media/oct02-12-logout-confirm.png",
+      "frame": [
+        4846320.0,
+        3070024.258064516,
+        1901952.0,
+        736239.4838709678
+      ],
+      "marker_count": 2
+    },
+    {
+      "page": 13,
+      "scene": "overview",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#overview",
+      "sha256": "ee33a488628c8a33cd928c2ce2be03524f25631bfbcbd18e8067f66975ca1aef",
+      "media": "ppt/media/oct02-13-overview.png",
+      "frame": [
+        1281142.6042983565,
+        1389888.0,
+        4807778.791403287,
+        3685032.0
+      ],
+      "marker_count": 7
+    },
+    {
+      "page": 13,
+      "scene": "bulk-saved",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#recommendations",
+      "sha256": "fdc6363148fc67b384b8309b997b0741675016f8cd60adcbd7d20d54701d0cee",
+      "media": "ppt/media/oct02-13-bulk-saved.png",
+      "frame": [
+        2633082.8936170214,
+        5212080.0,
+        2085610.2127659575,
+        365760.0
+      ],
+      "marker_count": 1
+    },
+    {
+      "page": 14,
+      "scene": "overview-details",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#overview",
+      "sha256": "30fd7d4a5819b3e665b479fb8b033c92fe773d1a7c871ef19165e5ea0eace2f3",
+      "media": "ppt/media/oct02-14-overview-details.png",
+      "frame": [
+        585216.0,
+        1652007.139534884,
+        6199632.0,
+        3718577.720930232
+      ],
+      "marker_count": 4
+    },
+    {
+      "page": 15,
+      "scene": "analysis-visits",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#analysis",
+      "sha256": "fba8edaafd4603e3f4e2a2d508491d04773b8dfe7a62655ff67f8619ca109e3a",
+      "media": "ppt/media/oct02-15-analysis-visits.png",
+      "frame": [
+        1678347.2557286893,
+        1389888.0,
+        4013369.4885426215,
+        4242816.0
+      ],
+      "marker_count": 9
+    },
+    {
+      "page": 16,
+      "scene": "analysis-consumption",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#analysis",
+      "sha256": "6c151f6e350afb6591bcf334cd5a6841fc76983006e776a726656a7f5e7751e4",
+      "media": "ppt/media/oct02-16-analysis-consumption.png",
+      "frame": [
+        1530216.0,
+        1389888.0,
+        4309632.0,
+        4242816.0
+      ],
+      "marker_count": 6
+    },
+    {
+      "page": 17,
+      "scene": "analysis-empty",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#analysis",
+      "sha256": "efadc74460e9b2df074d5c7052b077e2d5c97eb898659b673dd41477256a4ada",
+      "media": "ppt/media/oct02-17-analysis-empty.png",
+      "frame": [
+        585216.0,
+        1612959.069767442,
+        6199632.0,
+        3796673.860465116
+      ],
+      "marker_count": 2
+    },
+    {
+      "page": 18,
+      "scene": "recommendations",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#recommendations",
+      "sha256": "84d6d46e228d16ae82fd7d0c18b42db15660043b887e62a94d469cbbff05a2cf",
+      "media": "ppt/media/oct02-18-recommendations.png",
+      "frame": [
+        1073037.9352801894,
+        1389888.0,
+        5223988.129439621,
+        4242816.0
+      ],
+      "marker_count": 6
+    },
+    {
+      "page": 19,
+      "scene": "recommendation-card",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#recommendations",
+      "sha256": "79370ca2d6403437a5ecd00ef114c1a0a9d2c6fafd4150246272aaa0407ce446",
+      "media": "ppt/media/oct02-19-recommendation-card.png",
+      "frame": [
+        2253565.203647416,
+        1389888.0,
+        2862933.5927051674,
+        4242816.0
+      ],
+      "marker_count": 6
+    },
+    {
+      "page": 20,
+      "scene": "evidence",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#recommendations",
+      "sha256": "e9ae673dd4597aa262db387948b4b4ce752eabde4e7847d407e119662516b2dc",
+      "media": "ppt/media/oct02-20-evidence.png",
+      "frame": [
+        2182368.0,
+        1389888.0,
+        3005328.0,
+        4242816.0
+      ],
+      "marker_count": 7
+    },
+    {
+      "page": 21,
+      "scene": "calendar",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#calendar",
+      "sha256": "1223727e310b0cf99959f6aa83471993f1e38552c4624b8de0515714f15b2d04",
+      "media": "ppt/media/oct02-21-calendar.png",
+      "frame": [
+        878246.0307692308,
+        1389888.0,
+        5613571.938461538,
+        4242816.0
+      ],
+      "marker_count": 8
+    },
+    {
+      "page": 22,
+      "scene": "plan-edit",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#calendar",
+      "sha256": "0335187351b3c952828fcddf9ee597748b59f8a75ce87290c82a1bc8e63dc32f",
+      "media": "ppt/media/oct02-22-plan-edit.png",
+      "frame": [
+        603504.0,
+        1694058.7354838708,
+        4142232.0,
+        3634474.529032258
+      ],
+      "marker_count": 8
+    },
+    {
+      "page": 22,
+      "scene": "plan-delete-confirm",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#calendar",
+      "sha256": "2f3490fed51cefddfce128230b0af5fee96b6a2d333978c83a413e0019a2ffd4",
+      "media": "ppt/media/oct02-22-plan-delete-confirm.png",
+      "frame": [
+        4846320.0,
+        2727124.258064516,
+        1901952.0,
+        736239.4838709678
+      ],
+      "marker_count": 2
+    },
+    {
+      "page": 22,
+      "scene": "plan-saved",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#calendar",
+      "sha256": "bdd4e4bc99aaa299613af87ebdac1bf2d235fd0a2d1588de921e65eea57df10d",
+      "media": "ppt/media/oct02-22-plan-saved.png",
+      "frame": [
+        4846320.0,
+        4000687.8904109583,
+        1901952.0000000002,
+        612272.2191780822
+      ],
+      "marker_count": 1
+    },
+    {
+      "page": 23,
+      "scene": "plan-save-error",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#calendar",
+      "sha256": "6347a3c106ec3123e3de5e9ac83296af4cf7cf4951e400c133207efad5297429",
+      "media": "ppt/media/oct02-23-plan-save-error.png",
+      "frame": [
+        1470767.7575757573,
+        1389888.0,
+        4428528.484848485,
+        4242816.0
+      ],
+      "marker_count": 3
+    },
+    {
+      "page": 24,
+      "scene": "records",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#records",
+      "sha256": "c171f8d971fa5103f59bf40a59fdfb1c83f9673e2c12315961a382831583ee80",
+      "media": "ppt/media/oct02-24-records.png",
+      "frame": [
+        585216.0,
+        1456766.7906976745,
+        6199632.0,
+        4109058.418604651
+      ],
+      "marker_count": 6
+    },
+    {
+      "page": 25,
+      "scene": "record-prefill",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#records",
+      "sha256": "049108c704abc247a8f1b8e0d3a09af47c8fb52e510e5f6bffcf437581644ff4",
+      "media": "ppt/media/oct02-25-record-prefill.png",
+      "frame": [
+        2223617.6,
+        1389888.0,
+        2922828.8,
+        4242816.0
+      ],
+      "marker_count": 13
+    },
+    {
+      "page": 26,
+      "scene": "summary",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#records",
+      "sha256": "c5beeeb5f5d076bbe170a0e213f11a677a8abeaa40d77c21e6e48f1940b88e72",
+      "media": "ppt/media/oct02-26-summary.png",
+      "frame": [
+        1478198.1744966442,
+        1389888.0,
+        4413667.651006712,
+        4242816.0
+      ],
+      "marker_count": 3
+    },
+    {
+      "page": 27,
+      "scene": "data-admin",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#data",
+      "sha256": "88f085e26c1579b7d52fe7b67472a52d18f77b6942de799b80d45a12a776d5b1",
+      "media": "ppt/media/oct02-27-data-admin.png",
+      "frame": [
+        917278.4525916562,
+        1389888.0,
+        5535507.0948166875,
+        4242816.0
+      ],
+      "marker_count": 13
+    },
+    {
+      "page": 28,
+      "scene": "csv-validation",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#data",
+      "sha256": "15631493c436513b479dd1f20eb85c4c183f0af6d0c471d4f451ad47b02579dc",
+      "media": "ppt/media/oct02-28-csv-validation.png",
+      "frame": [
+        603504.0,
+        2134866.8249999997,
+        4142232.0,
+        2752858.35
+      ],
+      "marker_count": 3
+    },
+    {
+      "page": 28,
+      "scene": "csv-registered",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#data",
+      "sha256": "fc6efeb79fa14df852ee9ddec7e36c4e5400b08e4119953c82710bae45ca5d6f",
+      "media": "ppt/media/oct02-28-csv-registered.png",
+      "frame": [
+        4846320.0,
+        3132007.890410959,
+        1901952.0000000002,
+        612272.2191780822
+      ],
+      "marker_count": 1
+    },
+    {
+      "page": 29,
+      "scene": "csv-error",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#data",
+      "sha256": "d6fd902d467df2abed3ef9f3bedc26736e625c25000ea01e00a8c9490269e288",
+      "media": "ppt/media/oct02-29-csv-error.png",
+      "frame": [
+        585216.0,
+        1399546.35,
+        6199632.0,
+        4223499.3
+      ],
+      "marker_count": 3
+    },
+    {
+      "page": 30,
+      "scene": "criteria",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#data",
+      "sha256": "63195c574408009c0d407edf2a4514ab665fa8ac16aa7c19231797dd11e70d43",
+      "media": "ppt/media/oct02-30-criteria.png",
+      "frame": [
+        960301.9098143238,
+        1426464.0,
+        3428636.1803713525,
+        4169663.9999999995
+      ],
+      "marker_count": 8
+    },
+    {
+      "page": 30,
+      "scene": "criteria-saved",
+      "url": "https://b8207c10-9a31-4235-8de0-46ecdc053e0d-figmacachedpreview.figma.site/#data",
+      "sha256": "4f5bbd848f1bf1ea0c867d18b5551446fd52c3017cda36e5aabdf9dcab0c5f7f",
+      "media": "ppt/media/oct02-30-criteria-saved.png",
+      "frame": [
+        4846320.0,
+        3282950.0,
+        1901952.0,
+        310388.0
+      ],
+      "marker_count": 1
+    }
+  ],
+  "markers": [
+    {
+      "page": 10,
+      "scene": "login",
+      "number": 1,
+      "selector": ".login-roles",
+      "center": [
+        4184822.4659999995,
+        2818656.2879999997
+      ]
+    },
+    {
+      "page": 10,
+      "scene": "login",
+      "number": 2,
+      "selector": "#login-email",
+      "center": [
+        4184822.4659999995,
+        3276018.594
+      ]
+    },
+    {
+      "page": 10,
+      "scene": "login",
+      "number": 3,
+      "selector": "#login-password",
+      "center": [
+        4184822.4659999995,
+        3678224.292
+      ]
+    },
+    {
+      "page": 10,
+      "scene": "login",
+      "number": 4,
+      "selector": "[data-action=\"toggle-password\"]",
+      "center": [
+        5703750.5940000005,
+        3690952.74
+      ]
+    },
+    {
+      "page": 10,
+      "scene": "login",
+      "number": 5,
+      "selector": "#login-form button[type=\"submit\"]",
+      "center": [
+        4184822.4659999995,
+        3987949.86
+      ]
+    },
+    {
+      "page": 11,
+      "scene": "login-error",
+      "number": 1,
+      "selector": "#login-error",
+      "center": [
+        2553057.7328244275,
+        3906192.320610687
+      ]
+    },
+    {
+      "page": 11,
+      "scene": "login-error",
+      "number": 2,
+      "selector": "#login-email",
+      "center": [
+        2553057.7328244275,
+        3043611.2290076334
+      ]
+    },
+    {
+      "page": 12,
+      "scene": "common-layout",
+      "number": 1,
+      "selector": "[data-action=\"sidebar-toggle\"]",
+      "center": [
+        1496672.775,
+        1991938.2468749997
+      ]
+    },
+    {
+      "page": 12,
+      "scene": "common-layout",
+      "number": 2,
+      "selector": "#sidebar-resizer",
+      "center": [
+        1406061.4500000002,
+        3511296.0
+      ]
+    },
+    {
+      "page": 12,
+      "scene": "common-layout",
+      "number": 3,
+      "selector": "[data-action=\"sidebar-reset\"]",
+      "center": [
+        1175235.1672851564,
+        2661056.3627929688
+      ]
+    },
+    {
+      "page": 12,
+      "scene": "common-layout",
+      "number": 4,
+      "selector": ".nav-link[href=\"#overview\"]",
+      "center": [
+        694944.0,
+        2899214.4770507812
+      ]
+    },
+    {
+      "page": 12,
+      "scene": "common-layout",
+      "number": 5,
+      "selector": ".nav-link[href=\"#recommendations\"]",
+      "center": [
+        904944.0,
+        3067492.652050781
+      ]
+    },
+    {
+      "page": 12,
+      "scene": "common-layout",
+      "number": 6,
+      "selector": ".nav-link[href=\"#records\"]",
+      "center": [
+        694944.0,
+        3235770.827050781
+      ]
+    },
+    {
+      "page": 12,
+      "scene": "common-layout",
+      "number": 7,
+      "selector": ".nav-link[href=\"#calendar\"]",
+      "center": [
+        904944.0,
+        3404049.002050781
+      ]
+    },
+    {
+      "page": 12,
+      "scene": "common-layout",
+      "number": 8,
+      "selector": ".nav-link[href=\"#analysis\"]",
+      "center": [
+        694944.0,
+        3572327.177050781
+      ]
+    },
+    {
+      "page": 12,
+      "scene": "common-layout",
+      "number": 9,
+      "selector": ".profile",
+      "center": [
+        694944.0,
+        4764381.857226562
+      ]
+    },
+    {
+      "page": 12,
+      "scene": "common-layout",
+      "number": 10,
+      "selector": ".sidebar-session[data-action=\"logout\"]",
+      "center": [
+        694944.0,
+        4967549.4375
+      ]
+    },
+    {
+      "page": 12,
+      "scene": "common-layout",
+      "number": 11,
+      "selector": "[data-action=\"help\"]",
+      "center": [
+        4308859.96875,
+        1985466.0093749997
+      ]
+    },
+    {
+      "page": 12,
+      "scene": "logout-confirm",
+      "number": 12,
+      "selector": "[data-action=\"close-dialog\"]",
+      "center": [
+        6539670.812903225,
+        3212047.5387096773
+      ]
+    },
+    {
+      "page": 12,
+      "scene": "logout-confirm",
+      "number": 13,
+      "selector": "[data-action=\"logout-confirm\"], [data-action=\"confirm-logout\"]",
+      "center": [
+        6406706.729032258,
+        3632892.7645161287
+      ]
+    },
+    {
+      "page": 13,
+      "scene": "overview",
+      "number": 1,
+      "selector": "#region",
+      "center": [
+        1814563.7977243995,
+        2243230.883533502
+      ]
+    },
+    {
+      "page": 13,
+      "scene": "overview",
+      "number": 2,
+      "selector": ".filter-pill:nth-child(2)",
+      "center": [
+        2168625.0265486725,
+        2201302.580120101
+      ]
+    },
+    {
+      "page": 13,
+      "scene": "overview",
+      "number": 3,
+      "selector": ".segmented",
+      "center": [
+        5320672.586283186,
+        2597292.1123577747
+      ]
+    },
+    {
+      "page": 13,
+      "scene": "overview",
+      "number": 4,
+      "selector": ".chart-table summary",
+      "center": [
+        1528053.7243994942,
+        4029260.1414348925
+      ]
+    },
+    {
+      "page": 13,
+      "scene": "overview",
+      "number": 5,
+      "selector": "[data-action=\"source\"]",
+      "center": [
+        5446020.743362832,
+        4295679.569374209
+      ]
+    },
+    {
+      "page": 13,
+      "scene": "overview",
+      "number": 6,
+      "selector": "#main .page-header [data-action=\"add-all\"],#main > .heading [data-action=\"add-all\"],#main [data-action=\"add-all\"]",
+      "center": [
+        5218326.76232617,
+        1678727.4235145384
+      ]
+    },
+    {
+      "page": 13,
+      "scene": "overview",
+      "number": 7,
+      "selector": ".timeline-panel a[href=\"#calendar\"]",
+      "center": [
+        5342000.698957017,
+        4776399.214759798
+      ]
+    },
+    {
+      "page": 13,
+      "scene": "bulk-saved",
+      "number": 8,
+      "selector": ".toast",
+      "center": [
+        2724522.8936170214,
+        5307046.276595744
+      ]
+    },
+    {
+      "page": 14,
+      "scene": "overview-details",
+      "number": 1,
+      "selector": "#main > .section-header:has(+ .case-grid) .badge",
+      "center": [
+        5972535.510174419,
+        1798343.5356104653
+      ]
+    },
+    {
+      "page": 14,
+      "scene": "overview-details",
+      "number": 2,
+      "selector": ".case-grid",
+      "center": [
+        753423.0697674418,
+        2100966.0763081396
+      ]
+    },
+    {
+      "page": 14,
+      "scene": "overview-details",
+      "number": 3,
+      "selector": ".data-status .status-list",
+      "center": [
+        909615.3488372094,
+        3958189.894622093
+      ]
+    },
+    {
+      "page": 14,
+      "scene": "overview-details",
+      "number": 4,
+      "selector": ".data-status > .source-inline",
+      "center": [
+        909615.3488372094,
+        5084247.99309593
+      ]
+    },
+    {
+      "page": 15,
+      "scene": "analysis-visits",
+      "number": 1,
+      "selector": "#region",
+      "center": [
+        2123629.044912924,
+        2102229.486709441
+      ]
+    },
+    {
+      "page": 15,
+      "scene": "analysis-visits",
+      "number": 2,
+      "selector": "#analysis-year",
+      "center": [
+        2755579.182401466,
+        2102229.486709441
+      ]
+    },
+    {
+      "page": 15,
+      "scene": "analysis-visits",
+      "number": 3,
+      "selector": "[data-analysis-mode=\"consumption\"]",
+      "center": [
+        2156198.782768103,
+        2323898.1503208065
+      ]
+    },
+    {
+      "page": 15,
+      "scene": "analysis-visits",
+      "number": 4,
+      "selector": ".region-sketch",
+      "center": [
+        1888349.1475710357,
+        2949954.1374885426
+      ]
+    },
+    {
+      "page": 15,
+      "scene": "analysis-visits",
+      "number": 5,
+      "selector": ".chart",
+      "center": [
+        3419916.764436297,
+        3101622.1704857927
+      ]
+    },
+    {
+      "page": 15,
+      "scene": "analysis-visits",
+      "number": 6,
+      "selector": ".segmented",
+      "center": [
+        5042570.271310724,
+        2677000.2896425296
+      ]
+    },
+    {
+      "page": 15,
+      "scene": "analysis-visits",
+      "number": 7,
+      "selector": ".chart-table summary",
+      "center": [
+        3419916.764436297,
+        3926438.628780935
+      ]
+    },
+    {
+      "page": 15,
+      "scene": "analysis-visits",
+      "number": 8,
+      "selector": "[data-action=\"source\"]",
+      "center": [
+        5154984.478460128,
+        4164392.16131989
+      ]
+    },
+    {
+      "page": 15,
+      "scene": "analysis-visits",
+      "number": 9,
+      "selector": "#main > .panel:last-of-type",
+      "center": [
+        1787237.1255728689,
+        4637078.71127406
+      ]
+    },
+    {
+      "page": 16,
+      "scene": "analysis-consumption",
+      "number": 1,
+      "selector": ".filter-strip",
+      "center": [
+        1647144.0,
+        2117229.75
+      ]
+    },
+    {
+      "page": 16,
+      "scene": "analysis-consumption",
+      "number": 2,
+      "selector": "[data-analysis-mode=\"consumption\"]",
+      "center": [
+        2042950.5,
+        2392845.75
+      ]
+    },
+    {
+      "page": 16,
+      "scene": "analysis-consumption",
+      "number": 3,
+      "selector": "#consumption-comparison > .table-wrap",
+      "center": [
+        1755720.0,
+        3065116.5
+      ]
+    },
+    {
+      "page": 16,
+      "scene": "analysis-consumption",
+      "number": 4,
+      "selector": ".consumption-tables > section:first-child",
+      "center": [
+        1755720.0,
+        3889158.75
+      ]
+    },
+    {
+      "page": 16,
+      "scene": "analysis-consumption",
+      "number": 5,
+      "selector": "#timeband-table",
+      "center": [
+        3710088.0,
+        3889158.75
+      ]
+    },
+    {
+      "page": 16,
+      "scene": "analysis-consumption",
+      "number": 6,
+      "selector": "#consumption-comparison > .source-inline",
+      "center": [
+        1965720.0,
+        3717649.125
+      ]
+    },
+    {
+      "page": 17,
+      "scene": "analysis-empty",
+      "number": 1,
+      "selector": "#analysis-year",
+      "center": [
+        2249264.511627907,
+        2713344.9396802327
+      ]
+    },
+    {
+      "page": 17,
+      "scene": "analysis-empty",
+      "number": 2,
+      "selector": "#analysis-empty",
+      "center": [
+        753423.0697674418,
+        3451034.3154069767
+      ]
+    },
+    {
+      "page": 18,
+      "scene": "recommendations",
+      "number": 1,
+      "selector": "#region",
+      "center": [
+        1496649.7932123125,
+        2023369.813733228
+      ]
+    },
+    {
+      "page": 18,
+      "scene": "recommendations",
+      "number": 2,
+      "selector": "#main > .toolbar",
+      "center": [
+        1206986.3488555644,
+        2659938.719810576
+      ]
+    },
+    {
+      "page": 18,
+      "scene": "recommendations",
+      "number": 3,
+      "selector": "#main > .toolbar [data-action=\"add-all\"]",
+      "center": [
+        5485591.690607736,
+        2659938.719810576
+      ]
+    },
+    {
+      "page": 18,
+      "scene": "recommendations",
+      "number": 4,
+      "selector": ".month-column:first-child .month-empty",
+      "center": [
+        1260565.7142857143,
+        3187674.5398579324
+      ]
+    },
+    {
+      "page": 18,
+      "scene": "recommendations",
+      "number": 5,
+      "selector": "[data-month=\"10\"]",
+      "center": [
+        1260565.7142857143,
+        3506429.905288082
+      ]
+    },
+    {
+      "page": 18,
+      "scene": "recommendations",
+      "number": 6,
+      "selector": ".recommendation:first-child",
+      "center": [
+        2914828.6219415944,
+        3187674.5398579324
+      ]
+    },
+    {
+      "page": 19,
+      "scene": "recommendation-card",
+      "number": 1,
+      "selector": ".recommendation h3",
+      "center": [
+        2345005.203647416,
+        1956409.5227963526
+      ]
+    },
+    {
+      "page": 19,
+      "scene": "recommendation-card",
+      "number": 2,
+      "selector": ".recommendation .proposal-fields",
+      "center": [
+        2345005.203647416,
+        2522830.2948328266
+      ]
+    },
+    {
+      "page": 19,
+      "scene": "recommendation-card",
+      "number": 3,
+      "selector": ".recommendation .proposal-reason",
+      "center": [
+        2345005.203647416,
+        3744937.012158055
+      ]
+    },
+    {
+      "page": 19,
+      "scene": "recommendation-card",
+      "number": 4,
+      "selector": ".recommendation .source-inline",
+      "center": [
+        2345005.203647416,
+        4390850.133738602
+      ]
+    },
+    {
+      "page": 19,
+      "scene": "recommendation-card",
+      "number": 5,
+      "selector": ".recommendation [data-evidence=\"winter\"]",
+      "center": [
+        2345005.203647416,
+        5333474.243161094
+      ]
+    },
+    {
+      "page": 19,
+      "scene": "recommendation-card",
+      "number": 6,
+      "selector": ".recommendation [data-rec=\"winter\"]",
+      "center": [
+        4295682.3556231,
+        5346370.340425532
+      ]
+    },
+    {
+      "page": 20,
+      "scene": "evidence",
+      "number": 1,
+      "selector": "#dialog .dialog-header [data-action=\"close-dialog\"]",
+      "center": [
+        4792878.4,
+        1658562.85
+      ]
+    },
+    {
+      "page": 20,
+      "scene": "evidence",
+      "number": 2,
+      "selector": ".evidence-title",
+      "center": [
+        2288438.4,
+        2419838.95
+      ]
+    },
+    {
+      "page": 20,
+      "scene": "evidence",
+      "number": 3,
+      "selector": ".evidence-row >> nth=0",
+      "center": [
+        2288438.4,
+        2742745.975
+      ]
+    },
+    {
+      "page": 20,
+      "scene": "evidence",
+      "number": 4,
+      "selector": ".evidence-row >> nth=1",
+      "center": [
+        2288438.4,
+        3427415.675
+      ]
+    },
+    {
+      "page": 20,
+      "scene": "evidence",
+      "number": 5,
+      "selector": ".evidence-row >> nth=2",
+      "center": [
+        2288438.4,
+        4167146.225
+      ]
+    },
+    {
+      "page": 20,
+      "scene": "evidence",
+      "number": 6,
+      "selector": "#dialog [data-action=\"source\"]",
+      "center": [
+        3780053.4,
+        5304364.550000001
+      ]
+    },
+    {
+      "page": 20,
+      "scene": "evidence",
+      "number": 7,
+      "selector": "#dialog [data-rec=\"winter\"]",
+      "center": [
+        4310497.475,
+        5304364.550000001
+      ]
+    },
+    {
+      "page": 21,
+      "scene": "calendar",
+      "number": 1,
+      "selector": "[data-action=\"new-plan\"]",
+      "center": [
+        5548828.315384615,
+        1727137.476923077
+      ]
+    },
+    {
+      "page": 21,
+      "scene": "calendar",
+      "number": 2,
+      "selector": "#main a[href=\"#recommendations\"]",
+      "center": [
+        5684816.007692308,
+        2337297.2538461536
+      ]
+    },
+    {
+      "page": 21,
+      "scene": "calendar",
+      "number": 3,
+      "selector": ".plan-item:first-child",
+      "center": [
+        1117584.3692307693,
+        3194529.6692307694
+      ]
+    },
+    {
+      "page": 21,
+      "scene": "calendar",
+      "number": 4,
+      "selector": "[data-edit=\"sample-oct\"]",
+      "center": [
+        1215495.5076923077,
+        3888491.861538462
+      ]
+    },
+    {
+      "page": 21,
+      "scene": "calendar",
+      "number": 5,
+      "selector": "[data-record=\"sample-oct\"]",
+      "center": [
+        2182028.030769231,
+        3888491.861538462
+      ]
+    },
+    {
+      "page": 21,
+      "scene": "calendar",
+      "number": 6,
+      "selector": "[data-month=\"12\"]",
+      "center": [
+        4664143.384615384,
+        3712302.807692308
+      ]
+    },
+    {
+      "page": 21,
+      "scene": "calendar",
+      "number": 7,
+      "selector": ".month-empty",
+      "center": [
+        4664143.384615384,
+        3194529.6692307694
+      ]
+    },
+    {
+      "page": 21,
+      "scene": "calendar",
+      "number": 8,
+      "selector": "[data-action=\"add-all\"]",
+      "center": [
+        4724487.923076923,
+        2337297.2538461536
+      ]
+    },
+    {
+      "page": 22,
+      "scene": "plan-edit",
+      "number": 1,
+      "selector": "#dialog .dialog-header [data-action=\"close-dialog\"]",
+      "center": [
+        4291426.6838709675,
+        2002220.7532258064
+      ]
+    },
+    {
+      "page": 22,
+      "scene": "plan-edit",
+      "number": 2,
+      "selector": "#plan-title",
+      "center": [
+        723762.3483870968,
+        2773147.7522177417
+      ]
+    },
+    {
+      "page": 22,
+      "scene": "plan-edit",
+      "number": 3,
+      "selector": "#plan-date",
+      "center": [
+        723762.3483870968,
+        3375692.185282258
+      ]
+    },
+    {
+      "page": 22,
+      "scene": "plan-edit",
+      "number": 4,
+      "selector": "#plan-channel",
+      "center": [
+        2667938.980645161,
+        3375692.185282258
+      ]
+    },
+    {
+      "page": 22,
+      "scene": "plan-edit",
+      "number": 5,
+      "selector": "#plan-memo",
+      "center": [
+        723762.3483870968,
+        3978236.6183467736
+      ]
+    },
+    {
+      "page": 22,
+      "scene": "plan-edit",
+      "number": 6,
+      "selector": "[data-delete=\"sample-oct\"]",
+      "center": [
+        723762.3483870968,
+        4952203.971169354
+      ]
+    },
+    {
+      "page": 22,
+      "scene": "plan-edit",
+      "number": 7,
+      "selector": "#plan-form [data-action=\"close-dialog\"]",
+      "center": [
+        3540855.9157258063,
+        4952203.971169354
+      ]
+    },
+    {
+      "page": 22,
+      "scene": "plan-edit",
+      "number": 8,
+      "selector": "#plan-form button[type=\"submit\"]",
+      "center": [
+        3979610.983669355,
+        4952203.971169354
+      ]
+    },
+    {
+      "page": 22,
+      "scene": "plan-delete-confirm",
+      "number": 9,
+      "selector": "#dialog [data-action=\"cancel-delete\"], #dialog [data-action=\"delete-cancel\"], #dialog [data-action=\"close-dialog\"]",
+      "center": [
+        6539670.812903225,
+        2869147.5387096773
+      ]
+    },
+    {
+      "page": 22,
+      "scene": "plan-delete-confirm",
+      "number": 10,
+      "selector": "#dialog [data-confirm-delete], #dialog [data-action=\"confirm-delete\"], #dialog [data-action=\"delete-confirm\"]",
+      "center": [
+        6406706.729032258,
+        3289992.7645161287
+      ]
+    },
+    {
+      "page": 22,
+      "scene": "plan-saved",
+      "number": 11,
+      "selector": ".toast",
+      "center": [
+        4937760.0,
+        4159658.8356164377
+      ]
+    },
+    {
+      "page": 23,
+      "scene": "plan-save-error",
+      "number": 1,
+      "selector": "#plan-title",
+      "center": [
+        1599337.9393939392,
+        2544229.484848485
+      ]
+    },
+    {
+      "page": 23,
+      "scene": "plan-save-error",
+      "number": 2,
+      "selector": "#plan-error",
+      "center": [
+        1599337.9393939392,
+        4702467.484848484
+      ]
+    },
+    {
+      "page": 23,
+      "scene": "plan-save-error",
+      "number": 3,
+      "selector": "#plan-form button[type=\"submit\"]",
+      "center": [
+        5080219.363636363,
+        5229582.909090908
+      ]
+    },
+    {
+      "page": 24,
+      "scene": "records",
+      "number": 1,
+      "selector": ".mini-stats",
+      "center": [
+        753423.0697674418,
+        2503086.10247093
+      ]
+    },
+    {
+      "page": 24,
+      "scene": "records",
+      "number": 2,
+      "selector": "[data-action=\"report\"]",
+      "center": [
+        5743409.696947674,
+        1829225.3023255814
+      ]
+    },
+    {
+      "page": 24,
+      "scene": "records",
+      "number": 3,
+      "selector": ".record-row:first-child",
+      "center": [
+        759430.4651162791,
+        3506133.394622093
+      ]
+    },
+    {
+      "page": 24,
+      "scene": "records",
+      "number": 4,
+      "selector": "[data-record=\"sample-oct\"]",
+      "center": [
+        5971878.45130814,
+        3692362.6504360465
+      ]
+    },
+    {
+      "page": 24,
+      "scene": "records",
+      "number": 5,
+      "selector": "[data-record=\"sample-nov\"]",
+      "center": [
+        5971878.45130814,
+        4287094.789970931
+      ]
+    },
+    {
+      "page": 24,
+      "scene": "records",
+      "number": 6,
+      "selector": ".toast",
+      "center": [
+        2381943.4698401163,
+        5332757.042877907
+      ]
+    },
+    {
+      "page": 25,
+      "scene": "record-prefill",
+      "number": 1,
+      "selector": "#dialog .dialog-header [data-action=\"close-dialog\"]",
+      "center": [
+        4825878.08,
+        1609247.48
+      ]
+    },
+    {
+      "page": 25,
+      "scene": "record-prefill",
+      "number": 2,
+      "selector": "#record-minutes",
+      "center": [
+        2315057.6,
+        2387981.0
+      ]
+    },
+    {
+      "page": 25,
+      "scene": "record-prefill",
+      "number": 3,
+      "selector": "#record-adopted",
+      "center": [
+        3680317.76,
+        2387981.0
+      ]
+    },
+    {
+      "page": 25,
+      "scene": "record-prefill",
+      "number": 4,
+      "selector": "#record-status",
+      "center": [
+        2315057.6,
+        2813146.52
+      ]
+    },
+    {
+      "page": 25,
+      "scene": "record-prefill",
+      "number": 5,
+      "selector": "#record-date",
+      "center": [
+        2315057.6,
+        3236470.54
+      ]
+    },
+    {
+      "page": 25,
+      "scene": "record-prefill",
+      "number": 6,
+      "selector": "#record-activity",
+      "center": [
+        2315057.6,
+        3661636.06
+      ]
+    },
+    {
+      "page": 25,
+      "scene": "record-prefill",
+      "number": 7,
+      "selector": "#record-clicks",
+      "center": [
+        2315057.6,
+        4252757.5600000005
+      ]
+    },
+    {
+      "page": 25,
+      "scene": "record-prefill",
+      "number": 8,
+      "selector": "#record-bookings",
+      "center": [
+        3223036.48,
+        4252757.5600000005
+      ]
+    },
+    {
+      "page": 25,
+      "scene": "record-prefill",
+      "number": 9,
+      "selector": "#record-coupons",
+      "center": [
+        4137599.04,
+        4252757.5600000005
+      ]
+    },
+    {
+      "page": 25,
+      "scene": "record-prefill",
+      "number": 10,
+      "selector": "#record-note",
+      "center": [
+        2315057.6,
+        4791948.76
+      ]
+    },
+    {
+      "page": 25,
+      "scene": "record-prefill",
+      "number": 11,
+      "selector": "#record-form [data-action=\"close-dialog\"]",
+      "center": [
+        4299356.4,
+        5365170.88
+      ]
+    },
+    {
+      "page": 25,
+      "scene": "record-prefill",
+      "number": 12,
+      "selector": "#record-form button[type=\"submit\"]",
+      "center": [
+        4608949.38,
+        5365170.88
+      ]
+    },
+    {
+      "page": 25,
+      "scene": "record-prefill",
+      "number": 13,
+      "selector": "#record-form > .notice:first-child",
+      "center": [
+        2315057.6,
+        2022185.44
+      ]
+    },
+    {
+      "page": 26,
+      "scene": "summary",
+      "number": 1,
+      "selector": "#dialog .dialog-body",
+      "center": [
+        1569638.1744966442,
+        2172290.677852349
+      ]
+    },
+    {
+      "page": 26,
+      "scene": "summary",
+      "number": 2,
+      "selector": "#dialog .dialog-actions [data-action=\"close-dialog\"]",
+      "center": [
+        5253507.996644296,
+        5230268.275167786
+      ]
+    },
+    {
+      "page": 26,
+      "scene": "summary",
+      "number": 3,
+      "selector": "#dialog .dialog-header [data-action=\"close-dialog\"]",
+      "center": [
+        5407786.147651007,
+        1719578.2953020134
+      ]
+    },
+    {
+      "page": 27,
+      "scene": "data-admin",
+      "number": 1,
+      "selector": "[data-action=\"export\"], [data-action=\"download-template\"]",
+      "center": [
+        5387136.735777497,
+        1722447.534766119
+      ]
+    },
+    {
+      "page": 27,
+      "scene": "data-admin",
+      "number": 2,
+      "selector": "#csv-file",
+      "center": [
+        1206927.0796460179,
+        3018071.992414665
+      ]
+    },
+    {
+      "page": 27,
+      "scene": "data-admin",
+      "number": 3,
+      "selector": "#csv-source",
+      "center": [
+        2862517.0619469024,
+        3018071.992414665
+      ]
+    },
+    {
+      "page": 27,
+      "scene": "data-admin",
+      "number": 4,
+      "selector": "#csv-from",
+      "center": [
+        4518190.854614412,
+        3018071.992414665
+      ]
+    },
+    {
+      "page": 27,
+      "scene": "data-admin",
+      "number": 5,
+      "selector": "#csv-to",
+      "center": [
+        1206927.0796460179,
+        3571555.653603034
+      ]
+    },
+    {
+      "page": 27,
+      "scene": "data-admin",
+      "number": 6,
+      "selector": "#csv-unit",
+      "center": [
+        2862517.0619469024,
+        3571555.653603034
+      ]
+    },
+    {
+      "page": 27,
+      "scene": "data-admin",
+      "number": 7,
+      "selector": "#csv-provider",
+      "center": [
+        4518190.854614412,
+        3571555.653603034
+      ]
+    },
+    {
+      "page": 27,
+      "scene": "data-admin",
+      "number": 8,
+      "selector": ".csv-format summary",
+      "center": [
+        1206927.0796460179,
+        3987757.93426043
+      ]
+    },
+    {
+      "page": 27,
+      "scene": "data-admin",
+      "number": 9,
+      "selector": "[data-action=\"validate\"]",
+      "center": [
+        1206927.0796460179,
+        4184041.8128950694
+      ]
+    },
+    {
+      "page": 27,
+      "scene": "data-admin",
+      "number": 10,
+      "selector": "[data-action=\"csv-register\"]",
+      "center": [
+        1627068.447534766,
+        4184041.8128950694
+      ]
+    },
+    {
+      "page": 27,
+      "scene": "data-admin",
+      "number": 11,
+      "selector": "#csv-validation",
+      "center": [
+        1206927.0796460179,
+        4810524.3034134
+      ]
+    },
+    {
+      "page": 27,
+      "scene": "data-admin",
+      "number": 12,
+      "selector": "[data-action=\"criteria\"]",
+      "center": [
+        5380767.147914033,
+        5250025.865992414
+      ]
+    },
+    {
+      "page": 27,
+      "scene": "data-admin",
+      "number": 13,
+      "selector": ".criteria-toolbar",
+      "center": [
+        1206927.0796460179,
+        5138725.6991150435
+      ]
+    },
+    {
+      "page": 28,
+      "scene": "csv-validation",
+      "number": 1,
+      "selector": "#csv-status",
+      "center": [
+        694944.0,
+        3903607.9792968747
+      ]
+    },
+    {
+      "page": 28,
+      "scene": "csv-validation",
+      "number": 2,
+      "selector": "#csv-validation",
+      "center": [
+        694944.0,
+        4187509.98046875
+      ]
+    },
+    {
+      "page": 28,
+      "scene": "csv-validation",
+      "number": 3,
+      "selector": "[data-action=\"csv-register\"]",
+      "center": [
+        1019143.001953125,
+        3683551.904296875
+      ]
+    },
+    {
+      "page": 28,
+      "scene": "csv-registered",
+      "number": 4,
+      "selector": ".toast",
+      "center": [
+        4937760.0,
+        3290978.835616438
+      ]
+    },
+    {
+      "page": 29,
+      "scene": "csv-error",
+      "number": 1,
+      "selector": "#csv-status",
+      "center": [
+        701459.1,
+        4046801.32265625
+      ]
+    },
+    {
+      "page": 29,
+      "scene": "csv-error",
+      "number": 2,
+      "selector": "#csv-validation [data-result=\"fail\"]",
+      "center": [
+        4254542.465625,
+        4471714.2515625
+      ]
+    },
+    {
+      "page": 29,
+      "scene": "csv-error",
+      "number": 3,
+      "selector": "[data-action=\"csv-register\"]",
+      "center": [
+        1207298.21484375,
+        3717445.8726562504
+      ]
+    },
+    {
+      "page": 30,
+      "scene": "criteria",
+      "number": 1,
+      "selector": "#dialog .dialog-header [data-action=\"close-dialog\"]",
+      "center": [
+        4012894.1220159153,
+        1679291.3554376657
+      ]
+    },
+    {
+      "page": 30,
+      "scene": "criteria",
+      "number": 2,
+      "selector": "#criteria-form > .notice",
+      "center": [
+        1059842.9602122018,
+        2163689.9045092836
+      ]
+    },
+    {
+      "page": 30,
+      "scene": "criteria",
+      "number": 3,
+      "selector": "#criteria-threshold",
+      "center": [
+        1059842.9602122018,
+        2823927.0278514586
+      ]
+    },
+    {
+      "page": 30,
+      "scene": "criteria",
+      "number": 4,
+      "selector": "#criteria-source",
+      "center": [
+        1059842.9602122018,
+        3322669.165782493
+      ]
+    },
+    {
+      "page": 30,
+      "scene": "criteria",
+      "number": 5,
+      "selector": "#criteria-reason",
+      "center": [
+        1059842.9602122018,
+        3821411.3037135275
+      ]
+    },
+    {
+      "page": 30,
+      "scene": "criteria",
+      "number": 6,
+      "selector": "#criteria-condition",
+      "center": [
+        1059842.9602122018,
+        4614369.827586207
+      ]
+    },
+    {
+      "page": 30,
+      "scene": "criteria",
+      "number": 7,
+      "selector": "#criteria-form [data-action=\"close-dialog\"]",
+      "center": [
+        3529878.0875331564,
+        5286790.360742705
+      ]
+    },
+    {
+      "page": 30,
+      "scene": "criteria",
+      "number": 8,
+      "selector": "#criteria-form button[type=\"submit\"]",
+      "center": [
+        3893047.388594164,
+        5286790.360742705
+      ]
+    },
+    {
+      "page": 30,
+      "scene": "criteria-saved",
+      "number": 9,
+      "selector": ".toast",
+      "center": [
+        4937760.0,
+        3374390.0
+      ]
+    }
+  ]
+}

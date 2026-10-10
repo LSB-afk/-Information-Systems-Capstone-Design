@@ -17,6 +17,7 @@
 - [ERD ERwin 파일 — Logical/Physical 모델](04_아키텍처/ERD/Red_ERD.erwin)
 - [ERD 수정 내역](04_아키텍처/ERD/ERD_수정_내역.md)
 - [ERD 수정 가이드 — 남은 작업과 팀 확인 질문](04_아키텍처/ERD/ERD_수정_가이드.md)
+- [ERD 프로토타입 대조 가이드 — 화면 시안과 다른 컬럼과 고칠 방법](04_아키텍처/ERD/ERD_프로토타입_대조_가이드.md)
 
 ## 화면 시안
 

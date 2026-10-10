@@ -6,7 +6,7 @@
 | --- | --- |
 | 프로젝트 | 제주 비수기 상권 마케팅 캘린더 |
 | 최신 수정일 | 2026-10-02 |
-| 제출본 | [PowerPoint](Red%20%ED%99%94%EB%A9%B4%EC%84%A4%EA%B3%84%EC%84%9C_20260927.pptx) · [PDF](Red%20%ED%99%94%EB%A9%B4%EC%84%A4%EA%B3%84%EC%84%9C_20260927.pdf) |
+| 제출본 | [PowerPoint](Red%20%ED%99%94%EB%A9%B4%EC%84%A4%EA%B3%84%EC%84%9C_20261003.pptx) · [PDF](Red%20%ED%99%94%EB%A9%B4%EC%84%A4%EA%B3%84%EC%84%9C_20261003.pdf) |
 | 화면 구성 | 32쪽 · 고유 Screen ID 14개 · 주요 화면·상태 Storyboard 21쪽 · 설명 번호 141개 |
 | Figma Make | [편집 파일](https://www.figma.com/make/AlZOwKZXABo7G6BkUhTG03/Start-Task) · [최신 시안 실행](https://www.figma.com/make/AlZOwKZXABo7G6BkUhTG03/Start-Task?preview-route=%2F%23overview) |
 | 확인한 버전 | Figma Make Version 8 · 2026-10-02 확인 |
@@ -14,7 +14,7 @@
 | 양식 | 기존 화면설계서의 마스터·테마·레이아웃·폰트·표 구조 유지 |
 | UC 기준 | [Use Case 다이어그램 수정 가이드](../02_%EC%A0%9C%ED%92%88/%ED%99%94%EB%A9%B4%EC%84%A4%EA%B3%84/Use_Case_%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8_%EC%88%98%EC%A0%95_%EA%B0%80%EC%9D%B4%EB%93%9C.md)의 대표 UC 11개. 원본 다이어그램·PROJECT 최종 대조는 남아 있음 |
 
-기존 제출 파일을 갱신했다. 파일명에 남은 20260927은 기존 문서와 링크를 유지하기 위한 이름이며, 본문과 검증 기록의 최신 수정일은 2026-10-02이다.
+기존 제출 파일을 갱신하고 파일명을 20261003으로 바꿨다. 파일 내용은 이름을 바꾸기 전과 같으며, 본문과 검증 기록의 최신 수정일은 2026-10-02이다.
 
 ## 이번 수정 내용
 

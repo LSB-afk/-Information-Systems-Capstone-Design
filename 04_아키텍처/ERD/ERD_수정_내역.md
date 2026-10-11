@@ -35,15 +35,15 @@
 | ② | DATA_SOURCE.VALIDATION_STATU 오타 | 파일을 다시 읽었을 때 물리 이름은 공백 없는 VALIDATION_STATUS였음 같은 이름으로 다시 저장했고 SQL에도 VALIDATION_STATUS로 나옴 | 보고서 부록의 표에서 이름이 잘려 보인 것으로 판단함 |
 | ③ | 월 컬럼 4개가 VARCHAR(10) | 대상 월, 기준 시작 월, 기준 종료 월, 기준 월 4개를 모두 DATE로 바꿈 새 지역 소비 통계의 기준 월도 DATE 매월 1일로 저장함 | PDF 51쪽 날짜형 DATE 2차 수정의 Q6(VARCHAR(10)) 결정을 바꿈 |
 | ④ | 소비 비교에 필요한 업종·내외국인·시간대가 없음 | '지역 소비 통계' REGION_CONSUMPTION_STAT 엔터티를 새로 만듦 자료 ID와 지역 코드는 외래키(ConsumptionSource, ConsumptionRegion, 둘 다 Nulls Not Allowed), 기준 월, 업종, 고객 구분, 시간대는 NOT NULL, 비중 SHARE_RATE는 NUMBER(5,2) 같은 행이 두 번 들어가지 않게 AK1(자료 ID, 지역 코드, 기준 월, 업종, 고객 구분, 시간대)을 둠 | 화면설계서 SCR-C-003 소비 비교 ④, ⑤ 화면의 업종별 내·외국인 비중과 시간대별 비중 ([app.js 207줄](../../02_제품/화면시안/app.js#L207)) 비중은 소수라 INTEGER에 담을 수 없어 NUMBER(5,2)로 둠 |
-| ⑤ | 활용 사례(UC11) 엔터티가 없음 | 엔터티를 만들지 않고 정적 콘텐츠로 둠 | 화면설계서 SCR-C-002에 사례명·성과 수치는 검증 전 예시이고 별도 사례 상세 화면이 없다고 적혀 있음 ([Red_SCREEN.md](../../00_제출/Red_SCREEN.md)) |
+| ⑤ | 활용 사례(UC11) 엔터티가 없음 | 엔터티를 만들지 않고 정적 콘텐츠로 둠 DB에 저장하지 않는다는 것을 화면설계서와 ERwin 모델 설명에 적음 (0.7) | 화면설계서 SCR-C-002에 사례명·성과 수치는 검증 전 예시이고 별도 사례 상세 화면이 없다고 적혀 있음 ([Red_SCREEN.md](../../00_제출/Red_SCREEN.md)) |
 | ⑥ | 홍보 제안과 자료 사이에 관계가 없음 | 홍보 제안에 자료 ID SOURCE_ID(FK) NOT NULL을 더함 관계 이름 SuggestionSource, Nulls Not Allowed | 제안마다 출처·기준을 보여주고 분석 자료를 고르면 제안이 바뀜 (SCR-C-004) |
 | ⑦ | 사업체와 홍보 제안의 지역 코드가 Null 허용 | BusinessRegion, SuggestionRegion을 Nulls Not Allowed로 바꾸고 부모 삭제를 SetNull에서 Restrict로 바꿈 PlanSuggestion은 Nulls Allowed 그대로 | 공통 헤더가 사업체 지역을 항상 보여주고, 제안은 지역을 고른 뒤 만들어짐 (SCR-C-004 ①) 직접 계획 추가는 제안 없이 저장함 |
 | ⑧ | 소요 시간이 홍보 계획에 있음 | 실행 결과 기록으로 옮김: '계획 소요 시간' SPENT_TIME_MIN INTEGER, NULL 허용 | 기록 입력 팝업(SCR-B-002-P01 ②)에서 입력하고 빈칸은 미측정으로 둠 계획과 기록은 AK1로 1:1이라 기록에 두어도 계획별로 하나씩임 2차 수정의 Q4 결정을 바꿈 |
 | ⑨ | REGION_MONTHLY_STAT.UNIT 중복 | 지움 단위는 자료 ID로 등록 자료의 UNIT을 따라가 찾음 | 3정규형 (PDF 34쪽) |
-| ⑩ | PROMO_PLAN.REGION_CODE 이행 종속 | 그대로 둠 | 지역 선택이 SCR-C-002, SCR-C-003, SCR-C-004에 있고, 계획은 그때 고른 지역으로 저장됨 ([app.js 485줄](../../02_제품/화면시안/app.js#L485)) 사업체 지역과 다른 지역으로 계획을 세울 수 있어 사업체를 거쳐 알 수 있는 값이 아님 |
+| ⑩ | PROMO_PLAN.REGION_CODE 이행 종속 | 그대로 둠 업무 규칙(사업체 소재지와 다른 지역을 대상으로 계획할 수 있음)을 ERwin 컬럼 설명에 적음 (0.7) | 지역 선택이 SCR-C-002, SCR-C-003, SCR-C-004에 있고, 계획은 그때 고른 지역으로 저장됨 ([app.js 485줄](../../02_제품/화면시안/app.js#L485)) 사업체 지역과 다른 지역으로 계획을 세울 수 있어 사업체를 거쳐 알 수 있는 값이 아님 |
 | ⑪ | 지역 월별 통계에 대체 키가 없음 | AK1(자료 ID, 지역 코드, 기준 월, 지표 구분)을 만듦 | USERS.EMAIL, EXECUTION_RECORD.PLAN_ID의 AK와 같은 방식 |
 | ⑫ | 제안 → 제안 항목 Cardinality | ItemSuggestion을 One or More(P)로 바꿈 | 제안 카드는 항상 시기·대상·상품·관광지 네 항목을 가짐 ([app.js 194줄](../../02_제품/화면시안/app.js#L194)) |
-| ⑬ | 코드 설계서 | [ERD 코드 설계서](ERD_코드_설계서.md)를 PDF 55쪽 서식으로 작성함 보고서의 11개 컬럼과 새로 생긴 SEGMENT, TIME_SLOT, CATEGORY까지 14개 VALIDATION_ITEM의 가장 긴 코드는 13자라 VARCHAR(20)에 들어감 | PDF 55쪽 1.6 코드 설계서 |
+| ⑬ | 코드 설계서 | [ERD 코드 설계서](ERD_코드_설계서.md)를 PDF 55쪽 서식으로 작성함 보고서의 11개 컬럼과 새로 생긴 SEGMENT, TIME_SLOT, 비교를 위해 같은 값을 써야 하는 업종 CATEGORY까지 14개 각 컬럼의 ERwin 설명에도 코드 설계서 번호를 적음 (0.7) VALIDATION_ITEM의 가장 긴 코드는 13자라 VARCHAR(20)에 들어감 | PDF 55쪽 1.6 코드 설계서 |
 | ⑭ | 이름 띄어쓰기와 도메인 | 엔터티: 3개월 홍보 일정 → 홍보 계획, 자료 등록 현황 → 등록 자료, 추천기준 → 추천 기준 속성: 역할구분 → 역할 구분, 가입일시 → 가입 일시, 등록일시 → 등록 일시, 검증일시 → 검증 일시, 기준월 → 기준 월, 일정 계획 ID → 홍보 계획 ID, 재검토에서 기준 시작월 → 기준 시작 월, 기준 종료월 → 기준 종료 월, 부여일 → 부여 일시, 권장 날짜 → 권장 일자 (0.6) String 도메인이던 추천 기준 ID 2개를 `<default>`로 바꿈 같은 문제가 있던 MODIFICATION_DATE는 ①에서 지웠고, 지금은 모든 속성의 도메인이 `<default>`임 | 보고서 ⑭의 이름 제안을 그대로 씀 |
 
 보고서 마지막 줄의 Schema Generation 확인은 0.5에 적음
@@ -112,6 +112,24 @@
 고친 뒤 ERwin r7.3에서 물리 화면과 논리 화면을 다시 열어 캡처했고(0.4의 그림), 상자와 관계선이 겹치지 않음을 다시 확인함 Schema Generation도 다시 실행했는데 [Red_ERD_Oracle.sql](Red_ERD_Oracle.sql)과 내용이 같았음 (SQL에는 물리 이름만 들어감)
 
 이 PC에는 Oracle DB가 없어 SQL을 실제로 실행해 보는 확인은 여전히 남아 있음 → [가이드 2.3](ERD_수정_가이드.md#23-sql-스키마와-테이블-명세서)
+
+### 0.7 검토 의견 반영 (2026-10-11)
+
+3차 수정본을 다시 검토한 의견에서 남은 것 3건과 경미한 사항 2건을 반영함 ERwin 파일만 보고도 확인할 수 있게 결정 내용을 ERwin의 Definition(설명)에도 적음
+
+| 의견 | 반영 | 적은 곳 |
+| --- | --- | --- |
+| ⑤ 활용 사례를 정적 콘텐츠로 둔다면 'DB 미저장'을 명시 | 사례는 화면에 고정한 정적 콘텐츠이며 DB에 저장하지 않아 활용 사례 엔터티를 두지 않는다고 적음 | [화면설계서](../../00_제출/Red_SCREEN.md) SCR-C-002 비고와 '구현 범위와 현재 시안의 구분' 표, ERwin 모델 Definition (Model Properties) |
+| ⑩ PROMO_PLAN.REGION_CODE를 유지하려면 업무 규칙을 명시 | 업무 규칙: 계획을 세울 때 고른 분석 지역을 저장하며, 사업체 소재지(BUSINESS.REGION_CODE)와 다른 지역을 대상으로 계획할 수 있음 | ERwin의 PROMO_PLAN.REGION_CODE Definition, [가이드 3.2](ERD_수정_가이드.md#32-검토-보고서에서-팀-결정으로-남긴-항목) |
+| ⑬ 코드 설계서는 ERwin 밖 산출물이라 확인할 수 없음, 대상 컬럼은 13개 | 코드값 컬럼 16곳(코드 14개)의 ERwin Definition에 '코드 설계서 n번 참조 (코드값)'을 적음 대상은 검토서가 센 13개에 업종 CATEGORY를 더한 것임 | ERwin 각 컬럼 Definition, [ERD 코드 설계서](ERD_코드_설계서.md) |
+| 경미: SHARE_RATE NUMBER(5,2)는 교안 INTEGER 규칙의 예외 | 비율에 소수가 있어 NUMBER(5,2)를 쓴다는 이유를 적고, 테이블 명세서 비고에도 적도록 안내함 | ERwin의 SHARE_RATE Definition, [가이드 2.3](ERD_수정_가이드.md#23-sql-스키마와-테이블-명세서) |
+| 경미: PROMO_SUGGESTION의 TITLE, TARGET_MONTH는 NOT NULL이 화면과 맞음 | 두 컬럼을 NOT NULL로 바꿈 | 제안 카드는 항상 제목과 대상 월을 가짐 ([app.js 91줄부터 93줄까지](../../02_제품/화면시안/app.js#L91)) |
+
+업종을 코드에 넣은 이유: 지역 소비 통계의 업종(REGION_CONSUMPTION_STAT.CATEGORY)은 사업체의 업종(BUSINESS.CATEGORY)과 같은 값이어야 비교할 수 있으므로 같은 코드를 씀
+
+ERwin에서 보는 곳: 모델 설명은 Model Properties의 Definition, 컬럼 설명은 논리 화면에서 속성을 더블 클릭한 Attribute 창의 Definition에 있음 ERwin r7.3은 Definition을 컬럼 Comment에도 같은 글로 넣음
+
+모델을 고친 뒤 ERwin r7.3에서 물리 화면과 논리 화면을 다시 캡처했고(0.4의 그림), 상자와 관계선이 겹치지 않음 Schema Generation도 다시 실행해 [Red_ERD_Oracle.sql](Red_ERD_Oracle.sql)을 바꿈 달라진 곳은 PROMO_SUGGESTION의 TARGET_MONTH, TITLE이 NOT NULL이 된 두 줄뿐이고, Definition 문구는 기본 옵션의 SQL에 들어가지 않음
 
 ## 1. 2차 수정 (2026-10-11)
 
@@ -296,8 +314,8 @@ Red_ERD.erwin을 다시 읽어 만든 표임 키 칸의 FK는 관계로 이전�
 | --- | --- | --- | --- | --- |
 | 홍보 제안 ID | SUGGESTION_ID | INTEGER | NOT NULL | PK |
 | 추천 기준 ID | CRITERIA_ID | INTEGER | NOT NULL | FK |
-| 대상 월 | TARGET_MONTH | DATE | NULL |  |
-| 제안 제목 | TITLE | VARCHAR(100) | NULL |  |
+| 대상 월 | TARGET_MONTH | DATE | NOT NULL |  |
+| 제안 제목 | TITLE | VARCHAR(100) | NOT NULL |  |
 | 판단 이유 | REASON | VARCHAR(200) | NULL |  |
 | 지역 코드 | REGION_CODE | VARCHAR(20) | NOT NULL | FK |
 | 설명 | DESCRIPTION | VARCHAR(200) | NULL |  |

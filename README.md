@@ -18,6 +18,8 @@
 - [ERD 수정 내역](04_아키텍처/ERD/ERD_수정_내역.md)
 - [ERD 수정 가이드 — 남은 작업과 팀 확인 질문](04_아키텍처/ERD/ERD_수정_가이드.md)
 - [ERD 프로토타입 대조 가이드 — 화면 시안과 다른 컬럼과 고칠 방법](04_아키텍처/ERD/ERD_프로토타입_대조_가이드.md)
+- [ERD Oracle SQL — ERwin Schema Generation 결과](04_아키텍처/ERD/Red_ERD_Oracle.sql)
+- [ERD 코드 설계서 — 코드값 컬럼 14개](04_아키텍처/ERD/ERD_코드_설계서.md)
 
 ## 화면 시안
 

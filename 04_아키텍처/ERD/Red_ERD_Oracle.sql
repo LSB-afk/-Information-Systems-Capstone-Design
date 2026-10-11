@@ -1,0 +1,2320 @@
+CREATE TABLE BUSINESS
+(
+	BUSINESS_ID          INTEGER NOT NULL ,
+	USER_ID              INTEGER NOT NULL ,
+	BUSINESS_NAME        VARCHAR(100) NULL ,
+	CATEGORY             VARCHAR(50) NULL ,
+	REGION_CODE          VARCHAR(20) NOT NULL 
+);
+
+
+
+CREATE UNIQUE INDEX XPKBUSINESS ON BUSINESS
+(BUSINESS_ID   ASC);
+
+
+
+ALTER TABLE BUSINESS
+	ADD CONSTRAINT  XPKBUSINESS PRIMARY KEY (BUSINESS_ID);
+
+
+
+CREATE TABLE BUSINESS_PERMISSION
+(
+	USER_ID              INTEGER NOT NULL ,
+	BUSINESS_ID          INTEGER NOT NULL ,
+	PERMISSION_TYPE      VARCHAR(10) NOT NULL ,
+	GRANTED_AT           DATE NOT NULL 
+);
+
+
+
+CREATE UNIQUE INDEX XPKBUSINESS_PERMISSION ON BUSINESS_PERMISSION
+(USER_ID   ASC,BUSINESS_ID   ASC);
+
+
+
+ALTER TABLE BUSINESS_PERMISSION
+	ADD CONSTRAINT  XPKBUSINESS_PERMISSION PRIMARY KEY (USER_ID,BUSINESS_ID);
+
+
+
+CREATE TABLE DATA_SOURCE
+(
+	SOURCE_ID            INTEGER NOT NULL ,
+	USER_ID              INTEGER NOT NULL ,
+	FILE_NAME            VARCHAR(100) NOT NULL ,
+	SOURCE_VERSION       VARCHAR(120) NOT NULL ,
+	START_MONTH          DATE NOT NULL ,
+	END_MONTH            DATE NOT NULL ,
+	UNIT                 VARCHAR(50) NOT NULL ,
+	VALIDATION_STATUS    VARCHAR(20) NULL ,
+	PROVIDER_BASIS       VARCHAR(80) NOT NULL ,
+	ROW_COUNT            INTEGER NOT NULL ,
+	REGISTERED_AT        DATE NOT NULL 
+);
+
+
+
+CREATE UNIQUE INDEX XPKDATA_SOURCE ON DATA_SOURCE
+(SOURCE_ID   ASC);
+
+
+
+ALTER TABLE DATA_SOURCE
+	ADD CONSTRAINT  XPKDATA_SOURCE PRIMARY KEY (SOURCE_ID);
+
+
+
+CREATE TABLE DATA_VALIDATION_RESULT
+(
+	SOURCE_ID            INTEGER NOT NULL ,
+	VALIDATION_ITEM      VARCHAR(20) NOT NULL ,
+	RESULT               VARCHAR(10) NOT NULL ,
+	REASON               VARCHAR(200) NULL ,
+	VALIDATED_AT         DATE NOT NULL 
+);
+
+
+
+CREATE UNIQUE INDEX XPKDATA_VALIDATION_RESULT ON DATA_VALIDATION_RESULT
+(SOURCE_ID   ASC,VALIDATION_ITEM   ASC);
+
+
+
+ALTER TABLE DATA_VALIDATION_RESULT
+	ADD CONSTRAINT  XPKDATA_VALIDATION_RESULT PRIMARY KEY (SOURCE_ID,VALIDATION_ITEM);
+
+
+
+CREATE TABLE EXECUTION_RECORD
+(
+	RECORD_ID            INTEGER NOT NULL ,
+	PLAN_ID              INTEGER NOT NULL ,
+	EXEC_STATUS          VARCHAR(10) NOT NULL ,
+	EXECUTED_DATE        DATE NULL ,
+	CHECKED_CLICK_COUNT  INTEGER NULL ,
+	CHECKED_BOOKING_COUNT INTEGER NULL ,
+	COUPON_USAGE_COUNT   INTEGER NULL ,
+	RESULT_MEMO          VARCHAR(500) NULL ,
+	COLLECTION_METHOD    VARCHAR(200) NULL ,
+	ADOPTION_STATUS      VARCHAR(10) NOT NULL ,
+	ACTUAL_ACTIVITY      VARCHAR(500) NULL ,
+	SPENT_TIME_MIN       INTEGER NULL 
+);
+
+
+
+CREATE UNIQUE INDEX XPKEXECUTION_RECORD ON EXECUTION_RECORD
+(RECORD_ID   ASC);
+
+
+
+ALTER TABLE EXECUTION_RECORD
+	ADD CONSTRAINT  XPKEXECUTION_RECORD PRIMARY KEY (RECORD_ID);
+
+
+
+CREATE UNIQUE INDEX XAK1EXECUTION_RECORD ON EXECUTION_RECORD
+(PLAN_ID   ASC);
+
+
+
+ALTER TABLE EXECUTION_RECORD
+ADD CONSTRAINT  XAK1EXECUTION_RECORD UNIQUE (PLAN_ID);
+
+
+
+CREATE TABLE PROMO_PLAN
+(
+	PLAN_ID              INTEGER NOT NULL ,
+	BUSINESS_ID          INTEGER NOT NULL ,
+	SUGGESTION_ID        INTEGER NULL ,
+	TITLE                VARCHAR(100) NOT NULL ,
+	SCHEDULED_DATE       DATE NOT NULL ,
+	CHANNEL              VARCHAR(50) NOT NULL ,
+	PREPARATION_NOTE     VARCHAR(500) NULL ,
+	REGION_CODE          VARCHAR(20) NOT NULL 
+);
+
+
+
+CREATE UNIQUE INDEX XPKPROMO_PLAN ON PROMO_PLAN
+(PLAN_ID   ASC);
+
+
+
+ALTER TABLE PROMO_PLAN
+	ADD CONSTRAINT  XPKPROMO_PLAN PRIMARY KEY (PLAN_ID);
+
+
+
+CREATE TABLE PROMO_SUGGESTION
+(
+	SUGGESTION_ID        INTEGER NOT NULL ,
+	CRITERIA_ID          INTEGER NOT NULL ,
+	TARGET_MONTH         DATE NULL ,
+	TITLE                VARCHAR(100) NULL ,
+	REASON               VARCHAR(200) NULL ,
+	REGION_CODE          VARCHAR(20) NOT NULL ,
+	DESCRIPTION          VARCHAR(200) NULL ,
+	RECOMMENDED_DATE     DATE NULL ,
+	CHANNEL              VARCHAR(50) NULL ,
+	PREPARATION_TASK     VARCHAR(500) NULL ,
+	TAG                  VARCHAR(50) NULL ,
+	SOURCE_ID            INTEGER NOT NULL 
+);
+
+
+
+CREATE UNIQUE INDEX XPKPROMO_SUGGESTION ON PROMO_SUGGESTION
+(SUGGESTION_ID   ASC);
+
+
+
+ALTER TABLE PROMO_SUGGESTION
+	ADD CONSTRAINT  XPKPROMO_SUGGESTION PRIMARY KEY (SUGGESTION_ID);
+
+
+
+CREATE TABLE PROMO_SUGGESTION_ITEM
+(
+	SUGGESTION_ID        INTEGER NOT NULL ,
+	ITEM_TYPE            VARCHAR(20) NOT NULL ,
+	ITEM_CONTENT         VARCHAR(200) NOT NULL ,
+	ITEM_REASON          VARCHAR(200) NULL ,
+	CHECK_NOTE           VARCHAR(200) NULL 
+);
+
+
+
+CREATE UNIQUE INDEX XPKPROMO_SUGGESTION_ITEM ON PROMO_SUGGESTION_ITEM
+(SUGGESTION_ID   ASC,ITEM_TYPE   ASC);
+
+
+
+ALTER TABLE PROMO_SUGGESTION_ITEM
+	ADD CONSTRAINT  XPKPROMO_SUGGESTION_ITEM PRIMARY KEY (SUGGESTION_ID,ITEM_TYPE);
+
+
+
+CREATE TABLE RECOMMENDATION_CRITERIA
+(
+	CRITERIA_ID          INTEGER NOT NULL ,
+	DECLINE_RATE_THRESHOLD INTEGER NOT NULL ,
+	SOURCE_INFO          VARCHAR(250) NOT NULL ,
+	BASE_PERIOD          VARCHAR(50) NOT NULL ,
+	REASON_TEMPLATE      VARCHAR(500) NOT NULL ,
+	REQUIRED_CONDITION   VARCHAR(500) NOT NULL ,
+	UPDATED_AT           DATE NULL 
+);
+
+
+
+CREATE UNIQUE INDEX XPKRECOMMENDATION_CRITERIA ON RECOMMENDATION_CRITERIA
+(CRITERIA_ID   ASC);
+
+
+
+ALTER TABLE RECOMMENDATION_CRITERIA
+	ADD CONSTRAINT  XPKRECOMMENDATION_CRITERIA PRIMARY KEY (CRITERIA_ID);
+
+
+
+CREATE TABLE REGION
+(
+	REGION_CODE          VARCHAR(20) NOT NULL ,
+	REGION_NAME          VARCHAR(50) NOT NULL 
+);
+
+
+
+CREATE UNIQUE INDEX XPKREGION ON REGION
+(REGION_CODE   ASC);
+
+
+
+ALTER TABLE REGION
+	ADD CONSTRAINT  XPKREGION PRIMARY KEY (REGION_CODE);
+
+
+
+CREATE TABLE REGION_CONSUMPTION_STAT
+(
+	CONSUMPTION_STAT_ID  INTEGER NOT NULL ,
+	SOURCE_ID            INTEGER NOT NULL ,
+	REGION_CODE          VARCHAR(20) NOT NULL ,
+	STAT_MONTH           DATE NOT NULL ,
+	CATEGORY             VARCHAR(50) NOT NULL ,
+	SEGMENT              VARCHAR(10) NOT NULL ,
+	TIME_SLOT            VARCHAR(10) NOT NULL ,
+	SHARE_RATE           NUMBER(5,2) NULL 
+);
+
+
+
+CREATE UNIQUE INDEX XPKREGION_CONSUMPTION_STAT ON REGION_CONSUMPTION_STAT
+(CONSUMPTION_STAT_ID   ASC);
+
+
+
+ALTER TABLE REGION_CONSUMPTION_STAT
+	ADD CONSTRAINT  XPKREGION_CONSUMPTION_STAT PRIMARY KEY (CONSUMPTION_STAT_ID);
+
+
+
+CREATE UNIQUE INDEX XAK1REGION_CONSUMPTION_STAT ON REGION_CONSUMPTION_STAT
+(SOURCE_ID   ASC,REGION_CODE   ASC,STAT_MONTH   ASC,CATEGORY   ASC,SEGMENT   ASC,TIME_SLOT   ASC);
+
+
+
+ALTER TABLE REGION_CONSUMPTION_STAT
+ADD CONSTRAINT  XAK1REGION_CONSUMPTION_STAT UNIQUE (SOURCE_ID,REGION_CODE,STAT_MONTH,CATEGORY,SEGMENT,TIME_SLOT);
+
+
+
+CREATE TABLE REGION_MONTHLY_STAT
+(
+	STAT_ID              INTEGER NOT NULL ,
+	SOURCE_ID            INTEGER NOT NULL ,
+	REGION_CODE          VARCHAR(20) NOT NULL ,
+	STAT_MONTH           DATE NOT NULL ,
+	METRIC_TYPE          VARCHAR(10) NOT NULL ,
+	STAT_VALUE           INTEGER NULL 
+);
+
+
+
+CREATE UNIQUE INDEX XPKREGION_MONTHLY_STAT ON REGION_MONTHLY_STAT
+(STAT_ID   ASC);
+
+
+
+ALTER TABLE REGION_MONTHLY_STAT
+	ADD CONSTRAINT  XPKREGION_MONTHLY_STAT PRIMARY KEY (STAT_ID);
+
+
+
+CREATE UNIQUE INDEX XAK1REGION_MONTHLY_STAT ON REGION_MONTHLY_STAT
+(SOURCE_ID   ASC,REGION_CODE   ASC,STAT_MONTH   ASC,METRIC_TYPE   ASC);
+
+
+
+ALTER TABLE REGION_MONTHLY_STAT
+ADD CONSTRAINT  XAK1REGION_MONTHLY_STAT UNIQUE (SOURCE_ID,REGION_CODE,STAT_MONTH,METRIC_TYPE);
+
+
+
+CREATE TABLE USERS
+(
+	USER_ID              INTEGER NOT NULL ,
+	EMAIL                VARCHAR(254) NOT NULL ,
+	PASSWORD_HASH        VARCHAR(255) NOT NULL ,
+	ROLE                 VARCHAR(20) NOT NULL ,
+	CREATED_AT           DATE NULL 
+);
+
+
+
+CREATE UNIQUE INDEX XPKUSERS ON USERS
+(USER_ID   ASC);
+
+
+
+ALTER TABLE USERS
+	ADD CONSTRAINT  XPKUSERS PRIMARY KEY (USER_ID);
+
+
+
+CREATE UNIQUE INDEX XAK1USERS ON USERS
+(EMAIL   ASC);
+
+
+
+ALTER TABLE USERS
+ADD CONSTRAINT  XAK1USERS UNIQUE (EMAIL);
+
+
+
+ALTER TABLE BUSINESS
+	ADD (CONSTRAINT BusinessUser FOREIGN KEY (USER_ID) REFERENCES USERS (USER_ID));
+
+
+
+ALTER TABLE BUSINESS
+	ADD (CONSTRAINT BusinessRegion FOREIGN KEY (REGION_CODE) REFERENCES REGION (REGION_CODE));
+
+
+
+ALTER TABLE BUSINESS_PERMISSION
+	ADD (CONSTRAINT PermissionUser FOREIGN KEY (USER_ID) REFERENCES USERS (USER_ID));
+
+
+
+ALTER TABLE BUSINESS_PERMISSION
+	ADD (CONSTRAINT PermissionBusiness FOREIGN KEY (BUSINESS_ID) REFERENCES BUSINESS (BUSINESS_ID));
+
+
+
+ALTER TABLE DATA_SOURCE
+	ADD (CONSTRAINT SourceUser FOREIGN KEY (USER_ID) REFERENCES USERS (USER_ID));
+
+
+
+ALTER TABLE DATA_VALIDATION_RESULT
+	ADD (CONSTRAINT ResultSource FOREIGN KEY (SOURCE_ID) REFERENCES DATA_SOURCE (SOURCE_ID));
+
+
+
+ALTER TABLE EXECUTION_RECORD
+	ADD (CONSTRAINT RecordPlan FOREIGN KEY (PLAN_ID) REFERENCES PROMO_PLAN (PLAN_ID) ON DELETE CASCADE);
+
+
+
+ALTER TABLE PROMO_PLAN
+	ADD (CONSTRAINT PlanBusiness FOREIGN KEY (BUSINESS_ID) REFERENCES BUSINESS (BUSINESS_ID));
+
+
+
+ALTER TABLE PROMO_PLAN
+	ADD (CONSTRAINT PlanSuggestion FOREIGN KEY (SUGGESTION_ID) REFERENCES PROMO_SUGGESTION (SUGGESTION_ID) ON DELETE SET NULL);
+
+
+
+ALTER TABLE PROMO_PLAN
+	ADD (CONSTRAINT PlanRegion FOREIGN KEY (REGION_CODE) REFERENCES REGION (REGION_CODE));
+
+
+
+ALTER TABLE PROMO_SUGGESTION
+	ADD (CONSTRAINT SuggestionCriteria FOREIGN KEY (CRITERIA_ID) REFERENCES RECOMMENDATION_CRITERIA (CRITERIA_ID));
+
+
+
+ALTER TABLE PROMO_SUGGESTION
+	ADD (CONSTRAINT SuggestionRegion FOREIGN KEY (REGION_CODE) REFERENCES REGION (REGION_CODE));
+
+
+
+ALTER TABLE PROMO_SUGGESTION
+	ADD (CONSTRAINT SuggestionSource FOREIGN KEY (SOURCE_ID) REFERENCES DATA_SOURCE (SOURCE_ID));
+
+
+
+ALTER TABLE PROMO_SUGGESTION_ITEM
+	ADD (CONSTRAINT ItemSuggestion FOREIGN KEY (SUGGESTION_ID) REFERENCES PROMO_SUGGESTION (SUGGESTION_ID));
+
+
+
+ALTER TABLE REGION_CONSUMPTION_STAT
+	ADD (CONSTRAINT ConsumptionSource FOREIGN KEY (SOURCE_ID) REFERENCES DATA_SOURCE (SOURCE_ID));
+
+
+
+ALTER TABLE REGION_CONSUMPTION_STAT
+	ADD (CONSTRAINT ConsumptionRegion FOREIGN KEY (REGION_CODE) REFERENCES REGION (REGION_CODE));
+
+
+
+ALTER TABLE REGION_MONTHLY_STAT
+	ADD (CONSTRAINT StatSource FOREIGN KEY (SOURCE_ID) REFERENCES DATA_SOURCE (SOURCE_ID));
+
+
+
+ALTER TABLE REGION_MONTHLY_STAT
+	ADD (CONSTRAINT StatRegion FOREIGN KEY (REGION_CODE) REFERENCES REGION (REGION_CODE));
+
+
+
+CREATE  TRIGGER tI_BUSINESS BEFORE INSERT ON BUSINESS for each row
+-- ERwin Builtin Trigger
+-- INSERT trigger on BUSINESS 
+DECLARE NUMROWS INTEGER;
+BEGIN
+    /* ERwin Builtin Trigger */
+    /* USERS  BUSINESS on child insert restrict */
+    /* ERWIN_RELATION:CHECKSUM="0001dde2", PARENT_OWNER="", PARENT_TABLE="USERS"
+    CHILD_OWNER="", CHILD_TABLE="BUSINESS"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="BusinessUser", FK_COLUMNS="USER_ID" */
+    SELECT count(*) INTO NUMROWS
+      FROM USERS
+      WHERE
+        /* %JoinFKPK(:%New,USERS," = "," AND") */
+        :new.USER_ID = USERS.USER_ID;
+    IF (
+      /* %NotnullFK(:%New," IS NOT NULL AND") */
+      
+      NUMROWS = 0
+    )
+    THEN
+      raise_application_error(
+        -20002,
+        'Cannot insert BUSINESS because USERS does not exist.'
+      );
+    END IF;
+
+    /* ERwin Builtin Trigger */
+    /* REGION  BUSINESS on child insert restrict */
+    /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="REGION"
+    CHILD_OWNER="", CHILD_TABLE="BUSINESS"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="BusinessRegion", FK_COLUMNS="REGION_CODE" */
+    SELECT count(*) INTO NUMROWS
+      FROM REGION
+      WHERE
+        /* %JoinFKPK(:%New,REGION," = "," AND") */
+        :new.REGION_CODE = REGION.REGION_CODE;
+    IF (
+      /* %NotnullFK(:%New," IS NOT NULL AND") */
+      
+      NUMROWS = 0
+    )
+    THEN
+      raise_application_error(
+        -20002,
+        'Cannot insert BUSINESS because REGION does not exist.'
+      );
+    END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+CREATE  TRIGGER  tD_BUSINESS AFTER DELETE ON BUSINESS for each row
+-- ERwin Builtin Trigger
+-- DELETE trigger on BUSINESS 
+DECLARE NUMROWS INTEGER;
+BEGIN
+    /* ERwin Builtin Trigger */
+    /* BUSINESS  PROMO_PLAN on parent delete restrict */
+    /* ERWIN_RELATION:CHECKSUM="0001f526", PARENT_OWNER="", PARENT_TABLE="BUSINESS"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_PLAN"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="PlanBusiness", FK_COLUMNS="BUSINESS_ID" */
+    SELECT count(*) INTO NUMROWS
+      FROM PROMO_PLAN
+      WHERE
+        /*  %JoinFKPK(PROMO_PLAN,:%Old," = "," AND") */
+        PROMO_PLAN.BUSINESS_ID = :old.BUSINESS_ID;
+    IF (NUMROWS > 0)
+    THEN
+      raise_application_error(
+        -20001,
+        'Cannot delete BUSINESS because PROMO_PLAN exists.'
+      );
+    END IF;
+
+    /* ERwin Builtin Trigger */
+    /* BUSINESS  BUSINESS_PERMISSION on parent delete restrict */
+    /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="BUSINESS"
+    CHILD_OWNER="", CHILD_TABLE="BUSINESS_PERMISSION"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="PermissionBusiness", FK_COLUMNS="BUSINESS_ID" */
+    SELECT count(*) INTO NUMROWS
+      FROM BUSINESS_PERMISSION
+      WHERE
+        /*  %JoinFKPK(BUSINESS_PERMISSION,:%Old," = "," AND") */
+        BUSINESS_PERMISSION.BUSINESS_ID = :old.BUSINESS_ID;
+    IF (NUMROWS > 0)
+    THEN
+      raise_application_error(
+        -20001,
+        'Cannot delete BUSINESS because BUSINESS_PERMISSION exists.'
+      );
+    END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+CREATE  TRIGGER tU_BUSINESS AFTER UPDATE ON BUSINESS for each row
+-- ERwin Builtin Trigger
+-- UPDATE trigger on BUSINESS 
+DECLARE NUMROWS INTEGER;
+BEGIN
+  /* ERwin Builtin Trigger */
+  /* BUSINESS  PROMO_PLAN on parent update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00044186", PARENT_OWNER="", PARENT_TABLE="BUSINESS"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_PLAN"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="PlanBusiness", FK_COLUMNS="BUSINESS_ID" */
+  IF
+    /* %JoinPKPK(:%Old,:%New," <> "," OR ") */
+    :old.BUSINESS_ID <> :new.BUSINESS_ID
+  THEN
+    SELECT count(*) INTO NUMROWS
+      FROM PROMO_PLAN
+      WHERE
+        /*  %JoinFKPK(PROMO_PLAN,:%Old," = "," AND") */
+        PROMO_PLAN.BUSINESS_ID = :old.BUSINESS_ID;
+    IF (NUMROWS > 0)
+    THEN 
+      raise_application_error(
+        -20005,
+        'Cannot update BUSINESS because PROMO_PLAN exists.'
+      );
+    END IF;
+  END IF;
+
+  /* ERwin Builtin Trigger */
+  /* BUSINESS  BUSINESS_PERMISSION on parent update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="BUSINESS"
+    CHILD_OWNER="", CHILD_TABLE="BUSINESS_PERMISSION"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="PermissionBusiness", FK_COLUMNS="BUSINESS_ID" */
+  IF
+    /* %JoinPKPK(:%Old,:%New," <> "," OR ") */
+    :old.BUSINESS_ID <> :new.BUSINESS_ID
+  THEN
+    SELECT count(*) INTO NUMROWS
+      FROM BUSINESS_PERMISSION
+      WHERE
+        /*  %JoinFKPK(BUSINESS_PERMISSION,:%Old," = "," AND") */
+        BUSINESS_PERMISSION.BUSINESS_ID = :old.BUSINESS_ID;
+    IF (NUMROWS > 0)
+    THEN 
+      raise_application_error(
+        -20005,
+        'Cannot update BUSINESS because BUSINESS_PERMISSION exists.'
+      );
+    END IF;
+  END IF;
+
+  /* ERwin Builtin Trigger */
+  /* USERS  BUSINESS on child update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="USERS"
+    CHILD_OWNER="", CHILD_TABLE="BUSINESS"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="BusinessUser", FK_COLUMNS="USER_ID" */
+  SELECT count(*) INTO NUMROWS
+    FROM USERS
+    WHERE
+      /* %JoinFKPK(:%New,USERS," = "," AND") */
+      :new.USER_ID = USERS.USER_ID;
+  IF (
+    /* %NotnullFK(:%New," IS NOT NULL AND") */
+    
+    NUMROWS = 0
+  )
+  THEN
+    raise_application_error(
+      -20007,
+      'Cannot update BUSINESS because USERS does not exist.'
+    );
+  END IF;
+
+  /* ERwin Builtin Trigger */
+  /* REGION  BUSINESS on child update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="REGION"
+    CHILD_OWNER="", CHILD_TABLE="BUSINESS"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="BusinessRegion", FK_COLUMNS="REGION_CODE" */
+  SELECT count(*) INTO NUMROWS
+    FROM REGION
+    WHERE
+      /* %JoinFKPK(:%New,REGION," = "," AND") */
+      :new.REGION_CODE = REGION.REGION_CODE;
+  IF (
+    /* %NotnullFK(:%New," IS NOT NULL AND") */
+    
+    NUMROWS = 0
+  )
+  THEN
+    raise_application_error(
+      -20007,
+      'Cannot update BUSINESS because REGION does not exist.'
+    );
+  END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+
+CREATE  TRIGGER tI_BUSINESS_PERMISSION BEFORE INSERT ON BUSINESS_PERMISSION for each row
+-- ERwin Builtin Trigger
+-- INSERT trigger on BUSINESS_PERMISSION 
+DECLARE NUMROWS INTEGER;
+BEGIN
+    /* ERwin Builtin Trigger */
+    /* USERS  BUSINESS_PERMISSION on child insert restrict */
+    /* ERWIN_RELATION:CHECKSUM="0002001a", PARENT_OWNER="", PARENT_TABLE="USERS"
+    CHILD_OWNER="", CHILD_TABLE="BUSINESS_PERMISSION"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="PermissionUser", FK_COLUMNS="USER_ID" */
+    SELECT count(*) INTO NUMROWS
+      FROM USERS
+      WHERE
+        /* %JoinFKPK(:%New,USERS," = "," AND") */
+        :new.USER_ID = USERS.USER_ID;
+    IF (
+      /* %NotnullFK(:%New," IS NOT NULL AND") */
+      
+      NUMROWS = 0
+    )
+    THEN
+      raise_application_error(
+        -20002,
+        'Cannot insert BUSINESS_PERMISSION because USERS does not exist.'
+      );
+    END IF;
+
+    /* ERwin Builtin Trigger */
+    /* BUSINESS  BUSINESS_PERMISSION on child insert restrict */
+    /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="BUSINESS"
+    CHILD_OWNER="", CHILD_TABLE="BUSINESS_PERMISSION"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="PermissionBusiness", FK_COLUMNS="BUSINESS_ID" */
+    SELECT count(*) INTO NUMROWS
+      FROM BUSINESS
+      WHERE
+        /* %JoinFKPK(:%New,BUSINESS," = "," AND") */
+        :new.BUSINESS_ID = BUSINESS.BUSINESS_ID;
+    IF (
+      /* %NotnullFK(:%New," IS NOT NULL AND") */
+      
+      NUMROWS = 0
+    )
+    THEN
+      raise_application_error(
+        -20002,
+        'Cannot insert BUSINESS_PERMISSION because BUSINESS does not exist.'
+      );
+    END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+CREATE  TRIGGER tU_BUSINESS_PERMISSION AFTER UPDATE ON BUSINESS_PERMISSION for each row
+-- ERwin Builtin Trigger
+-- UPDATE trigger on BUSINESS_PERMISSION 
+DECLARE NUMROWS INTEGER;
+BEGIN
+  /* ERwin Builtin Trigger */
+  /* USERS  BUSINESS_PERMISSION on child update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00020950", PARENT_OWNER="", PARENT_TABLE="USERS"
+    CHILD_OWNER="", CHILD_TABLE="BUSINESS_PERMISSION"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="PermissionUser", FK_COLUMNS="USER_ID" */
+  SELECT count(*) INTO NUMROWS
+    FROM USERS
+    WHERE
+      /* %JoinFKPK(:%New,USERS," = "," AND") */
+      :new.USER_ID = USERS.USER_ID;
+  IF (
+    /* %NotnullFK(:%New," IS NOT NULL AND") */
+    
+    NUMROWS = 0
+  )
+  THEN
+    raise_application_error(
+      -20007,
+      'Cannot update BUSINESS_PERMISSION because USERS does not exist.'
+    );
+  END IF;
+
+  /* ERwin Builtin Trigger */
+  /* BUSINESS  BUSINESS_PERMISSION on child update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="BUSINESS"
+    CHILD_OWNER="", CHILD_TABLE="BUSINESS_PERMISSION"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="PermissionBusiness", FK_COLUMNS="BUSINESS_ID" */
+  SELECT count(*) INTO NUMROWS
+    FROM BUSINESS
+    WHERE
+      /* %JoinFKPK(:%New,BUSINESS," = "," AND") */
+      :new.BUSINESS_ID = BUSINESS.BUSINESS_ID;
+  IF (
+    /* %NotnullFK(:%New," IS NOT NULL AND") */
+    
+    NUMROWS = 0
+  )
+  THEN
+    raise_application_error(
+      -20007,
+      'Cannot update BUSINESS_PERMISSION because BUSINESS does not exist.'
+    );
+  END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+
+CREATE  TRIGGER tI_DATA_SOURCE BEFORE INSERT ON DATA_SOURCE for each row
+-- ERwin Builtin Trigger
+-- INSERT trigger on DATA_SOURCE 
+DECLARE NUMROWS INTEGER;
+BEGIN
+    /* ERwin Builtin Trigger */
+    /* USERS  DATA_SOURCE on child insert restrict */
+    /* ERWIN_RELATION:CHECKSUM="0000ea5d", PARENT_OWNER="", PARENT_TABLE="USERS"
+    CHILD_OWNER="", CHILD_TABLE="DATA_SOURCE"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="SourceUser", FK_COLUMNS="USER_ID" */
+    SELECT count(*) INTO NUMROWS
+      FROM USERS
+      WHERE
+        /* %JoinFKPK(:%New,USERS," = "," AND") */
+        :new.USER_ID = USERS.USER_ID;
+    IF (
+      /* %NotnullFK(:%New," IS NOT NULL AND") */
+      
+      NUMROWS = 0
+    )
+    THEN
+      raise_application_error(
+        -20002,
+        'Cannot insert DATA_SOURCE because USERS does not exist.'
+      );
+    END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+CREATE  TRIGGER  tD_DATA_SOURCE AFTER DELETE ON DATA_SOURCE for each row
+-- ERwin Builtin Trigger
+-- DELETE trigger on DATA_SOURCE 
+DECLARE NUMROWS INTEGER;
+BEGIN
+    /* ERwin Builtin Trigger */
+    /* DATA_SOURCE  REGION_MONTHLY_STAT on parent delete restrict */
+    /* ERWIN_RELATION:CHECKSUM="0004549a", PARENT_OWNER="", PARENT_TABLE="DATA_SOURCE"
+    CHILD_OWNER="", CHILD_TABLE="REGION_MONTHLY_STAT"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="StatSource", FK_COLUMNS="SOURCE_ID" */
+    SELECT count(*) INTO NUMROWS
+      FROM REGION_MONTHLY_STAT
+      WHERE
+        /*  %JoinFKPK(REGION_MONTHLY_STAT,:%Old," = "," AND") */
+        REGION_MONTHLY_STAT.SOURCE_ID = :old.SOURCE_ID;
+    IF (NUMROWS > 0)
+    THEN
+      raise_application_error(
+        -20001,
+        'Cannot delete DATA_SOURCE because REGION_MONTHLY_STAT exists.'
+      );
+    END IF;
+
+    /* ERwin Builtin Trigger */
+    /* DATA_SOURCE  DATA_VALIDATION_RESULT on parent delete restrict */
+    /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="DATA_SOURCE"
+    CHILD_OWNER="", CHILD_TABLE="DATA_VALIDATION_RESULT"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="ResultSource", FK_COLUMNS="SOURCE_ID" */
+    SELECT count(*) INTO NUMROWS
+      FROM DATA_VALIDATION_RESULT
+      WHERE
+        /*  %JoinFKPK(DATA_VALIDATION_RESULT,:%Old," = "," AND") */
+        DATA_VALIDATION_RESULT.SOURCE_ID = :old.SOURCE_ID;
+    IF (NUMROWS > 0)
+    THEN
+      raise_application_error(
+        -20001,
+        'Cannot delete DATA_SOURCE because DATA_VALIDATION_RESULT exists.'
+      );
+    END IF;
+
+    /* ERwin Builtin Trigger */
+    /* DATA_SOURCE  PROMO_SUGGESTION on parent delete restrict */
+    /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="DATA_SOURCE"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_SUGGESTION"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="SuggestionSource", FK_COLUMNS="SOURCE_ID" */
+    SELECT count(*) INTO NUMROWS
+      FROM PROMO_SUGGESTION
+      WHERE
+        /*  %JoinFKPK(PROMO_SUGGESTION,:%Old," = "," AND") */
+        PROMO_SUGGESTION.SOURCE_ID = :old.SOURCE_ID;
+    IF (NUMROWS > 0)
+    THEN
+      raise_application_error(
+        -20001,
+        'Cannot delete DATA_SOURCE because PROMO_SUGGESTION exists.'
+      );
+    END IF;
+
+    /* ERwin Builtin Trigger */
+    /* DATA_SOURCE  REGION_CONSUMPTION_STAT on parent delete restrict */
+    /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="DATA_SOURCE"
+    CHILD_OWNER="", CHILD_TABLE="REGION_CONSUMPTION_STAT"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="ConsumptionSource", FK_COLUMNS="SOURCE_ID" */
+    SELECT count(*) INTO NUMROWS
+      FROM REGION_CONSUMPTION_STAT
+      WHERE
+        /*  %JoinFKPK(REGION_CONSUMPTION_STAT,:%Old," = "," AND") */
+        REGION_CONSUMPTION_STAT.SOURCE_ID = :old.SOURCE_ID;
+    IF (NUMROWS > 0)
+    THEN
+      raise_application_error(
+        -20001,
+        'Cannot delete DATA_SOURCE because REGION_CONSUMPTION_STAT exists.'
+      );
+    END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+CREATE  TRIGGER tU_DATA_SOURCE AFTER UPDATE ON DATA_SOURCE for each row
+-- ERwin Builtin Trigger
+-- UPDATE trigger on DATA_SOURCE 
+DECLARE NUMROWS INTEGER;
+BEGIN
+  /* ERwin Builtin Trigger */
+  /* DATA_SOURCE  REGION_MONTHLY_STAT on parent update restrict */
+  /* ERWIN_RELATION:CHECKSUM="0005df20", PARENT_OWNER="", PARENT_TABLE="DATA_SOURCE"
+    CHILD_OWNER="", CHILD_TABLE="REGION_MONTHLY_STAT"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="StatSource", FK_COLUMNS="SOURCE_ID" */
+  IF
+    /* %JoinPKPK(:%Old,:%New," <> "," OR ") */
+    :old.SOURCE_ID <> :new.SOURCE_ID
+  THEN
+    SELECT count(*) INTO NUMROWS
+      FROM REGION_MONTHLY_STAT
+      WHERE
+        /*  %JoinFKPK(REGION_MONTHLY_STAT,:%Old," = "," AND") */
+        REGION_MONTHLY_STAT.SOURCE_ID = :old.SOURCE_ID;
+    IF (NUMROWS > 0)
+    THEN 
+      raise_application_error(
+        -20005,
+        'Cannot update DATA_SOURCE because REGION_MONTHLY_STAT exists.'
+      );
+    END IF;
+  END IF;
+
+  /* ERwin Builtin Trigger */
+  /* DATA_SOURCE  DATA_VALIDATION_RESULT on parent update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="DATA_SOURCE"
+    CHILD_OWNER="", CHILD_TABLE="DATA_VALIDATION_RESULT"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="ResultSource", FK_COLUMNS="SOURCE_ID" */
+  IF
+    /* %JoinPKPK(:%Old,:%New," <> "," OR ") */
+    :old.SOURCE_ID <> :new.SOURCE_ID
+  THEN
+    SELECT count(*) INTO NUMROWS
+      FROM DATA_VALIDATION_RESULT
+      WHERE
+        /*  %JoinFKPK(DATA_VALIDATION_RESULT,:%Old," = "," AND") */
+        DATA_VALIDATION_RESULT.SOURCE_ID = :old.SOURCE_ID;
+    IF (NUMROWS > 0)
+    THEN 
+      raise_application_error(
+        -20005,
+        'Cannot update DATA_SOURCE because DATA_VALIDATION_RESULT exists.'
+      );
+    END IF;
+  END IF;
+
+  /* ERwin Builtin Trigger */
+  /* DATA_SOURCE  PROMO_SUGGESTION on parent update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="DATA_SOURCE"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_SUGGESTION"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="SuggestionSource", FK_COLUMNS="SOURCE_ID" */
+  IF
+    /* %JoinPKPK(:%Old,:%New," <> "," OR ") */
+    :old.SOURCE_ID <> :new.SOURCE_ID
+  THEN
+    SELECT count(*) INTO NUMROWS
+      FROM PROMO_SUGGESTION
+      WHERE
+        /*  %JoinFKPK(PROMO_SUGGESTION,:%Old," = "," AND") */
+        PROMO_SUGGESTION.SOURCE_ID = :old.SOURCE_ID;
+    IF (NUMROWS > 0)
+    THEN 
+      raise_application_error(
+        -20005,
+        'Cannot update DATA_SOURCE because PROMO_SUGGESTION exists.'
+      );
+    END IF;
+  END IF;
+
+  /* ERwin Builtin Trigger */
+  /* DATA_SOURCE  REGION_CONSUMPTION_STAT on parent update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="DATA_SOURCE"
+    CHILD_OWNER="", CHILD_TABLE="REGION_CONSUMPTION_STAT"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="ConsumptionSource", FK_COLUMNS="SOURCE_ID" */
+  IF
+    /* %JoinPKPK(:%Old,:%New," <> "," OR ") */
+    :old.SOURCE_ID <> :new.SOURCE_ID
+  THEN
+    SELECT count(*) INTO NUMROWS
+      FROM REGION_CONSUMPTION_STAT
+      WHERE
+        /*  %JoinFKPK(REGION_CONSUMPTION_STAT,:%Old," = "," AND") */
+        REGION_CONSUMPTION_STAT.SOURCE_ID = :old.SOURCE_ID;
+    IF (NUMROWS > 0)
+    THEN 
+      raise_application_error(
+        -20005,
+        'Cannot update DATA_SOURCE because REGION_CONSUMPTION_STAT exists.'
+      );
+    END IF;
+  END IF;
+
+  /* ERwin Builtin Trigger */
+  /* USERS  DATA_SOURCE on child update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="USERS"
+    CHILD_OWNER="", CHILD_TABLE="DATA_SOURCE"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="SourceUser", FK_COLUMNS="USER_ID" */
+  SELECT count(*) INTO NUMROWS
+    FROM USERS
+    WHERE
+      /* %JoinFKPK(:%New,USERS," = "," AND") */
+      :new.USER_ID = USERS.USER_ID;
+  IF (
+    /* %NotnullFK(:%New," IS NOT NULL AND") */
+    
+    NUMROWS = 0
+  )
+  THEN
+    raise_application_error(
+      -20007,
+      'Cannot update DATA_SOURCE because USERS does not exist.'
+    );
+  END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+
+CREATE  TRIGGER tI_DATA_VALIDATION_RESULT BEFORE INSERT ON DATA_VALIDATION_RESULT for each row
+-- ERwin Builtin Trigger
+-- INSERT trigger on DATA_VALIDATION_RESULT 
+DECLARE NUMROWS INTEGER;
+BEGIN
+    /* ERwin Builtin Trigger */
+    /* DATA_SOURCE  DATA_VALIDATION_RESULT on child insert restrict */
+    /* ERWIN_RELATION:CHECKSUM="0000f9de", PARENT_OWNER="", PARENT_TABLE="DATA_SOURCE"
+    CHILD_OWNER="", CHILD_TABLE="DATA_VALIDATION_RESULT"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="ResultSource", FK_COLUMNS="SOURCE_ID" */
+    SELECT count(*) INTO NUMROWS
+      FROM DATA_SOURCE
+      WHERE
+        /* %JoinFKPK(:%New,DATA_SOURCE," = "," AND") */
+        :new.SOURCE_ID = DATA_SOURCE.SOURCE_ID;
+    IF (
+      /* %NotnullFK(:%New," IS NOT NULL AND") */
+      
+      NUMROWS = 0
+    )
+    THEN
+      raise_application_error(
+        -20002,
+        'Cannot insert DATA_VALIDATION_RESULT because DATA_SOURCE does not exist.'
+      );
+    END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+CREATE  TRIGGER tU_DATA_VALIDATION_RESULT AFTER UPDATE ON DATA_VALIDATION_RESULT for each row
+-- ERwin Builtin Trigger
+-- UPDATE trigger on DATA_VALIDATION_RESULT 
+DECLARE NUMROWS INTEGER;
+BEGIN
+  /* ERwin Builtin Trigger */
+  /* DATA_SOURCE  DATA_VALIDATION_RESULT on child update restrict */
+  /* ERWIN_RELATION:CHECKSUM="0000fefa", PARENT_OWNER="", PARENT_TABLE="DATA_SOURCE"
+    CHILD_OWNER="", CHILD_TABLE="DATA_VALIDATION_RESULT"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="ResultSource", FK_COLUMNS="SOURCE_ID" */
+  SELECT count(*) INTO NUMROWS
+    FROM DATA_SOURCE
+    WHERE
+      /* %JoinFKPK(:%New,DATA_SOURCE," = "," AND") */
+      :new.SOURCE_ID = DATA_SOURCE.SOURCE_ID;
+  IF (
+    /* %NotnullFK(:%New," IS NOT NULL AND") */
+    
+    NUMROWS = 0
+  )
+  THEN
+    raise_application_error(
+      -20007,
+      'Cannot update DATA_VALIDATION_RESULT because DATA_SOURCE does not exist.'
+    );
+  END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+
+CREATE  TRIGGER tI_EXECUTION_RECORD BEFORE INSERT ON EXECUTION_RECORD for each row
+-- ERwin Builtin Trigger
+-- INSERT trigger on EXECUTION_RECORD 
+DECLARE NUMROWS INTEGER;
+BEGIN
+    /* ERwin Builtin Trigger */
+    /* PROMO_PLAN  EXECUTION_RECORD on child insert restrict */
+    /* ERWIN_RELATION:CHECKSUM="0000f9f7", PARENT_OWNER="", PARENT_TABLE="PROMO_PLAN"
+    CHILD_OWNER="", CHILD_TABLE="EXECUTION_RECORD"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="RecordPlan", FK_COLUMNS="PLAN_ID" */
+    SELECT count(*) INTO NUMROWS
+      FROM PROMO_PLAN
+      WHERE
+        /* %JoinFKPK(:%New,PROMO_PLAN," = "," AND") */
+        :new.PLAN_ID = PROMO_PLAN.PLAN_ID;
+    IF (
+      /* %NotnullFK(:%New," IS NOT NULL AND") */
+      
+      NUMROWS = 0
+    )
+    THEN
+      raise_application_error(
+        -20002,
+        'Cannot insert EXECUTION_RECORD because PROMO_PLAN does not exist.'
+      );
+    END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+CREATE  TRIGGER tU_EXECUTION_RECORD AFTER UPDATE ON EXECUTION_RECORD for each row
+-- ERwin Builtin Trigger
+-- UPDATE trigger on EXECUTION_RECORD 
+DECLARE NUMROWS INTEGER;
+BEGIN
+  /* ERwin Builtin Trigger */
+  /* PROMO_PLAN  EXECUTION_RECORD on child update restrict */
+  /* ERWIN_RELATION:CHECKSUM="0000f636", PARENT_OWNER="", PARENT_TABLE="PROMO_PLAN"
+    CHILD_OWNER="", CHILD_TABLE="EXECUTION_RECORD"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="RecordPlan", FK_COLUMNS="PLAN_ID" */
+  SELECT count(*) INTO NUMROWS
+    FROM PROMO_PLAN
+    WHERE
+      /* %JoinFKPK(:%New,PROMO_PLAN," = "," AND") */
+      :new.PLAN_ID = PROMO_PLAN.PLAN_ID;
+  IF (
+    /* %NotnullFK(:%New," IS NOT NULL AND") */
+    
+    NUMROWS = 0
+  )
+  THEN
+    raise_application_error(
+      -20007,
+      'Cannot update EXECUTION_RECORD because PROMO_PLAN does not exist.'
+    );
+  END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+
+CREATE  TRIGGER tI_PROMO_PLAN BEFORE INSERT ON PROMO_PLAN for each row
+-- ERwin Builtin Trigger
+-- INSERT trigger on PROMO_PLAN 
+DECLARE NUMROWS INTEGER;
+BEGIN
+    /* ERwin Builtin Trigger */
+    /* BUSINESS  PROMO_PLAN on child insert restrict */
+    /* ERWIN_RELATION:CHECKSUM="00031334", PARENT_OWNER="", PARENT_TABLE="BUSINESS"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_PLAN"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="PlanBusiness", FK_COLUMNS="BUSINESS_ID" */
+    SELECT count(*) INTO NUMROWS
+      FROM BUSINESS
+      WHERE
+        /* %JoinFKPK(:%New,BUSINESS," = "," AND") */
+        :new.BUSINESS_ID = BUSINESS.BUSINESS_ID;
+    IF (
+      /* %NotnullFK(:%New," IS NOT NULL AND") */
+      
+      NUMROWS = 0
+    )
+    THEN
+      raise_application_error(
+        -20002,
+        'Cannot insert PROMO_PLAN because BUSINESS does not exist.'
+      );
+    END IF;
+
+    /* ERwin Builtin Trigger */
+    /* PROMO_SUGGESTION  PROMO_PLAN on child insert set null */
+    /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="PROMO_SUGGESTION"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_PLAN"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="PlanSuggestion", FK_COLUMNS="SUGGESTION_ID" */
+    UPDATE PROMO_PLAN
+      SET
+        /* %SetFK(PROMO_PLAN,NULL) */
+        PROMO_PLAN.SUGGESTION_ID = NULL
+      WHERE
+        NOT EXISTS (
+          SELECT * FROM PROMO_SUGGESTION
+            WHERE
+              /* %JoinFKPK(:%New,PROMO_SUGGESTION," = "," AND") */
+              :new.SUGGESTION_ID = PROMO_SUGGESTION.SUGGESTION_ID
+        ) 
+        /* %JoinPKPK(PROMO_PLAN,:%New," = "," AND") */
+         and PROMO_PLAN.PLAN_ID = :new.PLAN_ID;
+
+    /* ERwin Builtin Trigger */
+    /* REGION  PROMO_PLAN on child insert restrict */
+    /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="REGION"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_PLAN"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="PlanRegion", FK_COLUMNS="REGION_CODE" */
+    SELECT count(*) INTO NUMROWS
+      FROM REGION
+      WHERE
+        /* %JoinFKPK(:%New,REGION," = "," AND") */
+        :new.REGION_CODE = REGION.REGION_CODE;
+    IF (
+      /* %NotnullFK(:%New," IS NOT NULL AND") */
+      
+      NUMROWS = 0
+    )
+    THEN
+      raise_application_error(
+        -20002,
+        'Cannot insert PROMO_PLAN because REGION does not exist.'
+      );
+    END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+CREATE  TRIGGER  tD_PROMO_PLAN AFTER DELETE ON PROMO_PLAN for each row
+-- ERwin Builtin Trigger
+-- DELETE trigger on PROMO_PLAN 
+DECLARE NUMROWS INTEGER;
+BEGIN
+    /* ERwin Builtin Trigger */
+    /* PROMO_PLAN  EXECUTION_RECORD on parent delete cascade */
+    /* ERWIN_RELATION:CHECKSUM="0000af71", PARENT_OWNER="", PARENT_TABLE="PROMO_PLAN"
+    CHILD_OWNER="", CHILD_TABLE="EXECUTION_RECORD"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="RecordPlan", FK_COLUMNS="PLAN_ID" */
+    DELETE FROM EXECUTION_RECORD
+      WHERE
+        /*  %JoinFKPK(EXECUTION_RECORD,:%Old," = "," AND") */
+        EXECUTION_RECORD.PLAN_ID = :old.PLAN_ID;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+CREATE  TRIGGER tU_PROMO_PLAN AFTER UPDATE ON PROMO_PLAN for each row
+-- ERwin Builtin Trigger
+-- UPDATE trigger on PROMO_PLAN 
+DECLARE NUMROWS INTEGER;
+BEGIN
+  /* ERwin Builtin Trigger */
+  /* PROMO_PLAN  EXECUTION_RECORD on parent update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00044df4", PARENT_OWNER="", PARENT_TABLE="PROMO_PLAN"
+    CHILD_OWNER="", CHILD_TABLE="EXECUTION_RECORD"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="RecordPlan", FK_COLUMNS="PLAN_ID" */
+  IF
+    /* %JoinPKPK(:%Old,:%New," <> "," OR ") */
+    :old.PLAN_ID <> :new.PLAN_ID
+  THEN
+    SELECT count(*) INTO NUMROWS
+      FROM EXECUTION_RECORD
+      WHERE
+        /*  %JoinFKPK(EXECUTION_RECORD,:%Old," = "," AND") */
+        EXECUTION_RECORD.PLAN_ID = :old.PLAN_ID;
+    IF (NUMROWS > 0)
+    THEN 
+      raise_application_error(
+        -20005,
+        'Cannot update PROMO_PLAN because EXECUTION_RECORD exists.'
+      );
+    END IF;
+  END IF;
+
+  /* ERwin Builtin Trigger */
+  /* BUSINESS  PROMO_PLAN on child update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="BUSINESS"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_PLAN"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="PlanBusiness", FK_COLUMNS="BUSINESS_ID" */
+  SELECT count(*) INTO NUMROWS
+    FROM BUSINESS
+    WHERE
+      /* %JoinFKPK(:%New,BUSINESS," = "," AND") */
+      :new.BUSINESS_ID = BUSINESS.BUSINESS_ID;
+  IF (
+    /* %NotnullFK(:%New," IS NOT NULL AND") */
+    
+    NUMROWS = 0
+  )
+  THEN
+    raise_application_error(
+      -20007,
+      'Cannot update PROMO_PLAN because BUSINESS does not exist.'
+    );
+  END IF;
+
+  /* ERwin Builtin Trigger */
+  /* PROMO_SUGGESTION  PROMO_PLAN on child update no action */
+  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="PROMO_SUGGESTION"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_PLAN"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="PlanSuggestion", FK_COLUMNS="SUGGESTION_ID" */
+  SELECT count(*) INTO NUMROWS
+    FROM PROMO_SUGGESTION
+    WHERE
+      /* %JoinFKPK(:%New,PROMO_SUGGESTION," = "," AND") */
+      :new.SUGGESTION_ID = PROMO_SUGGESTION.SUGGESTION_ID;
+  IF (
+    /* %NotnullFK(:%New," IS NOT NULL AND") */
+    :new.SUGGESTION_ID IS NOT NULL AND
+    NUMROWS = 0
+  )
+  THEN
+    raise_application_error(
+      -20007,
+      'Cannot update PROMO_PLAN because PROMO_SUGGESTION does not exist.'
+    );
+  END IF;
+
+  /* ERwin Builtin Trigger */
+  /* REGION  PROMO_PLAN on child update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="REGION"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_PLAN"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="PlanRegion", FK_COLUMNS="REGION_CODE" */
+  SELECT count(*) INTO NUMROWS
+    FROM REGION
+    WHERE
+      /* %JoinFKPK(:%New,REGION," = "," AND") */
+      :new.REGION_CODE = REGION.REGION_CODE;
+  IF (
+    /* %NotnullFK(:%New," IS NOT NULL AND") */
+    
+    NUMROWS = 0
+  )
+  THEN
+    raise_application_error(
+      -20007,
+      'Cannot update PROMO_PLAN because REGION does not exist.'
+    );
+  END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+
+CREATE  TRIGGER tI_PROMO_SUGGESTION BEFORE INSERT ON PROMO_SUGGESTION for each row
+-- ERwin Builtin Trigger
+-- INSERT trigger on PROMO_SUGGESTION 
+DECLARE NUMROWS INTEGER;
+BEGIN
+    /* ERwin Builtin Trigger */
+    /* RECOMMENDATION_CRITERIA  PROMO_SUGGESTION on child insert restrict */
+    /* ERWIN_RELATION:CHECKSUM="00033add", PARENT_OWNER="", PARENT_TABLE="RECOMMENDATION_CRITERIA"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_SUGGESTION"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="SuggestionCriteria", FK_COLUMNS="CRITERIA_ID" */
+    SELECT count(*) INTO NUMROWS
+      FROM RECOMMENDATION_CRITERIA
+      WHERE
+        /* %JoinFKPK(:%New,RECOMMENDATION_CRITERIA," = "," AND") */
+        :new.CRITERIA_ID = RECOMMENDATION_CRITERIA.CRITERIA_ID;
+    IF (
+      /* %NotnullFK(:%New," IS NOT NULL AND") */
+      
+      NUMROWS = 0
+    )
+    THEN
+      raise_application_error(
+        -20002,
+        'Cannot insert PROMO_SUGGESTION because RECOMMENDATION_CRITERIA does not exist.'
+      );
+    END IF;
+
+    /* ERwin Builtin Trigger */
+    /* REGION  PROMO_SUGGESTION on child insert restrict */
+    /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="REGION"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_SUGGESTION"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="SuggestionRegion", FK_COLUMNS="REGION_CODE" */
+    SELECT count(*) INTO NUMROWS
+      FROM REGION
+      WHERE
+        /* %JoinFKPK(:%New,REGION," = "," AND") */
+        :new.REGION_CODE = REGION.REGION_CODE;
+    IF (
+      /* %NotnullFK(:%New," IS NOT NULL AND") */
+      
+      NUMROWS = 0
+    )
+    THEN
+      raise_application_error(
+        -20002,
+        'Cannot insert PROMO_SUGGESTION because REGION does not exist.'
+      );
+    END IF;
+
+    /* ERwin Builtin Trigger */
+    /* DATA_SOURCE  PROMO_SUGGESTION on child insert restrict */
+    /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="DATA_SOURCE"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_SUGGESTION"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="SuggestionSource", FK_COLUMNS="SOURCE_ID" */
+    SELECT count(*) INTO NUMROWS
+      FROM DATA_SOURCE
+      WHERE
+        /* %JoinFKPK(:%New,DATA_SOURCE," = "," AND") */
+        :new.SOURCE_ID = DATA_SOURCE.SOURCE_ID;
+    IF (
+      /* %NotnullFK(:%New," IS NOT NULL AND") */
+      
+      NUMROWS = 0
+    )
+    THEN
+      raise_application_error(
+        -20002,
+        'Cannot insert PROMO_SUGGESTION because DATA_SOURCE does not exist.'
+      );
+    END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+CREATE  TRIGGER  tD_PROMO_SUGGESTION AFTER DELETE ON PROMO_SUGGESTION for each row
+-- ERwin Builtin Trigger
+-- DELETE trigger on PROMO_SUGGESTION 
+DECLARE NUMROWS INTEGER;
+BEGIN
+    /* ERwin Builtin Trigger */
+    /* PROMO_SUGGESTION  PROMO_PLAN on parent delete set null */
+    /* ERWIN_RELATION:CHECKSUM="0001ebbd", PARENT_OWNER="", PARENT_TABLE="PROMO_SUGGESTION"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_PLAN"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="PlanSuggestion", FK_COLUMNS="SUGGESTION_ID" */
+    UPDATE PROMO_PLAN
+      SET
+        /* %SetFK(PROMO_PLAN,NULL) */
+        PROMO_PLAN.SUGGESTION_ID = NULL
+      WHERE
+        /* %JoinFKPK(PROMO_PLAN,:%Old," = "," AND") */
+        PROMO_PLAN.SUGGESTION_ID = :old.SUGGESTION_ID;
+
+    /* ERwin Builtin Trigger */
+    /* PROMO_SUGGESTION  PROMO_SUGGESTION_ITEM on parent delete restrict */
+    /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="PROMO_SUGGESTION"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_SUGGESTION_ITEM"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="ItemSuggestion", FK_COLUMNS="SUGGESTION_ID" */
+    SELECT count(*) INTO NUMROWS
+      FROM PROMO_SUGGESTION_ITEM
+      WHERE
+        /*  %JoinFKPK(PROMO_SUGGESTION_ITEM,:%Old," = "," AND") */
+        PROMO_SUGGESTION_ITEM.SUGGESTION_ID = :old.SUGGESTION_ID;
+    IF (NUMROWS > 0)
+    THEN
+      raise_application_error(
+        -20001,
+        'Cannot delete PROMO_SUGGESTION because PROMO_SUGGESTION_ITEM exists.'
+      );
+    END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+CREATE  TRIGGER tU_PROMO_SUGGESTION AFTER UPDATE ON PROMO_SUGGESTION for each row
+-- ERwin Builtin Trigger
+-- UPDATE trigger on PROMO_SUGGESTION 
+DECLARE NUMROWS INTEGER;
+BEGIN
+  /* PROMO_SUGGESTION  PROMO_PLAN on parent update set null */
+  /* ERWIN_RELATION:CHECKSUM="0005b55c", PARENT_OWNER="", PARENT_TABLE="PROMO_SUGGESTION"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_PLAN"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="PlanSuggestion", FK_COLUMNS="SUGGESTION_ID" */
+  IF
+    /* %JoinPKPK(:%Old,:%New," <> "," OR ") */
+    :old.SUGGESTION_ID <> :new.SUGGESTION_ID
+  THEN
+    UPDATE PROMO_PLAN
+      SET
+        /* %SetFK(PROMO_PLAN,NULL) */
+        PROMO_PLAN.SUGGESTION_ID = NULL
+      WHERE
+        /* %JoinFKPK(PROMO_PLAN,:%Old," = ",",") */
+        PROMO_PLAN.SUGGESTION_ID = :old.SUGGESTION_ID;
+  END IF;
+
+  /* ERwin Builtin Trigger */
+  /* PROMO_SUGGESTION  PROMO_SUGGESTION_ITEM on parent update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="PROMO_SUGGESTION"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_SUGGESTION_ITEM"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="ItemSuggestion", FK_COLUMNS="SUGGESTION_ID" */
+  IF
+    /* %JoinPKPK(:%Old,:%New," <> "," OR ") */
+    :old.SUGGESTION_ID <> :new.SUGGESTION_ID
+  THEN
+    SELECT count(*) INTO NUMROWS
+      FROM PROMO_SUGGESTION_ITEM
+      WHERE
+        /*  %JoinFKPK(PROMO_SUGGESTION_ITEM,:%Old," = "," AND") */
+        PROMO_SUGGESTION_ITEM.SUGGESTION_ID = :old.SUGGESTION_ID;
+    IF (NUMROWS > 0)
+    THEN 
+      raise_application_error(
+        -20005,
+        'Cannot update PROMO_SUGGESTION because PROMO_SUGGESTION_ITEM exists.'
+      );
+    END IF;
+  END IF;
+
+  /* ERwin Builtin Trigger */
+  /* RECOMMENDATION_CRITERIA  PROMO_SUGGESTION on child update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="RECOMMENDATION_CRITERIA"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_SUGGESTION"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="SuggestionCriteria", FK_COLUMNS="CRITERIA_ID" */
+  SELECT count(*) INTO NUMROWS
+    FROM RECOMMENDATION_CRITERIA
+    WHERE
+      /* %JoinFKPK(:%New,RECOMMENDATION_CRITERIA," = "," AND") */
+      :new.CRITERIA_ID = RECOMMENDATION_CRITERIA.CRITERIA_ID;
+  IF (
+    /* %NotnullFK(:%New," IS NOT NULL AND") */
+    
+    NUMROWS = 0
+  )
+  THEN
+    raise_application_error(
+      -20007,
+      'Cannot update PROMO_SUGGESTION because RECOMMENDATION_CRITERIA does not exist.'
+    );
+  END IF;
+
+  /* ERwin Builtin Trigger */
+  /* REGION  PROMO_SUGGESTION on child update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="REGION"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_SUGGESTION"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="SuggestionRegion", FK_COLUMNS="REGION_CODE" */
+  SELECT count(*) INTO NUMROWS
+    FROM REGION
+    WHERE
+      /* %JoinFKPK(:%New,REGION," = "," AND") */
+      :new.REGION_CODE = REGION.REGION_CODE;
+  IF (
+    /* %NotnullFK(:%New," IS NOT NULL AND") */
+    
+    NUMROWS = 0
+  )
+  THEN
+    raise_application_error(
+      -20007,
+      'Cannot update PROMO_SUGGESTION because REGION does not exist.'
+    );
+  END IF;
+
+  /* ERwin Builtin Trigger */
+  /* DATA_SOURCE  PROMO_SUGGESTION on child update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="DATA_SOURCE"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_SUGGESTION"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="SuggestionSource", FK_COLUMNS="SOURCE_ID" */
+  SELECT count(*) INTO NUMROWS
+    FROM DATA_SOURCE
+    WHERE
+      /* %JoinFKPK(:%New,DATA_SOURCE," = "," AND") */
+      :new.SOURCE_ID = DATA_SOURCE.SOURCE_ID;
+  IF (
+    /* %NotnullFK(:%New," IS NOT NULL AND") */
+    
+    NUMROWS = 0
+  )
+  THEN
+    raise_application_error(
+      -20007,
+      'Cannot update PROMO_SUGGESTION because DATA_SOURCE does not exist.'
+    );
+  END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+
+CREATE  TRIGGER tI_PROMO_SUGGESTION_ITEM BEFORE INSERT ON PROMO_SUGGESTION_ITEM for each row
+-- ERwin Builtin Trigger
+-- INSERT trigger on PROMO_SUGGESTION_ITEM 
+DECLARE NUMROWS INTEGER;
+BEGIN
+    /* ERwin Builtin Trigger */
+    /* PROMO_SUGGESTION  PROMO_SUGGESTION_ITEM on child insert restrict */
+    /* ERWIN_RELATION:CHECKSUM="000116b2", PARENT_OWNER="", PARENT_TABLE="PROMO_SUGGESTION"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_SUGGESTION_ITEM"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="ItemSuggestion", FK_COLUMNS="SUGGESTION_ID" */
+    SELECT count(*) INTO NUMROWS
+      FROM PROMO_SUGGESTION
+      WHERE
+        /* %JoinFKPK(:%New,PROMO_SUGGESTION," = "," AND") */
+        :new.SUGGESTION_ID = PROMO_SUGGESTION.SUGGESTION_ID;
+    IF (
+      /* %NotnullFK(:%New," IS NOT NULL AND") */
+      
+      NUMROWS = 0
+    )
+    THEN
+      raise_application_error(
+        -20002,
+        'Cannot insert PROMO_SUGGESTION_ITEM because PROMO_SUGGESTION does not exist.'
+      );
+    END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+CREATE  TRIGGER tU_PROMO_SUGGESTION_ITEM AFTER UPDATE ON PROMO_SUGGESTION_ITEM for each row
+-- ERwin Builtin Trigger
+-- UPDATE trigger on PROMO_SUGGESTION_ITEM 
+DECLARE NUMROWS INTEGER;
+BEGIN
+  /* ERwin Builtin Trigger */
+  /* PROMO_SUGGESTION  PROMO_SUGGESTION_ITEM on child update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00011535", PARENT_OWNER="", PARENT_TABLE="PROMO_SUGGESTION"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_SUGGESTION_ITEM"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="ItemSuggestion", FK_COLUMNS="SUGGESTION_ID" */
+  SELECT count(*) INTO NUMROWS
+    FROM PROMO_SUGGESTION
+    WHERE
+      /* %JoinFKPK(:%New,PROMO_SUGGESTION," = "," AND") */
+      :new.SUGGESTION_ID = PROMO_SUGGESTION.SUGGESTION_ID;
+  IF (
+    /* %NotnullFK(:%New," IS NOT NULL AND") */
+    
+    NUMROWS = 0
+  )
+  THEN
+    raise_application_error(
+      -20007,
+      'Cannot update PROMO_SUGGESTION_ITEM because PROMO_SUGGESTION does not exist.'
+    );
+  END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+
+CREATE  TRIGGER  tD_RECOMMENDATION_CRITERIA AFTER DELETE ON RECOMMENDATION_CRITERIA for each row
+-- ERwin Builtin Trigger
+-- DELETE trigger on RECOMMENDATION_CRITERIA 
+DECLARE NUMROWS INTEGER;
+BEGIN
+    /* ERwin Builtin Trigger */
+    /* RECOMMENDATION_CRITERIA  PROMO_SUGGESTION on parent delete restrict */
+    /* ERWIN_RELATION:CHECKSUM="0000ff3a", PARENT_OWNER="", PARENT_TABLE="RECOMMENDATION_CRITERIA"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_SUGGESTION"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="SuggestionCriteria", FK_COLUMNS="CRITERIA_ID" */
+    SELECT count(*) INTO NUMROWS
+      FROM PROMO_SUGGESTION
+      WHERE
+        /*  %JoinFKPK(PROMO_SUGGESTION,:%Old," = "," AND") */
+        PROMO_SUGGESTION.CRITERIA_ID = :old.CRITERIA_ID;
+    IF (NUMROWS > 0)
+    THEN
+      raise_application_error(
+        -20001,
+        'Cannot delete RECOMMENDATION_CRITERIA because PROMO_SUGGESTION exists.'
+      );
+    END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+CREATE  TRIGGER tU_RECOMMENDATION_CRITERIA AFTER UPDATE ON RECOMMENDATION_CRITERIA for each row
+-- ERwin Builtin Trigger
+-- UPDATE trigger on RECOMMENDATION_CRITERIA 
+DECLARE NUMROWS INTEGER;
+BEGIN
+  /* ERwin Builtin Trigger */
+  /* RECOMMENDATION_CRITERIA  PROMO_SUGGESTION on parent update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00012250", PARENT_OWNER="", PARENT_TABLE="RECOMMENDATION_CRITERIA"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_SUGGESTION"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="SuggestionCriteria", FK_COLUMNS="CRITERIA_ID" */
+  IF
+    /* %JoinPKPK(:%Old,:%New," <> "," OR ") */
+    :old.CRITERIA_ID <> :new.CRITERIA_ID
+  THEN
+    SELECT count(*) INTO NUMROWS
+      FROM PROMO_SUGGESTION
+      WHERE
+        /*  %JoinFKPK(PROMO_SUGGESTION,:%Old," = "," AND") */
+        PROMO_SUGGESTION.CRITERIA_ID = :old.CRITERIA_ID;
+    IF (NUMROWS > 0)
+    THEN 
+      raise_application_error(
+        -20005,
+        'Cannot update RECOMMENDATION_CRITERIA because PROMO_SUGGESTION exists.'
+      );
+    END IF;
+  END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+
+CREATE  TRIGGER  tD_REGION AFTER DELETE ON REGION for each row
+-- ERwin Builtin Trigger
+-- DELETE trigger on REGION 
+DECLARE NUMROWS INTEGER;
+BEGIN
+    /* ERwin Builtin Trigger */
+    /* REGION  BUSINESS on parent delete restrict */
+    /* ERWIN_RELATION:CHECKSUM="0004fd22", PARENT_OWNER="", PARENT_TABLE="REGION"
+    CHILD_OWNER="", CHILD_TABLE="BUSINESS"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="BusinessRegion", FK_COLUMNS="REGION_CODE" */
+    SELECT count(*) INTO NUMROWS
+      FROM BUSINESS
+      WHERE
+        /*  %JoinFKPK(BUSINESS,:%Old," = "," AND") */
+        BUSINESS.REGION_CODE = :old.REGION_CODE;
+    IF (NUMROWS > 0)
+    THEN
+      raise_application_error(
+        -20001,
+        'Cannot delete REGION because BUSINESS exists.'
+      );
+    END IF;
+
+    /* ERwin Builtin Trigger */
+    /* REGION  PROMO_SUGGESTION on parent delete restrict */
+    /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="REGION"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_SUGGESTION"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="SuggestionRegion", FK_COLUMNS="REGION_CODE" */
+    SELECT count(*) INTO NUMROWS
+      FROM PROMO_SUGGESTION
+      WHERE
+        /*  %JoinFKPK(PROMO_SUGGESTION,:%Old," = "," AND") */
+        PROMO_SUGGESTION.REGION_CODE = :old.REGION_CODE;
+    IF (NUMROWS > 0)
+    THEN
+      raise_application_error(
+        -20001,
+        'Cannot delete REGION because PROMO_SUGGESTION exists.'
+      );
+    END IF;
+
+    /* ERwin Builtin Trigger */
+    /* REGION  PROMO_PLAN on parent delete restrict */
+    /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="REGION"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_PLAN"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="PlanRegion", FK_COLUMNS="REGION_CODE" */
+    SELECT count(*) INTO NUMROWS
+      FROM PROMO_PLAN
+      WHERE
+        /*  %JoinFKPK(PROMO_PLAN,:%Old," = "," AND") */
+        PROMO_PLAN.REGION_CODE = :old.REGION_CODE;
+    IF (NUMROWS > 0)
+    THEN
+      raise_application_error(
+        -20001,
+        'Cannot delete REGION because PROMO_PLAN exists.'
+      );
+    END IF;
+
+    /* ERwin Builtin Trigger */
+    /* REGION  REGION_MONTHLY_STAT on parent delete restrict */
+    /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="REGION"
+    CHILD_OWNER="", CHILD_TABLE="REGION_MONTHLY_STAT"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="StatRegion", FK_COLUMNS="REGION_CODE" */
+    SELECT count(*) INTO NUMROWS
+      FROM REGION_MONTHLY_STAT
+      WHERE
+        /*  %JoinFKPK(REGION_MONTHLY_STAT,:%Old," = "," AND") */
+        REGION_MONTHLY_STAT.REGION_CODE = :old.REGION_CODE;
+    IF (NUMROWS > 0)
+    THEN
+      raise_application_error(
+        -20001,
+        'Cannot delete REGION because REGION_MONTHLY_STAT exists.'
+      );
+    END IF;
+
+    /* ERwin Builtin Trigger */
+    /* REGION  REGION_CONSUMPTION_STAT on parent delete restrict */
+    /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="REGION"
+    CHILD_OWNER="", CHILD_TABLE="REGION_CONSUMPTION_STAT"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="ConsumptionRegion", FK_COLUMNS="REGION_CODE" */
+    SELECT count(*) INTO NUMROWS
+      FROM REGION_CONSUMPTION_STAT
+      WHERE
+        /*  %JoinFKPK(REGION_CONSUMPTION_STAT,:%Old," = "," AND") */
+        REGION_CONSUMPTION_STAT.REGION_CODE = :old.REGION_CODE;
+    IF (NUMROWS > 0)
+    THEN
+      raise_application_error(
+        -20001,
+        'Cannot delete REGION because REGION_CONSUMPTION_STAT exists.'
+      );
+    END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+CREATE  TRIGGER tU_REGION AFTER UPDATE ON REGION for each row
+-- ERwin Builtin Trigger
+-- UPDATE trigger on REGION 
+DECLARE NUMROWS INTEGER;
+BEGIN
+  /* ERwin Builtin Trigger */
+  /* REGION  BUSINESS on parent update restrict */
+  /* ERWIN_RELATION:CHECKSUM="0005e80e", PARENT_OWNER="", PARENT_TABLE="REGION"
+    CHILD_OWNER="", CHILD_TABLE="BUSINESS"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="BusinessRegion", FK_COLUMNS="REGION_CODE" */
+  IF
+    /* %JoinPKPK(:%Old,:%New," <> "," OR ") */
+    :old.REGION_CODE <> :new.REGION_CODE
+  THEN
+    SELECT count(*) INTO NUMROWS
+      FROM BUSINESS
+      WHERE
+        /*  %JoinFKPK(BUSINESS,:%Old," = "," AND") */
+        BUSINESS.REGION_CODE = :old.REGION_CODE;
+    IF (NUMROWS > 0)
+    THEN 
+      raise_application_error(
+        -20005,
+        'Cannot update REGION because BUSINESS exists.'
+      );
+    END IF;
+  END IF;
+
+  /* ERwin Builtin Trigger */
+  /* REGION  PROMO_SUGGESTION on parent update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="REGION"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_SUGGESTION"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="SuggestionRegion", FK_COLUMNS="REGION_CODE" */
+  IF
+    /* %JoinPKPK(:%Old,:%New," <> "," OR ") */
+    :old.REGION_CODE <> :new.REGION_CODE
+  THEN
+    SELECT count(*) INTO NUMROWS
+      FROM PROMO_SUGGESTION
+      WHERE
+        /*  %JoinFKPK(PROMO_SUGGESTION,:%Old," = "," AND") */
+        PROMO_SUGGESTION.REGION_CODE = :old.REGION_CODE;
+    IF (NUMROWS > 0)
+    THEN 
+      raise_application_error(
+        -20005,
+        'Cannot update REGION because PROMO_SUGGESTION exists.'
+      );
+    END IF;
+  END IF;
+
+  /* ERwin Builtin Trigger */
+  /* REGION  PROMO_PLAN on parent update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="REGION"
+    CHILD_OWNER="", CHILD_TABLE="PROMO_PLAN"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="PlanRegion", FK_COLUMNS="REGION_CODE" */
+  IF
+    /* %JoinPKPK(:%Old,:%New," <> "," OR ") */
+    :old.REGION_CODE <> :new.REGION_CODE
+  THEN
+    SELECT count(*) INTO NUMROWS
+      FROM PROMO_PLAN
+      WHERE
+        /*  %JoinFKPK(PROMO_PLAN,:%Old," = "," AND") */
+        PROMO_PLAN.REGION_CODE = :old.REGION_CODE;
+    IF (NUMROWS > 0)
+    THEN 
+      raise_application_error(
+        -20005,
+        'Cannot update REGION because PROMO_PLAN exists.'
+      );
+    END IF;
+  END IF;
+
+  /* ERwin Builtin Trigger */
+  /* REGION  REGION_MONTHLY_STAT on parent update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="REGION"
+    CHILD_OWNER="", CHILD_TABLE="REGION_MONTHLY_STAT"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="StatRegion", FK_COLUMNS="REGION_CODE" */
+  IF
+    /* %JoinPKPK(:%Old,:%New," <> "," OR ") */
+    :old.REGION_CODE <> :new.REGION_CODE
+  THEN
+    SELECT count(*) INTO NUMROWS
+      FROM REGION_MONTHLY_STAT
+      WHERE
+        /*  %JoinFKPK(REGION_MONTHLY_STAT,:%Old," = "," AND") */
+        REGION_MONTHLY_STAT.REGION_CODE = :old.REGION_CODE;
+    IF (NUMROWS > 0)
+    THEN 
+      raise_application_error(
+        -20005,
+        'Cannot update REGION because REGION_MONTHLY_STAT exists.'
+      );
+    END IF;
+  END IF;
+
+  /* ERwin Builtin Trigger */
+  /* REGION  REGION_CONSUMPTION_STAT on parent update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="REGION"
+    CHILD_OWNER="", CHILD_TABLE="REGION_CONSUMPTION_STAT"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="ConsumptionRegion", FK_COLUMNS="REGION_CODE" */
+  IF
+    /* %JoinPKPK(:%Old,:%New," <> "," OR ") */
+    :old.REGION_CODE <> :new.REGION_CODE
+  THEN
+    SELECT count(*) INTO NUMROWS
+      FROM REGION_CONSUMPTION_STAT
+      WHERE
+        /*  %JoinFKPK(REGION_CONSUMPTION_STAT,:%Old," = "," AND") */
+        REGION_CONSUMPTION_STAT.REGION_CODE = :old.REGION_CODE;
+    IF (NUMROWS > 0)
+    THEN 
+      raise_application_error(
+        -20005,
+        'Cannot update REGION because REGION_CONSUMPTION_STAT exists.'
+      );
+    END IF;
+  END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+
+CREATE  TRIGGER tI_REGION_CONSUMPTION_STAT BEFORE INSERT ON REGION_CONSUMPTION_STAT for each row
+-- ERwin Builtin Trigger
+-- INSERT trigger on REGION_CONSUMPTION_STAT 
+DECLARE NUMROWS INTEGER;
+BEGIN
+    /* ERwin Builtin Trigger */
+    /* DATA_SOURCE  REGION_CONSUMPTION_STAT on child insert restrict */
+    /* ERWIN_RELATION:CHECKSUM="000222d8", PARENT_OWNER="", PARENT_TABLE="DATA_SOURCE"
+    CHILD_OWNER="", CHILD_TABLE="REGION_CONSUMPTION_STAT"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="ConsumptionSource", FK_COLUMNS="SOURCE_ID" */
+    SELECT count(*) INTO NUMROWS
+      FROM DATA_SOURCE
+      WHERE
+        /* %JoinFKPK(:%New,DATA_SOURCE," = "," AND") */
+        :new.SOURCE_ID = DATA_SOURCE.SOURCE_ID;
+    IF (
+      /* %NotnullFK(:%New," IS NOT NULL AND") */
+      
+      NUMROWS = 0
+    )
+    THEN
+      raise_application_error(
+        -20002,
+        'Cannot insert REGION_CONSUMPTION_STAT because DATA_SOURCE does not exist.'
+      );
+    END IF;
+
+    /* ERwin Builtin Trigger */
+    /* REGION  REGION_CONSUMPTION_STAT on child insert restrict */
+    /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="REGION"
+    CHILD_OWNER="", CHILD_TABLE="REGION_CONSUMPTION_STAT"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="ConsumptionRegion", FK_COLUMNS="REGION_CODE" */
+    SELECT count(*) INTO NUMROWS
+      FROM REGION
+      WHERE
+        /* %JoinFKPK(:%New,REGION," = "," AND") */
+        :new.REGION_CODE = REGION.REGION_CODE;
+    IF (
+      /* %NotnullFK(:%New," IS NOT NULL AND") */
+      
+      NUMROWS = 0
+    )
+    THEN
+      raise_application_error(
+        -20002,
+        'Cannot insert REGION_CONSUMPTION_STAT because REGION does not exist.'
+      );
+    END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+CREATE  TRIGGER tU_REGION_CONSUMPTION_STAT AFTER UPDATE ON REGION_CONSUMPTION_STAT for each row
+-- ERwin Builtin Trigger
+-- UPDATE trigger on REGION_CONSUMPTION_STAT 
+DECLARE NUMROWS INTEGER;
+BEGIN
+  /* ERwin Builtin Trigger */
+  /* DATA_SOURCE  REGION_CONSUMPTION_STAT on child update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00022252", PARENT_OWNER="", PARENT_TABLE="DATA_SOURCE"
+    CHILD_OWNER="", CHILD_TABLE="REGION_CONSUMPTION_STAT"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="ConsumptionSource", FK_COLUMNS="SOURCE_ID" */
+  SELECT count(*) INTO NUMROWS
+    FROM DATA_SOURCE
+    WHERE
+      /* %JoinFKPK(:%New,DATA_SOURCE," = "," AND") */
+      :new.SOURCE_ID = DATA_SOURCE.SOURCE_ID;
+  IF (
+    /* %NotnullFK(:%New," IS NOT NULL AND") */
+    
+    NUMROWS = 0
+  )
+  THEN
+    raise_application_error(
+      -20007,
+      'Cannot update REGION_CONSUMPTION_STAT because DATA_SOURCE does not exist.'
+    );
+  END IF;
+
+  /* ERwin Builtin Trigger */
+  /* REGION  REGION_CONSUMPTION_STAT on child update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="REGION"
+    CHILD_OWNER="", CHILD_TABLE="REGION_CONSUMPTION_STAT"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="ConsumptionRegion", FK_COLUMNS="REGION_CODE" */
+  SELECT count(*) INTO NUMROWS
+    FROM REGION
+    WHERE
+      /* %JoinFKPK(:%New,REGION," = "," AND") */
+      :new.REGION_CODE = REGION.REGION_CODE;
+  IF (
+    /* %NotnullFK(:%New," IS NOT NULL AND") */
+    
+    NUMROWS = 0
+  )
+  THEN
+    raise_application_error(
+      -20007,
+      'Cannot update REGION_CONSUMPTION_STAT because REGION does not exist.'
+    );
+  END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+
+CREATE  TRIGGER tI_REGION_MONTHLY_STAT BEFORE INSERT ON REGION_MONTHLY_STAT for each row
+-- ERwin Builtin Trigger
+-- INSERT trigger on REGION_MONTHLY_STAT 
+DECLARE NUMROWS INTEGER;
+BEGIN
+    /* ERwin Builtin Trigger */
+    /* DATA_SOURCE  REGION_MONTHLY_STAT on child insert restrict */
+    /* ERWIN_RELATION:CHECKSUM="00020ddd", PARENT_OWNER="", PARENT_TABLE="DATA_SOURCE"
+    CHILD_OWNER="", CHILD_TABLE="REGION_MONTHLY_STAT"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="StatSource", FK_COLUMNS="SOURCE_ID" */
+    SELECT count(*) INTO NUMROWS
+      FROM DATA_SOURCE
+      WHERE
+        /* %JoinFKPK(:%New,DATA_SOURCE," = "," AND") */
+        :new.SOURCE_ID = DATA_SOURCE.SOURCE_ID;
+    IF (
+      /* %NotnullFK(:%New," IS NOT NULL AND") */
+      
+      NUMROWS = 0
+    )
+    THEN
+      raise_application_error(
+        -20002,
+        'Cannot insert REGION_MONTHLY_STAT because DATA_SOURCE does not exist.'
+      );
+    END IF;
+
+    /* ERwin Builtin Trigger */
+    /* REGION  REGION_MONTHLY_STAT on child insert restrict */
+    /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="REGION"
+    CHILD_OWNER="", CHILD_TABLE="REGION_MONTHLY_STAT"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="StatRegion", FK_COLUMNS="REGION_CODE" */
+    SELECT count(*) INTO NUMROWS
+      FROM REGION
+      WHERE
+        /* %JoinFKPK(:%New,REGION," = "," AND") */
+        :new.REGION_CODE = REGION.REGION_CODE;
+    IF (
+      /* %NotnullFK(:%New," IS NOT NULL AND") */
+      
+      NUMROWS = 0
+    )
+    THEN
+      raise_application_error(
+        -20002,
+        'Cannot insert REGION_MONTHLY_STAT because REGION does not exist.'
+      );
+    END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+CREATE  TRIGGER tU_REGION_MONTHLY_STAT AFTER UPDATE ON REGION_MONTHLY_STAT for each row
+-- ERwin Builtin Trigger
+-- UPDATE trigger on REGION_MONTHLY_STAT 
+DECLARE NUMROWS INTEGER;
+BEGIN
+  /* ERwin Builtin Trigger */
+  /* DATA_SOURCE  REGION_MONTHLY_STAT on child update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00020f17", PARENT_OWNER="", PARENT_TABLE="DATA_SOURCE"
+    CHILD_OWNER="", CHILD_TABLE="REGION_MONTHLY_STAT"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="StatSource", FK_COLUMNS="SOURCE_ID" */
+  SELECT count(*) INTO NUMROWS
+    FROM DATA_SOURCE
+    WHERE
+      /* %JoinFKPK(:%New,DATA_SOURCE," = "," AND") */
+      :new.SOURCE_ID = DATA_SOURCE.SOURCE_ID;
+  IF (
+    /* %NotnullFK(:%New," IS NOT NULL AND") */
+    
+    NUMROWS = 0
+  )
+  THEN
+    raise_application_error(
+      -20007,
+      'Cannot update REGION_MONTHLY_STAT because DATA_SOURCE does not exist.'
+    );
+  END IF;
+
+  /* ERwin Builtin Trigger */
+  /* REGION  REGION_MONTHLY_STAT on child update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="REGION"
+    CHILD_OWNER="", CHILD_TABLE="REGION_MONTHLY_STAT"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="StatRegion", FK_COLUMNS="REGION_CODE" */
+  SELECT count(*) INTO NUMROWS
+    FROM REGION
+    WHERE
+      /* %JoinFKPK(:%New,REGION," = "," AND") */
+      :new.REGION_CODE = REGION.REGION_CODE;
+  IF (
+    /* %NotnullFK(:%New," IS NOT NULL AND") */
+    
+    NUMROWS = 0
+  )
+  THEN
+    raise_application_error(
+      -20007,
+      'Cannot update REGION_MONTHLY_STAT because REGION does not exist.'
+    );
+  END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+
+CREATE  TRIGGER  tD_USERS AFTER DELETE ON USERS for each row
+-- ERwin Builtin Trigger
+-- DELETE trigger on USERS 
+DECLARE NUMROWS INTEGER;
+BEGIN
+    /* ERwin Builtin Trigger */
+    /* USERS  BUSINESS on parent delete restrict */
+    /* ERWIN_RELATION:CHECKSUM="0002d806", PARENT_OWNER="", PARENT_TABLE="USERS"
+    CHILD_OWNER="", CHILD_TABLE="BUSINESS"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="BusinessUser", FK_COLUMNS="USER_ID" */
+    SELECT count(*) INTO NUMROWS
+      FROM BUSINESS
+      WHERE
+        /*  %JoinFKPK(BUSINESS,:%Old," = "," AND") */
+        BUSINESS.USER_ID = :old.USER_ID;
+    IF (NUMROWS > 0)
+    THEN
+      raise_application_error(
+        -20001,
+        'Cannot delete USERS because BUSINESS exists.'
+      );
+    END IF;
+
+    /* ERwin Builtin Trigger */
+    /* USERS  DATA_SOURCE on parent delete restrict */
+    /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="USERS"
+    CHILD_OWNER="", CHILD_TABLE="DATA_SOURCE"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="SourceUser", FK_COLUMNS="USER_ID" */
+    SELECT count(*) INTO NUMROWS
+      FROM DATA_SOURCE
+      WHERE
+        /*  %JoinFKPK(DATA_SOURCE,:%Old," = "," AND") */
+        DATA_SOURCE.USER_ID = :old.USER_ID;
+    IF (NUMROWS > 0)
+    THEN
+      raise_application_error(
+        -20001,
+        'Cannot delete USERS because DATA_SOURCE exists.'
+      );
+    END IF;
+
+    /* ERwin Builtin Trigger */
+    /* USERS  BUSINESS_PERMISSION on parent delete restrict */
+    /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="USERS"
+    CHILD_OWNER="", CHILD_TABLE="BUSINESS_PERMISSION"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="PermissionUser", FK_COLUMNS="USER_ID" */
+    SELECT count(*) INTO NUMROWS
+      FROM BUSINESS_PERMISSION
+      WHERE
+        /*  %JoinFKPK(BUSINESS_PERMISSION,:%Old," = "," AND") */
+        BUSINESS_PERMISSION.USER_ID = :old.USER_ID;
+    IF (NUMROWS > 0)
+    THEN
+      raise_application_error(
+        -20001,
+        'Cannot delete USERS because BUSINESS_PERMISSION exists.'
+      );
+    END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+
+CREATE  TRIGGER tU_USERS AFTER UPDATE ON USERS for each row
+-- ERwin Builtin Trigger
+-- UPDATE trigger on USERS 
+DECLARE NUMROWS INTEGER;
+BEGIN
+  /* ERwin Builtin Trigger */
+  /* USERS  BUSINESS on parent update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00034441", PARENT_OWNER="", PARENT_TABLE="USERS"
+    CHILD_OWNER="", CHILD_TABLE="BUSINESS"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="BusinessUser", FK_COLUMNS="USER_ID" */
+  IF
+    /* %JoinPKPK(:%Old,:%New," <> "," OR ") */
+    :old.USER_ID <> :new.USER_ID
+  THEN
+    SELECT count(*) INTO NUMROWS
+      FROM BUSINESS
+      WHERE
+        /*  %JoinFKPK(BUSINESS,:%Old," = "," AND") */
+        BUSINESS.USER_ID = :old.USER_ID;
+    IF (NUMROWS > 0)
+    THEN 
+      raise_application_error(
+        -20005,
+        'Cannot update USERS because BUSINESS exists.'
+      );
+    END IF;
+  END IF;
+
+  /* ERwin Builtin Trigger */
+  /* USERS  DATA_SOURCE on parent update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="USERS"
+    CHILD_OWNER="", CHILD_TABLE="DATA_SOURCE"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="SourceUser", FK_COLUMNS="USER_ID" */
+  IF
+    /* %JoinPKPK(:%Old,:%New," <> "," OR ") */
+    :old.USER_ID <> :new.USER_ID
+  THEN
+    SELECT count(*) INTO NUMROWS
+      FROM DATA_SOURCE
+      WHERE
+        /*  %JoinFKPK(DATA_SOURCE,:%Old," = "," AND") */
+        DATA_SOURCE.USER_ID = :old.USER_ID;
+    IF (NUMROWS > 0)
+    THEN 
+      raise_application_error(
+        -20005,
+        'Cannot update USERS because DATA_SOURCE exists.'
+      );
+    END IF;
+  END IF;
+
+  /* ERwin Builtin Trigger */
+  /* USERS  BUSINESS_PERMISSION on parent update restrict */
+  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="USERS"
+    CHILD_OWNER="", CHILD_TABLE="BUSINESS_PERMISSION"
+    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="PermissionUser", FK_COLUMNS="USER_ID" */
+  IF
+    /* %JoinPKPK(:%Old,:%New," <> "," OR ") */
+    :old.USER_ID <> :new.USER_ID
+  THEN
+    SELECT count(*) INTO NUMROWS
+      FROM BUSINESS_PERMISSION
+      WHERE
+        /*  %JoinFKPK(BUSINESS_PERMISSION,:%Old," = "," AND") */
+        BUSINESS_PERMISSION.USER_ID = :old.USER_ID;
+    IF (NUMROWS > 0)
+    THEN 
+      raise_application_error(
+        -20005,
+        'Cannot update USERS because BUSINESS_PERMISSION exists.'
+      );
+    END IF;
+  END IF;
+
+
+-- ERwin Builtin Trigger
+END;
+/
+

@@ -133,8 +133,7 @@ CREATE TABLE PROMO_PLAN
 	TITLE                VARCHAR(100) NOT NULL ,
 	SCHEDULED_DATE       DATE NOT NULL ,
 	CHANNEL              VARCHAR(50) NOT NULL ,
-	PREPARATION_NOTE     VARCHAR(500) NULL ,
-	REGION_CODE          VARCHAR(20) NOT NULL 
+	PREPARATION_NOTE     VARCHAR(500) NULL 
 );
 
 
@@ -378,11 +377,6 @@ ALTER TABLE PROMO_PLAN
 
 ALTER TABLE PROMO_PLAN
 	ADD (CONSTRAINT PlanSuggestion FOREIGN KEY (SUGGESTION_ID) REFERENCES PROMO_SUGGESTION (SUGGESTION_ID) ON DELETE SET NULL);
-
-
-
-ALTER TABLE PROMO_PLAN
-	ADD (CONSTRAINT PlanRegion FOREIGN KEY (REGION_CODE) REFERENCES REGION (REGION_CODE));
 
 
 
@@ -1138,7 +1132,7 @@ DECLARE NUMROWS INTEGER;
 BEGIN
     /* ERwin Builtin Trigger */
     /* BUSINESS  PROMO_PLAN on child insert restrict */
-    /* ERWIN_RELATION:CHECKSUM="00031334", PARENT_OWNER="", PARENT_TABLE="BUSINESS"
+    /* ERWIN_RELATION:CHECKSUM="00020914", PARENT_OWNER="", PARENT_TABLE="BUSINESS"
     CHILD_OWNER="", CHILD_TABLE="PROMO_PLAN"
     P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
     FK_CONSTRAINT="PlanBusiness", FK_COLUMNS="BUSINESS_ID" */
@@ -1179,29 +1173,6 @@ BEGIN
         /* %JoinPKPK(PROMO_PLAN,:%New," = "," AND") */
          and PROMO_PLAN.PLAN_ID = :new.PLAN_ID;
 
-    /* ERwin Builtin Trigger */
-    /* REGION  PROMO_PLAN on child insert restrict */
-    /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="REGION"
-    CHILD_OWNER="", CHILD_TABLE="PROMO_PLAN"
-    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
-    FK_CONSTRAINT="PlanRegion", FK_COLUMNS="REGION_CODE" */
-    SELECT count(*) INTO NUMROWS
-      FROM REGION
-      WHERE
-        /* %JoinFKPK(:%New,REGION," = "," AND") */
-        :new.REGION_CODE = REGION.REGION_CODE;
-    IF (
-      /* %NotnullFK(:%New," IS NOT NULL AND") */
-      
-      NUMROWS = 0
-    )
-    THEN
-      raise_application_error(
-        -20002,
-        'Cannot insert PROMO_PLAN because REGION does not exist.'
-      );
-    END IF;
-
 
 -- ERwin Builtin Trigger
 END;
@@ -1235,7 +1206,7 @@ DECLARE NUMROWS INTEGER;
 BEGIN
   /* ERwin Builtin Trigger */
   /* PROMO_PLAN  EXECUTION_RECORD on parent update restrict */
-  /* ERWIN_RELATION:CHECKSUM="00044df4", PARENT_OWNER="", PARENT_TABLE="PROMO_PLAN"
+  /* ERWIN_RELATION:CHECKSUM="00034403", PARENT_OWNER="", PARENT_TABLE="PROMO_PLAN"
     CHILD_OWNER="", CHILD_TABLE="EXECUTION_RECORD"
     P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
     FK_CONSTRAINT="RecordPlan", FK_COLUMNS="PLAN_ID" */
@@ -1300,29 +1271,6 @@ BEGIN
     raise_application_error(
       -20007,
       'Cannot update PROMO_PLAN because PROMO_SUGGESTION does not exist.'
-    );
-  END IF;
-
-  /* ERwin Builtin Trigger */
-  /* REGION  PROMO_PLAN on child update restrict */
-  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="REGION"
-    CHILD_OWNER="", CHILD_TABLE="PROMO_PLAN"
-    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
-    FK_CONSTRAINT="PlanRegion", FK_COLUMNS="REGION_CODE" */
-  SELECT count(*) INTO NUMROWS
-    FROM REGION
-    WHERE
-      /* %JoinFKPK(:%New,REGION," = "," AND") */
-      :new.REGION_CODE = REGION.REGION_CODE;
-  IF (
-    /* %NotnullFK(:%New," IS NOT NULL AND") */
-    
-    NUMROWS = 0
-  )
-  THEN
-    raise_application_error(
-      -20007,
-      'Cannot update PROMO_PLAN because REGION does not exist.'
     );
   END IF;
 
@@ -1714,7 +1662,7 @@ DECLARE NUMROWS INTEGER;
 BEGIN
     /* ERwin Builtin Trigger */
     /* REGION  BUSINESS on parent delete restrict */
-    /* ERWIN_RELATION:CHECKSUM="0004fd22", PARENT_OWNER="", PARENT_TABLE="REGION"
+    /* ERWIN_RELATION:CHECKSUM="0004168c", PARENT_OWNER="", PARENT_TABLE="REGION"
     CHILD_OWNER="", CHILD_TABLE="BUSINESS"
     P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
     FK_CONSTRAINT="BusinessRegion", FK_COLUMNS="REGION_CODE" */
@@ -1747,25 +1695,6 @@ BEGIN
       raise_application_error(
         -20001,
         'Cannot delete REGION because PROMO_SUGGESTION exists.'
-      );
-    END IF;
-
-    /* ERwin Builtin Trigger */
-    /* REGION  PROMO_PLAN on parent delete restrict */
-    /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="REGION"
-    CHILD_OWNER="", CHILD_TABLE="PROMO_PLAN"
-    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
-    FK_CONSTRAINT="PlanRegion", FK_COLUMNS="REGION_CODE" */
-    SELECT count(*) INTO NUMROWS
-      FROM PROMO_PLAN
-      WHERE
-        /*  %JoinFKPK(PROMO_PLAN,:%Old," = "," AND") */
-        PROMO_PLAN.REGION_CODE = :old.REGION_CODE;
-    IF (NUMROWS > 0)
-    THEN
-      raise_application_error(
-        -20001,
-        'Cannot delete REGION because PROMO_PLAN exists.'
       );
     END IF;
 
@@ -1819,7 +1748,7 @@ DECLARE NUMROWS INTEGER;
 BEGIN
   /* ERwin Builtin Trigger */
   /* REGION  BUSINESS on parent update restrict */
-  /* ERWIN_RELATION:CHECKSUM="0005e80e", PARENT_OWNER="", PARENT_TABLE="REGION"
+  /* ERWIN_RELATION:CHECKSUM="0004d118", PARENT_OWNER="", PARENT_TABLE="REGION"
     CHILD_OWNER="", CHILD_TABLE="BUSINESS"
     P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
     FK_CONSTRAINT="BusinessRegion", FK_COLUMNS="REGION_CODE" */
@@ -1861,30 +1790,6 @@ BEGIN
       raise_application_error(
         -20005,
         'Cannot update REGION because PROMO_SUGGESTION exists.'
-      );
-    END IF;
-  END IF;
-
-  /* ERwin Builtin Trigger */
-  /* REGION  PROMO_PLAN on parent update restrict */
-  /* ERWIN_RELATION:CHECKSUM="00000000", PARENT_OWNER="", PARENT_TABLE="REGION"
-    CHILD_OWNER="", CHILD_TABLE="PROMO_PLAN"
-    P2C_VERB_PHRASE="", C2P_VERB_PHRASE="", 
-    FK_CONSTRAINT="PlanRegion", FK_COLUMNS="REGION_CODE" */
-  IF
-    /* %JoinPKPK(:%Old,:%New," <> "," OR ") */
-    :old.REGION_CODE <> :new.REGION_CODE
-  THEN
-    SELECT count(*) INTO NUMROWS
-      FROM PROMO_PLAN
-      WHERE
-        /*  %JoinFKPK(PROMO_PLAN,:%Old," = "," AND") */
-        PROMO_PLAN.REGION_CODE = :old.REGION_CODE;
-    IF (NUMROWS > 0)
-    THEN 
-      raise_application_error(
-        -20005,
-        'Cannot update REGION because PROMO_PLAN exists.'
       );
     END IF;
   END IF;

@@ -7,7 +7,7 @@
 - 기준 자료: 「[8주차] 정보시스템 프로젝트 설계 Data Modeling」 강의자료 56쪽 (아래에서는 'PDF'로 줄여 씀)
 - 화면 기준: 화면 시안 [app.js](../../02_제품/화면시안/app.js), [화면설계서](../../00_제출/Red_SCREEN.md), [ERD 프로토타입 대조 가이드](ERD_프로토타입_대조_가이드.md)
 - 원본: 팀이 처음 공유한 [Logical ERD.erwin](<원본/Logical ERD.erwin>), [Physical ERD.erwin](<원본/Physical ERD.erwin>), 1차 수정본을 팀이 고친 [Red_ERD_팀수정_20261011.erwin](원본/Red_ERD_팀수정_20261011.erwin) (모두 ERwin Data Modeler r7.3)
-- 결과: [Red_ERD.erwin](Red_ERD.erwin) (Logical/Physical 모델 1개, 엔터티 13개, 속성 90개, 관계 18개), ERwin으로 만든 SQL [Red_ERD_Oracle.sql](Red_ERD_Oracle.sql), [ERD 코드 설계서](ERD_코드_설계서.md)
+- 결과: [Red_ERD.erwin](Red_ERD.erwin) (Logical/Physical 모델 1개, 엔터티 13개, 속성 89개, 관계 17개), ERwin으로 만든 SQL [Red_ERD_Oracle.sql](Red_ERD_Oracle.sql), [ERD 코드 설계서](ERD_코드_설계서.md)
 - 남은 작업: [ERD 수정 가이드](ERD_수정_가이드.md)
 
 ## 0. 3차 수정 (검토 보고서 반영)
@@ -40,7 +40,7 @@
 | ⑦ | 사업체와 홍보 제안의 지역 코드가 Null 허용 | BusinessRegion, SuggestionRegion을 Nulls Not Allowed로 바꾸고 부모 삭제를 SetNull에서 Restrict로 바꿈 PlanSuggestion은 Nulls Allowed 그대로 | 공통 헤더가 사업체 지역을 항상 보여주고, 제안은 지역을 고른 뒤 만들어짐 (SCR-C-004 ①) 직접 계획 추가는 제안 없이 저장함 |
 | ⑧ | 소요 시간이 홍보 계획에 있음 | 실행 결과 기록으로 옮김: '계획 소요 시간' SPENT_TIME_MIN INTEGER, NULL 허용 | 기록 입력 팝업(SCR-B-002-P01 ②)에서 입력하고 빈칸은 미측정으로 둠 계획과 기록은 AK1로 1:1이라 기록에 두어도 계획별로 하나씩임 2차 수정의 Q4 결정을 바꿈 |
 | ⑨ | REGION_MONTHLY_STAT.UNIT 중복 | 지움 단위는 자료 ID로 등록 자료의 UNIT을 따라가 찾음 | 3정규형 (PDF 34쪽) |
-| ⑩ | PROMO_PLAN.REGION_CODE 이행 종속 | 그대로 둠 업무 규칙(사업체 소재지와 다른 지역을 대상으로 계획할 수 있음)을 ERwin 컬럼 설명에 적음 (0.7) | 지역 선택이 SCR-C-002, SCR-C-003, SCR-C-004에 있고, 계획은 그때 고른 지역으로 저장됨 ([app.js 485줄](../../02_제품/화면시안/app.js#L485)) 사업체 지역과 다른 지역으로 계획을 세울 수 있어 사업체를 거쳐 알 수 있는 값이 아님 |
+| ⑩ | PROMO_PLAN.REGION_CODE 이행 종속 | 처음에는 그대로 두고 업무 규칙을 적었으나, 팀 확인 후 컬럼과 PlanRegion 관계를 지움 (0.8) | 계획의 지역은 계획 → 사업체 → 지역으로 알 수 있음 (3정규형, PDF 34쪽) 화면 시안도 계획 지역과 가게 지역을 같은 값으로 씀 |
 | ⑪ | 지역 월별 통계에 대체 키가 없음 | AK1(자료 ID, 지역 코드, 기준 월, 지표 구분)을 만듦 | USERS.EMAIL, EXECUTION_RECORD.PLAN_ID의 AK와 같은 방식 |
 | ⑫ | 제안 → 제안 항목 Cardinality | ItemSuggestion을 One or More(P)로 바꿈 | 제안 카드는 항상 시기·대상·상품·관광지 네 항목을 가짐 ([app.js 194줄](../../02_제품/화면시안/app.js#L194)) |
 | ⑬ | 코드 설계서 | [ERD 코드 설계서](ERD_코드_설계서.md)를 PDF 55쪽 서식으로 작성함 보고서의 11개 컬럼과 새로 생긴 SEGMENT, TIME_SLOT, 비교를 위해 같은 값을 써야 하는 업종 CATEGORY까지 14개 각 컬럼의 ERwin 설명에도 코드 설계서 번호를 적음 (0.7) VALIDATION_ITEM의 가장 긴 코드는 13자라 VARCHAR(20)에 들어감 | PDF 55쪽 1.6 코드 설계서 |
@@ -57,7 +57,7 @@
 
 ### 0.4 배치
 
-엔터티 13개와 관계 18개를 다시 배치함 2차 수정 때는 물리 화면을 확인용 복사본으로 대신 봤지만, 이번에는 ERwin r7.3에서 실제 물리 화면을 열어 확인함 물리 화면은 영문 이름과 자료형, NULL 여부가 함께 보여 상자가 가장 넓음
+엔터티 13개와 관계 18개를 다시 배치함 (0.8에서 PlanRegion을 지워 지금은 관계 17개) 2차 수정 때는 물리 화면을 확인용 복사본으로 대신 봤지만, 이번에는 ERwin r7.3에서 실제 물리 화면을 열어 확인함 물리 화면은 영문 이름과 자료형, NULL 여부가 함께 보여 상자가 가장 넓음
 
 | 줄 | 엔터티 (왼쪽부터) |
 | --- | --- |
@@ -81,7 +81,7 @@
 
 물리 화면에서 Tools → Forward Engineer → Schema Generation (PDF 47쪽)을 기본 옵션 그대로 실행하고 Report로 저장함 → [Red_ERD_Oracle.sql](Red_ERD_Oracle.sql)
 
-- 테이블 13개, PK 13개, AK(UNIQUE) 4개, FK 18개이며 모델과 같음
+- 테이블 13개, PK 13개, AK(UNIQUE) 4개, FK 17개이며 모델과 같음 (0.8에서 PlanRegion을 지운 뒤 다시 만든 SQL 기준)
 - RecordPlan은 ON DELETE CASCADE, PlanSuggestion은 ON DELETE SET NULL로 나옴
 - 테이블, 컬럼, 제약 조건 이름이 모두 영문이고 30자를 넘는 이름이 없음
 - ERwin 기본 옵션이라 관계 규칙을 확인하는 트리거 30개도 함께 들어 있음
@@ -96,7 +96,7 @@
 | 올라간 파일 | GitHub, 저장소, 바탕화면의 Red_ERD.erwin 비교 | 세 파일이 같았음 |
 | ①부터 ⑭까지 | 파일의 모든 속성, 관계, 키를 다시 읽어 보고서의 요구와 항목별로 대조 | ⑭의 이름 일관성 4곳을 빼고 모두 맞았음 |
 | ①의 값 | 추천 기준 6개 컬럼의 자료형과 NULL을 보고서가 적은 값과 대조 | 같음 (방문 감소 기준율 INTEGER NOT NULL부터 수정 일시 DATE NULL까지) |
-| SQL | SQL의 테이블, 컬럼, 자료형, NULL, PK, AK, FK를 모델과 하나씩 대조 | 테이블 13개, 컬럼 90개, 키 17개, FK 18개가 모두 같음 |
+| SQL | SQL의 테이블, 컬럼, 자료형, NULL, PK, AK, FK를 모델과 하나씩 대조 | 테이블 13개, 컬럼 90개, 키 17개, FK 18개가 모두 같음 (0.8 이전 기준) |
 | 코드 설계서 | 14개 코드의 관련 컬럼 자료형과 가장 긴 코드 길이를 모델과 대조 | 모두 같고 길이 안에 들어감 |
 | 다른 문서 | 저장소 전체에서 바뀌기 전 엔터티, 컬럼 이름 검색 | ERD 문서 밖에는 화면 이름 '3개월 홍보 일정표'만 있고 ERD 이름은 없음 |
 
@@ -120,7 +120,7 @@
 | 의견 | 반영 | 적은 곳 |
 | --- | --- | --- |
 | ⑤ 활용 사례를 정적 콘텐츠로 둔다면 'DB 미저장'을 명시 | 사례는 화면에 고정한 정적 콘텐츠이며 DB에 저장하지 않아 활용 사례 엔터티를 두지 않는다고 적음 | [화면설계서](../../00_제출/Red_SCREEN.md) SCR-C-002 비고와 '구현 범위와 현재 시안의 구분' 표, ERwin 모델 Definition (Model Properties) |
-| ⑩ PROMO_PLAN.REGION_CODE를 유지하려면 업무 규칙을 명시 | 업무 규칙: 계획을 세울 때 고른 분석 지역을 저장하며, 사업체 소재지(BUSINESS.REGION_CODE)와 다른 지역을 대상으로 계획할 수 있음 | ERwin의 PROMO_PLAN.REGION_CODE Definition, [가이드 3.2](ERD_수정_가이드.md#32-검토-보고서에서-팀-결정으로-남긴-항목) |
+| ⑩ PROMO_PLAN.REGION_CODE를 유지하려면 업무 규칙을 명시 | 처음에는 업무 규칙을 ERwin 설명에 적었으나, 팀 확인 후 규칙을 두지 않고 컬럼을 지움 | 0.8 |
 | ⑬ 코드 설계서는 ERwin 밖 산출물이라 확인할 수 없음, 대상 컬럼은 13개 | 코드값 컬럼 16곳(코드 14개)의 ERwin Definition에 '코드 설계서 n번 참조 (코드값)'을 적음 대상은 검토서가 센 13개에 업종 CATEGORY를 더한 것임 | ERwin 각 컬럼 Definition, [ERD 코드 설계서](ERD_코드_설계서.md) |
 | 경미: SHARE_RATE NUMBER(5,2)는 교안 INTEGER 규칙의 예외 | 비율에 소수가 있어 NUMBER(5,2)를 쓴다는 이유를 적고, 테이블 명세서 비고에도 적도록 안내함 | ERwin의 SHARE_RATE Definition, [가이드 2.3](ERD_수정_가이드.md#23-sql-스키마와-테이블-명세서) |
 | 경미: PROMO_SUGGESTION의 TITLE, TARGET_MONTH는 NOT NULL이 화면과 맞음 | 두 컬럼을 NOT NULL로 바꿈 | 제안 카드는 항상 제목과 대상 월을 가짐 ([app.js 91줄부터 93줄까지](../../02_제품/화면시안/app.js#L91)) |
@@ -130,6 +130,24 @@
 ERwin에서 보는 곳: 모델 설명은 Model Properties의 Definition, 컬럼 설명은 논리 화면에서 속성을 더블 클릭한 Attribute 창의 Definition에 있음 ERwin r7.3은 Definition을 컬럼 Comment에도 같은 글로 넣음
 
 모델을 고친 뒤 ERwin r7.3에서 물리 화면과 논리 화면을 다시 캡처했고(0.4의 그림), 상자와 관계선이 겹치지 않음 Schema Generation도 다시 실행해 [Red_ERD_Oracle.sql](Red_ERD_Oracle.sql)을 바꿈 달라진 곳은 PROMO_SUGGESTION의 TARGET_MONTH, TITLE이 NOT NULL이 된 두 줄뿐이고, Definition 문구는 기본 옵션의 SQL에 들어가지 않음
+
+### 0.8 ⑩ 결정 변경: 홍보 계획의 지역 코드 삭제 (2026-10-11)
+
+0.2와 0.7에서는 홍보 계획의 지역 코드(PROMO_PLAN.REGION_CODE)를 남기고 '사업체 소재지와 다른 지역을 대상으로 계획할 수 있음'을 업무 규칙으로 적었음 팀 확인 결과 이 규칙을 두지 않기로 하고, 검토 보고서 ⑩의 제안대로 컬럼과 관계를 지움
+
+| 근거 | 내용 |
+| --- | --- |
+| 화면 시안 | 계획에 저장하는 지역과 화면 위의 가게 표시('제주 애월읍 · 카페')가 같은 값임 ([app.js 151줄](../../02_제품/화면시안/app.js#L151), [485줄](../../02_제품/화면시안/app.js#L485)) 사업체 지역과 다른 지역으로 계획하는 동작은 없고, 지역 전환은 예시 지역 두 곳을 보여주는 기능임 0.2에서 든 근거는 이 점을 놓친 것임 |
+| 화면설계서 | 지역 선택은 '분석 지역'(비교용)으로만 설명하고, 일정표 화면에는 지역별 계획이 없음 |
+| 프로젝트 범위 | 작은 사업체가 자기 가게 주변의 비수기와 주변 관광지를 보고 3개월 일정을 세움 ([프로젝트 정의서](../../00_제출/Red_PROJECT.md)) |
+| 정규화 | 사업체의 지역 코드가 NOT NULL이므로 계획 → 사업체 → 지역으로 알 수 있음 남겨 두면 이행 종속이 됨 (3정규형, PDF 34쪽) |
+
+| 바꾼 것 | 내용 |
+| --- | --- |
+| 모델 | PlanRegion 관계를 지움 ERwin이 이전된 외래키 PROMO_PLAN.REGION_CODE와 그 인덱스 키(XIF3PROMO_PLAN), 0.7에서 적은 업무 규칙 설명도 함께 지움 엔터티 13개, 속성 89개, 관계 17개가 됨 |
+| SQL | Schema Generation을 다시 실행함 PROMO_PLAN의 REGION_CODE 컬럼, PlanRegion 외래키, 이 관계를 검사하던 트리거 부분만 빠짐 (FK 18개 → 17개, 트리거는 30개 그대로) |
+| 배치 | 지역과 홍보 계획 사이의 선만 없어짐 ERwin r7.3에서 물리 화면과 논리 화면을 다시 캡처해 겹침이 없음을 확인함 (0.4의 그림) |
+| 프로그램 확인 | 계획의 지역은 사업체 지역을 따름 제안에서 계획으로 담을 때는 그 사업체 지역의 제안만 담을 수 있게 프로그램에서 확인함 (테이블 명세서 참고사항에 적음 → [가이드 2.3](ERD_수정_가이드.md#23-sql-스키마와-테이블-명세서)) |
 
 ## 1. 2차 수정 (2026-10-11)
 
@@ -225,7 +243,7 @@ P1부터 P27까지 모두 반영함 가이드에서 팀 결정으로 남긴 항�
 
 엔터티, 속성, 관계, 키, 삭제 규칙은 바꾸지 않았음 바꾸기 전 파일과 다시 읽어 비교했을 때 위치를 뺀 모든 값이 같았음
 
-3차 수정에서 엔터티 13개, 관계 18개로 다시 배치함 → [0.4](#04-배치)
+3차 수정에서 엔터티 13개, 관계 17개로 다시 배치함 → [0.4](#04-배치)
 
 ## 2. 1차 수정 (2026-10-10)
 
@@ -294,7 +312,6 @@ Red_ERD.erwin을 다시 읽어 만든 표임 키 칸의 FK는 관계로 이전�
 | 예정 일자 | SCHEDULED_DATE | DATE | NOT NULL |  |
 | 홍보 채널 | CHANNEL | VARCHAR(50) | NOT NULL |  |
 | 준비 내용 | PREPARATION_NOTE | VARCHAR(500) | NULL |  |
-| 지역 코드 | REGION_CODE | VARCHAR(20) | NOT NULL | FK |
 
 **RECOMMENDATION_CRITERIA (추천 기준)**
 
@@ -432,7 +449,6 @@ Red_ERD.erwin을 다시 읽어 만든 표임 키 칸의 FK는 관계로 이전�
 | RecordPlan | 홍보 계획 | 실행 결과 기록 | Non-Identifying | Nulls Not Allowed | Zero or One | Cascade |
 | BusinessRegion | 지역 | 사업체 | Non-Identifying | Nulls Not Allowed | Zero, One or More | Restrict |
 | SuggestionRegion | 지역 | 홍보 제안 | Non-Identifying | Nulls Not Allowed | Zero, One or More | Restrict |
-| PlanRegion | 지역 | 홍보 계획 | Non-Identifying | Nulls Not Allowed | Zero, One or More | Restrict |
 | StatSource | 등록 자료 | 지역 월별 통계 | Non-Identifying | Nulls Not Allowed | Zero, One or More | Restrict |
 | StatRegion | 지역 | 지역 월별 통계 | Non-Identifying | Nulls Not Allowed | Zero, One or More | Restrict |
 | ResultSource | 등록 자료 | 자료 검증 결과 | Identifying | 해당 없음 (식별) | Zero, One or More | Restrict |
@@ -466,12 +482,12 @@ Red_ERD.erwin을 다시 읽어 만든 표임 키 칸의 FK는 관계로 이전�
 저장한 Red_ERD.erwin을 다시 열어 아래 내용을 확인함
 
 - 모델 종류 Logical/Physical, 대상 DBMS Oracle, 논리·물리 표기법 모두 IE
-- 엔터티 13개, 속성 90개, 관계 18개 숨김 표시와 관계없이 모든 속성을 읽어 셌고, Logical Only나 Physical Only 속성이 없으며 90개 모두 논리 화면과 물리 화면에 함께 나옴
+- 엔터티 13개, 속성 89개, 관계 17개 숨김 표시와 관계없이 모든 속성을 읽어 셌고, Logical Only나 Physical Only 속성이 없으며 89개 모두 논리 화면과 물리 화면에 함께 나옴
 - 3장과 4장의 표, 7장의 미리보기는 이 파일을 다시 읽어 만든 것임
 - 검토 보고서 ①부터 ⑭까지의 반영 결과와 SQL을 확인 항목 27개로 다시 확인했고 모두 통과함
 - 물리 이름이 모두 영문 대문자이고, CHAR(18)이나 INT로 남은 컬럼이 없음 논리 자료형과 물리 자료형이 모두 같고, 도메인은 모두 `<default>`임
 - SQL은 0.5와 같음
-- ERwin r7.3으로 물리 화면과 논리 화면을 열어 캡처함 상자 13개가 겹치지 않고, 관계선 18개가 상자를 지나거나 서로 교차하지 않음 (0.4)
+- ERwin r7.3으로 물리 화면과 논리 화면을 열어 캡처함 상자 13개가 겹치지 않고, 관계선 17개가 상자를 지나거나 서로 교차하지 않음 (0.4)
 
 ### 확인하지 못한 내용
 
@@ -492,7 +508,6 @@ erDiagram
     PROMO_PLAN ||..o| EXECUTION_RECORD : "RecordPlan"
     REGION ||..o{ BUSINESS : "BusinessRegion"
     REGION ||..o{ PROMO_SUGGESTION : "SuggestionRegion"
-    REGION ||..o{ PROMO_PLAN : "PlanRegion"
     DATA_SOURCE ||..o{ REGION_MONTHLY_STAT : "StatSource"
     REGION ||..o{ REGION_MONTHLY_STAT : "StatRegion"
     DATA_SOURCE ||--o{ DATA_VALIDATION_RESULT : "ResultSource"
@@ -527,7 +542,6 @@ erDiagram
         DATE SCHEDULED_DATE "예정 일자"
         VARCHAR(50) CHANNEL "홍보 채널"
         VARCHAR(500) PREPARATION_NOTE "준비 내용"
-        VARCHAR(20) REGION_CODE FK "지역 코드"
     }
 
     RECOMMENDATION_CRITERIA {

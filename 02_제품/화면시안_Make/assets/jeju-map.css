@@ -1,0 +1,27 @@
+/* 지역 분석 · 제주 읍·면 지도 (Figma Make 게시본에 덧붙인 스타일) */
+.region-map{position:relative;display:flex;flex-direction:column;gap:10px;background:#f7faf5;border-radius:12px;margin:10px 0;padding:30px 12px 30px}
+.region-map .jeju-map{order:1;display:block;width:100%;height:auto}
+.region-map-buttons{order:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.region-chip{display:grid;gap:1px;text-align:left;font:inherit;color:var(--ink);background:#fff;border:1px solid #bdd0b7;border-radius:10px;padding:9px 12px;cursor:pointer;box-shadow:0 3px 12px #20352d0a}
+.region-chip b{font-size:14px}
+.region-chip small{color:var(--muted);font-size:11px}
+.region-chip:hover{border-color:var(--green)}
+.region-chip.selected{background:var(--green);border-color:var(--green);color:#fff}
+.region-chip.selected small{color:#fff}
+.region-chip:focus-visible{outline:3px solid #9cc5ad;outline-offset:2px}
+.jm-coast{fill:none;stroke:#c9dac2;stroke-width:6;stroke-linejoin:round}
+.jm-region,.jm-island{fill:#edf2ea;stroke:#fff;stroke-width:1.8;stroke-linejoin:round}
+.jm-island{stroke:#c9dac2;stroke-width:1}
+.jm-target{cursor:pointer}
+.jm-target .jm-region{fill:#cfe3c6}
+.jm-target:hover .jm-region{fill:#b9d7ad}
+.jm-target.selected .jm-region{fill:var(--green)}
+.jm-label{font-family:var(--font);font-size:12px;fill:#7b8a80;text-anchor:middle;dominant-baseline:middle;pointer-events:none}
+.jm-sea{font-size:11px;fill:#a0aaa3}
+.jm-name{font-size:16px;font-weight:700;fill:var(--ink)}
+.jm-value{font-size:12.5px;font-weight:600;fill:var(--muted)}
+.jm-target.selected .jm-name,.jm-target.selected .jm-value{fill:#fff}
+.jm-pin{fill:var(--green);stroke:#fff;stroke-width:1.5}
+.jm-pin-dot{fill:#fff;pointer-events:none}
+.jm-target.selected .jm-pin{fill:var(--orange)}
+.region-map .sketch-caption{bottom:9px}

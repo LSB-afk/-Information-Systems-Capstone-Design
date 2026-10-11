@@ -33,7 +33,7 @@
 | --- | --- | --- | --- |
 | ① | 논리 모델과 물리 모델의 속성이 다름 | 물리 전용 7개를 지움 논리 전용 7개는 숨김 표시가 없는 속성으로 다시 만들어 두 화면에 똑같이 나오게 함 (추천 기준 6개, 소요 시간은 ⑧에 따라 실행 결과 기록으로 옮김) | PDF 38쪽, 44쪽 한 모델에서 논리·물리 전환 |
 | ② | DATA_SOURCE.VALIDATION_STATU 오타 | 파일을 다시 읽었을 때 물리 이름은 공백 없는 VALIDATION_STATUS였음 같은 이름으로 다시 저장했고 SQL에도 VALIDATION_STATUS로 나옴 | 보고서 부록의 표에서 이름이 잘려 보인 것으로 판단함 |
-| ③ | 월 컬럼 4개가 VARCHAR(10) | 대상 월, 기준 시작월, 기준 종료월, 기준 월 4개를 모두 DATE로 바꿈 새 지역 소비 통계의 기준 월도 DATE 매월 1일로 저장함 | PDF 51쪽 날짜형 DATE 2차 수정의 Q6(VARCHAR(10)) 결정을 바꿈 |
+| ③ | 월 컬럼 4개가 VARCHAR(10) | 대상 월, 기준 시작 월, 기준 종료 월, 기준 월 4개를 모두 DATE로 바꿈 새 지역 소비 통계의 기준 월도 DATE 매월 1일로 저장함 | PDF 51쪽 날짜형 DATE 2차 수정의 Q6(VARCHAR(10)) 결정을 바꿈 |
 | ④ | 소비 비교에 필요한 업종·내외국인·시간대가 없음 | '지역 소비 통계' REGION_CONSUMPTION_STAT 엔터티를 새로 만듦 자료 ID와 지역 코드는 외래키(ConsumptionSource, ConsumptionRegion, 둘 다 Nulls Not Allowed), 기준 월, 업종, 고객 구분, 시간대는 NOT NULL, 비중 SHARE_RATE는 NUMBER(5,2) 같은 행이 두 번 들어가지 않게 AK1(자료 ID, 지역 코드, 기준 월, 업종, 고객 구분, 시간대)을 둠 | 화면설계서 SCR-C-003 소비 비교 ④, ⑤ 화면의 업종별 내·외국인 비중과 시간대별 비중 ([app.js 207줄](../../02_제품/화면시안/app.js#L207)) 비중은 소수라 INTEGER에 담을 수 없어 NUMBER(5,2)로 둠 |
 | ⑤ | 활용 사례(UC11) 엔터티가 없음 | 엔터티를 만들지 않고 정적 콘텐츠로 둠 | 화면설계서 SCR-C-002에 사례명·성과 수치는 검증 전 예시이고 별도 사례 상세 화면이 없다고 적혀 있음 ([Red_SCREEN.md](../../00_제출/Red_SCREEN.md)) |
 | ⑥ | 홍보 제안과 자료 사이에 관계가 없음 | 홍보 제안에 자료 ID SOURCE_ID(FK) NOT NULL을 더함 관계 이름 SuggestionSource, Nulls Not Allowed | 제안마다 출처·기준을 보여주고 분석 자료를 고르면 제안이 바뀜 (SCR-C-004) |
@@ -44,7 +44,7 @@
 | ⑪ | 지역 월별 통계에 대체 키가 없음 | AK1(자료 ID, 지역 코드, 기준 월, 지표 구분)을 만듦 | USERS.EMAIL, EXECUTION_RECORD.PLAN_ID의 AK와 같은 방식 |
 | ⑫ | 제안 → 제안 항목 Cardinality | ItemSuggestion을 One or More(P)로 바꿈 | 제안 카드는 항상 시기·대상·상품·관광지 네 항목을 가짐 ([app.js 194줄](../../02_제품/화면시안/app.js#L194)) |
 | ⑬ | 코드 설계서 | [ERD 코드 설계서](ERD_코드_설계서.md)를 PDF 55쪽 서식으로 작성함 보고서의 11개 컬럼과 새로 생긴 SEGMENT, TIME_SLOT, CATEGORY까지 14개 VALIDATION_ITEM의 가장 긴 코드는 13자라 VARCHAR(20)에 들어감 | PDF 55쪽 1.6 코드 설계서 |
-| ⑭ | 이름 띄어쓰기와 도메인 | 엔터티: 3개월 홍보 일정 → 홍보 계획, 자료 등록 현황 → 등록 자료, 추천기준 → 추천 기준 속성: 역할구분 → 역할 구분, 가입일시 → 가입 일시, 등록일시 → 등록 일시, 검증일시 → 검증 일시, 기준월 → 기준 월, 일정 계획 ID → 홍보 계획 ID String 도메인이던 추천 기준 ID 2개를 `<default>`로 바꿈 같은 문제가 있던 MODIFICATION_DATE는 ①에서 지웠고, 지금은 모든 속성의 도메인이 `<default>`임 | 보고서 ⑭의 이름 제안을 그대로 씀 |
+| ⑭ | 이름 띄어쓰기와 도메인 | 엔터티: 3개월 홍보 일정 → 홍보 계획, 자료 등록 현황 → 등록 자료, 추천기준 → 추천 기준 속성: 역할구분 → 역할 구분, 가입일시 → 가입 일시, 등록일시 → 등록 일시, 검증일시 → 검증 일시, 기준월 → 기준 월, 일정 계획 ID → 홍보 계획 ID, 재검토에서 기준 시작월 → 기준 시작 월, 기준 종료월 → 기준 종료 월, 부여일 → 부여 일시, 권장 날짜 → 권장 일자 (0.6) String 도메인이던 추천 기준 ID 2개를 `<default>`로 바꿈 같은 문제가 있던 MODIFICATION_DATE는 ①에서 지웠고, 지금은 모든 속성의 도메인이 `<default>`임 | 보고서 ⑭의 이름 제안을 그대로 씀 |
 
 보고서 마지막 줄의 Schema Generation 확인은 0.5에 적음
 
@@ -86,6 +86,32 @@
 - 테이블, 컬럼, 제약 조건 이름이 모두 영문이고 30자를 넘는 이름이 없음
 - ERwin 기본 옵션이라 관계 규칙을 확인하는 트리거 30개도 함께 들어 있음
 - Oracle DB에서 실제로 실행해 보지는 않았음 → [가이드 2.3](ERD_수정_가이드.md#23-sql-스키마와-테이블-명세서)
+
+### 0.6 재검토 (2026-10-11)
+
+3차 수정을 올린 뒤, 검토 보고서 원문과 GitHub에 올라간 파일을 처음부터 다시 대조함
+
+| 확인한 것 | 방법 | 결과 |
+| --- | --- | --- |
+| 올라간 파일 | GitHub, 저장소, 바탕화면의 Red_ERD.erwin 비교 | 세 파일이 같았음 |
+| ①부터 ⑭까지 | 파일의 모든 속성, 관계, 키를 다시 읽어 보고서의 요구와 항목별로 대조 | ⑭의 이름 일관성 4곳을 빼고 모두 맞았음 |
+| ①의 값 | 추천 기준 6개 컬럼의 자료형과 NULL을 보고서가 적은 값과 대조 | 같음 (방문 감소 기준율 INTEGER NOT NULL부터 수정 일시 DATE NULL까지) |
+| SQL | SQL의 테이블, 컬럼, 자료형, NULL, PK, AK, FK를 모델과 하나씩 대조 | 테이블 13개, 컬럼 90개, 키 17개, FK 18개가 모두 같음 |
+| 코드 설계서 | 14개 코드의 관련 컬럼 자료형과 가장 긴 코드 길이를 모델과 대조 | 모두 같고 길이 안에 들어감 |
+| 다른 문서 | 저장소 전체에서 바뀌기 전 엔터티, 컬럼 이름 검색 | ERD 문서 밖에는 화면 이름 '3개월 홍보 일정표'만 있고 ERD 이름은 없음 |
+
+**재검토에서 고친 것 (⑭)** 같은 종류의 이름끼리 띄어쓰기와 끝말이 달랐던 논리 이름 4개를 맞춤 물리 이름, 자료형, 키, 관계, 배치는 바꾸지 않았음
+
+| 컬럼 | 고치기 전 | 같은 종류의 이름 | 고친 뒤 |
+| --- | --- | --- | --- |
+| DATA_SOURCE.START_MONTH | 기준 시작월 | 대상 월, 기준 월 | 기준 시작 월 |
+| DATA_SOURCE.END_MONTH | 기준 종료월 | 대상 월, 기준 월 | 기준 종료 월 |
+| BUSINESS_PERMISSION.GRANTED_AT | 부여일 | 가입 일시, 등록 일시, 검증 일시, 수정 일시 | 부여 일시 |
+| PROMO_SUGGESTION.RECOMMENDED_DATE | 권장 날짜 | 예정 일자, 실제 실행 일자 | 권장 일자 |
+
+고친 뒤 ERwin r7.3에서 물리 화면과 논리 화면을 다시 열어 캡처했고(0.4의 그림), 상자와 관계선이 겹치지 않음을 다시 확인함 Schema Generation도 다시 실행했는데 [Red_ERD_Oracle.sql](Red_ERD_Oracle.sql)과 내용이 같았음 (SQL에는 물리 이름만 들어감)
+
+이 PC에는 Oracle DB가 없어 SQL을 실제로 실행해 보는 확인은 여전히 남아 있음 → [가이드 2.3](ERD_수정_가이드.md#23-sql-스키마와-테이블-명세서)
 
 ## 1. 2차 수정 (2026-10-11)
 
@@ -217,7 +243,7 @@ P1부터 P27까지 모두 반영함 가이드에서 팀 결정으로 남긴 항�
 
 ## 3. 현재 테이블과 컬럼 (3차 수정 후)
 
-Red_ERD.erwin을 다시 읽어 만든 표임 키 칸의 FK는 관계로 이전된 외래키, UNIQUE는 Alternate Key임 한 테이블에서 여러 컬럼에 UNIQUE가 있으면 그 컬럼들을 묶은 하나의 Alternate Key임 월 값(대상 월, 기준 시작월, 기준 종료월, 기준 월)은 DATE이며 매월 1일로 저장함
+Red_ERD.erwin을 다시 읽어 만든 표임 키 칸의 FK는 관계로 이전된 외래키, UNIQUE는 Alternate Key임 한 테이블에서 여러 컬럼에 UNIQUE가 있으면 그 컬럼들을 묶은 하나의 Alternate Key임 월 값(대상 월, 기준 시작 월, 기준 종료 월, 기준 월)은 DATE이며 매월 1일로 저장함
 
 **USERS (사용자)**
 
@@ -275,7 +301,7 @@ Red_ERD.erwin을 다시 읽어 만든 표임 키 칸의 FK는 관계로 이전�
 | 판단 이유 | REASON | VARCHAR(200) | NULL |  |
 | 지역 코드 | REGION_CODE | VARCHAR(20) | NOT NULL | FK |
 | 설명 | DESCRIPTION | VARCHAR(200) | NULL |  |
-| 권장 날짜 | RECOMMENDED_DATE | DATE | NULL |  |
+| 권장 일자 | RECOMMENDED_DATE | DATE | NULL |  |
 | 추천 채널 | CHANNEL | VARCHAR(50) | NULL |  |
 | 준비할 행동 | PREPARATION_TASK | VARCHAR(500) | NULL |  |
 | 태그 | TAG | VARCHAR(50) | NULL |  |
@@ -306,8 +332,8 @@ Red_ERD.erwin을 다시 읽어 만든 표임 키 칸의 FK는 관계로 이전�
 | 사용자 ID | USER_ID | INTEGER | NOT NULL | FK |
 | 파일명 | FILE_NAME | VARCHAR(100) | NOT NULL |  |
 | 출처 버전 | SOURCE_VERSION | VARCHAR(120) | NOT NULL |  |
-| 기준 시작월 | START_MONTH | DATE | NOT NULL |  |
-| 기준 종료월 | END_MONTH | DATE | NOT NULL |  |
+| 기준 시작 월 | START_MONTH | DATE | NOT NULL |  |
+| 기준 종료 월 | END_MONTH | DATE | NOT NULL |  |
 | 단위 | UNIT | VARCHAR(50) | NOT NULL |  |
 | 검증 상태 | VALIDATION_STATUS | VARCHAR(20) | NULL |  |
 | 제공자·집계 기준 | PROVIDER_BASIS | VARCHAR(80) | NOT NULL |  |
@@ -359,7 +385,7 @@ Red_ERD.erwin을 다시 읽어 만든 표임 키 칸의 FK는 관계로 이전�
 | 사용자 ID | USER_ID | INTEGER | NOT NULL | PK, FK |
 | 사업체 ID | BUSINESS_ID | INTEGER | NOT NULL | PK, FK |
 | 권한 유형 | PERMISSION_TYPE | VARCHAR(10) | NOT NULL |  |
-| 부여일 | GRANTED_AT | DATE | NOT NULL |  |
+| 부여 일시 | GRANTED_AT | DATE | NOT NULL |  |
 
 **REGION_CONSUMPTION_STAT (지역 소비 통계)**
 
@@ -504,7 +530,7 @@ erDiagram
         VARCHAR(200) REASON "판단 이유"
         VARCHAR(20) REGION_CODE FK "지역 코드"
         VARCHAR(200) DESCRIPTION "설명"
-        DATE RECOMMENDED_DATE "권장 날짜"
+        DATE RECOMMENDED_DATE "권장 일자"
         VARCHAR(50) CHANNEL "추천 채널"
         VARCHAR(500) PREPARATION_TASK "준비할 행동"
         VARCHAR(50) TAG "태그"
@@ -531,8 +557,8 @@ erDiagram
         INTEGER USER_ID FK "사용자 ID"
         VARCHAR(100) FILE_NAME "파일명"
         VARCHAR(120) SOURCE_VERSION "출처 버전"
-        DATE START_MONTH "기준 시작월"
-        DATE END_MONTH "기준 종료월"
+        DATE START_MONTH "기준 시작 월"
+        DATE END_MONTH "기준 종료 월"
         VARCHAR(50) UNIT "단위"
         VARCHAR(20) VALIDATION_STATUS "검증 상태"
         VARCHAR(80) PROVIDER_BASIS "제공자·집계 기준"
@@ -574,7 +600,7 @@ erDiagram
         INTEGER USER_ID PK, FK "사용자 ID"
         INTEGER BUSINESS_ID PK, FK "사업체 ID"
         VARCHAR(10) PERMISSION_TYPE "권한 유형"
-        DATE GRANTED_AT "부여일"
+        DATE GRANTED_AT "부여 일시"
     }
 
     REGION_CONSUMPTION_STAT {

@@ -15,9 +15,10 @@ Figma Make로 만든 화면을 게시 사이트에서 그대로 가져와 로컬
 ## 게시본과 다른 점
 
 - `assets/index-Cy3nF8CL.js`와 `assets/index-CEpKENwd.css`는 게시 사이트의 파일과 같음 (SHA-256 앞 16자리: JS `d0df2f1b735f506a`, CSS `29ec36ac4f3f55c9`)
-- `index.html`에서 바꾼 곳은 두 가지임
+- `index.html`에서 바꾼 곳은 세 가지임
   - JS와 CSS 주소를 게시 사이트 주소에서 로컬 경로(`./assets/`)로 바꿈
   - Figma 커뮤니티 배너 스크립트(`/__figma__/make_community_banner_v1.js`)를 뺌
+  - 페이지 언어를 `lang="en"`에서 `lang="ko"`로 바꿈 영어로 적혀 있으면 Chrome이 한글 화면을 자동 번역해 '제주'가 '일본', '비밀번호'가 '포스틱'처럼 바뀌어 보임
 - 글꼴(Pretendard)은 게시본처럼 jsdelivr에서 불러오므로 인터넷에 연결되어 있어야 같은 글꼴로 보임
 
 ## 실행

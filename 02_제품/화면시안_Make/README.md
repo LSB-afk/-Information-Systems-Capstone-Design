@@ -2,6 +2,15 @@
 
 Figma Make로 만든 화면을 게시 사이트에서 그대로 가져와 로컬에서 실행하는 폴더
 
+## 공개 주소
+
+**[lsb-afk.github.io/-Information-Systems-Capstone-Design](https://lsb-afk.github.io/-Information-Systems-Capstone-Design/)**
+
+- 이 폴더를 GitHub Pages로 게시한 주소이며, 링크를 아는 사람은 로그인 없이 볼 수 있음
+- 제주 읍·면 지도처럼 이 폴더에서 고친 내용이 그대로 보임 Figma Make 게시 사이트에는 지도 수정이 없음
+- `main`에 이 폴더를 바꾼 커밋을 푸시하면 [Pages 워크플로](../../.github/workflows/pages.yml)가 자동으로 다시 게시함 반영까지 1분에서 2분쯤 걸림
+- 공개 주소이므로 실제 사업체 자료·개인정보·인증키는 이 폴더에 넣지 않음
+
 ## 출처와 버전
 
 | 항목 | 내용 |

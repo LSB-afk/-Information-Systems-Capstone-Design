@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"P=/opt/anaconda3/lib/python3.13/site-packages/hwpx; sed -n 250,285p \\\"$P/capabilities.py\\\"; echo ===; sed -n 1,40p \\\"$P/tools/page_guard.py\\\"; echo ===; sed -n 1,30p \\\"$P/tools/layout_prev...",
+  "error": "Exit code 1\n        # 별도 영역으로 분리 — toc-crossref의 \"혼합 지원 영역 오염\" 방지\n        # 원칙과 같은 이유.\n        \"entry_points\": (\"hwpx.document:HwpxDocument\",),\n        \"authoring_methods\": (),\n    },\n    {\n        \"area\": \"encrypted-hwpx\",\n        \"namespace\": None,\n        \"matrix_row\": \"암호화 HWPX\",\n        \"entry_points\": (),\n        \"authoring_methods\": (),\n    },\n    {\n        \"area\": \"hwp5-binary\",\n        \"namespace\": None,\n        \"matrix_row\": \"HWP 5.x 바이너리\",\n        \"entry_points\": (),\n        \"authorin...",
+  "timestamp": "2026-10-29T07:54:49.235Z",
+  "retry_count": 1
+}

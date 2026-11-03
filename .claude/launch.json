@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "figma-make-prototype",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-I", "-m", "http.server", "8767", "--bind", "127.0.0.1", "--directory", "02_제품/화면시안_Make"],
+      "port": 8767
+    }
+  ]
+}

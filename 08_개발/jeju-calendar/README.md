@@ -41,12 +41,38 @@ SQL 클라이언트가 없으면 아래 명령으로 파일 하나씩 실행할 
 .\mvnw.cmd spring-boot:run "-Dspring-boot.run.arguments=--db.script=db/01_create_tables.sql --spring.main.web-application-type=none"
 ```
 
+## DAO 목록 (`src/main/java/com/red/jejucalendar/dao`)
+
+테이블 13개마다 DAO 하나와 `domain` 패키지의 record 하나가 있음 시퀀스를 쓰는 테이블의 `insert`는 발급된 ID를 돌려줌
+
+| DAO | 테이블 | 저장·수정·삭제 외에 있는 조회 |
+| --- | --- | --- |
+| `UserDao` | USERS | 이메일로 조회 |
+| `RegionDao` | REGION | 전체 지역 |
+| `BusinessDao` | BUSINESS | 등록한 사용자별, 권한이 있는 사업체 |
+| `BusinessPermissionDao` | BUSINESS_PERMISSION | 사용자별, 사업체별 |
+| `DataSourceFileDao` | DATA_SOURCE | 최근 등록순, 검증 상태별 |
+| `DataValidationResultDao` | DATA_VALIDATION_RESULT | 자료별 검증 항목 |
+| `RegionMonthlyStatDao` | REGION_MONTHLY_STAT | 자료·지역·지표·기간별, 일괄 저장 |
+| `RegionConsumptionStatDao` | REGION_CONSUMPTION_STAT | 자료·지역·월별, 일괄 저장 |
+| `RecommendationCriteriaDao` | RECOMMENDATION_CRITERIA | 전체 기준 |
+| `PromoSuggestionDao` | PROMO_SUGGESTION | 지역·대상 월별, 자료별 |
+| `PromoSuggestionItemDao` | PROMO_SUGGESTION_ITEM | 제안별 항목 |
+| `PromoPlanDao` | PROMO_PLAN | 사업체별, 사업체·기간별(캘린더) |
+| `ExecutionRecordDao` | EXECUTION_RECORD | 계획별, 사업체별 |
+
+- 월 단위 컬럼(START_MONTH, END_MONTH, TARGET_MONTH, STAT_MONTH)은 매월 1일 날짜로 넣음
+- `DATA_SOURCE`의 record 이름은 `javax.sql.DataSource`와 헷갈리지 않도록 `DataSourceFile`로 함
+- 삭제 규칙은 DB의 FK를 따름 계획을 지우면 실행 결과 기록도 지워지고(CASCADE), 제안을 지우면 계획의 제안 번호가 비워짐(SET NULL) 제안 항목이 남은 제안, 사업체가 남은 지역처럼 자식 행이 있는 부모는 지울 수 없음
+
 ## 접속·CRUD 테스트
 
 ```powershell
 .\mvnw.cmd test
 ```
 
-- `DbConnectionTest`: 접속 계정, Oracle 버전, 현재 테이블·시퀀스 목록을 출력함 (조회만 함)
-- `UserDaoCrudTest`: `USERS` 테이블에 저장, 조회, 수정, 삭제를 확인함 테스트가 끝나면 되돌리므로 데이터가 남지 않음
+- `DbConnectionTest`: 접속 계정, Oracle 버전, 현재 테이블·시퀀스 목록과 테이블별 행 수를 출력함 (조회만 함)
+- `UserDaoCrudTest`: `USERS` 테이블에 저장, 조회, 수정, 삭제를 확인함
+- `AllDaoCrudTest`: 나머지 12개 DAO의 저장, 조회, 수정, 삭제와 NULL 값, AK 중복 차단, FK 규칙(CASCADE, SET NULL, 삭제 차단)을 확인함
+- DAO 테스트는 끝나면 되돌리므로 데이터가 남지 않음 시퀀스 번호만 올라감
 - 로컬 접속 정보가 없으면 두 테스트는 건너뜀

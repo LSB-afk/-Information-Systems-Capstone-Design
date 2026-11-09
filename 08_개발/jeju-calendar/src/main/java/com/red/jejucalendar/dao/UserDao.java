@@ -1,6 +1,5 @@
 package com.red.jejucalendar.dao;
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -27,11 +26,11 @@ public class UserDao {
 
     /** 새 사용자를 저장하고 발급된 USER_ID를 돌려줌 */
     public long insert(User user) {
-        Long id = jdbc.queryForObject("SELECT SEQ_USERS.NEXTVAL FROM DUAL", Long.class);
+        long id = JdbcSupport.nextVal(jdbc, "SEQ_USERS");
         jdbc.update(
                 "INSERT INTO USERS (" + COLUMNS + ") VALUES (?, ?, ?, ?, ?)",
                 id, user.email(), user.passwordHash(), user.role(),
-                user.createdAt() == null ? null : Date.valueOf(user.createdAt()));
+                JdbcSupport.date(user.createdAt()));
         return id;
     }
 
@@ -61,12 +60,11 @@ public class UserDao {
     }
 
     private static User mapRow(ResultSet rs, int rowNum) throws SQLException {
-        Date created = rs.getDate("CREATED_AT");
         return new User(
                 rs.getLong("USER_ID"),
                 rs.getString("EMAIL"),
                 rs.getString("PASSWORD_HASH"),
                 rs.getString("ROLE"),
-                created == null ? null : created.toLocalDate());
+                JdbcSupport.localDate(rs, "CREATED_AT"));
     }
 }

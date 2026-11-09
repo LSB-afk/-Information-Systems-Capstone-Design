@@ -32,6 +32,10 @@ class DbConnectionTest {
         System.out.println("[DB] 버전: " + version);
         System.out.println("[DB] 테이블 " + tables.size() + "개: " + tables);
         System.out.println("[DB] 시퀀스 " + sequences.size() + "개: " + sequences);
+        for (String table : tables) {
+            Integer rows = jdbc.queryForObject("SELECT COUNT(*) FROM \"" + table + "\"", Integer.class);
+            System.out.println("[DB] " + table + " 행 수: " + rows);
+        }
 
         assertThat(user).isNotBlank();
     }

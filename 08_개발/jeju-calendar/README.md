@@ -83,15 +83,39 @@ SQL 클라이언트가 없으면 아래 명령으로 파일 하나씩 실행할 
 | SCR-B-002-P01 기록 입력·수정 | `GET`·`PUT /api/plans/{planId}/record` | 최초 작성은 계획 값으로 자동 채움, 저장하면 계획 하나에 기록 하나로 저장·수정 |
 | SCR-B-002-P02 사용 결과 요약 | `GET /api/businesses/{id}/records/summary` | 입력한 값만 더하고 입력 개수를 함께 보여줌 |
 
+| SCR-A-001 CSV 양식 | `GET /api/admin/data-sources/template` | 필수 열 6개와 예시 행 (UTF-8, 엑셀용 BOM 포함) |
+| SCR-A-001 등록 자료 | `GET /api/admin/data-sources` | 등록한 자료 수와 목록 |
+| SCR-A-001-P01 자료 검증 | `POST /api/admin/data-sources/validate` | 저장하지 않고 다섯 항목만 판정 |
+| SCR-A-001 자료 등록 | `POST /api/admin/data-sources` | 받은 파일로 다시 검증한 뒤 모두 통과하면 자료·검증 결과 5개·월별 통계를 한 번에 저장 |
+| SCR-A-001-P02 추천 기준 | `GET`·`PUT /api/admin/criteria` | 현재 기준 조회와 저장 (0부터 100까지의 감소 기준, 출처, 기준 기간, 판단 이유, 적용 조건) |
+
 - 오류는 `{ "message": 화면에 보여줄 문구, "field": 문제가 된 입력란 }`으로 돌려줌 (400 입력 오류, 401 로그인 필요·인증 실패, 403 권한 없음, 404 없음, 409 이미 담은 제안)
 - 권한: 사업체 운영자는 본인 사업체와 권한을 받은 사업체, 서비스 운영자는 `BUSINESS_PERMISSION`으로 권한을 받은 사업체만 처리함
 - 일정표 기간은 `application.properties`의 `calendar.start-month`로 정함 (기본값 2026-10, 즉 2026년 10월부터 12월까지)
 - 비밀번호는 BCrypt 해시로만 저장하고 응답에 넣지 않음
 - 숫자 칸의 빈값은 미확보, 0은 실제로 확인한 0건으로 구분함 요약에서 미확보 값을 0으로 바꾸지 않음
 
+### CSV 등록 규칙 (자료·기준 관리)
+
+- 자료·기준 관리 API는 서비스 운영자만 사용함 사업체 운영자는 403
+- 파일: `.csv`, 최대 1MB, UTF-8 (엑셀은 "CSV UTF-8" 형식으로 저장) 열은 `region_code,month,value,unit,provider,aggregation` 순서
+- multipart 폼 칸: `file`, `sourceVersion`(출처·버전), `startMonth`·`endMonth`(2025-01 형식), `unit`(`PERSON_10K` 만 명 또는 `KRW_100M` 억 원), `providerBasis`(제공자·집계 기준)
+
+| 검증 항목 | 통과 조건 |
+| --- | --- |
+| PERIOD 자료 기간 | 시작 월이 종료 월보다 늦지 않고, 모든 행의 월(2025-01 형식)이 기준기간 안에 있음 |
+| AGGREGATION 집계 기준 | 모든 행이 `월별 지역 집계`이고 선택한 단위와 같음, 같은 지역·월이 두 번 나오지 않음 |
+| REGION_CODE 지역 코드 | 모든 지역 코드가 REGION 테이블에 있음 |
+| MISSING_VALUE 누락값 | 출처·버전과 모든 칸이 채워져 있고, 값이 0 이상의 정수임 빈 값을 0으로 바꾸지 않음 |
+| PROVIDER 제공 기준 일관성 | 모든 행의 provider가 입력한 제공자·집계 기준과 같음 |
+
+- 등록하면 만 명 자료는 지표 `VISIT`, 억 원 자료는 `SPEND`로 `REGION_MONTHLY_STAT`에 저장되어 지역 분석에서 사용함
+- `STAT_VALUE`가 INTEGER라 소수(예: 35.5만 명)는 받을 수 없음 소수가 필요하면 ERD에서 NUMBER로 바꾸는 방안을 팀에서 정해야 함
+- 업종·내외국인·시간대별 소비 비중(`REGION_CONSUMPTION_STAT`) CSV는 실제 자료의 열 구성을 확인한 뒤 추가함
+
 ### 시연용 샘플 데이터 (선택)
 
-`db/03_sample_data.sql`은 화면 시안과 같은 시연 계정 2개(`cafe@example.com`, `operator@example.com`, 비밀번호 `JejuDemo26!`), 지역 2곳, 시연 카페 1곳, 초기 계획 2개를 넣음 팀이 실행하기로 정한 경우에만 위의 실행 명령으로 한 번 실행함
+`db/03_sample_data.sql`은 화면 시안과 같은 시연 계정 2개(`cafe@example.com`, `operator@example.com`, 비밀번호 `JejuDemo26!`), 지역 2곳, 시연 카페 1곳, 초기 계획 2개를 넣음 2026-11-10에 팀 DB에 한 번 넣었음 다시 실행하면 중복으로 실패함
 
 ### 확인이 필요한 점: 한글 입력 길이
 
@@ -106,6 +130,8 @@ SQL 클라이언트가 없으면 아래 명령으로 파일 하나씩 실행할 
 - `DbConnectionTest`: 접속 계정, Oracle 버전, 현재 테이블·시퀀스 목록과 테이블별 행 수를 출력함 (조회만 함)
 - `UserDaoCrudTest`: `USERS` 테이블에 저장, 조회, 수정, 삭제를 확인함
 - `AllDaoCrudTest`: 나머지 12개 DAO의 저장, 조회, 수정, 삭제와 NULL 값, AK 중복 차단, FK 규칙(CASCADE, SET NULL, 삭제 차단)을 확인함
+- `VisitCsvValidatorTest`: CSV 다섯 검증 규칙을 DB 없이 확인함
+- `AdminApiTest`: 자료·기준 관리 API의 권한, 검증, 등록, 기준 저장을 확인함
 - `PlanRecordApiTest`: 로그인·권한·일정표·계획·제안 담기·실행 기록·요약 API를 실제 요청처럼 확인함
 - `SampleDataScriptTest`: 샘플 데이터 SQL이 오류 없이 실행되고 시연 계정으로 로그인되는지 확인함 (이미 넣은 DB에서는 건너뜀)
 - DB를 쓰는 테스트는 끝나면 되돌리므로 데이터가 남지 않음 시퀀스 번호만 올라감

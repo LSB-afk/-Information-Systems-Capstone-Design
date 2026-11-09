@@ -47,6 +47,12 @@ public class PromoSuggestionDao {
                 + " ORDER BY SUGGESTION_ID", ROW_MAPPER, regionCode, JdbcSupport.date(targetMonth));
     }
 
+    /** 대상 월(매월 1일)이 from 이상 to 이하인 모든 지역의 제안 */
+    public List<PromoSuggestion> findByTargetMonthBetween(LocalDate from, LocalDate to) {
+        return jdbc.query("SELECT " + COLUMNS + " FROM PROMO_SUGGESTION WHERE TARGET_MONTH BETWEEN ? AND ?"
+                + " ORDER BY REGION_CODE, TARGET_MONTH, SUGGESTION_ID", ROW_MAPPER, JdbcSupport.date(from), JdbcSupport.date(to));
+    }
+
     /** 분석 자료를 바꾸면 제안도 바뀌므로 자료 기준 조회 */
     public List<PromoSuggestion> findBySourceId(long sourceId) {
         return jdbc.query("SELECT " + COLUMNS + " FROM PROMO_SUGGESTION WHERE SOURCE_ID = ? ORDER BY SUGGESTION_ID",

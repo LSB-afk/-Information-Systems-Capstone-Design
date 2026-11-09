@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.red.jejucalendar.datasource.VisitCsvValidator;
+import com.red.jejucalendar.domain.DataSourceFile;
+
 /**
  * 지역 분석 화면(SCR-C-003)에서 주고받는 데이터
  * 값이 null이면 미확보(미수집)이며 0으로 바꾸지 않음
@@ -24,6 +27,12 @@ public final class AnalysisDtos {
             LocalDate startMonth,
             LocalDate endMonth,
             LocalDate registeredAt) {
+
+        public static SourceInfo of(DataSourceFile s) {
+            return new SourceInfo(s.sourceId(), s.fileName(), s.sourceVersion(), s.providerBasis(), s.unit(),
+                    VisitCsvValidator.UNIT_LABELS.getOrDefault(s.unit(), s.unit()), s.startMonth(), s.endMonth(),
+                    s.registeredAt());
+        }
     }
 
     public record MonthValue(int month, Integer value) {

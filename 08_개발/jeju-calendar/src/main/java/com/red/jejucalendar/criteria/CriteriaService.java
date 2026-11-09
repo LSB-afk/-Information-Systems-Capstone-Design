@@ -1,16 +1,17 @@
 package com.red.jejucalendar.criteria;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.red.jejucalendar.auth.LoginUser;
 import com.red.jejucalendar.common.ApiException;
 import com.red.jejucalendar.common.Inputs;
 import com.red.jejucalendar.dao.RecommendationCriteriaDao;
 import com.red.jejucalendar.domain.RecommendationCriteria;
+import com.red.jejucalendar.suggestion.SuggestionService;
 
 /**
  * UC09 추천 기준·근거 관리 (SCR-A-001 ⑫⑬, SCR-A-001-P02)
@@ -30,15 +31,16 @@ public class CriteriaService {
     }
 
     private final RecommendationCriteriaDao criteriaDao;
+    private final SuggestionService suggestionService;
 
-    public CriteriaService(RecommendationCriteriaDao criteriaDao) {
+    public CriteriaService(RecommendationCriteriaDao criteriaDao, SuggestionService suggestionService) {
         this.criteriaDao = criteriaDao;
+        this.suggestionService = suggestionService;
     }
 
     /** 화면 요약·홍보 제안 계산에 쓰는 현재 기준 (아직 없으면 비어 있음) */
     public Optional<RecommendationCriteria> current() {
-        List<RecommendationCriteria> all = criteriaDao.findAll();
-        return all.isEmpty() ? Optional.empty() : Optional.of(all.get(all.size() - 1));
+        return criteriaDao.findCurrent();
     }
 
     public Optional<RecommendationCriteria> current(LoginUser user) {
@@ -46,7 +48,8 @@ public class CriteriaService {
         return current();
     }
 
-    /** SCR-A-001-P02 ⑧: 권한·입력 검사 후 저장 */
+    /** SCR-A-001-P02 ⑧: 권한·입력 검사 후 저장하고 홍보 제안을 다시 계산함 (실패하면 둘 다 되돌림) */
+    @Transactional
     public RecommendationCriteria save(LoginUser user, CriteriaRequest r) {
         user.requireServiceOperator();
         Integer threshold = r.declineRateThreshold();
@@ -63,9 +66,11 @@ public class CriteriaService {
         if (existing.isPresent()) {
             long id = existing.get().criteriaId();
             criteriaDao.update(new RecommendationCriteria(id, threshold, source, period, reason, condition, today));
+            suggestionService.recalculate();
             return criteriaDao.findById(id).orElseThrow();
         }
         long id = criteriaDao.insert(new RecommendationCriteria(null, threshold, source, period, reason, condition, today));
+        suggestionService.recalculate();
         return criteriaDao.findById(id).orElseThrow();
     }
 

@@ -39,6 +39,12 @@ public class RecommendationCriteriaDao {
                 ROW_MAPPER, criteriaId).stream().findFirst();
     }
 
+    /** 적용 중인 기준: CRITERIA_ID가 가장 큰 행 (Oracle 11g라 ROWNUM 사용) */
+    public Optional<RecommendationCriteria> findCurrent() {
+        return jdbc.query("SELECT " + COLUMNS + " FROM (SELECT " + COLUMNS + " FROM RECOMMENDATION_CRITERIA"
+                + " ORDER BY CRITERIA_ID DESC) WHERE ROWNUM = 1", ROW_MAPPER).stream().findFirst();
+    }
+
     public List<RecommendationCriteria> findAll() {
         return jdbc.query("SELECT " + COLUMNS + " FROM RECOMMENDATION_CRITERIA ORDER BY CRITERIA_ID", ROW_MAPPER);
     }

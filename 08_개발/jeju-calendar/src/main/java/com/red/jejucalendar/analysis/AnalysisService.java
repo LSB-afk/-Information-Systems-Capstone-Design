@@ -26,15 +26,11 @@ import com.red.jejucalendar.analysis.AnalysisDtos.TimeSlotRow;
 import com.red.jejucalendar.analysis.AnalysisDtos.TrendResponse;
 import com.red.jejucalendar.analysis.AnalysisDtos.VisitSpendRow;
 import com.red.jejucalendar.auth.LoginUser;
-import com.red.jejucalendar.business.BusinessAccessService;
 import com.red.jejucalendar.common.ApiException;
 import com.red.jejucalendar.dao.DataSourceFileDao;
 import com.red.jejucalendar.dao.RegionConsumptionStatDao;
 import com.red.jejucalendar.dao.RegionDao;
 import com.red.jejucalendar.dao.RegionMonthlyStatDao;
-import com.red.jejucalendar.datasource.VisitCsvValidator;
-import com.red.jejucalendar.domain.Business;
-import com.red.jejucalendar.domain.DataSourceFile;
 import com.red.jejucalendar.domain.Region;
 import com.red.jejucalendar.domain.RegionConsumptionStat;
 import com.red.jejucalendar.domain.RegionMonthlyStat;
@@ -66,16 +62,16 @@ public class AnalysisService {
     private final RegionMonthlyStatDao monthlyDao;
     private final RegionConsumptionStatDao consumptionDao;
     private final DataSourceFileDao sourceDao;
-    private final BusinessAccessService accessService;
+    private final RegionSelector regionSelector;
     private final CalendarPeriod period;
 
     public AnalysisService(RegionDao regionDao, RegionMonthlyStatDao monthlyDao, RegionConsumptionStatDao consumptionDao,
-            DataSourceFileDao sourceDao, BusinessAccessService accessService, CalendarPeriod period) {
+            DataSourceFileDao sourceDao, RegionSelector regionSelector, CalendarPeriod period) {
         this.regionDao = regionDao;
         this.monthlyDao = monthlyDao;
         this.consumptionDao = consumptionDao;
         this.sourceDao = sourceDao;
-        this.accessService = accessService;
+        this.regionSelector = regionSelector;
         this.period = period;
     }
 
@@ -185,19 +181,8 @@ public class AnalysisService {
         return new ShareSection(true, null, sourceInfo(sourceId.get()), segments, timeSlotCategory, timeSlots);
     }
 
-    /** 지역을 고르지 않았으면 사용자의 첫 사업체 지역, 없으면 첫 번째 지역 */
     private Region region(LoginUser user, String regionCode) {
-        if (regionCode != null && !regionCode.isBlank()) {
-            return regionDao.findByCode(regionCode)
-                    .orElseThrow(() -> ApiException.badRequest("regionCode", "등록되지 않은 지역입니다."));
-        }
-        Optional<String> businessRegion = accessService.accessibleBusinesses(user).stream()
-                .map(Business::regionCode).findFirst();
-        if (businessRegion.isPresent()) {
-            return regionDao.findByCode(businessRegion.get()).orElseThrow();
-        }
-        return regionDao.findAll().stream().findFirst()
-                .orElseThrow(() -> ApiException.notFound("등록된 지역이 없습니다. 자료·기준 관리에서 지역을 먼저 확인해 주세요."));
+        return regionSelector.select(user, regionCode);
     }
 
     private Map<String, Map<Integer, Integer>> valuesByRegion(long sourceId, String metricType, int year) {
@@ -211,10 +196,7 @@ public class AnalysisService {
     }
 
     private SourceInfo sourceInfo(long sourceId) {
-        DataSourceFile s = sourceDao.findById(sourceId).orElseThrow();
-        return new SourceInfo(s.sourceId(), s.fileName(), s.sourceVersion(), s.providerBasis(), s.unit(),
-                VisitCsvValidator.UNIT_LABELS.getOrDefault(s.unit(), s.unit()), s.startMonth(), s.endMonth(),
-                s.registeredAt());
+        return SourceInfo.of(sourceDao.findById(sourceId).orElseThrow());
     }
 
     private static String noDataMessage(int year, List<Integer> years) {

@@ -33,6 +33,7 @@ import com.red.jejucalendar.domain.DataSourceFile;
 import com.red.jejucalendar.domain.DataValidationResult;
 import com.red.jejucalendar.domain.Region;
 import com.red.jejucalendar.domain.RegionMonthlyStat;
+import com.red.jejucalendar.suggestion.SuggestionService;
 
 /**
  * UC07 CSV 자료 등록, UC08 자료 기준·누락값 검증 (SCR-A-001, SCR-A-001-P01)
@@ -49,13 +50,15 @@ public class DataSourceService {
     private final DataValidationResultDao validationDao;
     private final RegionMonthlyStatDao monthlyStatDao;
     private final RegionDao regionDao;
+    private final SuggestionService suggestionService;
 
     public DataSourceService(DataSourceFileDao sourceDao, DataValidationResultDao validationDao,
-            RegionMonthlyStatDao monthlyStatDao, RegionDao regionDao) {
+            RegionMonthlyStatDao monthlyStatDao, RegionDao regionDao, SuggestionService suggestionService) {
         this.sourceDao = sourceDao;
         this.validationDao = validationDao;
         this.monthlyStatDao = monthlyStatDao;
         this.regionDao = regionDao;
+        this.suggestionService = suggestionService;
     }
 
     /** SCR-A-001 ⑨: 저장하지 않고 다섯 항목만 검사 */
@@ -64,7 +67,7 @@ public class DataSourceService {
         return toResponse(run(file, meta));
     }
 
-    /** SCR-A-001 ⑩, P01 ③: 다시 검증한 뒤 모두 통과하면 자료·검증 결과·월별 통계를 한 번에 저장 */
+    /** SCR-A-001 ⑩, P01 ③: 다시 검증한 뒤 모두 통과하면 자료·검증 결과·월별 통계를 한 번에 저장 (방문 자료면 제안도 다시 계산) */
     @Transactional
     public RegisterResponse register(LoginUser user, MultipartFile file, SourceMeta meta) {
         user.requireServiceOperator();
@@ -88,6 +91,9 @@ public class DataSourceService {
         int saved = monthlyStatDao.insertAll(rows.stream()
                 .map(r -> new RegionMonthlyStat(null, sourceId, r.regionCode(), r.month().atDay(1), metricType, r.value()))
                 .toList());
+        if ("VISIT".equals(metricType)) {
+            suggestionService.recalculate();
+        }
         return new RegisterResponse(sourceId, saved, "자료를 등록했습니다. (" + saved + "행)", validation);
     }
 

@@ -65,6 +65,32 @@ public class RegionMonthlyStatDao {
                 ROW_MAPPER, sourceId, regionCode, metricType, JdbcSupport.date(from), JdbcSupport.date(to));
     }
 
+    /** 검증을 통과한(PASS) 자료에 들어 있는 연도, 최근 연도부터 */
+    public List<Integer> findYears(String metricType) {
+        return jdbc.queryForList("SELECT DISTINCT EXTRACT(YEAR FROM S.STAT_MONTH) AS Y FROM REGION_MONTHLY_STAT S"
+                + " JOIN DATA_SOURCE D ON D.SOURCE_ID = S.SOURCE_ID"
+                + " WHERE D.VALIDATION_STATUS = 'PASS' AND S.METRIC_TYPE = ? ORDER BY Y DESC", Integer.class, metricType);
+    }
+
+    /**
+     * 지표·연도 자료가 있는 PASS 자료 중 가장 최근에 등록한 자료 ID
+     * Oracle 11g는 FETCH FIRST를 지원하지 않아 ROWNUM으로 하나만 고름
+     */
+    public Optional<Long> findLatestSourceId(String metricType, int year) {
+        return jdbc.queryForList("SELECT SOURCE_ID FROM (SELECT D.SOURCE_ID FROM DATA_SOURCE D"
+                        + " WHERE D.VALIDATION_STATUS = 'PASS' AND EXISTS (SELECT 1 FROM REGION_MONTHLY_STAT S"
+                        + " WHERE S.SOURCE_ID = D.SOURCE_ID AND S.METRIC_TYPE = ? AND EXTRACT(YEAR FROM S.STAT_MONTH) = ?)"
+                        + " ORDER BY D.REGISTERED_AT DESC, D.SOURCE_ID DESC) WHERE ROWNUM = 1",
+                Long.class, metricType, year).stream().findFirst();
+    }
+
+    /** 자료 하나에서 지표의 기간별 값 (모든 지역, from·to는 매월 1일) */
+    public List<RegionMonthlyStat> findBySourceAndPeriod(long sourceId, String metricType, LocalDate from, LocalDate to) {
+        return jdbc.query("SELECT " + COLUMNS + " FROM REGION_MONTHLY_STAT WHERE SOURCE_ID = ? AND METRIC_TYPE = ?"
+                        + " AND STAT_MONTH BETWEEN ? AND ? ORDER BY REGION_CODE, STAT_MONTH",
+                ROW_MAPPER, sourceId, metricType, JdbcSupport.date(from), JdbcSupport.date(to));
+    }
+
     public List<RegionMonthlyStat> findBySourceId(long sourceId) {
         return jdbc.query("SELECT " + COLUMNS + " FROM REGION_MONTHLY_STAT WHERE SOURCE_ID = ?"
                 + " ORDER BY REGION_CODE, METRIC_TYPE, STAT_MONTH", ROW_MAPPER, sourceId);

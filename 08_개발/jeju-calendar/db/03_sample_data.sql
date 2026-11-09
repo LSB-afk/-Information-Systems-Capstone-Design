@@ -1,0 +1,33 @@
+-- 03. 로컬 시연용 샘플 데이터 (선택)
+-- 화면 시안(02_제품/화면시안/app.js)의 시연 계정·지역·초기 계획과 같은 값
+--   사업체 운영자: cafe@example.com / 서비스 운영자: operator@example.com
+--   비밀번호: JejuDemo26! (시안 코드에 이미 공개된 시연용 값, BCrypt 해시로 저장)
+-- 실제 사용자·사업체 정보는 넣지 않음 홍보 제안은 실제 자료(DATA_SOURCE)가 필요해 넣지 않음
+-- 한 번만 실행함 (다시 실행하면 이메일·지역 코드 중복으로 실패함)
+
+INSERT INTO USERS (USER_ID, EMAIL, PASSWORD_HASH, ROLE, CREATED_AT)
+VALUES (SEQ_USERS.NEXTVAL, 'cafe@example.com', '$2a$10$7y2LiZf8TJrWgt.E/mpXEuQ1PE7yJ9jhNlvDhC5olcm9kSI0VdJVy', 'BUSINESS', SYSDATE);
+
+INSERT INTO USERS (USER_ID, EMAIL, PASSWORD_HASH, ROLE, CREATED_AT)
+VALUES (SEQ_USERS.NEXTVAL, 'operator@example.com', '$2a$10$7y2LiZf8TJrWgt.E/mpXEuQ1PE7yJ9jhNlvDhC5olcm9kSI0VdJVy', 'SERVICE', SYSDATE);
+
+-- 지역: ERD 코드 설계서 '참고: 지역은 코드가 아니라 기준 데이터임'의 두 곳
+INSERT INTO REGION (REGION_CODE, REGION_NAME) VALUES ('50110253', '애월읍');
+INSERT INTO REGION (REGION_CODE, REGION_NAME) VALUES ('50110256', '구좌읍');
+
+INSERT INTO BUSINESS (BUSINESS_ID, USER_ID, BUSINESS_NAME, CATEGORY, REGION_CODE)
+VALUES (SEQ_BUSINESS.NEXTVAL, (SELECT USER_ID FROM USERS WHERE EMAIL = 'cafe@example.com'), '애월 시연 카페', 'CAFE', '50110253');
+
+-- 서비스 운영자에게 시연 카페의 관리 권한을 줌
+INSERT INTO BUSINESS_PERMISSION (USER_ID, BUSINESS_ID, PERMISSION_TYPE, GRANTED_AT)
+VALUES ((SELECT USER_ID FROM USERS WHERE EMAIL = 'operator@example.com'),
+        (SELECT BUSINESS_ID FROM BUSINESS WHERE BUSINESS_NAME = '애월 시연 카페'), 'MANAGER', SYSDATE);
+
+-- 시안의 초기 계획 2개
+INSERT INTO PROMO_PLAN (PLAN_ID, BUSINESS_ID, SUGGESTION_ID, TITLE, SCHEDULED_DATE, CHANNEL, PREPARATION_NOTE)
+VALUES (SEQ_PROMO_PLAN.NEXTVAL, (SELECT BUSINESS_ID FROM BUSINESS WHERE BUSINESS_NAME = '애월 시연 카페'), NULL,
+        '가을 메뉴 콘텐츠 준비', DATE '2026-10-05', 'INSTAGRAM', '계절 음료 사진과 소개 문구 준비');
+
+INSERT INTO PROMO_PLAN (PLAN_ID, BUSINESS_ID, SUGGESTION_ID, TITLE, SCHEDULED_DATE, CHANNEL, PREPARATION_NOTE)
+VALUES (SEQ_PROMO_PLAN.NEXTVAL, (SELECT BUSINESS_ID FROM BUSINESS WHERE BUSINESS_NAME = '애월 시연 카페'), NULL,
+        '평일 티타임 세트 안내', DATE '2026-11-09', 'STORE', '판매 가능한 메뉴 구성 먼저 확인');

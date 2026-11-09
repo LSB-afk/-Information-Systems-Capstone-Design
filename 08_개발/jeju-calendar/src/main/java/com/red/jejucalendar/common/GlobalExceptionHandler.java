@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 /** 오류를 { "message": ..., "field": ... } 형태로 돌려줌 */
 @RestControllerAdvice
@@ -26,6 +27,12 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     ResponseEntity<ErrorResponse> handleUnreadable(HttpMessageNotReadableException e) {
         return ResponseEntity.badRequest().body(new ErrorResponse("입력 형식을 확인해 주세요.", null));
+    }
+
+    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    ResponseEntity<ErrorResponse> handleTooLarge(MaxUploadSizeExceededException e) {
+        return ResponseEntity.badRequest()
+                .body(new ErrorResponse("파일이 너무 큽니다. 최대 1MB까지 등록할 수 있어요.", "file"));
     }
 
     /** 저장 실패: 화면은 입력값을 유지하고 다시 저장을 안내함 (SCR-B-001-P01 저장 실패) */

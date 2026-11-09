@@ -63,6 +63,15 @@ public class RegionConsumptionStatDao {
                 ROW_MAPPER, sourceId, regionCode, JdbcSupport.date(statMonth));
     }
 
+    /** 지역·월의 소비 비중이 있는 PASS 자료 중 가장 최근에 등록한 자료 ID (Oracle 11g라 ROWNUM 사용) */
+    public Optional<Long> findLatestSourceId(String regionCode, LocalDate statMonth) {
+        return jdbc.queryForList("SELECT SOURCE_ID FROM (SELECT D.SOURCE_ID FROM DATA_SOURCE D"
+                        + " WHERE D.VALIDATION_STATUS = 'PASS' AND EXISTS (SELECT 1 FROM REGION_CONSUMPTION_STAT C"
+                        + " WHERE C.SOURCE_ID = D.SOURCE_ID AND C.REGION_CODE = ? AND C.STAT_MONTH = ?)"
+                        + " ORDER BY D.REGISTERED_AT DESC, D.SOURCE_ID DESC) WHERE ROWNUM = 1",
+                Long.class, regionCode, JdbcSupport.date(statMonth)).stream().findFirst();
+    }
+
     public List<RegionConsumptionStat> findBySourceId(long sourceId) {
         return jdbc.query("SELECT " + COLUMNS + " FROM REGION_CONSUMPTION_STAT WHERE SOURCE_ID = ?"
                 + " ORDER BY REGION_CODE, STAT_MONTH, CATEGORY, SEGMENT, TIME_SLOT", ROW_MAPPER, sourceId);

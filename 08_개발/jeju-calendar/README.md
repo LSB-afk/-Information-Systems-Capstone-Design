@@ -83,6 +83,8 @@ SQL 클라이언트가 없으면 아래 명령으로 파일 하나씩 실행할 
 | SCR-B-002-P01 기록 입력·수정 | `GET`·`PUT /api/plans/{planId}/record` | 최초 작성은 계획 값으로 자동 채움, 저장하면 계획 하나에 기록 하나로 저장·수정 |
 | SCR-B-002-P02 사용 결과 요약 | `GET /api/businesses/{id}/records/summary` | 입력한 값만 더하고 입력 개수를 함께 보여줌 |
 
+| SCR-C-003 방문·계절 비교 | `GET /api/analysis/trend?regionCode=&year=&metric=` | 12개월 값, 최다·최저 달, 지역별 비교 표, 자료 출처 (metric: `VISIT` 또는 `SPEND`) |
+| SCR-C-003 소비 비교 | `GET /api/analysis/consumption?regionCode=&year=&category=` | 같은 달의 방문·소비, 업종별 내·외국인 비중, 시간대별 비중 |
 | SCR-A-001 CSV 양식 | `GET /api/admin/data-sources/template` | 필수 열 6개와 예시 행 (UTF-8, 엑셀용 BOM 포함) |
 | SCR-A-001 등록 자료 | `GET /api/admin/data-sources` | 등록한 자료 수와 목록 |
 | SCR-A-001-P01 자료 검증 | `POST /api/admin/data-sources/validate` | 저장하지 않고 다섯 항목만 판정 |
@@ -94,6 +96,15 @@ SQL 클라이언트가 없으면 아래 명령으로 파일 하나씩 실행할 
 - 일정표 기간은 `application.properties`의 `calendar.start-month`로 정함 (기본값 2026-10, 즉 2026년 10월부터 12월까지)
 - 비밀번호는 BCrypt 해시로만 저장하고 응답에 넣지 않음
 - 숫자 칸의 빈값은 미확보, 0은 실제로 확인한 0건으로 구분함 요약에서 미확보 값을 0으로 바꾸지 않음
+
+### 지역 분석 규칙
+
+- 지표·연도마다 검증을 통과한 자료 중 가장 최근에 등록한 자료 하나를 골라 모든 지역에 같은 기준으로 씀 응답의 `source`에 출처·버전·제공자·단위·기간을 함께 돌려줌
+- 지역·연도를 비우면 내 사업체의 지역과 자료가 있는 가장 최근 연도를 씀
+- 자료가 없으면 `hasData: false`와 조회할 수 있는 연도를 안내하고 그래프 값을 만들지 않음 없는 달은 `null`(미확보)이며 0으로 바꾸지 않음
+- 지역 비교 표의 변화율은 계획 시작 월과 다음 달 기준 (기본 10월 → 11월), 계산식 (다음 달 − 시작 달) ÷ 시작 달 × 100, 소수 첫째 자리 반올림
+- 소비 비교는 방문(만 명)과 소비(억 원)를 단위별로 나란히 보여주기만 하고 전환율·1인당 소비액을 계산하지 않음 내·외국인 중 한쪽 값이 없는 업종은 비교를 제한함
+- 업종·내외국인·시간대별 비중은 계획 시작 월과 같은 달(기본 10월)의 `REGION_CONSUMPTION_STAT` 자료를 씀 이 자료를 등록하는 CSV는 아직 없음
 
 ### CSV 등록 규칙 (자료·기준 관리)
 
@@ -131,6 +142,7 @@ SQL 클라이언트가 없으면 아래 명령으로 파일 하나씩 실행할 
 - `UserDaoCrudTest`: `USERS` 테이블에 저장, 조회, 수정, 삭제를 확인함
 - `AllDaoCrudTest`: 나머지 12개 DAO의 저장, 조회, 수정, 삭제와 NULL 값, AK 중복 차단, FK 규칙(CASCADE, SET NULL, 삭제 차단)을 확인함
 - `VisitCsvValidatorTest`: CSV 다섯 검증 규칙을 DB 없이 확인함
+- `AnalysisApiTest`: 지역 분석의 12개월 값, 최다·최저 달, 지역 비교, 자료 없음, 소비 비교를 확인함
 - `AdminApiTest`: 자료·기준 관리 API의 권한, 검증, 등록, 기준 저장을 확인함
 - `PlanRecordApiTest`: 로그인·권한·일정표·계획·제안 담기·실행 기록·요약 API를 실제 요청처럼 확인함
 - `SampleDataScriptTest`: 샘플 데이터 SQL이 오류 없이 실행되고 시연 계정으로 로그인되는지 확인함 (이미 넣은 DB에서는 건너뜀)

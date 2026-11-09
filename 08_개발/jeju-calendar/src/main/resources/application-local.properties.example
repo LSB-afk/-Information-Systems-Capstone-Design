@@ -1,0 +1,5 @@
+# 이 파일을 같은 폴더에 application-local.properties 로 복사한 뒤 값을 채움
+# application-local.properties 는 .gitignore 에 들어 있어 GitHub 에 올라가지 않음
+DB_URL=jdbc:oracle:thin:@<서버IP>:<포트>:xe
+DB_USERNAME=<팀 계정>
+DB_PASSWORD=<팀 비밀번호>

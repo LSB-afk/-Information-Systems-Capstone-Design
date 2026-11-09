@@ -21,6 +21,10 @@
 - [ERD Oracle SQL — ERwin Schema Generation 결과](04_아키텍처/ERD/Red_ERD_Oracle.sql)
 - [ERD 코드 설계서 — 코드값 컬럼 14개](04_아키텍처/ERD/ERD_코드_설계서.md)
 
+## 개발
+
+- [Spring Boot 서버 프로젝트 — 기술 스택, DB 접속 설정, 테이블 생성, 테스트 방법](08_개발/jeju-calendar/README.md)
+
 ## 화면 시안
 
 - [클릭 가능한 제주 마케팅 캘린더](02_제품/화면시안/index.html)
@@ -45,6 +49,7 @@
 05_리서치/
 06_증빙/
 07_원천/
+08_개발/
 ```
 
 ## Obsidian · 로컬 · GitHub 연결

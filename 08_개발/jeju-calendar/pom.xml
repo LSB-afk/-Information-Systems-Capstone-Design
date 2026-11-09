@@ -42,6 +42,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webmvc</artifactId>
 		</dependency>
+		<!-- 비밀번호 BCrypt 해시만 사용 (Spring Security 전체는 넣지 않음) -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-crypto</artifactId>
+		</dependency>
 		<!-- Oracle 11g XE 호환 JDBC 드라이버: ojdbc8 19.x (ojdbc11 23.x는 11g 미지원) -->
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>

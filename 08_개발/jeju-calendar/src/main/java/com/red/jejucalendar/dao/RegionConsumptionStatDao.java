@@ -72,6 +72,13 @@ public class RegionConsumptionStatDao {
                 Long.class, regionCode, JdbcSupport.date(statMonth)).stream().findFirst();
     }
 
+    /** 검증을 통과한 자료의 소비 비중 행 수 (자료 현황 표시용) */
+    public int countPassed() {
+        Integer n = jdbc.queryForObject("SELECT COUNT(*) FROM REGION_CONSUMPTION_STAT C JOIN DATA_SOURCE D"
+                + " ON D.SOURCE_ID = C.SOURCE_ID WHERE D.VALIDATION_STATUS = 'PASS'", Integer.class);
+        return n == null ? 0 : n;
+    }
+
     public List<RegionConsumptionStat> findBySourceId(long sourceId) {
         return jdbc.query("SELECT " + COLUMNS + " FROM REGION_CONSUMPTION_STAT WHERE SOURCE_ID = ?"
                 + " ORDER BY REGION_CODE, STAT_MONTH, CATEGORY, SEGMENT, TIME_SLOT", ROW_MAPPER, sourceId);

@@ -23,7 +23,7 @@
 
 ## 개발
 
-- [Spring Boot 서버 프로젝트 — 기술 스택, DB 접속 설정, 테이블 생성, 테스트 방법](08_개발/jeju-calendar/README.md)
+- [Spring Boot 서버와 화면 — 기술 스택, DB 접속 설정, 테이블 생성, API, 화면 실행·확인 결과, 테스트 방법](08_개발/jeju-calendar/README.md)
 
 ## 화면 시안
 

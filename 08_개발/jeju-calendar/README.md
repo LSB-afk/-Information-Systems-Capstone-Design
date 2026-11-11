@@ -30,10 +30,12 @@
 | `db/00_check_objects.sql` | 현재 계정의 테이블·시퀀스·제약조건 확인 (조회만 함) |
 | `db/01_create_tables.sql` | ERD SQL([Red_ERD_Oracle.sql](../../04_아키텍처/ERD/Red_ERD_Oracle.sql))의 1행부터 422행까지 그대로 옮김 테이블 13개, PK 13개, AK 4개, FK 17개 |
 | `db/02_create_sequences.sql` | `SEQ_` 시퀀스 9개 |
+| `db/04_ijto_precision_and_snapshot.sql` | `STAT_VALUE`를 소수 저장이 가능한 `NUMBER`로 확장하고 원본 JSON 보존용 `IJTO_DATA_SNAPSHOT` 테이블을 추가함 최초 한 번 실행 |
 
 - 테이블 이름은 ERD에 정의된 이름(`USERS`, `BUSINESS` 등)을 그대로 씀 `TBL_` 접두어로 바꿀지는 팀 확인 후 ERD와 함께 바꿈
 - ERwin 기본 옵션으로 만들어진 트리거 30개는 FK 17개와 같은 규칙을 다시 검사하고, `tD_PROMO_PLAN`처럼 `ON DELETE CASCADE`와 겹치는 삭제도 있어 실행하지 않음
 - 시퀀스는 숫자 하나로 된 PK를 가진 테이블에만 만듦 `REGION`(지역 코드 PK)과 복합 PK 테이블 3개는 제외함
+- 2026년 11월 11일 본인 배정 계정에 `db/04_ijto_precision_and_snapshot.sql`을 적용함 현재 테이블은 14개, 시퀀스는 9개임 원래 ERwin 생성 SQL은 보존하고 추가 변경은 별도 이관 SQL로 관리함
 
 SQL 클라이언트가 없으면 아래 명령으로 파일 하나씩 실행할 수 있음 (Windows PowerShell 기준)
 
@@ -43,7 +45,7 @@ SQL 클라이언트가 없으면 아래 명령으로 파일 하나씩 실행할 
 
 ## DAO 목록 (`src/main/java/com/red/jejucalendar/dao`)
 
-테이블 13개마다 DAO 하나와 `domain` 패키지의 record 하나가 있음 시퀀스를 쓰는 테이블의 `insert`는 발급된 ID를 돌려줌
+원래 ERD의 테이블 13개마다 DAO 하나와 `domain` 패키지의 record 하나가 있음 시퀀스를 쓰는 테이블의 `insert`는 발급된 ID를 돌려줌 추가한 `IJTO_DATA_SNAPSHOT`은 실제 데이터 이관기가 원문·출처를 저장하는 테이블임
 
 | DAO | 테이블 | 저장·수정·삭제 외에 있는 조회 |
 | --- | --- | --- |
@@ -62,6 +64,7 @@ SQL 클라이언트가 없으면 아래 명령으로 파일 하나씩 실행할 
 | `ExecutionRecordDao` | EXECUTION_RECORD | 계획별, 사업체별 |
 
 - 월 단위 컬럼(START_MONTH, END_MONTH, TARGET_MONTH, STAT_MONTH)은 매월 1일 날짜로 넣음
+- 월별 통계 값은 Java `BigDecimal`과 Oracle `NUMBER`로 읽고 저장함 방문은 만 명·소비는 억 원 단위를 유지하며 소수를 정수로 잘라 저장하지 않음
 - `DATA_SOURCE`의 record 이름은 `javax.sql.DataSource`와 헷갈리지 않도록 `DataSourceFile`로 함
 - 삭제 규칙은 DB의 FK를 따름 계획을 지우면 실행 결과 기록도 지워지고(CASCADE), 제안을 지우면 계획의 제안 번호가 비워짐(SET NULL) 제안 항목이 남은 제안, 사업체가 남은 지역처럼 자식 행이 있는 부모는 지울 수 없음
 
@@ -137,12 +140,44 @@ SQL 클라이언트가 없으면 아래 명령으로 파일 하나씩 실행할 
 | PROVIDER 제공 기준 일관성 | 모든 행의 provider가 입력한 제공자·집계 기준과 같음 |
 
 - 등록하면 만 명 자료는 지표 `VISIT`, 억 원 자료는 `SPEND`로 `REGION_MONTHLY_STAT`에 저장되어 지역 분석에서 사용함
-- `STAT_VALUE`가 INTEGER라 소수(예: 35.5만 명)는 받을 수 없음 소수가 필요하면 ERD에서 NUMBER로 바꾸는 방안을 팀에서 정해야 함
+- DB와 조회 API는 소수를 지원하지만 이 CSV 등록 양식은 기존처럼 0 이상의 정수만 받음 실제 통계 JSON 이관은 별도 이관기로 처리하며 명·원 단위 정수 총량을 만 명·억 원으로 정확히 환산함
 - 업종·내외국인·시간대별 소비 비중(`REGION_CONSUMPTION_STAT`) CSV는 실제 자료의 열 구성을 확인한 뒤 추가함
 
 ### 시연용 샘플 데이터 (선택)
 
-`db/03_sample_data.sql`은 화면 시안과 같은 시연 계정 2개(`cafe@example.com`, `operator@example.com`, 비밀번호 `JejuDemo26!`), 지역 2곳, 시연 카페 1곳, 초기 계획 2개를 넣음 2026-11-10에 팀 DB에 한 번 넣었음 다시 실행하면 중복으로 실패함
+`db/03_sample_data.sql`은 화면 시안과 같은 시연 계정 2개(`cafe@example.com`, `operator@example.com`, 비밀번호 `JejuDemo26!`), 지역 2곳, 시연 카페 1곳, 초기 계획 2개를 넣음 2026-11-10에 팀원의 배정 계정에 한 번 넣었음 본인 배정 계정의 2026-11-11 14:25 검증에서는 넣지 않았음 다시 실행하면 중복으로 실패하며 아래 실제 데이터 이관 절차와 구분함
+
+### 실제 통계 JSON 이관
+
+[데이터 묶음](../../02_제품/데이터/ijto_20261027/README.md)은 `nenongkim/jeju_marketing`의 커밋 `68246a41c76581ae930de576b347df2aab188aa0`에서 가져옴 원본 JSON 3개와 `manifest.json`을 같은 Obsidian 보관함에 저장하고 Git으로 관리함 원본 CSV와 설문 개별 응답은 포함하지 않음
+
+| 구분 | 이관기가 저장하는 내용 |
+| --- | --- |
+| 원본 보존 | JSON 3개 전체를 `IJTO_DATA_SNAPSHOT.PAYLOAD`의 CLOB에 저장 출처 저장소·커밋·파일 경로·SHA-256·수집일을 함께 보존 |
+| 지역 | 43개 읍면동의 원천 방문 코드 10자리를 문자열 그대로 `REGION`에 저장 |
+| 실제 월별 관측값 | 구좌 방문 16행과 음식점 소비 44행, 합계 60행을 `REGION_MONTHLY_STAT`에 저장 |
+| 소비 비중 | 구좌 음식점업의 월별 내국인·외국인 비중 88행을 `REGION_CONSUMPTION_STAT`에 저장 |
+| 출처·검증 | `DATA_SOURCE` 2개와 자료마다 검증 항목 5개, 합계 10개 |
+| 시연용 접근 | 기존과 같은 시연 계정 2개, 구좌 시연 음식점과 관리 권한을 준비함 가상의 계획·실행 기록·추천 기준·홍보 제안은 만들지 않음 |
+
+- 방문 관측값은 2025년과 2026년의 1월부터 8월까지임 음식점 소비는 2023년부터 2025년까지의 36개월과 2026년 1월부터 8월까지임
+- 493,209명은 49.3209만 명, 4,546,311,310원은 45.46311310억 원으로 저장함 원래 총량을 정수 만 명·억 원으로 반올림하지 않음
+- 소비 비중의 업종은 카페가 아닌 `RESTAURANT`임 내국인에는 내국인 관광객과 도민을 합치고 외국인과 비교함 비중은 소수 둘째 자리 반올림하며 원래 금액과 세 고객군은 원본 JSON에 남김
+- 43개 지역의 계절지수, 여러 해를 합친 시간대 비중, 관광지 후보와 카드 이용건수는 원본 스냅샷으로 보존함 계절지수를 실제 인원·금액으로 바꾸거나 다년 평균을 특정 연도의 관측값으로 저장하지 않음
+- 수집 기준일은 2026년 10월 27일임 원문의 결측값·기간·출처·이용 조건 미확인 표시·원천 경고를 유지함 지역 방문 집계는 개별 가게의 손님 수가 아님
+- 입력 파일의 SHA-256과 구조·관측값을 확인한 후 한 트랜잭션으로 적재함 같은 자료를 다시 실행하면 기존 값과 대조하고 중복 행을 만들지 않음 충돌이 있으면 기존 값을 덮어쓰지 않고 전체 적재를 되돌림
+- 현재 일정은 2026년 10월부터 12월까지지만 2026년 9월 이후의 관측값은 이 묶음에 없음 없는 달은 `null`로 표시함 추천 기준이나 4분기 관측값을 임의로 만들지 않음
+
+`db/04_ijto_precision_and_snapshot.sql`을 아직 적용하지 않은 계정은 먼저 한 번 실행함 이미 적용한 계정에서 다시 실행하면 테이블 중복 오류가 나므로 반복하지 않음
+
+macOS에서는 서버 프로젝트 폴더에서 실행함 `JAVA_HOME`은 설치된 JDK 17 이상 경로로 지정하고 접속 정보는 로컬 설정에 준비함
+
+```sh
+sh mvnw spring-boot:run '-Dspring-boot.run.arguments=--db.script=db/04_ijto_precision_and_snapshot.sql --spring.main.web-application-type=none'
+sh mvnw spring-boot:run '-Dspring-boot.run.arguments=--ijto.import=../../02_제품/데이터/ijto_20261027 --spring.main.web-application-type=none'
+```
+
+Windows PowerShell에서는 `sh mvnw` 대신 `.\mvnw.cmd`를 사용함 이관 결과·재실행 결과·API 확인 범위는 [실제 데이터 이관 검증 기록](../../06_증빙/DB/20261111_실제데이터_이관.md)에 별도로 기록함 시연용 접근 정보는 실제 사용자나 사업체 정보가 아님
 
 ### 확인이 필요한 점: 한글 입력 길이
 
@@ -197,5 +232,8 @@ SQL 클라이언트가 없으면 아래 명령으로 파일 하나씩 실행할 
 - `AdminApiTest`: 자료·기준 관리 API의 권한, 검증, 등록, 기준 저장을 확인함
 - `PlanRecordApiTest`: 로그인·권한·일정표·계획·제안 담기·실행 기록·요약 API를 실제 요청처럼 확인함
 - `SampleDataScriptTest`: 샘플 데이터 SQL이 오류 없이 실행되고 시연 계정으로 로그인되는지 확인함 (이미 넣은 DB에서는 건너뜀)
+- `AnalysisDecimalTest`: 소수 월별 값의 순위·변화율과 미확보 값 처리를 DB 없이 확인함 `AnalysisApiTest`는 소수의 DAO 저장·일괄 저장·수정·조회 응답도 확인함
+- `IjtoDatasetTest`: 실제 JSON의 해시·관측값 환산·누락 달·고객군 비중을 확인함
+- `IjtoImporterTest`: 실제 DB 적재의 정확성·재실행 중복 방지·실패 시 되돌리기를 확인함
 - DB를 쓰는 테스트는 끝나면 되돌리므로 데이터가 남지 않음 시퀀스 번호만 올라감
-- 로컬 접속 정보가 없으면 두 테스트는 건너뜀
+- 로컬 접속 정보가 없으면 `LocalDb` 조건을 쓰는 DB 테스트는 건너뜀 서버 시작 테스트는 별도로 DB 접속 설정이 필요함

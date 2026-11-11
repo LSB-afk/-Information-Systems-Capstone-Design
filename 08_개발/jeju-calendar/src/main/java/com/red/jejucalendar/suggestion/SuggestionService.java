@@ -104,7 +104,7 @@ public class SuggestionService {
             RecommendationCriteria c = criteria.get();
             int baseYear = years.get(0);
             long sourceId = monthlyDao.findLatestSourceId(VISIT, baseYear).orElseThrow();
-            for (Map.Entry<String, Map<Integer, Integer>> region : visitsByRegion(sourceId, baseYear).entrySet()) {
+            for (Map.Entry<String, Map<Integer, BigDecimal>> region : visitsByRegion(sourceId, baseYear).entrySet()) {
                 for (SuggestionRules.Decision d : SuggestionRules.decide(c.declineRateThreshold(), baseYear,
                         region.getValue(), period.months())) {
                     PromoSuggestion old = existing.remove(key(region.getKey(), d.target()));
@@ -157,8 +157,8 @@ public class SuggestionService {
         String unit = "만 명";
         List<Item> items = new ArrayList<>();
         items.add(new Item("TIMING", d.target().getYear() + "년 " + d.target().getMonthValue() + "월 · 과거 계절 흐름 참고",
-                d.baseYear() + "년 " + d.previousMonth() + "월 " + d.previousValue() + unit + " → "
-                        + d.target().getMonthValue() + "월 " + d.currentValue() + unit,
+                d.baseYear() + "년 " + d.previousMonth() + "월 " + plain(d.previousValue()) + unit + " → "
+                        + d.target().getMonthValue() + "월 " + plain(d.currentValue()) + unit,
                 "날짜·휴무일 확인 필요"));
         items.add(audience(regionCode, YearMonth.of(d.baseYear(), d.target().getMonthValue())));
         items.add(new Item("PRODUCT", t.product(), t.productReason(), "판매 가능 여부·원가 확인 필요"));
@@ -224,7 +224,7 @@ public class SuggestionService {
         // 제안을 계산할 때 쓴 자료의 가장 최근 연도 (계산은 그 연도의 값으로 함)
         int baseYear = monthlyDao.findBySourceId(s.sourceId()).stream()
                 .map(r -> r.statMonth().getYear()).max(Integer::compare).orElse(s.targetMonth().getYear() - 1);
-        Map<Integer, Integer> values = new HashMap<>();
+        Map<Integer, BigDecimal> values = new HashMap<>();
         for (RegionMonthlyStat stat : monthlyDao.findByRegionAndPeriod(s.sourceId(), s.regionCode(), VISIT,
                 LocalDate.of(baseYear, 1, 1), LocalDate.of(baseYear, 12, 1))) {
             values.put(stat.statMonth().getMonthValue(), stat.statValue());
@@ -268,8 +268,8 @@ public class SuggestionService {
                 .collect(Collectors.toMap(PromoPlan::suggestionId, PromoPlan::planId, (a, b) -> a));
     }
 
-    private Map<String, Map<Integer, Integer>> visitsByRegion(long sourceId, int year) {
-        Map<String, Map<Integer, Integer>> result = new LinkedHashMap<>();
+    private Map<String, Map<Integer, BigDecimal>> visitsByRegion(long sourceId, int year) {
+        Map<String, Map<Integer, BigDecimal>> result = new LinkedHashMap<>();
         for (RegionMonthlyStat s : monthlyDao.findBySourceAndPeriod(sourceId, VISIT, LocalDate.of(year, 1, 1),
                 LocalDate.of(year, 12, 1))) {
             if (s.statValue() != null) {

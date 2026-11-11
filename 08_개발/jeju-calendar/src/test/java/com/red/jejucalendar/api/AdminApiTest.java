@@ -140,7 +140,7 @@ class AdminApiTest {
                 .allSatisfy(v -> assertThat(v.result()).isEqualTo("PASS"));
         assertThat(monthlyDao.findBySourceId(sourceId))
                 .extracting(RegionMonthlyStat::metricType, RegionMonthlyStat::statValue)
-                .containsExactly(org.assertj.core.groups.Tuple.tuple("VISIT", 51), org.assertj.core.groups.Tuple.tuple("VISIT", 37));
+                .containsExactly(org.assertj.core.groups.Tuple.tuple("VISIT", java.math.BigDecimal.valueOf(51)), org.assertj.core.groups.Tuple.tuple("VISIT", java.math.BigDecimal.valueOf(37)));
     }
 
     @Test

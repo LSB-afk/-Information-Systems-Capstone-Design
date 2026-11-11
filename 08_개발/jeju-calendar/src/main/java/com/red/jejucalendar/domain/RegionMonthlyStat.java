@@ -1,5 +1,6 @@
 package com.red.jejucalendar.domain;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 /**
@@ -14,5 +15,11 @@ public record RegionMonthlyStat(
         String regionCode,
         LocalDate statMonth,
         String metricType,
-        Integer statValue) {
+        BigDecimal statValue) {
+
+    /** 기존 정수 입력과 CSV 등록도 같은 단위의 정확한 값으로 처리함 */
+    public RegionMonthlyStat(Long statId, Long sourceId, String regionCode, LocalDate statMonth,
+            String metricType, int statValue) {
+        this(statId, sourceId, regionCode, statMonth, metricType, BigDecimal.valueOf(statValue));
+    }
 }

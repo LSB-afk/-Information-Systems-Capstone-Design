@@ -1,0 +1,28 @@
+{
+  "repository": "nenongkim/jeju_marketing",
+  "commit": "68246a41c76581ae930de576b347df2aab188aa0",
+  "snapshotDate": "2026-10-27",
+  "files": [
+    {
+      "file": "ijto-demo-20261027.json",
+      "sourcePath": "02_제품/데이터/ijto-demo-20261027.json",
+      "gitBlob": "51d3ceef4da181621368d6d1369c3aca58a9c6fc",
+      "sha256": "6a1776592b370a852f45c9bf504fffea478a0ae770d20822ed5d2fc81b4068dd",
+      "bytes": 502337
+    },
+    {
+      "file": "case-data.json",
+      "sourcePath": "02_제품/화면시안_Make/evidence/case-data.json",
+      "gitBlob": "a3957ead6d257c445aed3f8fce337f4244642af1",
+      "sha256": "03dfd0a827b46ec45167441a8d6e35c4d4ca779605b09d74c51ac8426f6389e8",
+      "bytes": 263948
+    },
+    {
+      "file": "recent-data.json",
+      "sourcePath": "02_제품/화면시안_Make/evidence/recent-data.json",
+      "gitBlob": "68916b758b4979dbd29d03d5c1d34f080f10512f",
+      "sha256": "89b44cd5ef1c1f030ec4b24ec0aebb3592538afd409f0649bd7a7c417f46df83",
+      "bytes": 114590
+    }
+  ]
+}

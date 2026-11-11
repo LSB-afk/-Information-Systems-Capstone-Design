@@ -44,9 +44,9 @@ public class RegionMonthlyStatDao {
             ps.setDate(3, JdbcSupport.date(stat.statMonth()));
             ps.setString(4, stat.metricType());
             if (stat.statValue() == null) {
-                ps.setNull(5, java.sql.Types.INTEGER);
+                ps.setNull(5, java.sql.Types.NUMERIC);
             } else {
-                ps.setInt(5, stat.statValue());
+                ps.setBigDecimal(5, stat.statValue());
             }
         });
         return stats.size() - JdbcSupport.countFailures(counts);
@@ -117,6 +117,6 @@ public class RegionMonthlyStatDao {
                 rs.getString("REGION_CODE"),
                 JdbcSupport.localDate(rs, "STAT_MONTH"),
                 rs.getString("METRIC_TYPE"),
-                JdbcSupport.integer(rs, "STAT_VALUE"));
+                rs.getBigDecimal("STAT_VALUE"));
     }
 }

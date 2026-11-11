@@ -100,6 +100,45 @@ class AnalysisApiTest {
     }
 
     @Test
+    void decimalMonthlyValuesRoundTripWithoutLosingPeopleOrWon() throws Exception {
+        long user = userDao.findByEmail("analysis@red.example").orElseThrow().userId();
+        long visitSource = source(user, "precise_visits.json", "PERSON_10K");
+        long statId = monthlyDao.insert(new RegionMonthlyStat(null, visitSource, A, LocalDate.of(2025, 1, 1),
+                "VISIT", new BigDecimal("49.3209")));
+        monthlyDao.insertAll(List.of(
+                new RegionMonthlyStat(null, visitSource, A, LocalDate.of(2025, 2, 1), "VISIT", new BigDecimal("48.1802")),
+                new RegionMonthlyStat(null, visitSource, A, LocalDate.of(2025, 3, 1), "VISIT", null)));
+        assertThatDecimal(statId, "49.3209");
+        monthlyDao.update(new RegionMonthlyStat(statId, null, null, null, null, new BigDecimal("49.3210")));
+        assertThatDecimal(statId, "49.3210");
+
+        long spendSource = source(user, "precise_spend.json", "KRW_100M");
+        long spendId = monthlyDao.insert(new RegionMonthlyStat(null, spendSource, A, LocalDate.of(2025, 1, 1),
+                "SPEND", new BigDecimal("45.46311310")));
+        assertThatDecimal(spendId, "45.46311310");
+
+        mvc.perform(get("/api/analysis/trend").session(session).param("regionCode", A).param("year", "2025"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.unitLabel").value("만 명"))
+                .andExpect(jsonPath("$.months[0].value").value(49.321))
+                .andExpect(jsonPath("$.months[1].value").value(48.1802))
+                .andExpect(jsonPath("$.months[2].value").value(nullValue()))
+                .andExpect(jsonPath("$.months[3].value").value(nullValue()))
+                .andExpect(jsonPath("$.peak.month").value(1))
+                .andExpect(jsonPath("$.low.month").value(2));
+        mvc.perform(get("/api/analysis/trend").session(session).param("regionCode", A).param("year", "2025")
+                        .param("metric", "SPEND"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.unitLabel").value("억 원"))
+                .andExpect(jsonPath("$.months[0].value").value(45.4631131));
+    }
+
+    private void assertThatDecimal(long statId, String expected) {
+        org.assertj.core.api.Assertions.assertThat(monthlyDao.findById(statId).orElseThrow().statValue())
+                .isEqualByComparingTo(expected);
+    }
+
+    @Test
     void visitTrendShowsTwelveMonthsPeakLowAndSource() throws Exception {
         mvc.perform(get("/api/analysis/trend").session(session).param("regionCode", A).param("year", "2025"))
                 .andExpect(status().isOk())

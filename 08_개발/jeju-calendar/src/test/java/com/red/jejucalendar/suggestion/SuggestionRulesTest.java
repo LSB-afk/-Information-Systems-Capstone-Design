@@ -2,6 +2,7 @@ package com.red.jejucalendar.suggestion;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.time.YearMonth;
 import java.util.HashMap;
@@ -26,14 +27,26 @@ class SuggestionRulesTest {
     }
 
     @Test
+    void fractionalVisitorCountsDoNotDisappearBeforeComparingTheThreshold() {
+        var decisions = SuggestionRules.decide(20, 2025,
+                Map.of(10, new BigDecimal("0.5001"), 11, new BigDecimal("0.4000")),
+                List.of(YearMonth.of(2026, 11)));
+
+        assertThat(decisions).hasSize(1);
+        assertThat(decisions.get(0).previousValue()).isEqualByComparingTo("0.5001");
+        assertThat(decisions.get(0).currentValue()).isEqualByComparingTo("0.4000");
+        assertThat(decisions.get(0).declineRate()).isEqualByComparingTo("20.0");
+    }
+
+    @Test
     void sameResultAsThePrototypeWithThreshold20() {
         var decisions = SuggestionRules.decide(20, 2025, values(AEWOL), TARGETS);
         // 9월→10월 10.5%, 10월→11월 27.5%, 11월→12월 8.1% → 11월만 기준 이상
         assertThat(decisions).hasSize(1);
         var d = decisions.get(0);
         assertThat(d.target()).isEqualTo(YearMonth.of(2026, 11));
-        assertThat(d.previousValue()).isEqualTo(51);
-        assertThat(d.currentValue()).isEqualTo(37);
+        assertThat(d.previousValue()).isEqualByComparingTo("51");
+        assertThat(d.currentValue()).isEqualByComparingTo("37");
         assertThat(d.declineRate()).isEqualByComparingTo("27.5");
         assertThat(SuggestionRules.reason(d, 20)).isEqualTo("2025년 10월 대비 11월 방문 27.5% 감소 · 기준 20% 이상");
     }
@@ -75,8 +88,8 @@ class SuggestionRulesTest {
             assertThat(bytes(t.product())).as("ITEM_CONTENT").isLessThanOrEqualTo(200);
             assertThat(bytes(t.productReason())).as("ITEM_REASON").isLessThanOrEqualTo(200);
         }
-        var longest = new SuggestionRules.Decision(YearMonth.of(2026, 12), 2025, 11, 99_999_999, 0,
-                new java.math.BigDecimal("100.0"));
+        var longest = new SuggestionRules.Decision(YearMonth.of(2026, 12), 2025, 11,
+                BigDecimal.valueOf(99_999_999), BigDecimal.ZERO, new BigDecimal("100.0"));
         assertThat(bytes(SuggestionRules.reason(longest, 100))).isLessThanOrEqualTo(200);
     }
 

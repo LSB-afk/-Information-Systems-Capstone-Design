@@ -94,14 +94,14 @@ public class AnalysisService {
                     false, noDataMessage(targetYear, years), null, List.of(), null, null, List.of(), changeLabel,
                     List.of(), VISIT_NOTICE);
         }
-        Map<String, Map<Integer, Integer>> byRegion = valuesByRegion(sourceId.get(), metricType, targetYear);
+        Map<String, Map<Integer, BigDecimal>> byRegion = valuesByRegion(sourceId.get(), metricType, targetYear);
         List<MonthValue> months = twelve(byRegion.get(region.regionCode()));
         boolean hasRegionData = months.stream().anyMatch(m -> m.value() != null);
 
         List<RegionValue> regions = new ArrayList<>();
         List<SeasonRow> season = new ArrayList<>();
         for (Region r : regionDao.findAll()) {
-            Map<Integer, Integer> values = byRegion.get(r.regionCode());
+            Map<Integer, BigDecimal> values = byRegion.get(r.regionCode());
             if (values == null) {
                 continue;
             }
@@ -133,14 +133,14 @@ public class AnalysisService {
 
         Optional<Long> visitSource = monthlyDao.findLatestSourceId(VISIT, targetYear);
         Optional<Long> spendSource = monthlyDao.findLatestSourceId(SPEND, targetYear);
-        Map<Integer, Integer> visits = visitSource
+        Map<Integer, BigDecimal> visits = visitSource
                 .map(id -> valuesByRegion(id, VISIT, targetYear).get(region.regionCode())).orElse(null);
-        Map<Integer, Integer> spends = spendSource
+        Map<Integer, BigDecimal> spends = spendSource
                 .map(id -> valuesByRegion(id, SPEND, targetYear).get(region.regionCode())).orElse(null);
         List<VisitSpendRow> rows = new ArrayList<>();
         for (int m = 1; m <= 12; m++) {
-            Integer v = visits == null ? null : visits.get(m);
-            Integer s = spends == null ? null : spends.get(m);
+            BigDecimal v = visits == null ? null : visits.get(m);
+            BigDecimal s = spends == null ? null : spends.get(m);
             String note = v != null && s != null ? "각 지표의 변화만 비교"
                     : v == null && s == null ? "방문·소비 모두 미확보"
                     : v == null ? "방문 비교 불가 · 0으로 대체하지 않음" : "소비 비교 불가 · 0으로 대체하지 않음";
@@ -185,8 +185,8 @@ public class AnalysisService {
         return regionSelector.select(user, regionCode);
     }
 
-    private Map<String, Map<Integer, Integer>> valuesByRegion(long sourceId, String metricType, int year) {
-        Map<String, Map<Integer, Integer>> result = new LinkedHashMap<>();
+    private Map<String, Map<Integer, BigDecimal>> valuesByRegion(long sourceId, String metricType, int year) {
+        Map<String, Map<Integer, BigDecimal>> result = new LinkedHashMap<>();
         for (RegionMonthlyStat s : monthlyDao.findBySourceAndPeriod(sourceId, metricType,
                 YearMonth.of(year, 1).atDay(1), YearMonth.of(year, 12).atDay(1))) {
             result.computeIfAbsent(s.regionCode(), k -> new LinkedHashMap<>())
@@ -207,7 +207,7 @@ public class AnalysisService {
                 + years.stream().map(y -> y + "년").collect(Collectors.joining(", "));
     }
 
-    static List<MonthValue> twelve(Map<Integer, Integer> values) {
+    static List<MonthValue> twelve(Map<Integer, BigDecimal> values) {
         List<MonthValue> months = new ArrayList<>();
         for (int m = 1; m <= 12; m++) {
             months.add(new MonthValue(m, values == null ? null : values.get(m)));
@@ -217,22 +217,22 @@ public class AnalysisService {
 
     static MonthValue peak(List<MonthValue> months) {
         return months.stream().filter(m -> m.value() != null)
-                .max(Comparator.comparingInt(MonthValue::value).thenComparing(MonthValue::month, Comparator.reverseOrder()))
+                .max(Comparator.comparing(MonthValue::value).thenComparing(MonthValue::month, Comparator.reverseOrder()))
                 .orElse(null);
     }
 
     static MonthValue low(List<MonthValue> months) {
         return months.stream().filter(m -> m.value() != null)
-                .min(Comparator.comparingInt(MonthValue::value).thenComparingInt(MonthValue::month))
+                .min(Comparator.comparing(MonthValue::value).thenComparingInt(MonthValue::month))
                 .orElse(null);
     }
 
-    static BigDecimal changeRate(Integer from, Integer to) {
-        if (from == null || to == null || from == 0) {
+    static BigDecimal changeRate(BigDecimal from, BigDecimal to) {
+        if (from == null || to == null || from.signum() == 0) {
             return null;
         }
-        return BigDecimal.valueOf(to - from).multiply(BigDecimal.valueOf(100))
-                .divide(BigDecimal.valueOf(from), 1, RoundingMode.HALF_UP);
+        return to.subtract(from).multiply(BigDecimal.valueOf(100))
+                .divide(from, 1, RoundingMode.HALF_UP);
     }
 
     private static BigDecimal share(List<RegionConsumptionStat> list, String segment) {

@@ -133,9 +133,9 @@ class AllDaoCrudTest {
         assertThat(saved).isEqualTo(2);
         List<RegionMonthlyStat> visits = monthlyDao.findByRegionAndPeriod(sourceId, REGION, "VISIT",
                 MONTH, MONTH.plusMonths(2));
-        assertThat(visits).extracting(RegionMonthlyStat::statValue).containsExactly(120, 95, null);
+        assertThat(visits).extracting(RegionMonthlyStat::statValue).containsExactly(BigDecimal.valueOf(120), BigDecimal.valueOf(95), null);
         assertThat(monthlyDao.update(new RegionMonthlyStat(statId, null, null, null, null, 130))).isEqualTo(1);
-        assertThat(monthlyDao.findById(statId).orElseThrow().statValue()).isEqualTo(130);
+        assertThat(monthlyDao.findById(statId).orElseThrow().statValue()).isEqualByComparingTo("130");
 
         // 같은 자료·지역·월·지표는 두 번 넣을 수 없음 (AK1)
         assertThatThrownBy(() -> monthlyDao.insert(new RegionMonthlyStat(null, sourceId, REGION, MONTH, "VISIT", 1)))

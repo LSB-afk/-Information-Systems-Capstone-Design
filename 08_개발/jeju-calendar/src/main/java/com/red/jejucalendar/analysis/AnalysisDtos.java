@@ -35,11 +35,11 @@ public final class AnalysisDtos {
         }
     }
 
-    public record MonthValue(int month, Integer value) {
+    public record MonthValue(int month, BigDecimal value) {
     }
 
     /** 지도·지역 선택용 (value는 계획 시작 월의 값) */
-    public record RegionValue(String regionCode, String regionName, Integer value) {
+    public record RegionValue(String regionCode, String regionName, BigDecimal value) {
     }
 
     /**
@@ -75,7 +75,7 @@ public final class AnalysisDtos {
     }
 
     /** 방문·소비를 같은 달끼리 나란히 보여주는 줄 (SCR-C-003 소비 비교 ③) */
-    public record VisitSpendRow(int month, Integer visit, Integer spend, String note) {
+    public record VisitSpendRow(int month, BigDecimal visit, BigDecimal spend, String note) {
     }
 
     /** 업종별 내국인·외국인 비중 (SCR-C-003 소비 비교 ④) */

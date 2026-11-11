@@ -24,7 +24,7 @@ public final class SuggestionRules {
     }
 
     /** 판단 결과 하나 (기준을 넘은 달만 만듦) */
-    public record Decision(YearMonth target, int baseYear, int previousMonth, int previousValue, int currentValue,
+    public record Decision(YearMonth target, int baseYear, int previousMonth, BigDecimal previousValue, BigDecimal currentValue,
             BigDecimal declineRate) {
     }
 
@@ -55,7 +55,7 @@ public final class SuggestionRules {
      * @param baseValues 기준 연도의 월별 방문 값 (키: 1부터 12까지, 없는 달은 키가 없음)
      * 1월 대상은 직전 달이 전년도 12월이라 같은 자료에 없으므로 판단하지 않음
      */
-    public static List<Decision> decide(int threshold, int baseYear, Map<Integer, Integer> baseValues,
+    public static List<Decision> decide(int threshold, int baseYear, Map<Integer, ? extends Number> baseValues,
             List<YearMonth> targets) {
         List<Decision> result = new ArrayList<>();
         for (YearMonth target : targets) {
@@ -63,13 +63,18 @@ public final class SuggestionRules {
             if (month == 1) {
                 continue;
             }
-            Integer previous = baseValues.get(month - 1);
-            Integer current = baseValues.get(month);
-            if (previous == null || current == null || previous <= 0) {
+            Number previousValue = baseValues.get(month - 1);
+            Number currentValue = baseValues.get(month);
+            if (previousValue == null || currentValue == null) {
                 continue;
             }
-            BigDecimal decline = BigDecimal.valueOf(previous - current).multiply(BigDecimal.valueOf(100))
-                    .divide(BigDecimal.valueOf(previous), 1, RoundingMode.HALF_UP);
+            BigDecimal previous = new BigDecimal(previousValue.toString());
+            BigDecimal current = new BigDecimal(currentValue.toString());
+            if (previous.signum() <= 0) {
+                continue;
+            }
+            BigDecimal decline = previous.subtract(current).multiply(BigDecimal.valueOf(100))
+                    .divide(previous, 1, RoundingMode.HALF_UP);
             if (decline.compareTo(BigDecimal.valueOf(threshold)) >= 0) {
                 result.add(new Decision(target, baseYear, month - 1, previous, current, decline));
             }

@@ -12,7 +12,7 @@ import org.junit.jupiter.api.condition.EnabledIf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.test.context.transaction.TestTransaction;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
@@ -41,6 +41,7 @@ class IjtoImporterTest {
     }
 
     @Test
+    @Transactional(propagation = Propagation.NOT_SUPPORTED)
     void failedImportRollsBackEarlierInserts() throws Exception {
         int before = jdbc.queryForObject("SELECT COUNT(*) FROM IJTO_DATA_SNAPSHOT", Integer.class);
         var data = IjtoDataset.load(Path.of("../../02_제품/데이터/ijto_20261027"));
@@ -53,8 +54,25 @@ class IjtoImporterTest {
                 areas, data.observations(), data.shares());
         assertThatThrownBy(() -> importer.importDataset(invalid)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("지역");
-        TestTransaction.flagForRollback();
-        TestTransaction.end();
         assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM IJTO_DATA_SNAPSHOT", Integer.class)).isEqualTo(before);
+    }
+
+    @Test
+    void refusesChangedSourceMetadataInsteadOfReusingIt() throws Exception {
+        var data = IjtoDataset.load(Path.of("../../02_제품/데이터/ijto_20261027"));
+        importer.importDataset(data);
+        jdbc.update("UPDATE DATA_SOURCE SET PROVIDER_BASIS='changed' WHERE SOURCE_VERSION=?", "ijto-20261027@68246a41c765-VISIT");
+        assertThatThrownBy(() -> importer.importDataset(data)).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("메타데이터");
+    }
+
+    @Test
+    void refusesChangedSnapshotProvenance() throws Exception {
+        var data = IjtoDataset.load(Path.of("../../02_제품/데이터/ijto_20261027"));
+        importer.importDataset(data);
+        jdbc.update("UPDATE IJTO_DATA_SNAPSHOT SET REPOSITORY='changed' WHERE SNAPSHOT_KEY=?",
+                "2026-10-27:recent-data.json");
+        assertThatThrownBy(() -> importer.importDataset(data)).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("출처");
     }
 }

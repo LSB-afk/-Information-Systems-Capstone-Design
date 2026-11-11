@@ -88,7 +88,7 @@ public class IjtoImporter {
     private void snapshot(IjtoDataset data, IjtoDataset.Snapshot snapshot) {
         IjtoDataset.require(IjtoDataset.sha256(snapshot.payload().getBytes(StandardCharsets.UTF_8)).equals(snapshot.sha256()), "스냅샷 SHA-256 불일치");
         String key = data.snapshotDate() + ":" + snapshot.file();
-        List<Map<String, Object>> existing = jdbc.queryForList("SELECT COMMIT_SHA,CONTENT_SHA256,FILE_PATH FROM IJTO_DATA_SNAPSHOT WHERE SNAPSHOT_KEY=?", key);
+        List<String> existing = jdbc.queryForList("SELECT SNAPSHOT_KEY FROM IJTO_DATA_SNAPSHOT WHERE SNAPSHOT_KEY=?", String.class, key);
         if (existing.isEmpty()) {
             jdbc.update(connection -> {
                 var ps = connection.prepareStatement("INSERT INTO IJTO_DATA_SNAPSHOT"
@@ -100,9 +100,10 @@ public class IjtoImporter {
                 return ps;
             });
         } else {
-            var row = existing.get(0);
-            IjtoDataset.require(data.commit().equals(row.get("COMMIT_SHA")) && snapshot.sha256().equals(row.get("CONTENT_SHA256"))
-                    && snapshot.sourcePath().equals(row.get("FILE_PATH")), "기존 스냅샷 출처 충돌");
+            IjtoDataset.require(jdbc.queryForObject("SELECT COUNT(*) FROM IJTO_DATA_SNAPSHOT WHERE SNAPSHOT_KEY=?"
+                    + " AND REPOSITORY=? AND COMMIT_SHA=? AND FILE_PATH=? AND CONTENT_SHA256=? AND SNAPSHOT_DATE=?",
+                    Integer.class, key, data.repository(), data.commit(), snapshot.sourcePath(), snapshot.sha256(),
+                    Date.valueOf(data.snapshotDate())) == 1, "기존 스냅샷 출처 충돌");
         }
         String payload = jdbc.queryForObject("SELECT PAYLOAD FROM IJTO_DATA_SNAPSHOT WHERE SNAPSHOT_KEY=?", String.class, key);
         IjtoDataset.require(snapshot.payload().equals(payload), "DB 스냅샷 원문 불일치");
@@ -139,22 +140,25 @@ public class IjtoImporter {
 
     private long source(IjtoDataset data, long operator, String metric, List<IjtoDataset.Observation> rows) {
         String version = "ijto-" + data.snapshotDate().toString().replace("-", "") + "@" + data.commit().substring(0, 12) + "-" + metric;
+        LocalDate from = rows.stream().map(IjtoDataset.Observation::month).min(LocalDate::compareTo).orElseThrow();
+        LocalDate to = rows.stream().map(IjtoDataset.Observation::month).max(LocalDate::compareTo).orElseThrow();
+        String fileName = metric.equals("VISIT") ? "recent-data.json" : "case+recent-data.json";
+        String unit = metric.equals("VISIT") ? "PERSON_10K" : "KRW_100M";
+        String provider = metric.equals("VISIT") ? "제주관광공사/SKT 월별 읍면동" : "제주관광공사/BC카드 음식점업";
         var ids = jdbc.queryForList("SELECT SOURCE_ID FROM DATA_SOURCE WHERE SOURCE_VERSION=?", Long.class, version);
         long id;
         if (ids.isEmpty()) {
             id = jdbc.queryForObject("SELECT SEQ_DATA_SOURCE.NEXTVAL FROM DUAL", Long.class);
-            LocalDate from = rows.stream().map(IjtoDataset.Observation::month).min(LocalDate::compareTo).orElseThrow();
-            LocalDate to = rows.stream().map(IjtoDataset.Observation::month).max(LocalDate::compareTo).orElseThrow();
             jdbc.update("INSERT INTO DATA_SOURCE (SOURCE_ID,USER_ID,FILE_NAME,SOURCE_VERSION,START_MONTH,END_MONTH,UNIT,VALIDATION_STATUS,PROVIDER_BASIS,ROW_COUNT,REGISTERED_AT)"
                     + " VALUES (?,?,?,?,?,?,?,'PASS',?,?,SYSDATE)", id, operator,
-                    metric.equals("VISIT") ? "recent-data.json" : "case+recent-data.json", version, Date.valueOf(from), Date.valueOf(to),
-                    metric.equals("VISIT") ? "PERSON_10K" : "KRW_100M",
-                    metric.equals("VISIT") ? "제주관광공사/SKT 월별 읍면동" : "제주관광공사/BC카드 음식점업", rows.size());
+                    fileName, version, Date.valueOf(from), Date.valueOf(to), unit, provider, rows.size());
         } else {
             IjtoDataset.require(ids.size() == 1, "출처 버전 중복");
             id = ids.get(0);
-            IjtoDataset.require(jdbc.queryForObject("SELECT COUNT(*) FROM DATA_SOURCE WHERE SOURCE_ID=? AND VALIDATION_STATUS='PASS' AND UNIT=? AND ROW_COUNT=?",
-                    Integer.class, id, metric.equals("VISIT") ? "PERSON_10K" : "KRW_100M", rows.size()) == 1, "기존 출처 메타데이터 충돌");
+            IjtoDataset.require(jdbc.queryForObject("SELECT COUNT(*) FROM DATA_SOURCE WHERE SOURCE_ID=? AND VALIDATION_STATUS='PASS'"
+                    + " AND USER_ID=? AND FILE_NAME=? AND START_MONTH=? AND END_MONTH=? AND UNIT=? AND PROVIDER_BASIS=? AND ROW_COUNT=?",
+                    Integer.class, id, operator, fileName, Date.valueOf(from), Date.valueOf(to), unit, provider, rows.size()) == 1,
+                    "기존 출처 메타데이터 충돌");
         }
         Map<String, String> checks = Map.of("PERIOD", "관측 연월 확인, 빠진 달을 0으로 채우지 않음",
                 "AGGREGATION", "월별 구좌 집계, 명·원을 만 명·억 원으로 정확히 환산",

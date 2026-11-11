@@ -20,6 +20,7 @@
 - [ERD 프로토타입 대조 가이드 — 화면 시안과 다른 컬럼과 고칠 방법](04_아키텍처/ERD/ERD_프로토타입_대조_가이드.md)
 - [ERD Oracle SQL — ERwin Schema Generation 결과](04_아키텍처/ERD/Red_ERD_Oracle.sql)
 - [ERD 코드 설계서 — 코드값 컬럼 14개](04_아키텍처/ERD/ERD_코드_설계서.md)
+- [실제 통계 적재 DB 확장 — 소수 정밀도와 원본 JSON 보관](04_아키텍처/ERD/ERD_실제데이터_확장.md)
 
 ## 개발
 

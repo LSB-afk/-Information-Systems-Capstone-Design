@@ -150,7 +150,7 @@ public class IjtoImporter {
         if (ids.isEmpty()) {
             id = jdbc.queryForObject("SELECT SEQ_DATA_SOURCE.NEXTVAL FROM DUAL", Long.class);
             jdbc.update("INSERT INTO DATA_SOURCE (SOURCE_ID,USER_ID,FILE_NAME,SOURCE_VERSION,START_MONTH,END_MONTH,UNIT,VALIDATION_STATUS,PROVIDER_BASIS,ROW_COUNT,REGISTERED_AT)"
-                    + " VALUES (?,?,?,?,?,?,?,'PASS',?,?,SYSDATE)", id, operator,
+                    + " VALUES (?,?,?,?,?,?,?,'PASS',?,?,TRUNC(SYSDATE))", id, operator,
                     fileName, version, Date.valueOf(from), Date.valueOf(to), unit, provider, rows.size());
         } else {
             IjtoDataset.require(ids.size() == 1, "출처 버전 중복");

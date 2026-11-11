@@ -31,6 +31,7 @@
 | `db/01_create_tables.sql` | ERD SQL([Red_ERD_Oracle.sql](../../04_아키텍처/ERD/Red_ERD_Oracle.sql))의 1행부터 422행까지 그대로 옮김 테이블 13개, PK 13개, AK 4개, FK 17개 |
 | `db/02_create_sequences.sql` | `SEQ_` 시퀀스 9개 |
 | `db/04_ijto_precision_and_snapshot.sql` | `STAT_VALUE`를 소수 저장이 가능한 `NUMBER`로 확장하고 원본 JSON 보존용 `IJTO_DATA_SNAPSHOT` 테이블을 추가함 최초 한 번 실행 |
+| `db/05_normalize_ijto_registration_date.sql` | 최초 이관한 출처 2개의 등록일 정밀도를 기존 CSV 등록과 맞춤 같은 날에는 자료 번호로 최신 자료를 선택하며 반복 실행 가능 |
 
 - 테이블 이름은 ERD에 정의된 이름(`USERS`, `BUSINESS` 등)을 그대로 씀 `TBL_` 접두어로 바꿀지는 팀 확인 후 ERD와 함께 바꿈
 - ERwin 기본 옵션으로 만들어진 트리거 30개는 FK 17개와 같은 규칙을 다시 검사하고, `tD_PROMO_PLAN`처럼 `ON DELETE CASCADE`와 겹치는 삭제도 있어 실행하지 않음
@@ -170,6 +171,8 @@ SQL 클라이언트가 없으면 아래 명령으로 파일 하나씩 실행할 
 
 `db/04_ijto_precision_and_snapshot.sql`을 아직 적용하지 않은 계정은 먼저 한 번 실행함 이미 적용한 계정에서 다시 실행하면 테이블 중복 오류가 나므로 반복하지 않음
 
+초기 이관본의 등록 시각을 가진 계정에는 `db/05_normalize_ijto_registration_date.sql`도 적용함 현재 이관기는 기존 CSV와 동일하게 날짜만 저장하므로 새 적재에는 보정할 행이 없음 원본 스냅샷의 적재 시각은 보존함
+
 macOS에서는 서버 프로젝트 폴더에서 실행함 `JAVA_HOME`은 설치된 JDK 17 이상 경로로 지정하고 접속 정보는 로컬 설정에 준비함
 
 ```sh
@@ -236,4 +239,5 @@ Windows PowerShell에서는 `sh mvnw` 대신 `.\mvnw.cmd`를 사용함 이관 �
 - `IjtoDatasetTest`: 실제 JSON의 해시·관측값 환산·누락 달·고객군 비중을 확인함
 - `IjtoImporterTest`: 실제 DB 적재의 정확성·재실행 중복 방지·실패 시 되돌리기를 확인함
 - DB를 쓰는 테스트는 끝나면 되돌리므로 데이터가 남지 않음 시퀀스 번호만 올라감
+- 지역 분석·한눈에 보기·홍보 제안 API 테스트는 기존 자료를 테스트 트랜잭션 안에서만 `PENDING`으로 바꾸고 시험 자료로 검증함 종료 시 원래 상태로 되돌려 실제 자료의 최신 연도와 시험 기준 연도가 섞이지 않게 함
 - 로컬 접속 정보가 없으면 `LocalDb` 조건을 쓰는 DB 테스트는 건너뜀 서버 시작 테스트는 별도로 DB 접속 설정이 필요함

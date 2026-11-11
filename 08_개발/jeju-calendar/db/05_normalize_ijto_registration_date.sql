@@ -1,0 +1,6 @@
+-- 최초 IJTO 적재 때 저장한 시각을 기존 CSV 등록의 LocalDate 정밀도에 맞춤
+-- 같은 날 나중에 등록한 자료가 SOURCE_ID 순서로 선택되도록 함
+-- 원본 스냅샷의 IMPORTED_AT과 다른 출처는 변경하지 않음
+UPDATE DATA_SOURCE SET REGISTERED_AT = TRUNC(REGISTERED_AT)
+WHERE SOURCE_VERSION IN ('ijto-20261027@68246a41c765-VISIT', 'ijto-20261027@68246a41c765-SPEND')
+  AND REGISTERED_AT <> TRUNC(REGISTERED_AT);

@@ -41,6 +41,16 @@ class IjtoImporterTest {
     }
 
     @Test
+    void sourceRegistrationUsesTheSameDatePrecisionAsCsvUploads() throws Exception {
+        var original = IjtoDataset.load(Path.of("../../02_제품/데이터/ijto_20261027"));
+        var data = new IjtoDataset(original.repository(), original.commit(), original.snapshotDate().minusDays(1),
+                original.snapshots(), original.areas(), original.observations(), original.shares());
+        importer.importDataset(data);
+        assertThat(jdbc.queryForObject("SELECT COUNT(*) FROM DATA_SOURCE WHERE SOURCE_VERSION LIKE 'ijto-20261026@%'"
+                + " AND REGISTERED_AT = TRUNC(REGISTERED_AT)", Integer.class)).isEqualTo(2);
+    }
+
+    @Test
     @Transactional(propagation = Propagation.NOT_SUPPORTED)
     void failedImportRollsBackEarlierInserts() throws Exception {
         int before = jdbc.queryForObject("SELECT COUNT(*) FROM IJTO_DATA_SNAPSHOT", Integer.class);

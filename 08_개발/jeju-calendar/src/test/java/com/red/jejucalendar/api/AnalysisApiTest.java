@@ -24,6 +24,7 @@ import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.red.jejucalendar.dao.DataSourceFileDao;
@@ -44,6 +45,8 @@ import com.red.jejucalendar.domain.User;
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
+// 기존 실제 자료는 이 테스트 트랜잭션에서만 제외하고 종료 시 원래 상태로 되돌림
+@Sql(statements = "UPDATE DATA_SOURCE SET VALIDATION_STATUS='PENDING'")
 @EnabledIf("com.red.jejucalendar.support.LocalDb#configured")
 class AnalysisApiTest {
 

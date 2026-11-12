@@ -9,6 +9,7 @@
 - [유스케이스 StarUML 편집 원본](00_제출/Red_USECASE.mdj)
 - [화면설계서 PDF 검토본 — 32쪽](00_제출/Red_SCREEN.pdf)
 - [화면설계서 원고·32개 Use Case 대응표](00_제출/Red_SCREEN.md)
+- [포스터 PDF — A0 세로 841×1189mm](00_제출/Red_포스터_20261112.pdf) · [PowerPoint 편집본](00_제출/Red_포스터_20261112.pptx) 글꼴은 Pretendard를 씀
 
 이승보의 팀 [Figma Design 파일](https://www.figma.com/design/3g5xR8OkcV6sUclyGM5d30)에 주요 화면 8개와 팝업·상태를 포함한 21개 프레임을 옮겼습니다. 연결 144개의 이동 대상을 확인했고, 실제 클릭 재생과 비로그인 열람 권한은 아직 검증하지 못했습니다. [요구사항별 확인 결과](06_증빙/화면설계/검증.md)에 검증 범위를 기록했습니다.
 

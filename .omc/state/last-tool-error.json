@@ -1,7 +1,7 @@
 {
   "tool_name": "Read",
-  "tool_input_preview": "{\"file_path\":\"/Users/leeseungbo/Desktop/대학교 수업/2026년_2학기/정보시스템캡스톤디자인/회의비 정산/IMG_7416.png\"}",
-  "error": "File has an image extension but its content is not a valid PNG/JPEG/GIF/WebP. Detected: unrecognized bytes (hex: 00 00 00 34 66 74 79 70). This usually means a download saved an error/login page instead of the image. Use `file \"/Users/leeseungbo/Desktop/대학교 수업/2026년_2학기/정보시스템캡스톤디자인/회의비 정산/IMG_7416.png\"` to confirm, or read it as text with Bash (e.g. `head -c 500`).",
-  "timestamp": "2026-11-11T05:26:49.209Z",
-  "retry_count": 2
+  "tool_input_preview": "{\"file_path\":\"/Users/leeseungbo/Desktop/ITS2026_이승보_poster.pdf\",\"pages\":\"1\"}",
+  "error": "pdftoppm is not installed. Install poppler-utils (e.g. `brew install poppler` or `apt-get install poppler-utils`) to enable PDF page rendering.",
+  "timestamp": "2026-11-12T07:03:37.714Z",
+  "retry_count": 1
 }
